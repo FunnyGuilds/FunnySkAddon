@@ -1,4 +1,10 @@
 # FunnySkAddon
+
+### O Pluginie: Jest to plugin dodający do minecrafta wsparcie pluginu funnyguilds dla skript
+### Twórcy: McKoxu, LloydPL
+### Dokumentacja: ConditionDoc.txt, EffectDoc.txt, EventDoc.txt, ExpressionDoc.txt
+
+
 * Changelog:
   * 1.0:
     * Pierwsze wydanie dodatku
