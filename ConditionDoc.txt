@@ -1,0 +1,51 @@
+﻿Conditions:	
+	guild %string% (does|) exist(s|) / guild %string% (doesn't|does not) exist(s|):
+		Opis: Sprawdza czy gildia istnieje
+		Przykłady użycia:
+			if guild "NAZWAGILDI" exists:
+			if guild "NAZWAGILDI" doesn't exist:
+	(player |)%player% is in guild %object% / (player |)%player% is(n't| not) in guild %object%:
+		Opis: Sprawdza czy gracz jest w gildii
+		Przykłady użycia:
+			if player is in guild "NAZWAGILDI":
+			if player isn't in guild "NAZWAGILDI":
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	guild %object% is banned / guild %object% is(n't| not) banned:
+		Opis: Sprawdza czy gildia jest zbanowana
+		Przykłady użycia:
+			if guild "NAZWAGILDI" is banned:
+			if guild "NAZWAGILDI" isn't banned:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	guild %object% can be attacked / guild %object% (cannot|can't) be attacked:
+		Opis: Sprawdza czy gildia może być zaatakowana
+		Przykłady użycia:
+			if guild "NAZWAGILDI" can be attacked:
+			if guild "NAZWAGILDI" cannot be attacked:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	guild %object% can build / guild %object% (cannot|can't) build:
+		Opis: Sprawdza czy gildia może budować
+		Przykłady użycia:
+			if guild "NAZWAGILDI" can build:
+			if guild "NAZWAGILDI" cannot build:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	guild %object% pvp is (enabled|on) / guild %object% pvp is (disabled|off):
+		Opis: Sprawdza czy gildia ma włączone pvp
+		Przykłady użycia:
+			if guild "NAZWAGILDI" pvp is enabled: 
+			if guild "NAZWAGILDI" pvp is disabled:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	(player |)%player% has guild / (player |)%player% (does not|doesn't) have guild
+		Opis: Sprawdza czy gracz jest w gildii:
+		Przykłady użycia:
+			if player has guild:
+			if player doesn't hava guild:
+	(player |)%player% is deputy / (player |)%player% is(n't| not) deputy:
+		Opis: Sprawdza czy gracz jest zastępcą gildii
+		Przykłady użycia:
+			if player is deputy:
+			if player isn't deputy:
+	(player |)%player% is guild owner / (player |)%player% is(n't| not) guild owner:
+		Opis: Sprawdza czy gracz jest założycielem gildii
+		Przykłady użycia:
+			if player is guild owner:
+			if player isn't guild owner:

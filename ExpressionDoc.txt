@@ -1,0 +1,195 @@
+Expressions:
+	guild in position %integer%:
+		Opis: Pokazuje pozycje gildi w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
+		Przykłady użycia:
+			send "Gildia na pozycji 1: %guild in position 1%"
+	player in position %integer%:
+		Opis: Pokazuje pozycje gracza w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
+		Przykłady użycia:
+			send "Gracz na pozycji 1: %player in position 1%"
+	guild name from tag %string%:
+		Opis: Pokazuje nazwe gildii z podanego tagu
+		Przykłady użycia:
+			send "Nazwa gildi o tagu TAG to %guild name from tag "TAG"%"
+	guild from tag %string%:
+		Opis: Zwraca gildie po podanym tagu
+		Przykłady użycia:
+			set {_guild} to guild from tag "TAG"
+	guild from name %string%:
+		Opis: Zwraca gildie po podanej nazwie
+		Przykłady użycia:
+			set {_guild} to guild from name "NAZWAGILDI"	
+	%player% guild deaths:
+		Opis: Zwraca śmierci graczy gildi
+		Przykłady użycia:
+			set {_guildDeaths} to player guild deaths
+	%player% guild deputies:
+		Opis: Zwraca liste przełożonych gildi gracza
+		Przykłady użycia:
+			set {_guildDeputies::*} to player guild deputies
+	%player% guild kdr:
+		Opis: Zwraca KDR gildi gracza
+		Przykłady użycia:
+			set {_guildKDR} to player guild kdr
+	%player% guild kills:
+		Opis: Zwraca liczbę zabójstw gildi gracza
+		Przykłady użycia:
+			set {_guildKills} to player guild kills
+	%player% guild lives:
+		Opis: Zwraca liczbe żyć gildii gracza
+		Przykłady użycia:
+			set {_guildLives} to player guild lives
+	%player% guild members:
+		Opis: Zwraca liste członków gildi gracza
+		Przykłady użycia:
+			set {_guildMembers::*} to player guild members
+	%player% guild members amount:
+		Opis: Zwraca liczbe członków gildi gracza
+		Przykłady użycia:
+			set {_guildMembersAmount} to player guild members amount
+	%player% guild online members:
+		Opis: Zwraca liste członków gildi gracza którzy są online
+		Przykłady użycia:
+			set {_guildMembers::*} to player guild online members
+	%player% guild online members amount:
+		Opis: Zwraca liczbe członków gildi gracza którzy są online
+		Przykłady użycia:
+			set {_guildMembersAmount} to player guild online members amount
+	%player% guild name:
+		Opis: Zwraca nazwe gildi gracza
+		Przykłady użycia:
+			set {_guildName} to player guild name
+	%player% guild owner:
+		Opis: Zwraca właściciela gildi gracza
+		Przykłady użycia:
+			set {_guildName} to player guild owner
+	%player% guild points:
+		Opis: Zwraca punkty gildi gracza
+		Przykłady użycia:
+			set {_guildPoints} to player guild points
+	%player% guild position:
+		Opis: Zwraca pozycje gildi gracza w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
+		Przykłady użycia:
+			set {_guildRank} to player guild position
+	%player% guild pvp:
+		Opis: Zwraca stan pvp gildi gracza
+		Przykłady użycia:
+			set {_guildPvP} to player guild pvp
+	%player% guild tag:
+		Opis: Zwraca tag gildi gracza
+		Przykłady użycia:
+			set {_guildTag} to player guild tag
+	%guild/text% guild deaths:
+		Opis: Zwraca śmierci gildi
+		Przykłady użycia:
+			set {_guildDeaths} to "NAZWAGILDI" guild deaths
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild deputies:
+		Opis: Zwraca zastępców gildi
+		Przykłady użycia:
+			set {_guildDeputies::*} to "NAZWAGILDI" guild deputies
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild kdr:
+		Opis: Zwraca KDR gildi
+		Przykłady użycia:
+			set {_guildKDR} to "NAZWAGILDI" guild kdr
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild kills:
+		Opis: Zwraca śmierci gildi
+		Przykłady użycia:
+			set {_guildDeaths} to "NAZWAGILDI" guild deaths
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild lives:
+		Opis: Zwraca życia gildi
+		Przykłady użycia:
+			set {_guildLives} to "NAZWAGILDI" guild lives
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild endercrystal location:
+		Opis: Zwraca lokacje endercrystalu gildi
+		Przykłady użycia:
+			set {_guildECLocation} to "NAZWAGILDI" guild endercrystal location
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild remaining time:
+		Opis: Zwraca czas do przedawnienia gildi
+		Przykłady użycia:
+			set {_guildRemainingTime} to "NAZWAGILDI" guild remaining time
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild home location:
+		Opis: Zwraca lokacje bazy gildi 
+		Przykłady użycia:
+			set {_guildBase} to "NAZWAGILDI" guild home location
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild members:
+		Opis: Zwraca liste członków gildi
+		Przykłady użycia:
+			set {_guildMembers::*} to "NAZWAGILDI" guild members
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild members amount:
+		Opis: Zwraca liczbe członków gildi
+		Przykłady użycia:
+			set {_guildMembersAmount} to "NAZWAGILDI" guild members amount
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild online members:
+		Opis: Zwraca liste członków gildi którzy są online
+		Przykłady użycia:
+			set {_guildMembers::*} to "NAZWAGILDI" guild online members
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild online members amount:
+		Opis: Zwraca liczbe członków gildi którzy są online
+		Przykłady użycia:
+			set {_guildOnlineMembersAmount} to "NAZWAGILDI" guild online members amount
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild name:
+		Opis: Zwraca nazwe gildi
+		Przykłady użycia:
+			set {_guildName} to "NAZWAGILDI" guild name
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild owner:
+		Opis: Zwraca właściciela gildi
+		Przykłady użycia:
+			set {_guildOwner} to "NAZWAGILDI" guild owner
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild points:
+		Opis: Zwraca liczbe punktów gildi
+		Przykłady użycia:
+			set {_guildPoints} to "NAZWAGILDI" guild position
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild top position:
+		Opis: Zwraca pozycje gildi w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
+		Przykłady użycia:	
+			send "Pozycja gildi NAZWAGILDI: %"NAZWAGILDI" guild top position%"
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild pvp:
+		Opis: Zwraca stan pvp gildi
+		Przykłady użycia:	
+			set {_guildPvP} to "NAZWAGILDI" guild pvp
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%guild/text% guild tag:
+		Opis: Zwraca tag gildi
+		Przykłady użycia:	
+			set {_guildTag} to "NAZWAGILDI" guild tag
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+	%player% deaths:
+		Opis: Zwraca liczbe śmierci gracza
+		Przykłady użycia:	
+			set {_playerDeaths} to player deaths
+	%player% kills:
+		Opis: Zwraca liczbe zabójstw gracza
+		Przykłady użycia:	
+			set {_playerKills} to player kills
+	%player% kdr:
+		Opis: Zwraca KDR gracza
+		Przykłady użycia:	
+			set {_playerKDR} to player kdr
+	%player% guild:
+		Opis: Zwraca obiekt gildi gracza
+		Przykłady użycia:
+			set {_playerGuild} to player guild
+	%player% points:
+		Opis: Zwraca punkty gracza
+		Przykłady użycia:	
+			set {_playerPoints} to player points
+	%player% top position:
+		Opis: Zwraca pozycje gracza w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
+		Przykłady użycia:
+			send "Twoje miejsce w topce: %player top position%"
