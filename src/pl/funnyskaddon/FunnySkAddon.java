@@ -3,6 +3,7 @@ package pl.funnyskaddon;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import bstats.bukkit.Metrics;
 import ch.njol.skript.Skript;
 import pl.funnyskaddon.loaders.ConditionLoader;
 import pl.funnyskaddon.loaders.EffectsLoader;
@@ -13,7 +14,9 @@ public class FunnySkAddon extends JavaPlugin {
     
     private static FunnySkAddon inst;
     
-    public void onEnable() {
+    @SuppressWarnings("unused")
+	public void onEnable() {
+    	Metrics metrics = new Metrics(this);
         Bukkit.getLogger().info("[FSA] Widzisz to ? :V Ty tak ni umisz");
         Bukkit.getLogger().info("[FSA] Wladowanie ;V");
         StringBuilder sB = new StringBuilder();

@@ -29,9 +29,11 @@ public class GuildAddDeputy extends Effect{
     @Override
     protected void execute(Event e) {
     	try {
-	    	Guild g = null;
-	    	if(guild.getSingle(e) instanceof Guild) {
+    		Guild g = null;
+		    if(guild.getSingle(e) instanceof Guild) {
 	    		g = (Guild) guild.getSingle(e);
+	    	} else if(guild.getSingle(e) instanceof Player){
+	    		g = User.get((Player) guild.getSingle(e)).getGuild();
 	    	} else {
 	    		g = GuildUtils.getByName(guild.getSingle(e).toString());
 	    	}

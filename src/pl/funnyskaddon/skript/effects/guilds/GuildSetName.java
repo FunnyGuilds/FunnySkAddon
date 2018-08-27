@@ -1,6 +1,7 @@
 package pl.funnyskaddon.skript.effects.guilds;
 
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Effect;
@@ -9,6 +10,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
+import net.dzikoysk.funnyguilds.basic.user.User;
 
 public class GuildSetName extends Effect{
     private Expression<Object> guild;
@@ -27,9 +29,11 @@ public class GuildSetName extends Effect{
     @Override
     protected void execute(Event e) {
     	try {
-	    	Guild g = null;
-	    	if(guild.getSingle(e) instanceof Guild) {
+    		Guild g = null;
+		    if(guild.getSingle(e) instanceof Guild) {
 	    		g = (Guild) guild.getSingle(e);
+	    	} else if(guild.getSingle(e) instanceof Player){
+	    		g = User.get((Player) guild.getSingle(e)).getGuild();
 	    	} else {
 	    		g = GuildUtils.getByName(guild.getSingle(e).toString());
 	    	}

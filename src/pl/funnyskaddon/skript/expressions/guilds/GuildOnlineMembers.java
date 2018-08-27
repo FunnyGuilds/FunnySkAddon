@@ -43,12 +43,14 @@ public class GuildOnlineMembers extends SimpleExpression<Player>{
 	@Override
     protected Player[] get(Event e) {
 		try {
-			Guild g = null;
+		    Guild g = null;
 			if(guild.getSingle(e) instanceof Guild) {
-				g = (Guild) guild.getSingle(e);
-			} else {
-				g = GuildUtils.getByName(guild.getSingle(e).toString());
-			}
+		    	g = (Guild) guild.getSingle(e);
+		    } else if(guild.getSingle(e) instanceof Player){
+		    	g = User.get((Player) guild.getSingle(e)).getGuild();
+		    } else {
+		    	g = GuildUtils.getByName(guild.getSingle(e).toString());
+		    }
 	        Set<User> deputiesu;
 	        List<Player> deputies = new ArrayList<>();
 	        deputiesu = g.getOnlineMembers();

@@ -10,6 +10,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
+import net.dzikoysk.funnyguilds.basic.user.User;
 
 public class GuildOwner extends SimpleExpression<Player>{
     
@@ -39,15 +40,15 @@ public class GuildOwner extends SimpleExpression<Player>{
 	    try {
 		    Guild g = null;
 			if(guild.getSingle(e) instanceof Guild) {
-				g = (Guild) guild.getSingle(e);
-			} else {
-				g = GuildUtils.getByName(guild.getSingle(e).toString());
-			}
-	        try {
-	        	return new Player[]{g.getOwner().getPlayer()};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-	    } catch(Exception ex) { return null;}
+		    	g = (Guild) guild.getSingle(e);
+		    } else if(guild.getSingle(e) instanceof Player){
+		    	g = User.get((Player) guild.getSingle(e)).getGuild();
+		    } else {
+		    	g = GuildUtils.getByName(guild.getSingle(e).toString());
+		    }
+	        return new Player[]{g.getOwner().getPlayer()};
+	    } catch(Exception ex) {
+	        return null;
+	    }
     }
 }

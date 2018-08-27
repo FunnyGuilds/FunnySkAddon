@@ -1,6 +1,7 @@
 package pl.funnyskaddon.skript.expressions.guilds;
 
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
@@ -8,10 +9,12 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
+import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
+import net.dzikoysk.funnyguilds.basic.user.User;
 
 public class GuildName extends SimpleExpression<String>{
     
-    private Expression<String> guild;
+    private Expression<Object> guild;
     
     @Override
     public Class<? extends String> getReturnType() {
@@ -25,7 +28,7 @@ public class GuildName extends SimpleExpression<String>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	guild = (Expression<String>) expr[0];
+    	guild = (Expression<Object>) expr[0];
         return true;
     }
 	@Override
@@ -35,8 +38,14 @@ public class GuildName extends SimpleExpression<String>{
 	@Override
     protected String[] get(Event e) {
 		try {
-		    String s = guild.getSingle(e);
-	        Guild g = Guild.getOrCreate(s);
+		    Guild g = null;
+			if(guild.getSingle(e) instanceof Guild) {
+		    	g = (Guild) guild.getSingle(e);
+		    } else if(guild.getSingle(e) instanceof Player){
+		    	g = User.get((Player) guild.getSingle(e)).getGuild();
+		    } else {
+		    	g = GuildUtils.getByName(guild.getSingle(e).toString());
+		    }
 	        try {
 	        	return new String[]{g.getName()};
 	        } catch(Exception ex) {
