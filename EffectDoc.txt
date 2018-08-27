@@ -35,159 +35,93 @@ Effects:
 		Opis: Ustawia liczbe punktów w statystykach gracza
 		Przykłady działania:
 			guild set player points to 1050
-	guild set %player% guild to %guild/string%:
+	guild set %player% guild to %guild/string/player%:
 		Opis: Ustawia gildie gracza
 		Przykłady działania:
 			guild set player guild to "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild add %player% to deputies of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild add %player% to deputies of guild %guild/string/player%:
 		Opis: Dodaje gracza do przełożonych gildi
 		Przykłady działania:
 			guild add player to deputies of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
 		Uwagi: Aby to się wykonało gracz musi być w gildi!
-	guild add %number% lives to guild %guild/string%:
+	guild add %number% lives to guild %guild/string/player%:
 		Opis: Dodaje życia do liczby żyć gildi
 		Przykłady działania:
 			guild add 4 lives to guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild add %player% to members of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild add %player% to members of guild %guild/string/player%%:
 		Opis: Dodaje gracza do gildi
 		Przykłady działania:
 			guild add player to members of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	delete guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	delete guild %guild/string/player%:
 		Opis: Usuwa gildie
 		Przykłady działania:
 			delete guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild remove %player% from deputies of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild remove %player% from deputies of guild %guild/string/player%:
 		Opis: Usuwa gracza z przełożonych gildi
 		Przykłady działania:
 			guild remove player from deputies of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild remove %number% lives for guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild remove %number% lives for guild %guild/string/player%:
 		Opis: Usuwa daną liczbę żyć z liczby żyć gildi
 		Przykłady działania:
 			guild remove 2 lives for guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild remove %player% from members of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild remove %player% from members of guild %guild/string/player%:
 		Opis: Wyrzuca gracza z gildi
 		Przykłady działania:
 			guild remove player from members of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild set %number% to lives of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild set %number% to lives of guild %guild/string/player%:
 		Opis: Ustawia nową liczbe żyć gildi
 		Przykłady działania:
 			guild set 4 to lives of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild set %string% to name of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild set %string% to name of guild %guild/string/player%:
 		Opis: Ustawia nową nazwe gildi
 		Przykłady działania:
 			guild set "NOWANAZWAGILDI" to name of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild set %player% to owner of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild set %player% to owner of guild %guild/string/player%:
 		Opis: Ustawia nowego założyciela gildi
 		Przykłady działania:
 			guild set player to owner of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
 		Uwagi: Aby to się wykonało gracz musi być w gildi!
-	guild set %string% to tag of guild %guild/string%:
+	guild set %string% to tag of guild %guild/string/player%:
 		Opis: Ustawia nowy tag gildi
 		Przykłady działania:
 			guild set "NTAG" to tag of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild set location of guild %guild/string% to %location%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild set location of guild %guild/string/player% to %location%:
 		Opis: Ustawia nową lokacje gildi
 		Przykłady działania:
 			guild set location of guild "NAZWAGILDI" to {_loc}
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild set home location of guild %guild/string% to %location%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild set home location of guild %guild/string/player% to %location%:
 		Opis: Ustawia nową lokacje bazy gildi
 		Przykłady działania:
 			guild set home location of guild "NAZWAGILDI" to {_loc}
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild set expirtation time of guild %guild/string% to %timespan%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild set expirtation time of guild %guild/string/player% to %timespan%:
 		Opis: Ustawia nowy czas po jakim gildia ma się przedawnić
 		Przykłady działania:
 			guild set expirtation time of guild "NAZWAGILDI" to 3 hours
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild add %timespan% to expirtation time of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild add %timespan% to expirtation time of guild %guild/string/player%:
 		Opis: Dodaje daną ilość czasu do pozostałego czasu gildi 
 		Przykłady działania:
 			guild add 15 seconds to expirtation time of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild remove %timespan% from expirtation time of guild %guild/string%:
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild remove %timespan% from expirtation time of guild %guild/string/player%:
 		Opis: Usuwa daną ilość czasu z pozostałego czasu gildi
 		Przykłady działania:
 			guild remove 8 minutes from expirtation time of guild "NAZWAGILDI"
-		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej
-	guild add %player% to deputies of guild %player%:
-		Opis: Dodaje gracza do przełożonych gildi danego gracza
-		Przykłady działania:
-			guild add player to deputies of guild player-arg
-		Uwagi: Aby to się wykonało gracz musi być w gildi!
-	guild add %number% lives to guild %player%:
-		Opis: Dodaje daną liczbe żyć do ilości żyć gildi gracza
-		Przykłady działania:
-			guild add 4 lives to guild player
-	guild add %player% to members of guild %player%:
-		Opis: Dodaje gracza do członków gildi danego gracza
-		Przykłady działania:
-			guild add player to members of guild player-arg
-	delete guild %player%:
-		Opis: Usuwa gildie gracza
-		Przykłady działania:
-			delete guild player
-	guild remove %player% from deputies of guild %player%:
-		Opis: Usuwa gracza z przełożonych gildi danego gracza
-		Przykłady działania:
-			guild remove player from deputies of guild player-arg
-	guild remove %number% lives from guild %player%:
-		Opis: Usuwa daną liczbe żyć z ilości żyć liczby gracza
-		Przykłady działania:
-			guild remove 3 lives from guild player
-	guild remove %player% from members of guild %player%:
-		Opis: Usuwa gracza z gildi danego gracza
-		Przykłady działania:
-			guild remove player from members of guild player-arg
-	guild set %number% to lives of guild %player%:
-		Opis: Ustawia nową liczbę żyć gildi gracza
-		Przykłady działania:
-			guild set 6 to lives of guild player
-	guild set %string% to name of guild %player%:
-		Opis: Ustawia nową nazwę gildi gracza
-		Przykłady działania:
-			guild set "NOWANAZWAGILDI" to name of guild player
-	guild set %player% to owner of guild %player%:
-		Opis: Ustawia nowego właściciela gildi danego gracza
-		Przykłady działania:
-			guild set player to owner of guild player-arg
-		Uwagi: Aby to się wykonało gracz musi być w gildi!
-	guild set %string% to tag of guild %player%:
-		Opis: Ustawia nowy tag gildi gracza
-		Przykłady działania:
-			guild set "NTAG" to tag of guild player
-	guild set location of guild %player% to %location%:
-		Opis: Ustawia nową lokacje gildi gracza
-		Przykłady działania:
-			guild set location of guild player to {_loc}
-	guild set home location of guild %player% to %location%:
-		Opis: Ustawia nową lokacje bazy gildi gracza
-		Przykłady działania:
-			guild set home location of guild player to {_loc}
-	guild set expirtation time of guild %player% to %timespan%:
-		Opis: Ustawia nowy czas po jakim gildia gracza ma się przedawnić
-		Przykłady działania:
-			guild set expirtation time of guild player to 8 hours
-	guild add %timespan% to expirtation time of guild %player%:
-		Opis: Dodaje daną ilość czasu do pozostałego czasu gildi gracza
-		Przykłady działania:
-			guild add 18 minutes to expirtation time of guild player
-	guild remove %timespan% from expirtation time of guild %player%:
-		Opis: Usuwa daną ilość czasu z pozostałego czasu gildi gracza
-		Przykłady działania:
-			guild remove 20 minutes from expirtation time of guild player
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
 	update guild tops:
 		Opis: Aktualizuje statystyki graczy i gildi dla tego dodatku
 		Przykłady działania:
