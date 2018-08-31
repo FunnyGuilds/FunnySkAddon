@@ -13,6 +13,10 @@
     * Usunięto klasy PlayerGuild... i wdrożono funkcje gildii po graczu do klas Guild...
     * Dodanie metody która umożliwia zwrócenie objektu guild po podanym graczu
     * Dodanie wsparcia bstats
+  * 1.2:
+    * Nowe Effect'y
+    * Nowy Condition
+    * Nowe Expression'y
 * Wymagania:
   * 1.0:
     * Java 8
@@ -20,6 +24,11 @@
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/
   * 1.1:
+    * Java 8
+    * Spigot 1.8.8+
+    * Skript
+    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/
+  * 1.2:
     * Java 8
     * Spigot 1.8.8+
     * Skript
