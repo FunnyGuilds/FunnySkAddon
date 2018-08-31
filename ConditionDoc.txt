@@ -49,3 +49,9 @@
 		Przykłady użycia:
 			if player is guild owner:
 			if player isn't guild owner:
+	(player |)%player% is in guild region %object% / (player |)%player% is(n't| not) in guild region %object%:
+		Opis: Sprawdza czy gracz jest na terenie danej gildii
+		Przykłady użycia:
+			if player is in guild region "NAZWAGILDI":
+			if player isn't in guild region "NAZWAGILDI":
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej lub gracza którego ma być gildia

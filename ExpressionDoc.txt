@@ -1,4 +1,4 @@
-Expressions:
+﻿Expressions:
 	guild in position %integer%:
 		Opis: Pokazuje pozycje gildi w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
 		Przykłady użycia:
@@ -137,3 +137,32 @@ Expressions:
 		Opis: Zwraca pozycje gracza w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
 		Przykłady użycia:
 			send "Twoje miejsce w topce: %player top position%"
+	players in guild region %object%:
+		Opis: Zwraca liste graczy na terenie danej gildii
+		Przykłady użycia:
+			send "Gracze na terenie gildii NAZWAGILDI %players in guild region "NAZWAGILDI"%"
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	upper point of guild region %object%:
+		Opis: Zwraca górny skrajny punkt regionu gildii
+		Przykłady użycia:
+			set {_guildUpperPoint} to upper point of guild region "NAZWAGILDI"
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	lower point of guild region %object%:
+		Opis: Zwraca dolny skrajny punkt regionu gildii
+		Przykłady użycia:
+			set {_guildLowerPoint} to lower point of guild region "NAZWAGILDI"
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guilds allied with guild %object%:
+		Opis: Zwraca liste gildii w sojuszu z daną gildią
+		Przykłady użycia:
+			set {_alliedGuilds::*} to guilds allied with guild "NAZWAGILDI"
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	all guilds:
+		Opis: Zwraca liste wszystkich gildii na serwerze
+		Przykłady użycia:
+			set {_allGuilds::*} to all guilds
+	guild at %player/location%:
+		Opis: Zwraca gildie na podanej lokacji lub lokacji gracza
+		Przykłady użycia:
+			set {_guild} to guild at player
+

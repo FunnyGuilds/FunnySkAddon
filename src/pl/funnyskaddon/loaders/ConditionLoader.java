@@ -15,6 +15,8 @@ import pl.funnyskaddon.skript.conditions.players.PlayerHasGuild;
 import pl.funnyskaddon.skript.conditions.players.PlayerHasNotGuild;
 import pl.funnyskaddon.skript.conditions.players.PlayerIsDeputy;
 import pl.funnyskaddon.skript.conditions.players.PlayerIsInGuild;
+import pl.funnyskaddon.skript.conditions.players.PlayerIsInGuildRegion;
+import pl.funnyskaddon.skript.conditions.players.PlayerIsInNotGuildRegion;
 import pl.funnyskaddon.skript.conditions.players.PlayerIsNotDeputy;
 import pl.funnyskaddon.skript.conditions.players.PlayerIsNotInGuild;
 import pl.funnyskaddon.skript.conditions.players.PlayerIsNotOwner;
@@ -43,6 +45,8 @@ public class ConditionLoader {
 		Skript.registerCondition(PlayerIsNotDeputy.class, "(player |)%player% is(n't| not) deputy");
 		Skript.registerCondition(PlayerIsOwner.class, "(player |)%player% is guild owner");
 		Skript.registerCondition(PlayerIsNotOwner.class, "(player |)%player% is(n't| not) guild owner");
-		
+		Skript.registerCondition(PlayerIsInGuildRegion.class, "(player |)%player% is in guild region %object%");
+		Skript.registerCondition(PlayerIsInNotGuildRegion.class, "(player |)%player% is(n't| not) in guild region %object%");
+
 	}
 }

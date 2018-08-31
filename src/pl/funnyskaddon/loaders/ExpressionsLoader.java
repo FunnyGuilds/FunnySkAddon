@@ -7,13 +7,16 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.util.Timespan;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
+import pl.funnyskaddon.skript.expressions.guilds.GuildAllies;
 import pl.funnyskaddon.skript.expressions.guilds.GuildDeaths;
 import pl.funnyskaddon.skript.expressions.guilds.GuildDeputies;
 import pl.funnyskaddon.skript.expressions.guilds.GuildHomeLocation;
 import pl.funnyskaddon.skript.expressions.guilds.GuildKDR;
 import pl.funnyskaddon.skript.expressions.guilds.GuildKills;
+import pl.funnyskaddon.skript.expressions.guilds.GuildList;
 import pl.funnyskaddon.skript.expressions.guilds.GuildLives;
 import pl.funnyskaddon.skript.expressions.guilds.GuildLocation;
+import pl.funnyskaddon.skript.expressions.guilds.GuildLowerPointLocation;
 import pl.funnyskaddon.skript.expressions.guilds.GuildMembers;
 import pl.funnyskaddon.skript.expressions.guilds.GuildMembersAmount;
 import pl.funnyskaddon.skript.expressions.guilds.GuildName;
@@ -25,6 +28,8 @@ import pl.funnyskaddon.skript.expressions.guilds.GuildPosition;
 import pl.funnyskaddon.skript.expressions.guilds.GuildPvp;
 import pl.funnyskaddon.skript.expressions.guilds.GuildRemainingValidity;
 import pl.funnyskaddon.skript.expressions.guilds.GuildTag;
+import pl.funnyskaddon.skript.expressions.guilds.GuildUpperPointLocation;
+import pl.funnyskaddon.skript.expressions.guilds.GuildAtLocation;
 import pl.funnyskaddon.skript.expressions.other.GuildFromName;
 import pl.funnyskaddon.skript.expressions.other.GuildFromPlayer;
 import pl.funnyskaddon.skript.expressions.other.GuildFromTag;
@@ -36,6 +41,7 @@ import pl.funnyskaddon.skript.expressions.players.PlayerKDR;
 import pl.funnyskaddon.skript.expressions.players.PlayerKills;
 import pl.funnyskaddon.skript.expressions.players.PlayerPoints;
 import pl.funnyskaddon.skript.expressions.players.PlayerPosition;
+import pl.funnyskaddon.skript.expressions.players.PlayersInGuildRegion;
 
 public class ExpressionsLoader {
 	public static void load() {
@@ -45,8 +51,7 @@ public class ExpressionsLoader {
 		Skript.registerExpression(GuildFromTag.class, Guild.class, ExpressionType.PROPERTY, "guild from tag %string%");
 		Skript.registerExpression(GuildFromName.class, Guild.class, ExpressionType.PROPERTY, "guild from name %string%");
 		Skript.registerExpression(GuildFromPlayer.class, Guild.class, ExpressionType.PROPERTY, "guild from player %player%");
-		
-		
+			
 		Skript.registerExpression(GuildDeaths.class, Integer.class, ExpressionType.PROPERTY, "%object% guild deaths");
 		Skript.registerExpression(GuildDeputies.class, Player.class, ExpressionType.PROPERTY, "%object% guild deputies");
 		Skript.registerExpression(GuildKDR.class, Number.class, ExpressionType.PROPERTY, "%object% guild kdr");
@@ -65,8 +70,14 @@ public class ExpressionsLoader {
         Skript.registerExpression(GuildLocation.class, Location.class, ExpressionType.PROPERTY, "%object% guild endercrystal location");
         Skript.registerExpression(GuildRemainingValidity.class, Timespan.class, ExpressionType.PROPERTY, "%object% guild remaining time");
         Skript.registerExpression(GuildHomeLocation.class, Location.class, ExpressionType.PROPERTY, "%object% guild home location");
-		
-		Skript.registerExpression(PlayerDeaths.class, Integer.class, ExpressionType.PROPERTY, "%player% deaths");
+        Skript.registerExpression(GuildUpperPointLocation.class, Location.class, ExpressionType.PROPERTY, "upper point of guild region %object%");
+        Skript.registerExpression(GuildLowerPointLocation.class, Location.class, ExpressionType.PROPERTY, "lower point of guild region %object%");
+        Skript.registerExpression(GuildAllies.class, Guild.class, ExpressionType.PROPERTY, "guilds allied with guild %object%");
+        Skript.registerExpression(GuildList.class, Guild.class, ExpressionType.PROPERTY, "all guilds");
+        Skript.registerExpression(GuildAtLocation.class, Guild.class, ExpressionType.PROPERTY, "guild at %object%");
+        
+	    Skript.registerExpression(PlayersInGuildRegion.class, Player.class, ExpressionType.PROPERTY, "players in guild region %object%");
+        Skript.registerExpression(PlayerDeaths.class, Integer.class, ExpressionType.PROPERTY, "%player% deaths");
 		Skript.registerExpression(PlayerKills.class, Integer.class, ExpressionType.PROPERTY, "%player% kills");
 		Skript.registerExpression(PlayerKDR.class, Number.class, ExpressionType.PROPERTY, "%player% kdr");
 		Skript.registerExpression(PlayerPoints.class, Integer.class, ExpressionType.PROPERTY, "%player% points");

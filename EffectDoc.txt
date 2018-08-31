@@ -1,4 +1,4 @@
-Effects:
+﻿Effects:
 	guild add %number% deaths for %player%:
 		Opis: Dodaje liczbe śmierci do statystyk gracza
 		Przykłady działania:
@@ -126,4 +126,14 @@ Effects:
 		Opis: Aktualizuje statystyki graczy i gildi dla tego dodatku
 		Przykłady działania:
 			update guild tops
+	guild set size of guild %object% to %number%:
+		Opis: Ustawia rozmiar gildii
+		Przykłady działania:
+			guild set size of guild "NAZWAGILDI" to 4
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
+	guild set enlarge of guild %object% to %number%:
+		Opis: Ustawia stopień powiększenia gildii
+		Przykłady działania:
+			guild set enlarge of guild "NAZWAGILDI" to 4
+		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej  lub gracza którego ma być to gildia
 			

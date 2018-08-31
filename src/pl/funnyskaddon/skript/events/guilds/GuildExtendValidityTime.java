@@ -36,6 +36,7 @@ public class GuildExtendValidityTime extends SimpleExpression<Timespan>{
         return null;
     }
 
+	@SuppressWarnings("deprecation")
 	@Override
     protected Timespan[] get(Event e) {
 		return new Timespan[] {Timespan.fromTicks(((int) ((GuildExtendValidityEvent) e).getExtendTime())/50)};

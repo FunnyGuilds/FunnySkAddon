@@ -10,12 +10,14 @@ import pl.funnyskaddon.skript.effects.guilds.GuildRemoveDeputy;
 import pl.funnyskaddon.skript.effects.guilds.GuildRemoveFromExpirationTime;
 import pl.funnyskaddon.skript.effects.guilds.GuildRemoveLive;
 import pl.funnyskaddon.skript.effects.guilds.GuildRemoveMember;
+import pl.funnyskaddon.skript.effects.guilds.GuildSetEnlarge;
 import pl.funnyskaddon.skript.effects.guilds.GuildSetExpirationTime;
 import pl.funnyskaddon.skript.effects.guilds.GuildSetHomeLocation;
 import pl.funnyskaddon.skript.effects.guilds.GuildSetLives;
 import pl.funnyskaddon.skript.effects.guilds.GuildSetLocation;
 import pl.funnyskaddon.skript.effects.guilds.GuildSetName;
 import pl.funnyskaddon.skript.effects.guilds.GuildSetOwner;
+import pl.funnyskaddon.skript.effects.guilds.GuildSetSize;
 import pl.funnyskaddon.skript.effects.guilds.GuildSetTag;
 import pl.funnyskaddon.skript.effects.other.UpdateTop;
 import pl.funnyskaddon.skript.effects.players.PlayerAddDeaths;
@@ -59,6 +61,8 @@ public class EffectsLoader {
 		Skript.registerEffect(GuildSetExpirationTime.class, "guild set expirtation time of guild %object% to %timespan%");
 		Skript.registerEffect(GuildAddToExpirationTime.class, "guild add %timespan% to expirtation time of guild %object%");
 		Skript.registerEffect(GuildRemoveFromExpirationTime.class, "guild remove %timespan% from expirtation time of guild %object%");
+		Skript.registerEffect(GuildSetSize.class, "guild set size of guild %object% to %number%");
+		Skript.registerEffect(GuildSetEnlarge.class, "guild set enlarge of guild %object% to %number%");
 		
 		Skript.registerEffect(UpdateTop.class, "update guild tops");
 	}
