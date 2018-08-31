@@ -125,10 +125,6 @@
 		Opis: Zwraca KDR gracza
 		Przykłady użycia:	
 			set {_playerKDR} to player kdr
-	%player% guild:
-		Opis: Zwraca obiekt gildi gracza
-		Przykłady użycia:
-			set {_playerGuild} to player guild
 	%player% points:
 		Opis: Zwraca punkty gracza
 		Przykłady użycia:	
