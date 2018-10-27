@@ -18,7 +18,7 @@
     * Nowy Condition
     * Nowe Expression'y
   * 1.5:
-    * Dodanie informacjie o nowej wersji (można wyłączyć w config.yml)
+    * Dodanie informacji o nowej wersji (można wyłączyć w config.yml)
     * Zmiana nazw niektórych klas
     * Naprawienie kilku błędów
     * Pomniejsze zmiany
