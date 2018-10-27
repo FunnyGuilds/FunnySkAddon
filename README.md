@@ -17,6 +17,11 @@
     * Nowe Effect'y
     * Nowy Condition
     * Nowe Expression'y
+  * 1.5:
+    * Dodanie informacjie o nowej wersji (można wyłączyć w config.yml)
+    * Zmiana nazw niektórych klas
+    * Naprawienie kilku błędów
+    * Pomniejsze zmiany
 * Wymagania:
   * 1.0:
     * Java 8
@@ -33,3 +38,8 @@
     * Spigot 1.8.8+
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/
+  * 1.5:
+    * Java 8
+    * Spigot 1.8.8+
+    * Skript
+    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
