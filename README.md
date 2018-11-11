@@ -5,7 +5,7 @@
 ### Dokumentacja: ConditionDoc.txt, EffectDoc.txt, EventDoc.txt, ExpressionDoc.txt
 
 
-* Changelog:
+###Changelog:
   * 1.0:
     * Pierwsze wydanie dodatku
   * 1.1:
@@ -22,7 +22,7 @@
     * Zmiana nazw niektórych klas
     * Naprawienie kilku błędów
     * Pomniejsze zmiany
-* Wymagania:
+### Wymagania:
   * 1.0:
     * Java 8
     * Spigot 1.8.8+
