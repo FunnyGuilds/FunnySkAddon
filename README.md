@@ -5,7 +5,7 @@
 ### Dokumentacja: ConditionDoc.txt, EffectDoc.txt, EventDoc.txt, ExpressionDoc.txt
 
 
-###Changelog:
+### Changelog:
   * 1.0:
     * Pierwsze wydanie dodatku
   * 1.1:
