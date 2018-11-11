@@ -1,9 +1,9 @@
 ﻿Expressions:
-	guild in position %integer%:
+	guild in position %number%:
 		Opis: Pokazuje pozycje gildi w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
 		Przykłady użycia:
 			send "Gildia na pozycji 1: %guild in position 1%"
-	player in position %integer%:
+	player in position %number%:
 		Opis: Pokazuje pozycje gracza w topce (topka aktualizowana jest co 5 minut lub poleceniem "update guild tops")
 		Przykłady użycia:
 			send "Gracz na pozycji 1: %player in position 1%"
@@ -33,7 +33,7 @@
 		Przykłady użycia:
 			set {_guildDeputies::*} to "NAZWAGILDI" guild deputies
 		Uwagi: W miejsce "NAZWAGILDI" można dać obiekt gildii zapisany np. w zmiennej lub gracza którego ma być to gildia
-	%guild/text/player% guild kdr:
+	%guild/text/player% guild (kdr|kills to deaths ratio):
 		Opis: Zwraca KDR gildi
 		Przykłady użycia:
 			set {_guildKDR} to "NAZWAGILDI" guild kdr
@@ -124,7 +124,7 @@
 	%player% kdr:
 		Opis: Zwraca KDR gracza
 		Przykłady użycia:	
-			set {_playerKDR} to player kdr
+			set {_playerKDR} to player (kdr|kills to deaths ratio)
 	%player% points:
 		Opis: Zwraca punkty gracza
 		Przykłady użycia:	
