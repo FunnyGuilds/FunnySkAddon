@@ -24,6 +24,7 @@
     * Pomniejsze zmiany
   * 1.6:
     * Poprawiono składnie (zalecamy zapoznać się z dokumentacją !)
+    * Poprawiono pobieranie graczy offline
 ### Wymagania:
   * 1.0:
     * Java 8
