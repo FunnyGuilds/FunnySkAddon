@@ -22,6 +22,8 @@
     * Zmiana nazw niektórych klas
     * Naprawienie kilku błędów
     * Pomniejsze zmiany
+  * 1.6:
+    * Poprawiono składnie (zalecamy zapoznać się z dokumentacją !)
 ### Wymagania:
   * 1.0:
     * Java 8
@@ -39,6 +41,11 @@
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/
   * 1.5:
+    * Java 8
+    * Spigot 1.8.8+
+    * Skript
+    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
+   * 1.6:
     * Java 8
     * Spigot 1.8.8+
     * Skript
