@@ -14,7 +14,7 @@ import pl.funnyskaddon.core.TopManager;
 
 public class TopPlayer extends SimpleExpression<OfflinePlayer>{
     
-    private Expression<Integer> position;
+    private Expression<Number> position;
     
     @Override
     public Class<? extends OfflinePlayer> getReturnType() {
@@ -28,7 +28,7 @@ public class TopPlayer extends SimpleExpression<OfflinePlayer>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	position = (Expression<Integer>) expr[0];
+    	position = (Expression<Number>) expr[0];
         return true;
     }
 	    @Override
@@ -39,7 +39,7 @@ public class TopPlayer extends SimpleExpression<OfflinePlayer>{
 		@Override
     protected OfflinePlayer[] get(Event e) {
         try {
-        	User u = TopManager.getGuildTopPlayer(position.getSingle(e));
+        	User u = TopManager.getGuildTopPlayer(position.getSingle(e).intValue());
         	if(u.getPlayer() == null) {
                 return new OfflinePlayer[] {Bukkit.getServer().getOfflinePlayer(u.getName())};
             } else {

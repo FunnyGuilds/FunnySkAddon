@@ -19,7 +19,7 @@ public class ExpressionLoaderGuild {
 			
 		Skript.registerExpression(GuildDeaths.class, Integer.class, ExpressionType.PROPERTY, "%object% guild deaths");
 		Skript.registerExpression(GuildDeputies.class, OfflinePlayer.class, ExpressionType.PROPERTY, "%object% guild deputies");
-		Skript.registerExpression(GuildKDR.class, Number.class, ExpressionType.PROPERTY, "%object% guild kdr");
+		Skript.registerExpression(GuildKDR.class, Number.class, ExpressionType.PROPERTY, "%object% guild (kdr|kills to deaths ratio)");
 		Skript.registerExpression(GuildKills.class, Integer.class, ExpressionType.PROPERTY, "%object% guild kills");
 		Skript.registerExpression(GuildLives.class, Integer.class, ExpressionType.PROPERTY, "%object% guild lives");
 		Skript.registerExpression(GuildMembers.class, OfflinePlayer.class, ExpressionType.PROPERTY, "%object% guild members");

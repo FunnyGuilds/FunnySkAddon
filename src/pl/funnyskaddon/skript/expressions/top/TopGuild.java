@@ -12,7 +12,7 @@ import pl.funnyskaddon.core.TopManager;
 
 public class TopGuild extends SimpleExpression<Guild>{
     
-    private Expression<Integer> position;
+    private Expression<Number> position;
     
     @Override
     public Class<? extends Guild> getReturnType() {
@@ -26,7 +26,7 @@ public class TopGuild extends SimpleExpression<Guild>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	position = (Expression<Integer>) expr[0];
+    	position = (Expression<Number>) expr[0];
         return true;
     }
 	    @Override
@@ -36,7 +36,7 @@ public class TopGuild extends SimpleExpression<Guild>{
 	    @Override
     protected Guild[] get(Event e) {
         try {
-        	return new Guild[] {TopManager.getGuildTopGuild(position.getSingle(e))};
+        	return new Guild[] {TopManager.getGuildTopGuild(position.getSingle(e).intValue())};
         } catch(Exception ex) {
         	return null;
         }
