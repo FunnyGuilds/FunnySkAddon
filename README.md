@@ -51,12 +51,12 @@
     * Spigot 1.8.8+
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
-   * 1.6:
+  * 1.6:
     * Java 8
     * Spigot 1.8.8+
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
-   * 1.7:
+  * 1.7:
     * Java 8
     * Spigot 1.8.8+
     * Skript
