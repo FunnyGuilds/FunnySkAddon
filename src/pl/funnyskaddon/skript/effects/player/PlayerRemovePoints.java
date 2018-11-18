@@ -1,7 +1,7 @@
 package pl.funnyskaddon.skript.effects.player;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Effect;
@@ -11,12 +11,12 @@ import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.user.User;
 
 public class PlayerRemovePoints extends Effect{
-    private Expression<Player> player;
+    private Expression<OfflinePlayer> player;
     private Expression<Number> points;
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
-        player = (Expression<Player>) expr[0];
+        player = (Expression<OfflinePlayer>) expr[0];
         points = (Expression<Number>) expr[1];
         return true;
     }
@@ -27,7 +27,7 @@ public class PlayerRemovePoints extends Effect{
     @Override
     protected void execute(Event e) {
     	try {
-	    	Player p = (Player) player.getSingle(e).getPlayer();
+    		OfflinePlayer p = player.getSingle(e);
 	        int po = points.getSingle(e).intValue();
 	        User u = User.get(p);
 	        try {

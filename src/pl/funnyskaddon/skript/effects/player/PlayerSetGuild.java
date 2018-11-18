@@ -1,7 +1,7 @@
 package pl.funnyskaddon.skript.effects.player;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Effect;
@@ -13,13 +13,13 @@ import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
 import net.dzikoysk.funnyguilds.basic.user.User;
 
 public class PlayerSetGuild extends Effect{
-    private Expression<Player> player;
+    private Expression<OfflinePlayer> player;
     private Expression<Object> guild;
     
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
-        player = (Expression<Player>) expr[0];
+        player = (Expression<OfflinePlayer>) expr[0];
         guild = (Expression<Object>) expr[1];
         return true;
     }
@@ -39,7 +39,7 @@ public class PlayerSetGuild extends Effect{
 	    	} else {
 	    		g = GuildUtils.getByName(guild.getSingle(e).toString());
 	    	}
-	    	Player p = (Player) player.getSingle(e);
+	    	OfflinePlayer p = player.getSingle(e);
 	        User u = User.get(p);
 	        u.setGuild(g);
 	        try {

@@ -1,7 +1,7 @@
 package pl.funnyskaddon.skript.expressions.player;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
@@ -13,7 +13,7 @@ import pl.funnyskaddon.core.TopManager;
 
 public class PlayerPosition extends SimpleExpression<Integer>{
 
-	private Expression<Player> player;
+	private Expression<OfflinePlayer> player;
 	
 	@Override
 	public Class<? extends Integer> getReturnType() {
@@ -28,7 +28,7 @@ public class PlayerPosition extends SimpleExpression<Integer>{
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-		player = (Expression<Player>) expr[0];
+		player = (Expression<OfflinePlayer>) expr[0];
         return true;
 	}
 

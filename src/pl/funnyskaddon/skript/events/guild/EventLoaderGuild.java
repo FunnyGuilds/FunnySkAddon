@@ -163,7 +163,7 @@ public class EventLoaderGuild {
 		Skript.registerExpression(GuildMemberInviteGuild.class, Guild.class, ExpressionType.SIMPLE,
 				"guild");
 		
-		Skript.registerEvent("guild member leader", SimpleEvent.class, GuildMemberLeaderEvent.class, "guild member leader");
+		Skript.registerEvent("guild member leader", SimpleEvent.class, GuildMemberLeaderEvent.class, "guild member leader change");
 		Skript.registerExpression(GuildMemberLeaderMember.class, Player.class, ExpressionType.SIMPLE,
 				"new leader");
 		Skript.registerExpression(GuildMemberLeaderPlayer.class, Player.class, ExpressionType.SIMPLE,

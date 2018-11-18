@@ -19,8 +19,8 @@ public class FunnySkAddon extends JavaPlugin{
 	@Override
 	public void onEnable() {
 		Bukkit.getLogger().info("");
-		Bukkit.getLogger().info("[FSA] Widzisz to? ;v Ty tak ni umisz!");
-        Bukkit.getLogger().info("[FSA] Wladowanie ;v");
+		PluginDescriptionFile d = this.getDescription();
+		Bukkit.getLogger().info("[FSA] Uruchamianie pluginu " + d.getFullName());
         StringBuilder sB = new StringBuilder();
         boolean shouldStart = true;
         if(Bukkit.getServer().getPluginManager().getPlugin("Skript") == null) {
@@ -36,7 +36,7 @@ public class FunnySkAddon extends JavaPlugin{
             }
         }
         if(!shouldStart) {
-            Bukkit.getLogger().info("[FSA] Wladowanie wstrzymane!");
+            Bukkit.getLogger().info("[FSA] Uruchamianie wstrzymane!");
             Bukkit.getLogger().info("[FSA] Powod: Brak pluginu " + sB.toString() + "!");
             Bukkit.getServer().getPluginManager().disablePlugin(this);
             return;
@@ -51,14 +51,22 @@ public class FunnySkAddon extends JavaPlugin{
 		Loaders.loadEffects();
 		Loaders.loadConditions();
 		if(this.getConfig().getBoolean("update.check")) {
-        	PluginDescriptionFile d = this.getDescription();
             if(!d.getVersion().equalsIgnoreCase(getLatestVersion("https://raw.githubusercontent.com/MLGroupMC/FunnySkAddon/master/VERSION"))) {
-                Bukkit.getLogger().info("[FSA] Wersja pluginu: "+this.getDescription().getVersion());
+                Bukkit.getLogger().info("[FSA] Wersja pluginu: "+d.getVersion());
                 Bukkit.getLogger().info("[FSA] Najnowsza wersja pluginu: "+getLatestVersion("https://raw.githubusercontent.com/MLGroupMC/FunnySkAddon/master/VERSION"));
                 Bukkit.getLogger().info("[FSA] Wszystkie wersje: https://github.com/MLGroupMC/FunnySkAddon/releases/");
-                Bukkit.getLogger().info("");
             }
         }
+		Bukkit.getLogger().info("");
+		if(this.getConfig().getBoolean("top.autoupdate.execute") && this.getConfig().isInt("top.autoupdate.time")) {
+			final int ref = this.getConfig().getInt("top.autoupdate.time")*20;
+			Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+				@Override
+				public void run() {
+					TopManager.update();
+				}
+			}, ref, ref);
+		}
         this.saveDefaultConfig();
 	}
 	

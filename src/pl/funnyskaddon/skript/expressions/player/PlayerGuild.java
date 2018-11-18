@@ -1,7 +1,7 @@
 package pl.funnyskaddon.skript.expressions.player;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
-import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
@@ -13,7 +13,7 @@ import net.dzikoysk.funnyguilds.basic.user.User;
 
 public class PlayerGuild extends SimpleExpression<Guild>{
     
-    private Expression<Player> player;
+    private Expression<OfflinePlayer> player;
     
     @Override
     public Class<? extends Guild> getReturnType() {
@@ -28,7 +28,7 @@ public class PlayerGuild extends SimpleExpression<Guild>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-        player = (Expression<Player>) expr[0];
+        player = (Expression<OfflinePlayer>) expr[0];
         return true;
     }
 
@@ -40,7 +40,7 @@ public class PlayerGuild extends SimpleExpression<Guild>{
     @Override
     protected Guild[] get(Event e) {
 	    try {
-	        User u = User.get((Player) player.getSingle(e).getPlayer());
+	        User u = User.get(player.getSingle(e));
 	        try {
 	        	return new Guild[]{u.getGuild()};
 	        } catch(Exception ex) {

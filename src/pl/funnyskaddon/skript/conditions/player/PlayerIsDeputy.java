@@ -2,7 +2,7 @@ package pl.funnyskaddon.skript.conditions.player;
 
 import javax.annotation.Nullable;
 
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Condition;
@@ -15,12 +15,12 @@ import pl.funnyskaddon.core.Utils;
 
 public class PlayerIsDeputy extends Condition{
 	
-	private Expression<Player> player;
+	private Expression<OfflinePlayer> player;
     
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, ParseResult pr) {
-    	player = (Expression<Player>) expr[0];
+    	player = (Expression<OfflinePlayer>) expr[0];
     	setNegated(i==1);
         return true;
     }
@@ -33,7 +33,7 @@ public class PlayerIsDeputy extends Condition{
 	@Override
     public boolean check(Event e){
 		try {
-	    	Player p = player.getSingle(e);
+			OfflinePlayer p = player.getSingle(e);
 	    	for(User u : UserUtils.getUsers()) {
 	    		if(u.getPlayer() == p) {
 	    			return Utils.negation(u.isDeputy(), isNegated());

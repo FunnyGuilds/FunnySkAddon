@@ -15,7 +15,7 @@ public class ExpressionLoaderGuild {
 		Skript.registerExpression(GuildNameByTag.class, String.class, ExpressionType.PROPERTY, "guild name from tag %string%");
 		Skript.registerExpression(GuildFromTag.class, Guild.class, ExpressionType.PROPERTY, "guild from tag %string%");
 		Skript.registerExpression(GuildFromName.class, Guild.class, ExpressionType.PROPERTY, "guild from name %string%");
-		Skript.registerExpression(GuildFromPlayer.class, Guild.class, ExpressionType.PROPERTY, "guild from player %player%");
+		Skript.registerExpression(GuildFromPlayer.class, Guild.class, ExpressionType.PROPERTY, "guild from player %offlineplayer%");
 			
 		Skript.registerExpression(GuildDeaths.class, Integer.class, ExpressionType.PROPERTY, "%object% guild deaths");
 		Skript.registerExpression(GuildDeputies.class, OfflinePlayer.class, ExpressionType.PROPERTY, "%object% guild deputies");
