@@ -30,33 +30,17 @@
     * Zmieniono troche składnie
     * Dodano autoaktualizacje topki (do zmianny w configu)
     * Zmiana wiadomości przy ładowaniu
+  * 1.7.1:
+    * Usunięto niepotrzebne wiadomości przy włączaniu pluginu
+    * Dodano nowe expression'y do pobierania itemów/expa/pieniędzy potrzebnych do założenia gildii z wariantami dla vipów
+      * required items to create guild
+      * required exp to create guild
+      * required money to create guild
+      * required items to create guild for vip
+      * required exp to create guild for vip
+      * required money to create guild for vip
 ### Wymagania:
-  * 1.0:
-    * Java 8
-    * Spigot 1.8.8+
-    * Skript
-    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/
-  * 1.1:
-    * Java 8
-    * Spigot 1.8.8+
-    * Skript
-    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/
-  * 1.2:
-    * Java 8
-    * Spigot 1.8.8+
-    * Skript
-    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/
-  * 1.5:
-    * Java 8
-    * Spigot 1.8.8+
-    * Skript
-    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
-  * 1.6:
-    * Java 8
-    * Spigot 1.8.8+
-    * Skript
-    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
-  * 1.7:
+  * 1.0 - 1.7.1:
     * Java 8
     * Spigot 1.8.8+
     * Skript
