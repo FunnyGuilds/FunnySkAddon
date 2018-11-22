@@ -11,16 +11,17 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import bstats.bukkit.Metrics;
+import net.dzikoysk.funnyguilds.data.Settings;
+import net.dzikoysk.funnyguilds.data.configs.PluginConfig;
 
 public class FunnySkAddon extends JavaPlugin{
 	
 	private static FunnySkAddon inst;
+	public static PluginConfig pc = Settings.getConfig();
 	
 	@Override
 	public void onEnable() {
-		Bukkit.getLogger().info("");
 		PluginDescriptionFile d = this.getDescription();
-		Bukkit.getLogger().info("[FSA] Uruchamianie pluginu " + d.getFullName());
         StringBuilder sB = new StringBuilder();
         boolean shouldStart = true;
         if(Bukkit.getServer().getPluginManager().getPlugin("Skript") == null) {
@@ -57,7 +58,6 @@ public class FunnySkAddon extends JavaPlugin{
                 Bukkit.getLogger().info("[FSA] Wszystkie wersje: https://github.com/MLGroupMC/FunnySkAddon/releases/");
             }
         }
-		Bukkit.getLogger().info("");
 		if(this.getConfig().getBoolean("top.autoupdate.execute") && this.getConfig().isInt("top.autoupdate.time")) {
 			final int ref = this.getConfig().getInt("top.autoupdate.time")*20;
 			Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {

@@ -37,7 +37,6 @@ public class GuildRemainingValidity extends SimpleExpression<Timespan>{
         return null;
     }
 
-	@SuppressWarnings("deprecation")
 	@Override
     protected Timespan[] get(Event e) {
 	    try {

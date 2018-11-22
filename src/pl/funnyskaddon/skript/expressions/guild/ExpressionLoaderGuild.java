@@ -3,6 +3,7 @@ package pl.funnyskaddon.skript.expressions.guild;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
@@ -40,6 +41,12 @@ public class ExpressionLoaderGuild {
         Skript.registerExpression(GuildAllies.class, Guild.class, ExpressionType.PROPERTY, "guilds allied with guild %object%");
         Skript.registerExpression(GuildList.class, Guild.class, ExpressionType.PROPERTY, "all guilds");
         Skript.registerExpression(GuildAtLocation.class, Guild.class, ExpressionType.PROPERTY, "guild at %object%");
+        Skript.registerExpression(ItemToCreateGuild.class, ItemStack.class, ExpressionType.PROPERTY, "required items to create guild");
+        Skript.registerExpression(ItemToCreateGuildVip.class, ItemStack.class, ExpressionType.PROPERTY, "required items to create guild for vip");
+        Skript.registerExpression(ExpToCreateGuild.class, Integer.class, ExpressionType.PROPERTY, "required exp to create guild guild");
+        Skript.registerExpression(ExpToCreateGuildVip.class, Integer.class, ExpressionType.PROPERTY, "required exp to create guild for vip");
+        Skript.registerExpression(MoneyToCreateGuild.class, Double.class, ExpressionType.PROPERTY, "required money to create guild guild");
+        Skript.registerExpression(MoneyToCreateGuildVip.class, Double.class, ExpressionType.PROPERTY, "required money to create guild for vip");
 	}
 	
 }
