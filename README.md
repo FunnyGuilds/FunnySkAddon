@@ -2,7 +2,7 @@
 
 ### O Pluginie: Jest to plugin dodający do minecrafta wsparcie pluginu funnyguilds dla skript
 ### Twórcy: McKoxu, LloydPL
-### Dokumentacja: ConditionDoc.txt, EffectDoc.txt, EventDoc.txt, ExpressionDoc.txt
+### Dokumentacja: https://mlgroup.pl/funnyskaddon/doc/home
 
 
 ### Changelog:
@@ -25,6 +25,11 @@
   * 1.6:
     * Poprawiono składnie (zalecamy zapoznać się z dokumentacją !)
     * Poprawiono pobieranie graczy offline
+  * 1.7:
+    * Zrobiono lepszą dokumentacje https://mlgroup.pl/funnyskaddon/doc/home
+    * Zmieniono troche składnie
+    * Dodano autoaktualizacje topki (do zmianny w configu)
+    * Zmiana wiadomości przy ładowaniu
 ### Wymagania:
   * 1.0:
     * Java 8
@@ -46,7 +51,12 @@
     * Spigot 1.8.8+
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
-   * 1.6:
+  * 1.6:
+    * Java 8
+    * Spigot 1.8.8+
+    * Skript
+    * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
+  * 1.7:
     * Java 8
     * Spigot 1.8.8+
     * Skript
