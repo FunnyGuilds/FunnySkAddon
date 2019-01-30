@@ -36,7 +36,7 @@ public class TopGuild extends SimpleExpression<Guild>{
 	    @Override
     protected Guild[] get(Event e) {
         try {
-        	return new Guild[] {TopManager.getGuildTopGuild(position.getSingle(e).intValue())};
+        	return new Guild[] {TopManager.getGuildTopGuild(position.getSingle(e).intValue()-1)};
         } catch(Exception ex) {
         	return null;
         }

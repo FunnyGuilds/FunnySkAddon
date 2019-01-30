@@ -39,7 +39,7 @@ public class TopPlayer extends SimpleExpression<OfflinePlayer>{
 		@Override
     protected OfflinePlayer[] get(Event e) {
         try {
-        	User u = TopManager.getGuildTopPlayer(position.getSingle(e).intValue());
+        	User u = TopManager.getGuildTopPlayer(position.getSingle(e).intValue()-1);
         	if(u.getPlayer() == null) {
                 return new OfflinePlayer[] {Bukkit.getServer().getOfflinePlayer(u.getName())};
             } else {

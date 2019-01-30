@@ -43,7 +43,7 @@ public class PlayerPosition extends SimpleExpression<Integer>{
 		try {
 			User u = (User) User.get(player.getSingle(e));
 			try {
-				return new Integer[]{TopManager.getPlayerPosition(u)};
+				return new Integer[]{TopManager.getPlayerPosition(u)+1};
 	        } catch(Exception ex) {
 	        	return null;
 	        }

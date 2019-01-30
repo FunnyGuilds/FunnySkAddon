@@ -42,7 +42,7 @@ public class GuildPosition extends SimpleExpression<Integer>{
 	    try {
 		    Guild g = Utils.getGuild(guild.getSingle(e));
 	        try {
-	        	return new Integer[]{TopManager.getGuildPosition(g)};
+	        	return new Integer[]{TopManager.getGuildPosition(g)+1};
 	        } catch(Exception ex) {
 	        	return null;
 	        }

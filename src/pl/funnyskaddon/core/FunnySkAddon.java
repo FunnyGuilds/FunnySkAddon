@@ -17,7 +17,7 @@ import net.dzikoysk.funnyguilds.data.configs.PluginConfig;
 public class FunnySkAddon extends JavaPlugin{
 	
 	private static FunnySkAddon inst;
-	public static PluginConfig pc = Settings.getConfig();
+	public static PluginConfig pc;
 	
 	@Override
 	public void onEnable() {
@@ -42,7 +42,7 @@ public class FunnySkAddon extends JavaPlugin{
             Bukkit.getServer().getPluginManager().disablePlugin(this);
             return;
         }
-
+        pc = Settings.getConfig();
 		new Metrics(this);
 		inst = this;
 		Bukkit.getServer().getPluginManager().registerEvents(new GuildCreateListener(), this);
