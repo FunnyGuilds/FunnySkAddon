@@ -15,7 +15,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import net.dzikoysk.funnyguilds.basic.user.User;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildDeputies extends SimpleExpression<OfflinePlayer>{
     
@@ -47,7 +47,7 @@ public class GuildDeputies extends SimpleExpression<OfflinePlayer>{
 	@Override
     protected OfflinePlayer[] get(Event e) {
 		try {
-			Guild g = Utils.getGuild(guild.getSingle(e));
+			Guild g = BasicUtil.getGuild(guild.getSingle(e));
 	        Set<User> deputiesu;
 	        List<OfflinePlayer> deputies = new ArrayList<>();
 	        deputiesu = g.getDeputies();

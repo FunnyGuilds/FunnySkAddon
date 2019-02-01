@@ -9,7 +9,7 @@ import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class PlayerIsInGuildRegion extends Condition{
 	
@@ -33,7 +33,7 @@ public class PlayerIsInGuildRegion extends Condition{
 	@Override
     public boolean check(Event e){
 		try {
-	    	return Utils.negation(Utils.isPlayerInGuildRegion(player.getSingle(e), Utils.getGuild(guild.getSingle(e))), isNegated());
-		}catch (Exception ex) {return Utils.negation(false, isNegated());}
+	    	return BasicUtil.negation(BasicUtil.isPlayerInGuildRegion(player.getSingle(e), BasicUtil.getGuild(guild.getSingle(e))), isNegated());
+		}catch (Exception ex) {return BasicUtil.negation(false, isNegated());}
     }
 }

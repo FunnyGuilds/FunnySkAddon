@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildUpperPointLocation extends SimpleExpression<Location>{
     
@@ -39,7 +39,7 @@ public class GuildUpperPointLocation extends SimpleExpression<Location>{
     @Override
     protected Location[] get(Event e) {
 	    try {
-		    return new Location[] {Utils.getUpperPoint(Utils.getGuild(guild.getSingle(e)))};
+		    return new Location[] {BasicUtil.getUpperPoint(BasicUtil.getGuild(guild.getSingle(e)))};
 	    } catch(Exception ex) { return null;} 
     }
 }

@@ -10,7 +10,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.user.User;
-import pl.funnyskaddon.core.TopManager;
+import pl.funnyskaddon.core.utils.TopUtil;
 
 public class TopPlayer extends SimpleExpression<OfflinePlayer>{
     
@@ -39,7 +39,7 @@ public class TopPlayer extends SimpleExpression<OfflinePlayer>{
 		@Override
     protected OfflinePlayer[] get(Event e) {
         try {
-        	User u = TopManager.getGuildTopPlayer(position.getSingle(e).intValue()-1);
+        	User u = TopUtil.getGuildTopPlayer(position.getSingle(e).intValue()-1);
         	if(u.getPlayer() == null) {
                 return new OfflinePlayer[] {Bukkit.getServer().getOfflinePlayer(u.getName())};
             } else {

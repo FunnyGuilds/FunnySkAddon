@@ -27,7 +27,7 @@ import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberKickEvent;
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaderEvent;
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaveEvent;
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberRevokeInviteEvent;
-import pl.funnyskaddon.core.GuildCreateEventFix;
+import pl.funnyskaddon.core.fix.GuildCreateEventFix;
 
 public class EventLoaderGuild {
 	

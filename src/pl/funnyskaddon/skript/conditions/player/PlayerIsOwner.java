@@ -11,7 +11,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.user.User;
 import net.dzikoysk.funnyguilds.basic.user.UserUtils;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class PlayerIsOwner extends Condition{
 	
@@ -36,11 +36,11 @@ public class PlayerIsOwner extends Condition{
 			OfflinePlayer p = player.getSingle(e);
 	    	for(User u : UserUtils.getUsers()) {
 	    		if(u.getPlayer() == p) {
-	    			return Utils.negation(u.isOwner(), isNegated());
+	    			return BasicUtil.negation(u.isOwner(), isNegated());
 	    		}
 	    	}
-	        return Utils.negation(false, isNegated());
-		}catch (Exception ex) {return Utils.negation(false, isNegated());}
+	        return BasicUtil.negation(false, isNegated());
+		}catch (Exception ex) {return BasicUtil.negation(false, isNegated());}
     }
     
 }

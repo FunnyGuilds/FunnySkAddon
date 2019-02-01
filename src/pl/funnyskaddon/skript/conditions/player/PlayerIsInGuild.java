@@ -11,7 +11,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import net.dzikoysk.funnyguilds.basic.user.User;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class PlayerIsInGuild extends Condition{
 	
@@ -35,15 +35,15 @@ public class PlayerIsInGuild extends Condition{
 	@Override
     public boolean check(Event e){
 		try {
-	    	Guild g = Utils.getGuild(guild.getSingle(e));
+	    	Guild g = BasicUtil.getGuild(guild.getSingle(e));
 	    	OfflinePlayer p = player.getSingle(e);
 	    	for(User u : g.getMembers()) {
 	    		if(u.getPlayer() == p) {
-	    			return Utils.negation(true, isNegated());
+	    			return BasicUtil.negation(true, isNegated());
 	    		}
 	    	}
-	    	return Utils.negation(false, isNegated());
-		}catch (Exception ex) {return Utils.negation(false, isNegated());}
+	    	return BasicUtil.negation(false, isNegated());
+		}catch (Exception ex) {return BasicUtil.negation(false, isNegated());}
     }
     
 }

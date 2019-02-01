@@ -9,7 +9,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.user.User;
-import pl.funnyskaddon.core.TopManager;
+import pl.funnyskaddon.core.utils.TopUtil;
 
 public class PlayerPosition extends SimpleExpression<Integer>{
 
@@ -43,7 +43,7 @@ public class PlayerPosition extends SimpleExpression<Integer>{
 		try {
 			User u = (User) User.get(player.getSingle(e));
 			try {
-				return new Integer[]{TopManager.getPlayerPosition(u)+1};
+				return new Integer[]{TopUtil.getPlayerPosition(u)+1};
 	        } catch(Exception ex) {
 	        	return null;
 	        }

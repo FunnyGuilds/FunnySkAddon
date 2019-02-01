@@ -9,7 +9,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import net.dzikoysk.funnyguilds.basic.rank.RankManager;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildDelete extends Effect {
 	
@@ -30,7 +30,7 @@ public class GuildDelete extends Effect {
     @Override
     protected void execute(Event e) {
     	try {
-    		Guild g = Utils.getGuild(guild.getSingle(e));
+    		Guild g = BasicUtil.getGuild(guild.getSingle(e));
 	        try {
 	        	g.delete();
 	        	RankManager.getInstance().getUser(1);

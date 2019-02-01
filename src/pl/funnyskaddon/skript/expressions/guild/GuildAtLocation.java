@@ -8,7 +8,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildAtLocation extends SimpleExpression<Guild>{
     
@@ -39,7 +39,7 @@ public class GuildAtLocation extends SimpleExpression<Guild>{
 	@Override
     protected Guild[] get(Event e) {
 	    try {
-	       return Utils.getGuildAtLocation(Utils.getLoc(loc.getSingle(e)));
+	       return BasicUtil.getGuildAtLocation(BasicUtil.getLoc(loc.getSingle(e)));
 	    } catch(Exception ex) {return null;}
     }
 	    

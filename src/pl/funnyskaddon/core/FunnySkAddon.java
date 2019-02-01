@@ -7,21 +7,25 @@ import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import bstats.bukkit.Metrics;
 import net.dzikoysk.funnyguilds.data.Settings;
 import net.dzikoysk.funnyguilds.data.configs.PluginConfig;
+import pl.funnyskaddon.core.fix.GuildCreateListener;
+import pl.funnyskaddon.core.fix.PointsChangeListener;
+import pl.funnyskaddon.core.loaders.SkriptLoaders;
+import pl.funnyskaddon.core.schedulers.TopUpdateScheduler;
+import pl.funnyskaddon.core.schedulers.UpdateCheckScheduler;
 
-public class FunnySkAddon extends JavaPlugin{
+public class FunnySkAddon extends JavaPlugin implements Listener{
 	
 	private static FunnySkAddon inst;
 	public static PluginConfig pc;
 	
 	@Override
 	public void onEnable() {
-		PluginDescriptionFile d = this.getDescription();
         StringBuilder sB = new StringBuilder();
         boolean shouldStart = true;
         if(Bukkit.getServer().getPluginManager().getPlugin("Skript") == null) {
@@ -43,36 +47,18 @@ public class FunnySkAddon extends JavaPlugin{
             return;
         }
         pc = Settings.getConfig();
+        inst = this;
 		new Metrics(this);
-		inst = this;
+		Bukkit.getServer().getPluginManager().registerEvents(new PointsChangeListener(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new GuildCreateListener(), this);
-		TopManager.update();
-		Loaders.loadExpressions();
-		Loaders.loadEvents();
-		Loaders.loadEffects();
-		Loaders.loadConditions();
-		if(this.getConfig().getBoolean("update.check")) {
-            if(!d.getVersion().equalsIgnoreCase(getLatestVersion("https://raw.githubusercontent.com/MLGroupMC/FunnySkAddon/master/VERSION"))) {
-                Bukkit.getLogger().info("[FSA] Wersja pluginu: "+d.getVersion());
-                Bukkit.getLogger().info("[FSA] Najnowsza wersja pluginu: "+getLatestVersion("https://raw.githubusercontent.com/MLGroupMC/FunnySkAddon/master/VERSION"));
-                Bukkit.getLogger().info("[FSA] Wszystkie wersje: https://github.com/MLGroupMC/FunnySkAddon/releases/");
-            }
-        }
-		if(this.getConfig().getBoolean("top.autoupdate.execute") && this.getConfig().isInt("top.autoupdate.time")) {
-			final int ref = this.getConfig().getInt("top.autoupdate.time")*20;
-			Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
-				@Override
-				public void run() {
-					TopManager.update();
-				}
-			}, ref, ref);
-		}
+		SkriptLoaders.loadExpressions();
+		SkriptLoaders.loadEvents();
+		SkriptLoaders.loadEffects();
+		SkriptLoaders.loadConditions();
+		TopUpdateScheduler.start();
+		UpdateCheckScheduler.start();
         this.saveDefaultConfig();
 	}
-	
-	public static FunnySkAddon getInst() {
-        return inst;
-    }
 	
 	public static String getLatestVersion(String link){
         InputStream in = null;
@@ -97,4 +83,7 @@ public class FunnySkAddon extends JavaPlugin{
         return null;
     }
 	
+	public static FunnySkAddon getInst() {
+        return inst;
+    }
 }

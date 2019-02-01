@@ -1,4 +1,4 @@
-package pl.funnyskaddon.core;
+package pl.funnyskaddon.core.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
 import net.dzikoysk.funnyguilds.basic.guild.Region;
 import net.dzikoysk.funnyguilds.basic.user.User;
 
-public class Utils {
+public class BasicUtil {
 	
 	public static Location getLowerPoint(Guild g) {
 		Region rg = g.getRegion();

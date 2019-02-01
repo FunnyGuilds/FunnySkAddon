@@ -7,7 +7,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import pl.funnyskaddon.core.TopManager;
+import pl.funnyskaddon.core.utils.TopUtil;
 
 public class UpdateTop extends Effect{
 	
@@ -23,7 +23,7 @@ public class UpdateTop extends Effect{
     @Override
     protected void execute(Event e) {
         try {
-        	TopManager.update();
+        	TopUtil.update();
         } catch(Exception ex) {
         	return;
         }

@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildIsBanned extends Condition{
 	
@@ -30,8 +30,8 @@ public class GuildIsBanned extends Condition{
 	@Override
     public boolean check(Event e){
 		try {
-	        return Utils.negation(Utils.getGuild(guild.getSingle(e)).isBanned(), isNegated());
-		}catch (Exception ex) {return Utils.negation(false, isNegated());}
+	        return BasicUtil.negation(BasicUtil.getGuild(guild.getSingle(e)).isBanned(), isNegated());
+		}catch (Exception ex) {return BasicUtil.negation(false, isNegated());}
     }
     
 }

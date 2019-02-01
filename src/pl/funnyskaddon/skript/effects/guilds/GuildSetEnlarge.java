@@ -9,7 +9,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import net.dzikoysk.funnyguilds.basic.guild.Region;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildSetEnlarge extends Effect {
 	
@@ -32,7 +32,7 @@ public class GuildSetEnlarge extends Effect {
     @Override
     protected void execute(Event e) {
     	try {
-    		Guild g = Utils.getGuild(guild.getSingle(e));
+    		Guild g = BasicUtil.getGuild(guild.getSingle(e));
     		Region rg = g.getRegion();
     		rg.setEnlarge((int) size.getSingle(e));
     	} catch(Exception ex) { return;}

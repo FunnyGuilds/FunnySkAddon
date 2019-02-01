@@ -1,5 +1,5 @@
 name: FunnySkAddon-Extended
-version: 1.8
+version: 1.8.1
 authors: [McKoxu, LloydPL]
 main: pl.funnyskaddon.core.FunnySkAddon
 softdepend: [Skript, FunnyGuilds]

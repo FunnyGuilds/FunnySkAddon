@@ -8,7 +8,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
-import pl.funnyskaddon.core.TopManager;
+import pl.funnyskaddon.core.utils.TopUtil;
 
 public class TopGuild extends SimpleExpression<Guild>{
     
@@ -36,7 +36,7 @@ public class TopGuild extends SimpleExpression<Guild>{
 	    @Override
     protected Guild[] get(Event e) {
         try {
-        	return new Guild[] {TopManager.getGuildTopGuild(position.getSingle(e).intValue()-1)};
+        	return new Guild[] {TopUtil.getGuildTopGuild(position.getSingle(e).intValue()-1)};
         } catch(Exception ex) {
         	return null;
         }

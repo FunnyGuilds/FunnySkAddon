@@ -1,4 +1,4 @@
-package pl.funnyskaddon.core;
+package pl.funnyskaddon.core.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import net.dzikoysk.funnyguilds.basic.user.UserUtils;
 import pl.funnyskaddon.core.sort.GuildSort;
 import pl.funnyskaddon.core.sort.UserSort;
 
-public class TopManager {
+public class TopUtil {
 	
 	public static List<Guild> guilds = new ArrayList<>();
 	public static List<User> users = new ArrayList<>();

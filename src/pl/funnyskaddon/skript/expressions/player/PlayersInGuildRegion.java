@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class PlayersInGuildRegion extends SimpleExpression<Player>{
     
@@ -39,7 +39,7 @@ public class PlayersInGuildRegion extends SimpleExpression<Player>{
     @Override
     protected Player[] get(Event e) {
 	    try {
-	       return Utils.getPlayersInGuildRegion(Utils.getGuild(guild.getSingle(e)));
+	       return BasicUtil.getPlayersInGuildRegion(BasicUtil.getGuild(guild.getSingle(e)));
 	    } catch(Exception ex) {return null;}
     }
 }

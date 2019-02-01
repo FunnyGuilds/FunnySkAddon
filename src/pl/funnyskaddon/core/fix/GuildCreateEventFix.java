@@ -1,4 +1,4 @@
-package pl.funnyskaddon.core;
+package pl.funnyskaddon.core.fix;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;

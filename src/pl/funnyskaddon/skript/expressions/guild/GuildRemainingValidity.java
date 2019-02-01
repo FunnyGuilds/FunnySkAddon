@@ -9,7 +9,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildRemainingValidity extends SimpleExpression<Timespan>{
     
@@ -40,7 +40,7 @@ public class GuildRemainingValidity extends SimpleExpression<Timespan>{
 	@Override
     protected Timespan[] get(Event e) {
 	    try {
-		    Guild g = Utils.getGuild(guild.getSingle(e));
+		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
 	        try {
 	        	return new Timespan[]{Timespan.fromTicks((int) (g.getValidity()/50))};
 	        } catch(Exception ex) {

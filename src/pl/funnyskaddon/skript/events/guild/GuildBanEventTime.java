@@ -1,17 +1,15 @@
 package pl.funnyskaddon.skript.events.guild;
 
-import org.bukkit.event.Event;
-
-import ch.njol.skript.lang.util.SimpleExpression;
-import ch.njol.skript.util.Timespan;
-import net.dzikoysk.funnyguilds.event.guild.GuildBanEvent;
-
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
+import org.bukkit.event.Event;
 
 import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.lang.util.SimpleExpression;
+import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
+import net.dzikoysk.funnyguilds.event.guild.GuildBanEvent;
 
 public class GuildBanEventTime extends SimpleExpression<Timespan>{ 
 

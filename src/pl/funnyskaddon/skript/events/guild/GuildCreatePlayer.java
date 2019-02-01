@@ -1,17 +1,15 @@
 package pl.funnyskaddon.skript.events.guild;
 
+import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-
-import ch.njol.skript.lang.util.SimpleExpression;
-
-import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 
 import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import pl.funnyskaddon.core.GuildCreateEventFix;
+import pl.funnyskaddon.core.fix.GuildCreateEventFix;
 
 public class GuildCreatePlayer extends SimpleExpression<Player>{ 
 

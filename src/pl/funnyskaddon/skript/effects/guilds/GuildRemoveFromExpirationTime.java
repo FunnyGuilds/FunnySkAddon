@@ -9,7 +9,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildRemoveFromExpirationTime extends Effect {
 	
@@ -32,7 +32,7 @@ public class GuildRemoveFromExpirationTime extends Effect {
     @Override
     protected void execute(Event e) {
     	try {
-    		Guild g = Utils.getGuild(guild.getSingle(e));
+    		Guild g = BasicUtil.getGuild(guild.getSingle(e));
 	    	long l = g.getValidity() - time.getSingle(e).getMilliSeconds();
 	    	if(l < 0) {
 	    		l = 0;

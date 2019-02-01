@@ -9,7 +9,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
-import pl.funnyskaddon.core.GuildCreateEventFix;
+import pl.funnyskaddon.core.fix.GuildCreateEventFix;
 
 public class GuildCreateGuild extends SimpleExpression<Guild>{ 
 

@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildSetLives extends Effect{
 	
@@ -31,7 +31,7 @@ public class GuildSetLives extends Effect{
     @Override
     protected void execute(Event e) {
     	try {
-    		Guild g = Utils.getGuild(guild.getSingle(e));
+    		Guild g = BasicUtil.getGuild(guild.getSingle(e));
 	        int l = lives.getSingle(e).intValue();
 	        try {
 	        	g.setLives(l);

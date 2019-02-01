@@ -11,7 +11,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildOwner extends SimpleExpression<OfflinePlayer>{
     
@@ -43,7 +43,7 @@ public class GuildOwner extends SimpleExpression<OfflinePlayer>{
 	@Override
     protected OfflinePlayer[] get(Event e) {
 	    try {
-		    Guild g = Utils.getGuild(guild.getSingle(e));
+		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
 			if(g.getOwner().getPlayer()==null) {
 				return new OfflinePlayer[] {Bukkit.getServer().getOfflinePlayer(g.getOwner().getName())};
 			}

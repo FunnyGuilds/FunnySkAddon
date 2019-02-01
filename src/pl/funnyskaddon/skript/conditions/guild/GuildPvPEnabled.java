@@ -8,7 +8,7 @@ import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildPvPEnabled extends Condition{
 	
@@ -30,8 +30,8 @@ public class GuildPvPEnabled extends Condition{
 	@Override
     public boolean check(Event e){
 		try {
-	        return Utils.negation(Utils.getGuild(guild.getSingle(e)).getPvP(), isNegated());
-		}catch (Exception ex) {return Utils.negation(false, isNegated());}
+	        return BasicUtil.negation(BasicUtil.getGuild(guild.getSingle(e)).getPvP(), isNegated());
+		}catch (Exception ex) {return BasicUtil.negation(false, isNegated());}
     }
     
 }

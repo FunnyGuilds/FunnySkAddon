@@ -9,7 +9,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
-import pl.funnyskaddon.core.Utils;
+import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildDoesExist extends Condition{
 	
@@ -31,9 +31,9 @@ public class GuildDoesExist extends Condition{
     @Override
     public boolean check(Event e){
         if(GuildUtils.getByName(guild.getSingle(e)) == null) {
-        	return Utils.negation(false, isNegated());
+        	return BasicUtil.negation(false, isNegated());
         }
-        return Utils.negation(true, isNegated());
+        return BasicUtil.negation(true, isNegated());
     }
     
 }

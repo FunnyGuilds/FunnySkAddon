@@ -1,10 +1,11 @@
-package pl.funnyskaddon.core;
+package pl.funnyskaddon.core.fix;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import net.dzikoysk.funnyguilds.event.guild.GuildCreateEvent;
+import pl.funnyskaddon.core.FunnySkAddon;
 
 public class GuildCreateListener implements Listener{
 	
