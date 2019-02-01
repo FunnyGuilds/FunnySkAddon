@@ -39,9 +39,21 @@
       * required items to create guild for vip
       * required exp to create guild for vip
       * required money to create guild for vip
+  * 1.8:
+    * Zmieniono sposób sortowania gildii i graczy w rankingu
+    * Od teraz plugin działa na wersji FunnyGuilds 4.4.0 Tribute
+    * Od teraz zmienne które zwracały w jakiej pozycji w rankingu jest gracz/gildia zwracają liczbę od 1 a nie od 0, 0 będzie jeżeli gracza/gildii nie ma w topce
+    * Naprawiono błąd który po włączeniu pluginu pierwszy raz bez wygenerowanych configów funnyguilds wywalał długi błąd w konosli
+    
+Informujemy też że jest to ostatnia wersja wprowadzająca jakieś rzeczy, chyba że funnyguilds doda nowe opcje, nowe wersje będą posiadały prawdopodobnie tylko bugfixy
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
     * Spigot 1.8.8+
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
+  * 1.8:
+    * Java 8
+    * Spigot 1.8.8+
+    * Skript
+    * FunnyGuilds 4.4.0 Tirbute lub nowszy
