@@ -49,7 +49,6 @@
     * Zmieniono strukturę pluginu (mało ważne dla normalnego użytkownika)
     * Dodano event kill points change (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Events.html#on-kill-points-change)
     * Dodano automatyczne powiadomienie o tym że wyszła nowa wersja pluginu (do wyłączenia w configu pod update.check) co 3 godziny nie tylko przy włączeniu serwera
-    * 
     
 Informujemy też że jest to ostatnia wersja wprowadzająca jakieś rzeczy, chyba że funnyguilds doda nowe opcje, nowe wersje będą posiadały prawdopodobnie tylko bugfixy
 ### Wymagania:
