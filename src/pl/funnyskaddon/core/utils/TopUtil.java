@@ -3,6 +3,7 @@ package pl.funnyskaddon.core.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import ch.njol.skript.util.Date;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
 import net.dzikoysk.funnyguilds.basic.user.User;
@@ -14,10 +15,12 @@ public class TopUtil {
 	
 	public static List<Guild> guilds = new ArrayList<>();
 	public static List<User> users = new ArrayList<>();
+	public static Date lastupdate;
 	
 	public static void update() {
 		users = UserSort.sort(UserUtils.getUsers());
 		guilds = GuildSort.sort(GuildUtils.getGuilds());
+		lastupdate = new Date();
 	}
 	
     public static User getGuildTopPlayer(int pos) {  

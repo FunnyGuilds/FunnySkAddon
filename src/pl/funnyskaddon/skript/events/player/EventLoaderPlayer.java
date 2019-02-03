@@ -9,7 +9,7 @@ import pl.funnyskaddon.core.fix.KillPointsChangeEventFix;
 
 public class EventLoaderPlayer {
 	public EventLoaderPlayer() {
-		Skript.registerEvent("guild revoke ally invitation", SimpleEvent.class, KillPointsChangeEventFix.class, "kill points change"); 
+		Skript.registerEvent("kill points change", SimpleEvent.class, KillPointsChangeEventFix.class, "kill points change"); 
 		Skript.registerExpression(KillPointsChangeKiller.class, Player.class, ExpressionType.SIMPLE,
 				"killer");
 		Skript.registerExpression(KillPointsChangeVictim.class, Player.class, ExpressionType.SIMPLE,
