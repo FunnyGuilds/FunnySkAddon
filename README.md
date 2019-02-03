@@ -49,13 +49,15 @@
     * Zmieniono strukturę pluginu (mało ważne dla normalnego użytkownika)
     * Dodano event kill points change (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Events.html#on-kill-points-change)
     * Dodano automatyczne powiadomienie o tym że wyszła nowa wersja pluginu (do wyłączenia w configu pod update.check) co 3 godziny nie tylko przy włączeniu serwera
+  * 1.8.2:
+    * Dodano zmienną last top update (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#last-top-update)
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
     * Spigot 1.8.8+
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
-  * 1.8-1.8.1:
+  * 1.8-1.8.2:
     * Java 8
     * Spigot 1.8.8+
     * Skript
