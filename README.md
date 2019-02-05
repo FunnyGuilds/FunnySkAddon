@@ -68,7 +68,7 @@
     * Spigot 1.8.8+
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
-  * 1.8-1.8.2:
+  * 1.8-1.8.3:
     * Java 8
     * Spigot 1.8.8+
     * Skript
