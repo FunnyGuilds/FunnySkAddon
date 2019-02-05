@@ -50,7 +50,7 @@ public class ExpressionLoaderGuild {
         Skript.registerExpression(MoneyToCreateGuild.class, Double.class, ExpressionType.PROPERTY, "required money to create guild guild");
         Skript.registerExpression(MoneyToCreateGuildVip.class, Double.class, ExpressionType.PROPERTY, "required money to create guild for vip");
         Skript.registerExpression(GuildBorn.class, Date.class, ExpressionType.PROPERTY, "%object% guild create time");
-        Skript.registerExpression(ItemsToEnlargeGuild.class, ItemStack.class, ExpressionType.PROPERTY, "items to enlarge guild");
+        Skript.registerExpression(ItemsToEnlargeGuild.class, ItemStack.class, ExpressionType.PROPERTY, "required items to enlarge guild");
         Skript.registerExpression(GuildEnlargeLevel.class, Integer.class, ExpressionType.PROPERTY, "guild %object% enlarge level");
         Skript.registerExpression(GuildArea.class, Integer.class, ExpressionType.PROPERTY, "guild %object% area");
         Skript.registerExpression(ItemsToExtensionValidity.class, ItemStack.class, ExpressionType.PROPERTY, "required items to extension validity");
