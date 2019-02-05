@@ -50,7 +50,9 @@ public class GuildOnlineMembers extends SimpleExpression<Player>{
 	        List<Player> deputies = new ArrayList<>();
 	        deputiesu = g.getOnlineMembers();
 	    	for(User uu : deputiesu){
-	    		deputies.add(uu.getPlayer());
+	    		if(!deputies.contains(uu.getPlayer())) {
+	    			deputies.add(uu.getPlayer());
+	    		}
 	    	}
 	    	try {
 	    		return deputies.toArray(new Player[deputies.size()]);

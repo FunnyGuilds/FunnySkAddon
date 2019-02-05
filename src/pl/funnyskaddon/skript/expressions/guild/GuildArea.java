@@ -8,10 +8,10 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
+import net.dzikoysk.funnyguilds.basic.guild.Region;
 import pl.funnyskaddon.core.utils.BasicUtil;
-import pl.funnyskaddon.core.utils.TopUtil;
 
-public class GuildPosition extends SimpleExpression<Integer>{
+public class GuildArea extends SimpleExpression<Integer>{
     
     private Expression<Object> guild;
     
@@ -36,17 +36,19 @@ public class GuildPosition extends SimpleExpression<Integer>{
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-	    
-	@Override
+
+    @Override
     protected Integer[] get(Event e) {
 	    try {
 		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
-		   // g.getRegion().get
+		    Region r = g.getRegion();
 	        try {
-	        	return new Integer[]{TopUtil.getGuildPosition(g)+1};
+	        	int area = Math.abs((r.getLowerX()-r.getUpperX())*(r.getLowerZ()-r.getUpperZ()));
+	        	return new Integer[]{area};
 	        } catch(Exception ex) {
 	        	return null;
 	        }
 	    } catch(Exception ex) { return null;}
     }
 }
+//|(x1-x2)*(z1-z2)|

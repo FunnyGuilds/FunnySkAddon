@@ -1,23 +1,25 @@
 package pl.funnyskaddon.skript.expressions.guild;
 
+import java.util.Date;
+
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
+import ch.njol.skript.util.Timespan;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import pl.funnyskaddon.core.utils.BasicUtil;
-import pl.funnyskaddon.core.utils.TopUtil;
 
-public class GuildPosition extends SimpleExpression<Integer>{
+public class GuildRemainingValidityTime extends SimpleExpression<Timespan>{
     
     private Expression<Object> guild;
     
     @Override
-    public Class<? extends Integer> getReturnType() {
-        return Integer.class;
+    public Class<? extends Timespan> getReturnType() {
+        return Timespan.class;
     }
 
     @Override
@@ -36,17 +38,17 @@ public class GuildPosition extends SimpleExpression<Integer>{
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-	    
+
 	@Override
-    protected Integer[] get(Event e) {
+    protected Timespan[] get(Event e) {
 	    try {
 		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
-		   // g.getRegion().get
+		    int dateDifference = (int) ((g.getValidity()-(new Date().getTime())));
 	        try {
-	        	return new Integer[]{TopUtil.getGuildPosition(g)+1};
+	        	return new Timespan[]{new Timespan(dateDifference)};
 	        } catch(Exception ex) {
 	        	return null;
 	        }
-	    } catch(Exception ex) { return null;}
+	    } catch(Exception ex) { return null;} 
     }
 }

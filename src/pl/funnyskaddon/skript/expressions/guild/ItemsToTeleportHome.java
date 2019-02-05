@@ -12,7 +12,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import pl.funnyskaddon.core.FunnySkAddon;
 
-public class ItemToCreateGuildVip extends SimpleExpression<ItemStack>{
+public class ItemsToTeleportHome extends SimpleExpression<ItemStack>{
     
     @Override
     public Class<? extends ItemStack> getReturnType() {
@@ -37,7 +37,7 @@ public class ItemToCreateGuildVip extends SimpleExpression<ItemStack>{
 	@Override
     protected ItemStack[] get(Event e) {
 		try {
-	        List<ItemStack> items = FunnySkAddon.pc.createItemsVip;
+	        List<ItemStack> items = FunnySkAddon.pc.baseItems;
 	    	try {
 	    		return items.toArray(new ItemStack[items.size()]);
 	        } catch(Exception ex) {

@@ -10,14 +10,14 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.user.User;
 
-public class PlayerRemoveDeaths extends Effect{
+public class PlayerRemoveDeaths  extends Effect{
     private Expression<OfflinePlayer> player;
     private Expression<Number> deaths;
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
-        player = (Expression<OfflinePlayer>) expr[0];
-        deaths = (Expression<Number>) expr[1];
+        deaths = (Expression<Number>) expr[0];
+        player = (Expression<OfflinePlayer>) expr[1];
         return true;
     }
     @Override
@@ -28,13 +28,16 @@ public class PlayerRemoveDeaths extends Effect{
     protected void execute(Event e) {
     	try {
     		OfflinePlayer p = player.getSingle(e);
-	        int po = deaths.getSingle(e).intValue();
+	        int d = deaths.getSingle(e).intValue();
 	        User u = User.get(p);
+	        if(u.getRank().getDeaths()-d < 1) {
+	        	d = 0;
+	        }
 	        try {
-	        	u.getRank().setDeaths(u.getRank().getDeaths()-po);
+	        	u.getRank().setDeaths(u.getRank().getDeaths()-d);
 	        } catch(Exception ex) {
 	        	return;
 	        }
-    	} catch(Exception ex) { return;}
+    	} catch(Exception ex) { return;};
     }
 }

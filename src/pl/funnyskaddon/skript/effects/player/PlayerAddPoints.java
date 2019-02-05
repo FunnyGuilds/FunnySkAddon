@@ -16,8 +16,8 @@ public class PlayerAddPoints extends Effect{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
-        player = (Expression<OfflinePlayer>) expr[0];
-        points = (Expression<Number>) expr[1];
+        points = (Expression<Number>) expr[0];
+        player = (Expression<OfflinePlayer>) expr[1];
         return true;
     }
     @Override
@@ -35,6 +35,6 @@ public class PlayerAddPoints extends Effect{
 	        } catch(Exception ex) {
 	        	return;
 	        }
-    	} catch(Exception ex) { return;}
+    	} catch(Exception ex) { return;};
     }
 }

@@ -57,7 +57,6 @@ public class GuildMembers extends SimpleExpression<OfflinePlayer>{
 	            } else {
 	            	deputies.add(uu.getPlayer());
 	            }
-	    		deputies.add(uu.getPlayer());
 	    	}
 	        try {
 	        	return deputies.toArray(new OfflinePlayer[deputies.size()]);

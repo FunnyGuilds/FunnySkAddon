@@ -9,9 +9,8 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import pl.funnyskaddon.core.utils.BasicUtil;
-import pl.funnyskaddon.core.utils.TopUtil;
 
-public class GuildPosition extends SimpleExpression<Integer>{
+public class GuildEnlargeLevel extends SimpleExpression<Integer>{
     
     private Expression<Object> guild;
     
@@ -41,9 +40,8 @@ public class GuildPosition extends SimpleExpression<Integer>{
     protected Integer[] get(Event e) {
 	    try {
 		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
-		   // g.getRegion().get
 	        try {
-	        	return new Integer[]{TopUtil.getGuildPosition(g)+1};
+	        	return new Integer[]{g.getRegion().getEnlarge()};
 	        } catch(Exception ex) {
 	        	return null;
 	        }

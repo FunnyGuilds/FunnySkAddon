@@ -16,8 +16,8 @@ public class PlayerAddKills extends Effect{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
-        player = (Expression<OfflinePlayer>) expr[0];
-        kills = (Expression<Number>) expr[1];
+        kills = (Expression<Number>) expr[0];
+        player = (Expression<OfflinePlayer>) expr[1];
         return true;
     }
     @Override
@@ -31,12 +31,11 @@ public class PlayerAddKills extends Effect{
 	        int k = kills.getSingle(e).intValue();
 	        User u = User.get(p);
 	        try {
-	        	for(int i = 0; i < k; i++){
-	           	 	u.getRank().addKill();
-	        	}
+	        	u.getRank().setKills(u.getRank().getKills()+k);
 	        } catch(Exception ex) {
 	        	return;
 	        }
-    	} catch(Exception ex) { return;}
+    	} catch(Exception ex) { return;};
     }
 }
+

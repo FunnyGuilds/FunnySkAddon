@@ -16,8 +16,8 @@ public class PlayerRemoveKills extends Effect{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
-        player = (Expression<OfflinePlayer>) expr[0];
-        kills = (Expression<Number>) expr[1];
+        kills = (Expression<Number>) expr[0];
+        player = (Expression<OfflinePlayer>) expr[1];
         return true;
     }
     @Override
@@ -28,13 +28,16 @@ public class PlayerRemoveKills extends Effect{
     protected void execute(Event e) {
     	try {
     		OfflinePlayer p = player.getSingle(e);
-	        int po = kills.getSingle(e).intValue();
+	        int k = kills.getSingle(e).intValue();
 	        User u = User.get(p);
+	        if(u.getRank().getKills()-k <1) {
+	        	k = 0;
+	        }
 	        try {
-	        	u.getRank().setKills(u.getRank().getKills()-po);
+	        	u.getRank().setKills(u.getRank().getKills()-k);
 	        } catch(Exception ex) {
 	        	return;
 	        }
-    	} catch(Exception ex) { return;}
+    	} catch(Exception ex) { return;};
     }
 }
