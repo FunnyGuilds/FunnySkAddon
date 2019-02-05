@@ -51,6 +51,17 @@
     * Dodano automatyczne powiadomienie o tym że wyszła nowa wersja pluginu (do wyłączenia w configu pod update.check) co 3 godziny nie tylko przy włączeniu serwera
   * 1.8.2:
     * Dodano zmienną last top update (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#last-top-update)
+  * 1.8.3:
+    * Dodano zmienną guild remaining date (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#guild-remaining-date)
+    * Dodano zmienną guild area (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#guild-area)
+    * Dodano zmienną guild enlarge level (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#guild-enlarge-level)
+    * Dodano zmienną guild born (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#guild-born)
+    * Dodano zmienną required to enlarge guild (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#required-items-to-enlarge-guild)
+    * Dodano zmienną required items to extension validity(więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#required-items-to-extension-validity)
+    * Dodano zmienną required items to teleport home (więcej informacji https://mlgroup.pl/funnyskaddon/doc/Expressions.html#required-items-to-teleport-home)
+    * Naprawiono błąd który powodował że effecty add/remove które dodawały lub odejmowały punkty/smierci/zabojstwa nie dzialaly
+    * Guild remaining time zwraca już poprawny czas
+    * Guild members nie zwraca już 2x tego samego gracza
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
