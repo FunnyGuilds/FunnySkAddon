@@ -66,6 +66,7 @@
     * Dodano eventy:
       * [On] enter guild region https://mlgroup.pl/funnyskaddon/doc/Events.html#on-enter-guild-region
       * [On] leave guild region https://mlgroup.pl/funnyskaddon/doc/Events.html#on-leave-guild-region
+    * Od teraz do topki są zaliczane gildie z członków ustawioną w konfiguracji funnyguilds jako guild-min-members
     * Dodano nowe błędy do naprawienia później kappa
 ### Wymagania:
   * 1.0 - 1.7.1:
