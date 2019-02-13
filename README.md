@@ -62,6 +62,11 @@
     * Naprawiono błąd który powodował że effecty add/remove które dodawały lub odejmowały punkty/smierci/zabojstwa nie dzialaly
     * Guild remaining time zwraca już poprawny czas
     * Guild members nie zwraca już 2x tego samego gracza
+  * 1.8.4:
+    * Dodano eventy:
+      * [On] enter guild region https://mlgroup.pl/funnyskaddon/doc/Events.html#on-enter-guild-region
+      * [On] leave guild region https://mlgroup.pl/funnyskaddon/doc/Events.html#on-leave-guild-region
+    * Dodano nowe błędy do naprawienia później kappa
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
@@ -73,3 +78,8 @@
     * Spigot 1.8.8+
     * Skript
     * FunnyGuilds 4.4.0 Tirbute lub nowszy
+  * 1.8.4:
+    * Java 8
+    * Spigot 1.8.8+
+    * Skript
+    * FunnyGuilds https://ci.insertt.pl/job/FunnyGuilds/
