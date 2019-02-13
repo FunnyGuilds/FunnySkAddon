@@ -43,18 +43,19 @@ public class ExpressionLoaderGuild {
         Skript.registerExpression(GuildAllies.class, Guild.class, ExpressionType.PROPERTY, "guilds allied with guild %object%");
         Skript.registerExpression(GuildList.class, Guild.class, ExpressionType.PROPERTY, "all guilds");
         Skript.registerExpression(GuildAtLocation.class, Guild.class, ExpressionType.PROPERTY, "guild at %object%");
+        Skript.registerExpression(GuildBorn.class, Date.class, ExpressionType.PROPERTY, "%object% guild create time");
+        Skript.registerExpression(GuildEnlargeLevel.class, Integer.class, ExpressionType.PROPERTY, "guild %object% enlarge level");
+        Skript.registerExpression(GuildArea.class, Integer.class, ExpressionType.PROPERTY, "guild %object% area");
         Skript.registerExpression(ItemsToCreateGuild.class, ItemStack.class, ExpressionType.PROPERTY, "required items to create guild");
         Skript.registerExpression(ItemsToCreateGuildVip.class, ItemStack.class, ExpressionType.PROPERTY, "required items to create guild for vip");
         Skript.registerExpression(ExpToCreateGuild.class, Integer.class, ExpressionType.PROPERTY, "required exp to create guild guild");
         Skript.registerExpression(ExpToCreateGuildVip.class, Integer.class, ExpressionType.PROPERTY, "required exp to create guild for vip");
         Skript.registerExpression(MoneyToCreateGuild.class, Double.class, ExpressionType.PROPERTY, "required money to create guild guild");
         Skript.registerExpression(MoneyToCreateGuildVip.class, Double.class, ExpressionType.PROPERTY, "required money to create guild for vip");
-        Skript.registerExpression(GuildBorn.class, Date.class, ExpressionType.PROPERTY, "%object% guild create time");
-        Skript.registerExpression(ItemsToEnlargeGuild.class, ItemStack.class, ExpressionType.PROPERTY, "items to enlarge guild");
-        Skript.registerExpression(GuildEnlargeLevel.class, Integer.class, ExpressionType.PROPERTY, "guild %object% enlarge level");
-        Skript.registerExpression(GuildArea.class, Integer.class, ExpressionType.PROPERTY, "guild %object% area");
         Skript.registerExpression(ItemsToExtensionValidity.class, ItemStack.class, ExpressionType.PROPERTY, "required items to extension validity");
         Skript.registerExpression(ItemsToTeleportHome.class, ItemStack.class, ExpressionType.PROPERTY, "required items to teleport home");
+        Skript.registerExpression(ItemsToEnlargeGuild.class, ItemStack.class, ExpressionType.PROPERTY, "required items to enlarge guild");
+       
 	}
 	
 }

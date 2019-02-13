@@ -11,8 +11,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import bstats.bukkit.Metrics;
-import net.dzikoysk.funnyguilds.data.Settings;
-import net.dzikoysk.funnyguilds.data.configs.PluginConfig;
+import net.dzikoysk.funnyguilds.FunnyGuilds;
+import net.dzikoysk.funnyguilds.data.configs.PluginConfiguration;
 import pl.funnyskaddon.core.fix.GuildCreateListener;
 import pl.funnyskaddon.core.fix.PointsChangeListener;
 import pl.funnyskaddon.core.loaders.SkriptLoaders;
@@ -22,7 +22,7 @@ import pl.funnyskaddon.core.schedulers.UpdateCheckScheduler;
 public class FunnySkAddon extends JavaPlugin implements Listener{
 	
 	private static FunnySkAddon inst;
-	public static PluginConfig pc;
+	public static PluginConfiguration pc;
 	
 	@Override
 	public void onEnable() {
@@ -46,9 +46,9 @@ public class FunnySkAddon extends JavaPlugin implements Listener{
             Bukkit.getServer().getPluginManager().disablePlugin(this);
             return;
         }
-        pc = Settings.getConfig();
         inst = this;
 		new Metrics(this);
+		pc = FunnyGuilds.getInstance().getPluginConfiguration();
 		Bukkit.getServer().getPluginManager().registerEvents(new PointsChangeListener(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new GuildCreateListener(), this);
 		SkriptLoaders.loadExpressions();

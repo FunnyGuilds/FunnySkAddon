@@ -10,6 +10,7 @@ import java.util.TreeMap;
 import com.google.common.collect.Lists;
 
 import net.dzikoysk.funnyguilds.basic.guild.Guild;
+import pl.funnyskaddon.core.FunnySkAddon;
 
 public class GuildSort {
     
@@ -18,7 +19,9 @@ public class GuildSort {
         ValueComparatorGuild bvc = new ValueComparatorGuild(map);
         TreeMap<Guild, Integer> sorted_map = new TreeMap<Guild, Integer>(bvc);
         for(Guild g : guilds) {
-            map.put(g, g.getRank().getPoints());
+        	if(g.getMembers().size() >= FunnySkAddon.pc.minMembersToInclude) {
+        		map.put(g, g.getRank().getPoints());
+        	}
         }
         sorted_map.putAll(map);
         return Lists.newArrayList(sorted_map.keySet());
