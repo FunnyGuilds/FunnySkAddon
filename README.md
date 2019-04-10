@@ -68,7 +68,7 @@
       * [On] leave guild region https://mlgroup.pl/funnyskaddon/doc/Events.html#on-leave-guild-region
     * Od teraz do topki są zaliczane gildie z minimalną liczbą członków ustawioną w konfiguracji funnyguilds jako guild-min-members
     * Dodano nowe błędy do naprawienia później kappa
-  *
+  * 1.8.8
     * Plugin oficjalnie wspiera funnyguilds 4.4.2
     * Plugin będzie teraz budowany w gradle co minimalnie ułatwi pracę (mało ważne dla normalnego użytkownika)
 ### Wymagania:
