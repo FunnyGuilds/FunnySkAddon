@@ -68,6 +68,9 @@
       * [On] leave guild region https://mlgroup.pl/funnyskaddon/doc/Events.html#on-leave-guild-region
     * Od teraz do topki są zaliczane gildie z minimalną liczbą członków ustawioną w konfiguracji funnyguilds jako guild-min-members
     * Dodano nowe błędy do naprawienia później kappa
+  *
+    * Plugin oficjalnie wspiera funnyguilds 4.4.2
+    * Plugin będzie teraz budowany w gradle co minimalnie ułatwi pracę (mało ważne dla normalnego użytkownika)
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
@@ -83,4 +86,9 @@
     * Java 8
     * Spigot 1.8.8+
     * Skript
-    * FunnyGuilds https://ci.insertt.pl/job/FunnyGuilds/
+    * FunnyGuilds https://ci.insertt.pl/job/FunnyGuilds
+  * 1.8.8
+    * Java 8
+    * Spigot 1.8.8
+    * Skript
+    * Funnyguilds 4.4.2 lub nowszy
