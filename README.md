@@ -2,7 +2,7 @@
 
 ### O Pluginie: Jest to plugin dodający do minecrafta wsparcie pluginu funnyguilds dla skript
 ### Twórcy: McKoxu, LloydPL
-### Dokumentacja: http://mlgroup.pl/funnyskaddon/home
+### Dokumentacja: https://mlgroup.pl/funnyskaddon/home
 
 
 ### Changelog:
