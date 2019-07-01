@@ -74,21 +74,21 @@
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
-    * Spigot 1.8.8+
+    * Spigot 1.8 lub nowszy
     * Skript
     * FunnyGuilds: https://ci.kacperduras.pl/job/FunnyGuilds/100/ lub nowszy
   * 1.8-1.8.3:
     * Java 8
-    * Spigot 1.8.8+
+    * Spigot 1.8 lub nowszy
     * Skript
     * FunnyGuilds 4.4.0 Tirbute lub nowszy
   * 1.8.4:
     * Java 8
-    * Spigot 1.8.8+
+    * Spigot 1.8 lub nowszy
     * Skript
     * FunnyGuilds https://ci.insertt.pl/job/FunnyGuilds
   * 1.8.8
     * Java 8
-    * Spigot 1.8.8
+    * Spigot 1.8 lub nowszy
     * Skript
     * Funnyguilds 4.4.2 lub nowszy
