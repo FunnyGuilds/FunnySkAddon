@@ -1,5 +1,5 @@
 group 'pl.funnyskaddon'
-version '1.8.8'
+version '1.8.9'
 
 apply plugin: 'java'
 
@@ -10,12 +10,12 @@ repositories {
     mavenLocal()
     maven { url "https://hub.spigotmc.org/nexus/content/repositories/snapshots/" }
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-    maven { url "https://repo.insertt.pl/releases" }
+    maven { url "https://repo.insertt.pl/releases/" }
     maven { url "https://repo.panda-lang.org/" }
 }
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
-    compileOnly 'net.dzikoysk:funnyguilds:4.4.2'
+    compileOnly 'net.dzikoysk:funnyguilds:4.5.1'
     compile fileTree(include: ['*.jar'], dir: 'libs')
 }

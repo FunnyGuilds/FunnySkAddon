@@ -4,6 +4,7 @@ import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
 import net.dzikoysk.funnyguilds.basic.guild.Region;
 import net.dzikoysk.funnyguilds.basic.user.User;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -76,7 +77,7 @@ public class BasicUtil {
     		return ((Player) locObj).getLocation();
     	} else if(locObj instanceof Entity) {
     		return ((Entity) locObj).getLocation();
-    	}else if(locObj instanceof LivingEntity) {
+    	} else if(locObj instanceof LivingEntity) {
     		return ((LivingEntity) locObj).getLocation();
     	}
     	return null;
@@ -87,5 +88,9 @@ public class BasicUtil {
 			return !subject;
 		} 
 		return subject;
+	}
+
+	public static String color(String string){
+		return ChatColor.translateAlternateColorCodes('&', string);
 	}
 }

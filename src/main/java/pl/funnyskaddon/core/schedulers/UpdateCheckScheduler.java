@@ -12,9 +12,9 @@ public abstract class UpdateCheckScheduler {
 			public void run() {
 				if(FunnySkAddon.getInst().getConfig().getBoolean("update.check")) {
 		            if(!d.getVersion().equalsIgnoreCase(FunnySkAddon.getLatestVersion("https://raw.githubusercontent.com/MLGroupMC/FunnySkAddon/master/VERSION"))) {
-		                Bukkit.getLogger().info("[FSA] Wersja pluginu: "+d.getVersion());
-		                Bukkit.getLogger().info("[FSA] Najnowsza wersja pluginu: "+FunnySkAddon.getLatestVersion("https://raw.githubusercontent.com/MLGroupMC/FunnySkAddon/master/VERSION"));
-		                Bukkit.getLogger().info("[FSA] Wszystkie wersje: https://github.com/MLGroupMC/FunnySkAddon/releases/");
+		                Bukkit.getLogger().warning("[FSA] Wersja pluginu: "+d.getVersion());
+		                Bukkit.getLogger().warning("[FSA] Najnowsza wersja pluginu: "+FunnySkAddon.getLatestVersion("https://raw.githubusercontent.com/MLGroupMC/FunnySkAddon/master/VERSION"));
+		                Bukkit.getLogger().warning("[FSA] Wszystkie wersje: https://github.com/MLGroupMC/FunnySkAddon/releases/");
 		            }
 		        }
 			}
