@@ -1,6 +1,6 @@
 # FunnySkAddon
 
-### O Pluginie: Jest to plugin dodający do minecrafta wsparcie pluginu funnyguilds dla skript
+### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
 ### Twórcy: McKoxu, LloydPL
 ### Dokumentacja: https://mlgroup.pl/funnyskaddon/home
 
@@ -71,6 +71,9 @@
   * 1.8.8
     * Plugin oficjalnie wspiera funnyguilds 4.4.2
     * Plugin będzie teraz budowany w gradle co minimalnie ułatwi pracę (mało ważne dla normalnego użytkownika)
+  * 1.8.9
+    * Inne pluginy od teraz wykrywają FunnySkAddon jako faktyczny dodatek do pluginu skript
+    * Dodano komendę diagnostyczną /funnyskaddon (alias /fsa) z uprawnieniem funnyskaddon.cmd
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
@@ -92,3 +95,8 @@
     * Spigot 1.8 lub nowszy
     * Skript
     * Funnyguilds 4.4.2 lub nowszy
+ * 1.8.9
+    * Java 8
+    * Spigot 1.8.8 - 1.14.4
+    * Skript
+    * FunnyGuilds 4.4.2 lub nowszy   
