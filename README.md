@@ -1,7 +1,7 @@
 # FunnySkAddon
 
 ### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
-### Twórcy: McKoxu, LloydPL
+### Twórcy: Peridot, LloydPL
 ### Dokumentacja: https://mlgroup.pl/funnyskaddon/home
 
 
