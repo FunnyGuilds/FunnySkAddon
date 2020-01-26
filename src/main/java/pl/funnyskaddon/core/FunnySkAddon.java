@@ -49,7 +49,8 @@ public class FunnySkAddon extends JavaPlugin implements Listener {
 
         instance = this;
 
-		new Metrics(this);
+        int pluginId = 6363; // <-- Replace with the id of your plugin!
+        new Metrics(this, pluginId);
 
 		pc = FunnyGuilds.getInstance().getPluginConfiguration();
 
