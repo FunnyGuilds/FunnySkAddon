@@ -74,6 +74,8 @@
   * 1.8.9
     * Inne pluginy od teraz wykrywają FunnySkAddon jako faktyczny dodatek do pluginu skript
     * Dodano komendę diagnostyczną /funnyskaddon (alias /fsa) z uprawnieniem funnyskaddon.cmd
+  * 1.9
+    * Aktualizacja bStats ze względu na zmiany w klasie Metrics i rozpoczęcie prowadzenie przez bStats systemu id pluginów
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
@@ -95,7 +97,7 @@
     * Spigot 1.8 lub nowszy
     * Skript
     * Funnyguilds 4.4.2 lub nowszy
- * 1.8.9
+  * 1.8.9-1.9
     * Java 8
     * Spigot 1.8.8 - 1.14.4
     * Skript
