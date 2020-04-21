@@ -1,9 +1,9 @@
 # FunnySkAddon
 
-### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
-### Twórcy: Peridot, LloydPL
-### Dokumentacja: https://mlgroup.pl/funnyskaddon/home
-
+#### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
+#### Twórcy: Peridot, LloydPL
+#### Dokumentacja: https://mlgroup.pl/funnyskaddon/home
+#### bStats: https://bstats.org/plugin/bukkit/FunnySkAddon-Extended/6363
 
 ### Changelog:
   * 1.0:
