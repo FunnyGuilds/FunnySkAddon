@@ -1,0 +1,9 @@
+update.check: true
+#Update'y wychodza rzadko ale zawieraja duzo wiec radzimy zostawic to wlaczone
+#Jesli mimo najnowszej wersji wiadomosc jest dalej wysylana mozna wylaczyc
+
+top.autoupdate.execute: true
+#Automatyczna aktualizacja topek graczy i gildii
+
+top.autoupdate.time: 600
+#Czas w sekundach po jakim topka siê restartuje
