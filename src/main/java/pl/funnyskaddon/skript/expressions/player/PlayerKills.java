@@ -9,10 +9,10 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
-public class PlayerKills extends SimpleExpression<Integer>{
-    
+public class PlayerKills extends SimpleExpression<Integer> {
+
     private Expression<OfflinePlayer> player;
-    
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
@@ -22,7 +22,7 @@ public class PlayerKills extends SimpleExpression<Integer>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
@@ -35,15 +35,17 @@ public class PlayerKills extends SimpleExpression<Integer>{
         return null;
     }
 
-	    @Override
+    @Override
     protected Integer[] get(Event e) {
-	    try {
-	        User u = User.get(player.getSingle(e));
-	        try {
-	        	return new Integer[]{u.getRank().getKills()};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-	    } catch(Exception ex) {return null;}
+        try {
+            User u = User.get(player.getSingle(e));
+            try {
+                return new Integer[]{u.getRank().getKills()};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

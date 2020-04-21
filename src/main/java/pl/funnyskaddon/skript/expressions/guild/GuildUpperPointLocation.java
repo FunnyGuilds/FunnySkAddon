@@ -9,10 +9,10 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
-public class GuildUpperPointLocation extends SimpleExpression<Location>{
-    
+public class GuildUpperPointLocation extends SimpleExpression<Location> {
+
     private Expression<Object> guild;
-    
+
     @Override
     public Class<? extends Location> getReturnType() {
         return Location.class;
@@ -22,11 +22,11 @@ public class GuildUpperPointLocation extends SimpleExpression<Location>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	guild = (Expression<Object>) expr[0];
+        guild = (Expression<Object>) expr[0];
         return true;
     }
 
@@ -37,8 +37,10 @@ public class GuildUpperPointLocation extends SimpleExpression<Location>{
 
     @Override
     protected Location[] get(Event e) {
-	    try {
-		    return new Location[] {BasicUtil.getUpperPoint(BasicUtil.getGuild(guild.getSingle(e)))};
-	    } catch(Exception ex) { return null;} 
+        try {
+            return new Location[]{BasicUtil.getUpperPoint(BasicUtil.getGuild(guild.getSingle(e)))};
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

@@ -10,10 +10,10 @@ import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildAddLive extends Effect {
-	
+
     private Expression<Object> guild;
     private Expression<Number> lives;
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
@@ -21,24 +21,26 @@ public class GuildAddLive extends Effect {
         lives = (Expression<Number>) expr[0];
         return true;
     }
-    
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-    
+
     @Override
     protected void execute(Event e) {
-    	try {
-    		Guild g = BasicUtil.getGuild(guild.getSingle(e));
-	        int l = lives.getSingle(e).intValue();
-	        try {
-	        	for(int i = 0; i < l; i++){
-	        		g.addLive();
-	        	}
-	        } catch(Exception ex) {
-	        	return;
-	        }
-    	} catch(Exception ex) { return;}
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            int l = lives.getSingle(e).intValue();
+            try {
+                for (int i = 0; i < l; i++) {
+                    g.addLive();
+                }
+            } catch (Exception ex) {
+                return;
+            }
+        } catch (Exception ex) {
+            return;
+        }
     }
 }

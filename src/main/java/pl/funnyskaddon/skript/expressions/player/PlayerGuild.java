@@ -10,10 +10,10 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
-public class PlayerGuild extends SimpleExpression<Guild>{
-    
+public class PlayerGuild extends SimpleExpression<Guild> {
+
     private Expression<OfflinePlayer> player;
-    
+
     @Override
     public Class<? extends Guild> getReturnType() {
         return Guild.class;
@@ -23,7 +23,7 @@ public class PlayerGuild extends SimpleExpression<Guild>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
@@ -38,13 +38,15 @@ public class PlayerGuild extends SimpleExpression<Guild>{
 
     @Override
     protected Guild[] get(Event e) {
-	    try {
-	        User u = User.get(player.getSingle(e));
-	        try {
-	        	return new Guild[]{u.getGuild()};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-	    } catch(Exception ex) {return null;}
+        try {
+            User u = User.get(player.getSingle(e));
+            try {
+                return new Guild[]{u.getGuild()};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

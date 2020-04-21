@@ -8,8 +8,8 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.FunnySkAddon;
 
-public class MoneyToCreateGuildVip extends SimpleExpression<Double>{
-    
+public class MoneyToCreateGuildVip extends SimpleExpression<Double> {
+
     @Override
     public Class<? extends Double> getReturnType() {
         return Double.class;
@@ -19,9 +19,9 @@ public class MoneyToCreateGuildVip extends SimpleExpression<Double>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @Override
-    public boolean init(Expression<?>[] expr,int i, Kleenean kl, SkriptParser.ParseResult pr) {
+    public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return true;
     }
 
@@ -30,15 +30,17 @@ public class MoneyToCreateGuildVip extends SimpleExpression<Double>{
         return null;
     }
 
-	@Override
+    @Override
     protected Double[] get(Event e) {
-		try {
-			double money = FunnySkAddon.pc.requiredMoneyVip;
-	    	try {
-	    		return new Double[]{money};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-		} catch(Exception ex) { return null;}
+        try {
+            double money = FunnySkAddon.getFunnyGuildsConfiguration().requiredMoneyVip;
+            try {
+                return new Double[]{money};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

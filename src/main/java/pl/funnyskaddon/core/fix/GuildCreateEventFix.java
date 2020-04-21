@@ -5,26 +5,25 @@ import net.dzikoysk.funnyguilds.basic.guild.GuildUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
- 
-public class GuildCreateEventFix extends Event{
-	
-	private static final HandlerList handlers = new HandlerList();
-	private Player p;
-	private Guild g;
+
+public class GuildCreateEventFix extends Event {
+
+    private static final HandlerList handlers = new HandlerList();
+    private Player player;
+    private Guild guild;
 
     public GuildCreateEventFix(Player p, String tag) {
-        this.p = p;
-        this.g = GuildUtils.getByTag(tag);
+        this.player = p;
+        this.guild = GuildUtils.getByTag(tag);
     }
 
     public Player getPlayer() {
-        return p;
+        return player;
     }
-    
+
     public Guild getGuild() {
-        return g;
+        return guild;
     }
-    
 
     public HandlerList getHandlers() {
         return handlers;

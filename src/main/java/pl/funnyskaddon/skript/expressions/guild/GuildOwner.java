@@ -12,10 +12,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
-public class GuildOwner extends SimpleExpression<OfflinePlayer>{
-    
+public class GuildOwner extends SimpleExpression<OfflinePlayer> {
+
     private Expression<Object> guild;
-    
+
     @Override
     public Class<? extends OfflinePlayer> getReturnType() {
         return OfflinePlayer.class;
@@ -25,11 +25,11 @@ public class GuildOwner extends SimpleExpression<OfflinePlayer>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	guild = (Expression<Object>) expr[0];
+        guild = (Expression<Object>) expr[0];
         return true;
     }
 
@@ -37,18 +37,18 @@ public class GuildOwner extends SimpleExpression<OfflinePlayer>{
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-    
-	@SuppressWarnings("deprecation")
-	@Override
+
+    @SuppressWarnings("deprecation")
+    @Override
     protected OfflinePlayer[] get(Event e) {
-	    try {
-		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
-			if(g.getOwner().getPlayer()==null) {
-				return new OfflinePlayer[] {Bukkit.getServer().getOfflinePlayer(g.getOwner().getName())};
-			}
-	        return new Player[]{g.getOwner().getPlayer()};
-	    } catch(Exception ex) {
-	        return null;
-	    }
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            if (g.getOwner().getPlayer() == null) {
+                return new OfflinePlayer[]{Bukkit.getServer().getOfflinePlayer(g.getOwner().getName())};
+            }
+            return new Player[]{g.getOwner().getPlayer()};
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

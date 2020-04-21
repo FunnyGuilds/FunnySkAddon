@@ -1,5 +1,5 @@
 group 'pl.funnyskaddon'
-version '1.9'
+version '1.9.3'
 
 apply plugin: 'java'
 

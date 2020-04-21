@@ -9,24 +9,24 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
-public class GuildTag extends SimpleExpression<String>{
-    
+public class GuildTag extends SimpleExpression<String> {
+
     private Expression<Object> guild;
-    
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	guild = (Expression<Object>) expr[0];
+        guild = (Expression<Object>) expr[0];
         return true;
     }
 
@@ -37,13 +37,15 @@ public class GuildTag extends SimpleExpression<String>{
 
     @Override
     protected String[] get(Event e) {
-	    try {
-		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
-	        try {
-	        	return new String[]{g.getTag()};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-	    } catch(Exception ex) { return null;}
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            try {
+                return new String[]{g.getTag()};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

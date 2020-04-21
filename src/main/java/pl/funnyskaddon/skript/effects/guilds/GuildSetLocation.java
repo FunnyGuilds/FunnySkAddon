@@ -10,11 +10,11 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
-public class GuildSetLocation extends Effect{
-	
+public class GuildSetLocation extends Effect {
+
     private Expression<Object> guild;
     private Expression<Location> loc;
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
@@ -22,21 +22,23 @@ public class GuildSetLocation extends Effect{
         loc = (Expression<Location>) expr[1];
         return true;
     }
-    
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-    
+
     @Override
     protected void execute(Event e) {
-    	try {
-    		Guild g = BasicUtil.getGuild(guild.getSingle(e));
-	        try {
-	        	g.setEnderCrystal(loc.getSingle(e));
-	        } catch(Exception ex) {
-	        	return;
-	        }
-    	} catch(Exception ex) { return;}
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            try {
+                g.setEnderCrystal(loc.getSingle(e));
+            } catch (Exception ex) {
+                return;
+            }
+        } catch (Exception ex) {
+            return;
+        }
     }
 }

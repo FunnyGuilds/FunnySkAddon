@@ -16,53 +16,55 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class GuildDeputies extends SimpleExpression<OfflinePlayer>{
-    
-	private Expression<Object> guild;
-    
+public class GuildDeputies extends SimpleExpression<OfflinePlayer> {
+
+    private Expression<Object> guild;
+
     @Override
     public Class<? extends OfflinePlayer> getReturnType() {
         return OfflinePlayer.class;
     }
-    
-	@Override
+
+    @Override
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         guild = (Expression<Object>) expr[0];
         return true;
     }
-    
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@SuppressWarnings("deprecation")
-	@Override
+    @SuppressWarnings("deprecation")
+    @Override
     protected OfflinePlayer[] get(Event e) {
-		try {
-			Guild g = BasicUtil.getGuild(guild.getSingle(e));
-	        Set<User> deputiesu;
-	        List<OfflinePlayer> deputies = new ArrayList<>();
-	        deputiesu = g.getDeputies();
-	    	for(User uu : deputiesu){
-	    		if(uu.getPlayer() == null) {
-	    			deputies.add(Bukkit.getServer().getOfflinePlayer(uu.getName()));
-	            } else {
-	            	deputies.add(uu.getPlayer());
-	            }
-	    		deputies.add(uu.getPlayer());
-	    	}
-	        try {
-	        	return deputies.toArray(new OfflinePlayer[deputies.size()]);
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-		} catch(Exception ex) { return null;} 
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            Set<User> deputiesu;
+            List<OfflinePlayer> deputies = new ArrayList<>();
+            deputiesu = g.getDeputies();
+            for (User uu : deputiesu) {
+                if (uu.getPlayer() == null) {
+                    deputies.add(Bukkit.getServer().getOfflinePlayer(uu.getName()));
+                } else {
+                    deputies.add(uu.getPlayer());
+                }
+                deputies.add(uu.getPlayer());
+            }
+            try {
+                return deputies.toArray(new OfflinePlayer[deputies.size()]);
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

@@ -8,8 +8,8 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.FunnySkAddon;
 
-public class ExpToCreateGuild extends SimpleExpression<Integer>{
-    
+public class ExpToCreateGuild extends SimpleExpression<Integer> {
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
@@ -19,9 +19,9 @@ public class ExpToCreateGuild extends SimpleExpression<Integer>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @Override
-    public boolean init(Expression<?>[] expr,int i, Kleenean kl, SkriptParser.ParseResult pr) {
+    public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return true;
     }
 
@@ -30,15 +30,17 @@ public class ExpToCreateGuild extends SimpleExpression<Integer>{
         return null;
     }
 
-	@Override
+    @Override
     protected Integer[] get(Event e) {
-		try {
-			int xp = FunnySkAddon.pc.requiredExperience;
-	    	try {
-	    		return new Integer[]{xp};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-		} catch(Exception ex) { return null;}
+        try {
+            int xp = FunnySkAddon.getFunnyGuildsConfiguration().requiredExperience;
+            try {
+                return new Integer[]{xp};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

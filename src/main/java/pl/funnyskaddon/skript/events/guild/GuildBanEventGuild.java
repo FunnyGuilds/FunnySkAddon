@@ -10,30 +10,30 @@ import net.dzikoysk.funnyguilds.event.guild.GuildBanEvent;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
-public class GuildBanEventGuild extends SimpleExpression<Guild>{ 
+public class GuildBanEventGuild extends SimpleExpression<Guild> {
 
     @Override
     public Class<? extends Guild> getReturnType() {
         return Guild.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
-	@Override
+
+    @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return ScriptLoader.isCurrentEvent(GuildBanEvent.class);
     }
-	
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@Override
+    @Override
     protected Guild[] get(Event e) {
-		return new Guild[] {((GuildBanEvent) e).getGuild()};
+        return new Guild[]{((GuildBanEvent) e).getGuild()};
     }
 }

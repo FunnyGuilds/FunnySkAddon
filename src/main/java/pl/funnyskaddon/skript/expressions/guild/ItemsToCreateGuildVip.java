@@ -11,8 +11,8 @@ import pl.funnyskaddon.core.FunnySkAddon;
 
 import java.util.List;
 
-public class ItemsToCreateGuildVip extends SimpleExpression<ItemStack>{
-    
+public class ItemsToCreateGuildVip extends SimpleExpression<ItemStack> {
+
     @Override
     public Class<? extends ItemStack> getReturnType() {
         return ItemStack.class;
@@ -22,9 +22,9 @@ public class ItemsToCreateGuildVip extends SimpleExpression<ItemStack>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @Override
-    public boolean init(Expression<?>[] expr,int i, Kleenean kl, SkriptParser.ParseResult pr) {
+    public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return true;
     }
 
@@ -33,15 +33,17 @@ public class ItemsToCreateGuildVip extends SimpleExpression<ItemStack>{
         return null;
     }
 
-	@Override
+    @Override
     protected ItemStack[] get(Event e) {
-		try {
-	        List<ItemStack> items = FunnySkAddon.pc.createItemsVip;
-	    	try {
-	    		return items.toArray(new ItemStack[items.size()]);
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-		} catch(Exception ex) { return null;}
+        try {
+            List<ItemStack> items = FunnySkAddon.getFunnyGuildsConfiguration().createItemsVip;
+            try {
+                return items.toArray(new ItemStack[items.size()]);
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

@@ -10,30 +10,30 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.fix.GuildCreateEventFix;
 
-public class GuildCreatePlayer extends SimpleExpression<Player>{ 
+public class GuildCreatePlayer extends SimpleExpression<Player> {
 
     @Override
     public Class<? extends Player> getReturnType() {
         return Player.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
-	@Override
+
+    @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return ScriptLoader.isCurrentEvent(GuildCreateEventFix.class);
     }
-	
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@Override
+    @Override
     protected Player[] get(Event e) {
-		return new Player[] {((GuildCreateEventFix) e).getPlayer()};
+        return new Player[]{((GuildCreateEventFix) e).getPlayer()};
     }
 }

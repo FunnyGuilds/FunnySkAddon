@@ -10,30 +10,30 @@ import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberDeputyEvent;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
-public class GuildMemberDeputyGuild extends SimpleExpression<Guild>{ 
+public class GuildMemberDeputyGuild extends SimpleExpression<Guild> {
 
     @Override
     public Class<? extends Guild> getReturnType() {
         return Guild.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
-	@Override
+
+    @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return ScriptLoader.isCurrentEvent(GuildMemberDeputyEvent.class);
     }
-	
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@Override
+    @Override
     protected Guild[] get(Event e) {
-		return new Guild[] {((GuildMemberDeputyEvent) e).getGuild()};
+        return new Guild[]{((GuildMemberDeputyEvent) e).getGuild()};
     }
 }

@@ -10,30 +10,30 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 
-public class GuildExtendValidityPlayer extends SimpleExpression<Player>{ 
+public class GuildExtendValidityPlayer extends SimpleExpression<Player> {
 
     @Override
     public Class<? extends Player> getReturnType() {
         return Player.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
-	@Override
+
+    @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return ScriptLoader.isCurrentEvent(GuildExtendValidityEvent.class);
     }
-	
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@Override
+    @Override
     protected Player[] get(Event e) {
-		return new Player[] {((GuildExtendValidityEvent) e).getDoer().getPlayer()};
+        return new Player[]{((GuildExtendValidityEvent) e).getDoer().getPlayer()};
     }
 }

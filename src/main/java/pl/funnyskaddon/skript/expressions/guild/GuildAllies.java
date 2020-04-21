@@ -9,38 +9,40 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
-public class GuildAllies extends SimpleExpression<Guild>{
-    
+public class GuildAllies extends SimpleExpression<Guild> {
+
     private Expression<Object> guild;
-    
+
     @Override
     public Class<? extends Guild> getReturnType() {
         return Guild.class;
     }
-    
-	@Override
+
+    @Override
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	guild = (Expression<Object>) expr[0];
+        guild = (Expression<Object>) expr[0];
         return true;
     }
-    
-	@Override
+
+    @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-	
-	@Override
+
+    @Override
     protected Guild[] get(Event e) {
-		try {
-			Guild g = BasicUtil.getGuild(guild.getSingle(e));
-		    return g.getAllies().toArray(new Guild[g.getAllies().size()]);
-		} catch(Exception ex) {return null;}
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            return g.getAllies().toArray(new Guild[g.getAllies().size()]);
+        } catch (Exception ex) {
+            return null;
+        }
     }
-	
+
 }

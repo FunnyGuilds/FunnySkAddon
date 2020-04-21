@@ -8,12 +8,11 @@ import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
-import pl.funnyskaddon.core.utils.TopUtil;
 
-public class GuildPosition extends SimpleExpression<Integer>{
-    
+public class GuildPosition extends SimpleExpression<Integer> {
+
     private Expression<Object> guild;
-    
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
@@ -23,11 +22,11 @@ public class GuildPosition extends SimpleExpression<Integer>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	guild = (Expression<Object>) expr[0];
+        guild = (Expression<Object>) expr[0];
         return true;
     }
 
@@ -35,17 +34,18 @@ public class GuildPosition extends SimpleExpression<Integer>{
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-	    
-	@Override
+
+    @Override
     protected Integer[] get(Event e) {
-	    try {
-		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
-		   // g.getRegion().get
-	        try {
-	        	return new Integer[]{TopUtil.getGuildPosition(g)+1};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-	    } catch(Exception ex) { return null;}
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            try {
+                return new Integer[]{g.getRank().getPosition()};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

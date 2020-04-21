@@ -11,10 +11,10 @@ import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildRemoveFromExpirationTime extends Effect {
-	
+
     private Expression<Object> guild;
     private Expression<Timespan> time;
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
@@ -22,25 +22,27 @@ public class GuildRemoveFromExpirationTime extends Effect {
         time = (Expression<Timespan>) expr[0];
         return true;
     }
-    
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-    
+
     @Override
     protected void execute(Event e) {
-    	try {
-    		Guild g = BasicUtil.getGuild(guild.getSingle(e));
-	    	long l = g.getValidity() - time.getSingle(e).getMilliSeconds();
-	    	if(l < 0) {
-	    		l = 0;
-	    	}
-	        try {
-	        	g.setValidity(g.getValidity() - time.getSingle(e).getMilliSeconds());
-	        } catch(Exception ex) {
-	        	return;
-	        }
-    	} catch(Exception ex) { return;}
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            long l = g.getValidity() - time.getSingle(e).getMilliSeconds();
+            if (l < 0) {
+                l = 0;
+            }
+            try {
+                g.setValidity(g.getValidity() - time.getSingle(e).getMilliSeconds());
+            } catch (Exception ex) {
+                return;
+            }
+        } catch (Exception ex) {
+            return;
+        }
     }
 }

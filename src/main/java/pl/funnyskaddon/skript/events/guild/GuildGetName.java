@@ -8,34 +8,34 @@ import net.dzikoysk.funnyguilds.basic.guild.Guild;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
-public class GuildGetName extends SimpleExpression<String>{ 
+public class GuildGetName extends SimpleExpression<String> {
 
-	private Expression<Guild> guild;
-	
+    private Expression<Guild> guild;
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
-	@SuppressWarnings("unchecked")
-	@Override
+
+    @SuppressWarnings("unchecked")
+    @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-		guild = (Expression<Guild>) expr[0];
+        guild = (Expression<Guild>) expr[0];
         return true;
     }
-	
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@Override
+    @Override
     protected String[] get(Event e) {
-		return new String[] {guild.getSingle(e).getName()};
+        return new String[]{guild.getSingle(e).getName()};
     }
 }

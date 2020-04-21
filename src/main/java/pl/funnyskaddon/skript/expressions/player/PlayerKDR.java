@@ -9,43 +9,45 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
-public class PlayerKDR extends SimpleExpression<Number>{
+public class PlayerKDR extends SimpleExpression<Number> {
 
-	private Expression<OfflinePlayer> player;
-	
-	@Override
-	public Class<? extends Number> getReturnType() {
-		return Number.class;
-	}
+    private Expression<OfflinePlayer> player;
 
-	@Override
-	public boolean isSingle() {
-		return true;
-	}
+    @Override
+    public Class<? extends Number> getReturnType() {
+        return Number.class;
+    }
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-		player = (Expression<OfflinePlayer>) expr[0];
+    @Override
+    public boolean isSingle() {
         return true;
-	}
+    }
 
-	@Override
-	public String toString(@Nullable Event e, boolean a) {
-		return null;
-	}
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
+        player = (Expression<OfflinePlayer>) expr[0];
+        return true;
+    }
 
-	@Override
-	@Nullable
-	protected Number[] get(Event e) {
-		try {
-			User u = (User) User.get(player.getSingle(e));
-			try {
-				return new Float[]{u.getRank().getKDR()};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-		} catch(Exception ex) {return null;}
-	}
+    @Override
+    public String toString(@Nullable Event e, boolean a) {
+        return null;
+    }
+
+    @Override
+    @Nullable
+    protected Number[] get(Event e) {
+        try {
+            User u = (User) User.get(player.getSingle(e));
+            try {
+                return new Float[]{u.getRank().getKDR()};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+    }
 
 }

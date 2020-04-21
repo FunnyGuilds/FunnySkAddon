@@ -10,10 +10,10 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
-public class GuildRemainingValidityDate extends SimpleExpression<Date>{
-    
+public class GuildRemainingValidityDate extends SimpleExpression<Date> {
+
     private Expression<Object> guild;
-    
+
     @Override
     public Class<? extends Date> getReturnType() {
         return Date.class;
@@ -23,11 +23,11 @@ public class GuildRemainingValidityDate extends SimpleExpression<Date>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	guild = (Expression<Object>) expr[0];
+        guild = (Expression<Object>) expr[0];
         return true;
     }
 
@@ -36,15 +36,17 @@ public class GuildRemainingValidityDate extends SimpleExpression<Date>{
         return null;
     }
 
-	@Override
+    @Override
     protected Date[] get(Event e) {
-	    try {
-		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
-	        try {
-	        	return new Date[]{new Date(g.getValidity())};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-	    } catch(Exception ex) { return null;} 
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            try {
+                return new Date[]{new Date(g.getValidity())};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }

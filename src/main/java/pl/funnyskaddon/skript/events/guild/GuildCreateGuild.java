@@ -10,30 +10,30 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.fix.GuildCreateEventFix;
 
-public class GuildCreateGuild extends SimpleExpression<Guild>{ 
+public class GuildCreateGuild extends SimpleExpression<Guild> {
 
     @Override
     public Class<? extends Guild> getReturnType() {
         return Guild.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
-	@Override
+
+    @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return ScriptLoader.isCurrentEvent(GuildCreateEventFix.class);
     }
-	
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@Override
+    @Override
     protected Guild[] get(Event e) {
-		return new Guild[] {((GuildCreateEventFix) e).getGuild()};
+        return new Guild[]{((GuildCreateEventFix) e).getGuild()};
     }
 }

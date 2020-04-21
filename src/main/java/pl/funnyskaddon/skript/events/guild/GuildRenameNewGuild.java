@@ -9,30 +9,30 @@ import net.dzikoysk.funnyguilds.event.guild.GuildRenameEvent;
 import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
-public class GuildRenameNewGuild extends SimpleExpression<String>{ 
+public class GuildRenameNewGuild extends SimpleExpression<String> {
 
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
-	@Override
+
+    @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return ScriptLoader.isCurrentEvent(GuildRenameEvent.class);
     }
-	
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@Override
+    @Override
     protected String[] get(Event e) {
-		return new String[] {((GuildRenameEvent) e).getNewName()};
+        return new String[]{((GuildRenameEvent) e).getNewName()};
     }
 }

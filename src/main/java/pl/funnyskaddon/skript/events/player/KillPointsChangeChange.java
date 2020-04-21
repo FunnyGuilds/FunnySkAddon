@@ -9,30 +9,30 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.fix.KillPointsChangeEventFix;
 
-public class KillPointsChangeChange extends SimpleExpression<Integer>{ 
+public class KillPointsChangeChange extends SimpleExpression<Integer> {
 
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
     }
-    
+
     @Override
     public boolean isSingle() {
         return true;
     }
-    
-	@Override
+
+    @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
         return ScriptLoader.isCurrentEvent(KillPointsChangeEventFix.class);
     }
-	
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
 
-	@Override
+    @Override
     protected Integer[] get(Event e) {
-		return new Integer[] {((KillPointsChangeEventFix) e).getChange()};
+        return new Integer[]{((KillPointsChangeEventFix) e).getChange()};
     }
 }

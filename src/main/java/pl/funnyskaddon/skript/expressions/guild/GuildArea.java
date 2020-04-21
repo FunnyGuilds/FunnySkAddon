@@ -10,10 +10,10 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
-public class GuildArea extends SimpleExpression<Integer>{
-    
+public class GuildArea extends SimpleExpression<Integer> {
+
     private Expression<Object> guild;
-    
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
@@ -23,11 +23,11 @@ public class GuildArea extends SimpleExpression<Integer>{
     public boolean isSingle() {
         return true;
     }
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int i, Kleenean kl, SkriptParser.ParseResult pr) {
-    	guild = (Expression<Object>) expr[0];
+        guild = (Expression<Object>) expr[0];
         return true;
     }
 
@@ -38,16 +38,18 @@ public class GuildArea extends SimpleExpression<Integer>{
 
     @Override
     protected Integer[] get(Event e) {
-	    try {
-		    Guild g = BasicUtil.getGuild(guild.getSingle(e));
-		    Region r = g.getRegion();
-	        try {
-	        	int area = Math.abs((r.getLowerX()-r.getUpperX())*(r.getLowerZ()-r.getUpperZ()));
-	        	return new Integer[]{area};
-	        } catch(Exception ex) {
-	        	return null;
-	        }
-	    } catch(Exception ex) { return null;}
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            Region r = g.getRegion();
+            try {
+                int area = Math.abs((r.getLowerX() - r.getUpperX()) * (r.getLowerZ() - r.getUpperZ()));
+                return new Integer[]{area};
+            } catch (Exception ex) {
+                return null;
+            }
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }
 //|(x1-x2)*(z1-z2)|

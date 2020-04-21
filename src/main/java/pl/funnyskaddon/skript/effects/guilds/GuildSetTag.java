@@ -10,10 +10,10 @@ import org.bukkit.event.Event;
 import pl.funnyskaddon.core.utils.BasicUtil;
 
 public class GuildSetTag extends Effect {
-	
+
     private Expression<Object> guild;
     private Expression<String> name;
-    
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] expr, int matchedPattern, Kleenean paramKleenean, ParseResult paramParseResult) {
@@ -21,22 +21,24 @@ public class GuildSetTag extends Effect {
         name = (Expression<String>) expr[1];
         return true;
     }
-    
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return null;
     }
-    
+
     @Override
     protected void execute(Event e) {
-    	try {
-    		Guild g = BasicUtil.getGuild(guild.getSingle(e));
-	        String n = name.getSingle(e);
-	        try {
-	        	g.setTag(n);
-	        } catch(Exception ex) {
-	        	return;
-	        }
-    	} catch(Exception ex) { return;}
+        try {
+            Guild g = BasicUtil.getGuild(guild.getSingle(e));
+            String n = name.getSingle(e);
+            try {
+                g.setTag(n);
+            } catch (Exception ex) {
+                return;
+            }
+        } catch (Exception ex) {
+            return;
+        }
     }
 }
