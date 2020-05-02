@@ -82,6 +82,8 @@
       * Usunięcie wyrażenia *%last top update%*
       * Usunięcie efektu *update guild tops*
     * Dodanie do konfiguracji możliwości ustawienia własnej wiadomości o braku uprawnień
+  * 1.9.3.1
+    * Przeniesienie klasy Metrics.java (bStats) do innego sub-package'a w celu zapobiegnięcie nadpisywaniu jej przez inne pluginy
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
@@ -108,7 +110,7 @@
     * Spigot 1.8.8 - 1.14.4
     * Skript
     * FunnyGuilds 4.4.2 lub nowszy
-  * 1.9.3
+  * 1.9.3-1.9.3.1
     * Java 8
     * Spigot 1.8.8 - 1.15.2
     * Skript
