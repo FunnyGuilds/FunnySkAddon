@@ -1,6 +1,5 @@
 package pl.funnyskaddon.core;
 
-import pl.funnyskaddon.bstats.bukkit.Metrics;
 import ch.njol.skript.Skript;
 import net.dzikoysk.funnyguilds.FunnyGuilds;
 import net.dzikoysk.funnyguilds.data.configs.PluginConfiguration;
@@ -8,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import pl.funnyskaddon.bstats.bukkit.Metrics;
 import pl.funnyskaddon.core.commands.FunnySkAddonCommand;
 import pl.funnyskaddon.core.data.Config;
 import pl.funnyskaddon.core.fix.GuildCreateListener;
