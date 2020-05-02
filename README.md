@@ -1,9 +1,9 @@
 # FunnySkAddon
 
-### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
-### Twórcy: Peridot, LloydPL
-### Dokumentacja: https://mlgroup.pl/funnyskaddon/home
-
+#### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
+#### Twórcy: Peridot, LloydPL
+#### Dokumentacja: https://mlgroup.pl/funnyskaddon/home
+#### bStats: https://bstats.org/plugin/bukkit/FunnySkAddon-Extended/6363
 
 ### Changelog:
   * 1.0:
@@ -76,6 +76,12 @@
     * Dodano komendę diagnostyczną /funnyskaddon (alias /fsa) z uprawnieniem funnyskaddon.cmd
   * 1.9
     * Aktualizacja bStats ze względu na zmiany w klasie Metrics i rozpoczęcie prowadzenie przez bStats systemu id pluginów
+  * 1.9.3
+    * Posprzątanie odrobinę kodu pluginu
+    * Użycie systemu obliczania pozycji w rankingu bezpośrednio z pluginu FunnyGuilds zamiast własnego systemu
+      * Usunięcie wyrażenia *%last top update%*
+      * Usunięcie efektu *update guild tops*
+    * Dodanie do konfiguracji możliwości ustawienia własnej wiadomości o braku uprawnień
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
@@ -101,4 +107,9 @@
     * Java 8
     * Spigot 1.8.8 - 1.14.4
     * Skript
-    * FunnyGuilds 4.4.2 lub nowszy   
+    * FunnyGuilds 4.4.2 lub nowszy
+  * 1.9.3
+    * Java 8
+    * Spigot 1.8.8 - 1.15.2
+    * Skript
+    * FunnyGuilds 4.5.1 lub nowszy
