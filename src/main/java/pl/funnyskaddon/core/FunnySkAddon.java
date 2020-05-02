@@ -1,6 +1,6 @@
 package pl.funnyskaddon.core;
 
-import bstats.bukkit.Metrics;
+import pl.funnyskaddon.bstats.bukkit.Metrics;
 import ch.njol.skript.Skript;
 import net.dzikoysk.funnyguilds.FunnyGuilds;
 import net.dzikoysk.funnyguilds.data.configs.PluginConfiguration;
