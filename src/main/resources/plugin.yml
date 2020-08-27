@@ -1,0 +1,12 @@
+name: FunnySkAddon-Extended
+version: 1.9.3.1
+authors: [Peridot, LloydPL]
+description: Dodatek do pluginu Skript dodajacy wsparcie pluginu gildyjnego FunnyGuilds
+website: mlgroup.pl
+main: pl.funnyskaddon.FunnySkAddon
+softdepend: [Skript, FunnyGuilds]
+
+commands:
+  funnyskaddon:
+    aliases: [fsa]
+    description: Wyswietla informacje o pluginie FunnySkAddon
