@@ -12,7 +12,7 @@ class GuildRevokeAllyInvitationEvent : SimpleEvent() {
                 GuildRevokeAllyInvitationEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent::class.java,
                 "revoke ally (invite|invitation)"
-            );
+            )
         }
     }
 

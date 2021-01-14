@@ -1,4 +1,4 @@
-package pl.funnyskaddon.skript.expressions.player;
+package pl.funnyskaddon.skript.expressions.guild;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;

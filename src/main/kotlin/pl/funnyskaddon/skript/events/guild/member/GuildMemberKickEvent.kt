@@ -12,7 +12,7 @@ class GuildMemberKickEvent : SimpleEvent() {
                 GuildMemberKickEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberKickEvent::class.java,
                 "member kick"
-            );
+            )
         }
     }
 

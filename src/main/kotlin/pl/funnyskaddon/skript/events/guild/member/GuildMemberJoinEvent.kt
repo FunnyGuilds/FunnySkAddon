@@ -12,7 +12,7 @@ class GuildMemberJoinEvent : SimpleEvent() {
                 GuildMemberJoinEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberJoinEvent::class.java,
                 "member join"
-            );
+            )
         }
     }
 

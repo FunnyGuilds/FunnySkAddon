@@ -12,7 +12,7 @@ class GuildSendAllyInvitationEvent : SimpleEvent() {
                 GuildSendAllyInvitationEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent::class.java,
                 "send ally (invite|invitation)"
-            );
+            )
         }
     }
 

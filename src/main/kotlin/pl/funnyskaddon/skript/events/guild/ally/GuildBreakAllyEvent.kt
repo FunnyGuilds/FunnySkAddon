@@ -12,7 +12,7 @@ class GuildBreakAllyEvent : SimpleEvent() {
                 GuildBreakAllyEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent::class.java,
                 "break ally)"
-            );
+            )
         }
     }
 

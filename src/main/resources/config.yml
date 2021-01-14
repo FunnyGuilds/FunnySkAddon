@@ -1,6 +1,6 @@
 update:
   check: true
-  simple: false
+  simple: false #Wylacza kolory w konsoli jesli jest ustawione na true
 #Update'y wychodza rzadko ale zawieraja duzo wiec radzimy zostawic to wlaczone
 #Jesli mimo najnowszej wersji wiadomosc jest dalej wysylana mozna wylaczyc
 top:
