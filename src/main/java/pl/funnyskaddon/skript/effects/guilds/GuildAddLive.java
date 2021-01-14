@@ -43,4 +43,5 @@ public class GuildAddLive extends Effect {
             return;
         }
     }
+
 }

@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent;
 
 public class EventLoaderPlayer {
+
     public EventLoaderPlayer() {
         Skript.registerEvent("kill points change", SimpleEvent.class, CustomKillPointsChangeEvent.class, "kill points change");
         Skript.registerExpression(KillPointsChangeKiller.class, Player.class, ExpressionType.SIMPLE,
@@ -29,4 +30,5 @@ public class EventLoaderPlayer {
         Skript.registerExpression(LeaveGuildRegionGuild.class, Guild.class, ExpressionType.SIMPLE,
                 "guild");
     }
+
 }

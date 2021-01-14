@@ -38,4 +38,5 @@ public class GuildGetName extends SimpleExpression<String> {
     protected String[] get(Event e) {
         return new String[]{guild.getSingle(e).getName()};
     }
+
 }

@@ -35,4 +35,5 @@ public class KillPointsChangeChange extends SimpleExpression<Integer> {
     protected Integer[] get(Event e) {
         return new Integer[]{((CustomKillPointsChangeEvent) e).getChange()};
     }
+
 }

@@ -41,4 +41,5 @@ public class GuildDeletePlayer extends SimpleExpression<Player> {
         }
 
     }
+
 }

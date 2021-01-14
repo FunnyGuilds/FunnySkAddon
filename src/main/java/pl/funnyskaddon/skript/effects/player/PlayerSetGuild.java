@@ -12,6 +12,7 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
 public class PlayerSetGuild extends Effect {
+
     private Expression<OfflinePlayer> player;
     private Expression<Object> guild;
 
@@ -52,4 +53,5 @@ public class PlayerSetGuild extends Effect {
             return;
         }
     }
+
 }

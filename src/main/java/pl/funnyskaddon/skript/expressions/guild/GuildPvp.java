@@ -48,4 +48,5 @@ public class GuildPvp extends SimpleExpression<Boolean> {
             return null;
         }
     }
+
 }

@@ -36,4 +36,5 @@ public class GuildLivesChangeGuild extends SimpleExpression<Guild> {
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildLivesChangeEvent) e).getGuild()};
     }
+
 }

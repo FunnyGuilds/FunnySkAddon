@@ -36,4 +36,5 @@ public class GuildExtendValidityGuild extends SimpleExpression<Guild> {
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildExtendValidityEvent) e).getGuild()};
     }
+
 }

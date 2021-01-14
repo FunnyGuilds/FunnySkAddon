@@ -36,4 +36,5 @@ public class GuildExtendValidityTime extends SimpleExpression<Timespan> {
     protected Timespan[] get(Event e) {
         return new Timespan[]{Timespan.fromTicks(((int) ((GuildExtendValidityEvent) e).getExtendTime()) / 50)};
     }
+
 }

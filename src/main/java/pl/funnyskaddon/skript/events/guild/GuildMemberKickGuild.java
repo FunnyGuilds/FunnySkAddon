@@ -36,4 +36,5 @@ public class GuildMemberKickGuild extends SimpleExpression<Guild> {
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildMemberKickEvent) e).getGuild()};
     }
+
 }

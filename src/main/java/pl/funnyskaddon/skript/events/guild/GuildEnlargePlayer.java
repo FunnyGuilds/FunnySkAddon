@@ -36,4 +36,5 @@ public class GuildEnlargePlayer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildEnlargeEvent) e).getDoer().getPlayer()};
     }
+
 }

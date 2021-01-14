@@ -41,4 +41,5 @@ public class GuildSetExpirationTime extends Effect {
             return;
         }
     }
+
 }

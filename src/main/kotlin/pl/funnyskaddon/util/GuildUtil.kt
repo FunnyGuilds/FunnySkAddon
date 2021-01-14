@@ -59,7 +59,7 @@ class GuildUtil {
             return null
         }
 
-        fun getGuild(guildArgument: Any): Guild? {
+        fun getGuild(guildArgument: Any?): Guild? {
             var guild: Guild? = null
             when (guildArgument) {
                 is Guild -> {

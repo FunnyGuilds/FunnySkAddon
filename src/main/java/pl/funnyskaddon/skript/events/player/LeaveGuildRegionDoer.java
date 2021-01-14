@@ -36,4 +36,5 @@ public class LeaveGuildRegionDoer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildRegionLeaveEvent) e).getDoer().getPlayer()};
     }
+
 }

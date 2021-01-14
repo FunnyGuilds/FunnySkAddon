@@ -36,4 +36,5 @@ public class GuildRevokeAllyInvitationPossibleAlly extends SimpleExpression<Guil
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildRevokeAllyInvitationEvent) e).getAlliedGuild()};
     }
+
 }

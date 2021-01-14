@@ -44,4 +44,5 @@ public class GuildRemoveDeputy extends Effect {
             return;
         }
     }
+
 }

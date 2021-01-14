@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import pl.funnyskaddon.FunnySkAddon
 
-class PointsChangeListener(val plugin: FunnySkAddon) : Listener {
+class PointsChangeListener(private val plugin: FunnySkAddon) : Listener {
 
     @EventHandler
     fun onChange(event: PointsChangeEvent) {
@@ -17,7 +17,7 @@ class PointsChangeListener(val plugin: FunnySkAddon) : Listener {
         val change = event.change
         val attacker = event.doer.player
 
-        if (event.doer.equals(event.rank.user)) {
+        if (event.doer == event.rank.user) {
             return
         }
         val victim = event.rank.user.player

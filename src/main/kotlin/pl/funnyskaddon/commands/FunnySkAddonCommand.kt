@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender
 import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.util.color
 
-class FunnySkAddonCommand(val plugin: FunnySkAddon) : CommandExecutor {
+class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, cmd: Command?, label: String?, args: Array<String?>?): Boolean {
         if (!sender.hasPermission("funnyskaddon.cmd")) {

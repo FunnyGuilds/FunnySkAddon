@@ -36,4 +36,5 @@ public class GuildBreakAllianceDoer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildBreakAllyEvent) e).getDoer().getPlayer()};
     }
+
 }

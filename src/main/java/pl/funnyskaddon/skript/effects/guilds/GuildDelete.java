@@ -40,4 +40,5 @@ public class GuildDelete extends Effect {
             return;
         }
     }
+
 }

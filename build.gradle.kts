@@ -18,7 +18,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    compileOnly("net.dzikoysk:funnyguilds:4.7.0")
+    compileOnly("net.dzikoysk:funnyguilds:4.8.1")
     compileOnly("com.github.SkriptLang:Skript:2.4.1")
     compileOnly(fileTree("libs") { include("*.jar") })
 }

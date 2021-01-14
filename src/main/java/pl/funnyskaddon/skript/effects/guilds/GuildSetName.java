@@ -41,4 +41,5 @@ public class GuildSetName extends Effect {
             return;
         }
     }
+
 }

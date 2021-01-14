@@ -36,4 +36,5 @@ public class GuildMemberDeputyMember extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildMemberDeputyEvent) e).getMember().getPlayer()};
     }
+
 }

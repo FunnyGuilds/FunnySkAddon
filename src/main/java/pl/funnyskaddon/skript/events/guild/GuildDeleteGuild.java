@@ -36,4 +36,5 @@ public class GuildDeleteGuild extends SimpleExpression<Guild> {
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildDeleteEvent) e).getGuild()};
     }
+
 }

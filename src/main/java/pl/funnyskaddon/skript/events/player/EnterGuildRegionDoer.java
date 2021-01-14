@@ -36,4 +36,5 @@ public class EnterGuildRegionDoer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildRegionEnterEvent) e).getDoer().getPlayer()};
     }
+
 }

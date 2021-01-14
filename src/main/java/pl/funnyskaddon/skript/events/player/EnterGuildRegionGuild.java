@@ -36,4 +36,5 @@ public class EnterGuildRegionGuild extends SimpleExpression<Guild> {
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildRegionEnterEvent) e).getGuild()};
     }
+
 }

@@ -44,5 +44,6 @@ public class TopGuild extends SimpleExpression<Guild> {
             return null;
         }
     }
+
 }
 

@@ -36,4 +36,5 @@ public class GuildAcceptAllyInvitationDoer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildAcceptAllyInvitationEvent) e).getDoer().getPlayer()};
     }
+
 }

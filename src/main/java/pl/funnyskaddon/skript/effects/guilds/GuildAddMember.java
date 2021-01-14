@@ -44,4 +44,5 @@ public class GuildAddMember extends Effect {
             return;
         }
     }
+
 }

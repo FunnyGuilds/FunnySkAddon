@@ -48,4 +48,5 @@ public class GuildAddDeputy extends Effect {
             return;
         }
     }
+
 }

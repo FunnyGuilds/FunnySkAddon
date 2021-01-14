@@ -36,4 +36,5 @@ public class LeaveGuildRegionGuild extends SimpleExpression<Guild> {
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildRegionLeaveEvent) e).getGuild()};
     }
+
 }

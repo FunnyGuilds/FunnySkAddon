@@ -36,4 +36,5 @@ public class GuildMemberLeavePlayer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildMemberLeaveEvent) e).getDoer().getPlayer()};
     }
+
 }

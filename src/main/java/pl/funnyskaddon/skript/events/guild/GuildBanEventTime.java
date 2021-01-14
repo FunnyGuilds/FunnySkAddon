@@ -36,4 +36,5 @@ public class GuildBanEventTime extends SimpleExpression<Timespan> {
     protected Timespan[] get(Event e) {
         return new Timespan[]{Timespan.fromTicks(((int) ((GuildBanEvent) e).getTime()) / 50)};
     }
+
 }

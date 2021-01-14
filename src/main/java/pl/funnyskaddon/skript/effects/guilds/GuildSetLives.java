@@ -41,4 +41,5 @@ public class GuildSetLives extends Effect {
             return;
         }
     }
+
 }

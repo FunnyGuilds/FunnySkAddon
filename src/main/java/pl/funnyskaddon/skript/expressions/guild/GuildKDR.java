@@ -48,4 +48,5 @@ public class GuildKDR extends SimpleExpression<Number> {
             return null;
         }
     }
+
 }

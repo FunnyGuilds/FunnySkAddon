@@ -1,6 +1,7 @@
 package pl.funnyskaddon
 
 import ch.njol.skript.Skript
+import ch.njol.skript.SkriptAddon
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.data.configs.PluginConfiguration
 import org.bukkit.plugin.PluginManager
@@ -18,14 +19,15 @@ class FunnySkAddon : JavaPlugin() {
     lateinit var configuration: Configuration
 
     companion object {
-        lateinit var fgConfiguration: PluginConfiguration;
+        lateinit var fgConfiguration: PluginConfiguration
+        lateinit var addon: SkriptAddon
     }
 
     override fun onEnable() {
         val pluginManager: PluginManager = this.server.pluginManager
 
         val missing: StringBuilder = StringBuilder()
-        var shouldStart = true;
+        var shouldStart = true
 
         if (pluginManager.getPlugin("Skript") == null) {
             missing.append("Skript")
@@ -59,7 +61,20 @@ class FunnySkAddon : JavaPlugin() {
 
         UpdateCheckScheduler(this).start()
 
-        Skript.registerAddon(this)
+        addon = Skript.registerAddon(this)
+
+        addon.loadClasses(
+            "pl.funnyskaddon.skript",
+            "conditions.guild",
+            "conditions.player",
+            "effects.guild",
+            "effects.player",
+            "events.guild",
+            "events.player",
+            "expressions.guild",
+            "expressions.player",
+            "expressions.top"
+        )
 
         val skriptLoader = SkriptLoader()
         skriptLoader.loadConditions()
@@ -70,5 +85,7 @@ class FunnySkAddon : JavaPlugin() {
         val pluginId = 6363
         Metrics(this, pluginId)
     }
+
+
 
 }

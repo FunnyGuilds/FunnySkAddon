@@ -36,4 +36,5 @@ public class GuildBanEventPlayer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildBanEvent) e).getDoer().getPlayer()};
     }
+
 }

@@ -36,4 +36,5 @@ public class GuildBreakAllianceGuild extends SimpleExpression<Guild> {
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildBreakAllyEvent) e).getGuild()};
     }
+
 }

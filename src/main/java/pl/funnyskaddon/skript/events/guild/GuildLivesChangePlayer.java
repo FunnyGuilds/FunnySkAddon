@@ -40,4 +40,5 @@ public class GuildLivesChangePlayer extends SimpleExpression<Player> {
             return null;
         }
     }
+
 }

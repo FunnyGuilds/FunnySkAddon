@@ -35,4 +35,5 @@ public class GuildRenameNewGuild extends SimpleExpression<String> {
     protected String[] get(Event e) {
         return new String[]{((GuildRenameEvent) e).getNewName()};
     }
+
 }

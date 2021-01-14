@@ -36,4 +36,5 @@ public class KillPointsChangeVictim extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((CustomKillPointsChangeEvent) e).getVictim()};
     }
+
 }

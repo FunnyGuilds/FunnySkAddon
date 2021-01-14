@@ -35,4 +35,5 @@ public class GuildLivesChangeCurrentLives extends SimpleExpression<Integer> {
     protected Integer[] get(Event e) {
         return new Integer[]{((GuildLivesChangeEvent) e).getNewLives()};
     }
+
 }

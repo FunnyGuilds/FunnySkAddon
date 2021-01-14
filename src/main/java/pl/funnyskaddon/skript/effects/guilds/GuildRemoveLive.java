@@ -43,4 +43,5 @@ public class GuildRemoveLive extends Effect {
             return;
         }
     }
+
 }

@@ -36,4 +36,5 @@ public class GuildMemberJoinGuild extends SimpleExpression<Guild> {
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildMemberJoinEvent) e).getGuild()};
     }
+
 }

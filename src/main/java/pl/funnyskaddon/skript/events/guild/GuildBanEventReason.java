@@ -35,4 +35,5 @@ public class GuildBanEventReason extends SimpleExpression<String> {
     protected String[] get(Event e) {
         return new String[]{((GuildBanEvent) e).getReason()};
     }
+
 }

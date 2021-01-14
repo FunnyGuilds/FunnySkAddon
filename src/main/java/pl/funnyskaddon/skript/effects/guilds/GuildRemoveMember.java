@@ -44,4 +44,5 @@ public class GuildRemoveMember extends Effect {
             return;
         }
     }
+
 }

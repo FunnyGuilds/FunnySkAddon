@@ -10,6 +10,7 @@ import org.bukkit.craftbukkit.libs.jline.internal.Nullable;
 import org.bukkit.event.Event;
 
 public class PlayerSetDeaths extends Effect {
+
     private Expression<OfflinePlayer> player;
     private Expression<Number> deaths;
 
@@ -41,4 +42,5 @@ public class PlayerSetDeaths extends Effect {
             return;
         }
     }
+
 }

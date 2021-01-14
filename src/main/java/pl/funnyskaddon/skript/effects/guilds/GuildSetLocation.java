@@ -41,4 +41,5 @@ public class GuildSetLocation extends Effect {
             return;
         }
     }
+
 }

@@ -36,4 +36,5 @@ public class GuildMemberRevokeInvitePlayer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((GuildMemberRevokeInviteEvent) e).getDoer().getPlayer()};
     }
+
 }

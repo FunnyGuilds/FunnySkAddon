@@ -46,4 +46,5 @@ public class GuildSetOwner extends Effect {
             return;
         }
     }
+
 }

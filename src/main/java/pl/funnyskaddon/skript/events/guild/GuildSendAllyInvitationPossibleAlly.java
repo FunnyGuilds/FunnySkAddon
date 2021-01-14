@@ -36,4 +36,5 @@ public class GuildSendAllyInvitationPossibleAlly extends SimpleExpression<Guild>
     protected Guild[] get(Event e) {
         return new Guild[]{((GuildSendAllyInvitationEvent) e).getAlliedGuild()};
     }
+
 }

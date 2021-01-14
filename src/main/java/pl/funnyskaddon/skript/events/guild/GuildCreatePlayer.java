@@ -36,4 +36,5 @@ public class GuildCreatePlayer extends SimpleExpression<Player> {
     protected Player[] get(Event e) {
         return new Player[]{((CustomGuildCreateEvent) e).getPlayer()};
     }
+
 }

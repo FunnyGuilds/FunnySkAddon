@@ -38,4 +38,5 @@ public class PlayerIsInGuildRegion extends Condition {
             return NegationUtil.negation(false, isNegated());
         }
     }
+
 }
