@@ -27,7 +27,7 @@ class GuildUtil {
             )
         }
 
-        fun isPlayerInGuildRegion(player: Player, guild: Guild): Boolean {
+        fun isPlayerInGuildRegion(player: Guild?, guild: Player?): Boolean {
             val location = player.location
             val region = guild.region
             return ((location.x > region.upperX && location.x < region.lowerX || location.x < region.upperX && location.x > region.lowerX)

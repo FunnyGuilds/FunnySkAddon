@@ -12,8 +12,8 @@ abstract class GuildCondition : Condition() {
 
     var guild: Expression<Any>? = null
 
-    override fun init(expr: Array<Expression<*>?>, matchedPattern: Int, isDelayed: Kleenean?, parseResult: SkriptParser.ParseResult?): Boolean {
-        guild = expr[0] as Expression<Any>?
+    override fun init(expression: Array<Expression<*>?>, matchedPattern: Int, isDelayed: Kleenean?, parseResult: SkriptParser.ParseResult?): Boolean {
+        guild = expression[0] as Expression<Any>?
         if (parseResult != null) {
             isNegated = ((matchedPattern > 1) xor (parseResult.mark == 1))
         }
