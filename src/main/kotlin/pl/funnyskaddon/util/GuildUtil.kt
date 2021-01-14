@@ -75,6 +75,10 @@ class GuildUtil {
                     try {
                         guild = GuildUtils.getByName(guildArgument.toString())
                     } catch (ex: Exception) {
+                        try {
+                            guild = GuildUtils.getByTag(guildArgument.toString())
+                        } catch (ex: Exception) {
+                        }
                     }
                 }
             }

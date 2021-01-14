@@ -11,17 +11,18 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
         val description = plugin.description
         plugin.server.scheduler.runTaskTimer(plugin, {
             if (plugin.configuration.updateCheck) {
+                val url = "https://github.com/FunnyGuilds/FunnySkAddon/blob/master/VERSION"
                 val latestVersion: String? =
-                    VersionUtil.getLatestVersion("https://raw.githubusercontent.com/MLGroupMC/FunnySkAddon/master/VERSION")
+                    VersionUtil.getLatestVersion(url)
                 if (description.version.equals(latestVersion, true).not()) {
                     if (plugin.configuration.simpleUpdateCheck) {
                         plugin.logger.warning("[FSA] Wersja pluginu: " + description.version)
                         plugin.logger.warning("[FSA] Najnowsza wersja pluginu: " + latestVersion.toString())
-                        plugin.logger.warning("[FSA] Wszystkie wersje: https://github.com/MLGroupMC/FunnySkAddon/releases/")
+                        plugin.logger.warning("[FSA] Wszystkie wersje: " + url)
                     } else {
                         Bukkit.getConsoleSender().sendMessage(("&8[&bFSA&8] &7Wersja pluginu: &f" + description.version).color())
                         Bukkit.getConsoleSender().sendMessage(("&8[&bFSA&8] &7Najnowsza wersja pluginu: &f" + latestVersion.toString()).color())
-                        Bukkit.getConsoleSender().sendMessage(("&8[&bFSA&8] &7Wszystkie wersje: &fhttps://github.com/MLGroupMC/FunnySkAddon/releases/").color())
+                        Bukkit.getConsoleSender().sendMessage(("&8[&bFSA&8] &7Wszystkie wersje: &f" + url).color())
                     }
                 }
             }

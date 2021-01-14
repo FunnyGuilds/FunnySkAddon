@@ -13,7 +13,7 @@ class GuildCreateEvent : SimpleEvent() {
                 GuildCreateEvent::class.java,
                 CustomGuildCreateEvent::class.java,
                 "guild (create|creation)"
-            );
+            )
         }
     }
 

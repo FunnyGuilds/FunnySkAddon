@@ -76,12 +76,12 @@ class FunnySkAddon : JavaPlugin() {
             "expressions.events",
             "expressions.guild",
             "expressions.player",
-            "expressions.top"
+            "expressions.top",
+            "expressions.config"
         )
 
         val skriptLoader = SkriptLoader()
         skriptLoader.loadEffects()
-        skriptLoader.loadExpressions()
 
         val pluginId = 6363
         Metrics(this, pluginId)

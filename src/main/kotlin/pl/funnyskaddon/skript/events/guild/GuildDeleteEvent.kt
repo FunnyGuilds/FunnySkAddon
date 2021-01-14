@@ -2,7 +2,6 @@ package pl.funnyskaddon.skript.events.guild
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
 
 class GuildDeleteEvent : SimpleEvent() {
 
@@ -13,7 +12,7 @@ class GuildDeleteEvent : SimpleEvent() {
                 GuildDeleteEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildDeleteEvent::class.java,
                 "guild (delete|deletion)"
-            );
+            )
         }
     }
 

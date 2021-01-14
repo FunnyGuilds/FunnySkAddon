@@ -7,10 +7,10 @@ import java.net.URL
 
 class VersionUtil {
     companion object {
-        fun getLatestVersion(link: String): String? {
+        fun getLatestVersion(url: String): String? {
             var input: InputStream? = null
             try {
-                input = URL(link).openStream()
+                input = URL(url).openStream()
             } catch (ex: Exception) {
                 Bukkit.getLogger().info("Unable to check for updates!")
                 ex.printStackTrace()

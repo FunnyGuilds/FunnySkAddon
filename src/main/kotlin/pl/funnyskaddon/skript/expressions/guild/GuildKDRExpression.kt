@@ -1,32 +1,32 @@
-package pl.funnyskaddon.skript.expressions.player
+package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
+import pl.funnyskaddon.skript.expressions.GuildExpression
 import pl.funnyskaddon.skript.expressions.PlayerExpression
 
-class PlayerKDRExpression : PlayerExpression<Number>() {
+class GuildKDRExpression : GuildExpression<Number>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                PlayerKDRExpression::class.java,
+                GuildKDRExpression::class.java,
                 Number::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%offlineplayer%(|'s) [(rank|ranking)] (kdr|kills to deaths ratio)"
+                "%object%(|'s) guild [(rank|ranking)] kdr"
             )
         }
     }
 
-    override fun get(event: Event): Array<Number> {
-        val user = getUser(event)
-        var value = 0F
+    override fun get(event: Event): Array<Number>? {
+        val guild = getGuild(event)
 
-        if (user != null && user.rank != null) {
-            value = user.rank.kdr
+        if(guild != null) {
+            return arrayOf(guild.rank.kdr)
         }
 
-        return arrayOf(value)
+        return null
     }
 
     override fun getReturnType(): Class<Number> {

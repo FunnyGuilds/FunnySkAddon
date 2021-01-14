@@ -1,32 +1,28 @@
-package pl.funnyskaddon.skript.expressions.player
+package pl.funnyskaddon.skript.expressions.config
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
+import pl.funnyskaddon.FunnySkAddon
+import pl.funnyskaddon.skript.expressions.FunnyExpression
+import pl.funnyskaddon.skript.expressions.GuildExpression
 import pl.funnyskaddon.skript.expressions.PlayerExpression
 
-class PlayerDeathsExpression : PlayerExpression<Int>() {
+class ConfigExpForGuildVipExpression : FunnyExpression<Int>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                PlayerDeathsExpression::class.java,
+                ConfigExpForGuildVipExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%offlineplayer%(|'s) [(rank|ranking)] deaths"
+                "[required] (exp|experience) (to create|for) guild [for|with] vip",
             )
         }
     }
 
     override fun get(event: Event): Array<Int> {
-        val user = getUser(event)
-        var value = 0
-
-        if (user != null && user.rank != null) {
-            value = user.rank.deaths
-        }
-
-        return arrayOf(value)
+        return arrayOf(FunnySkAddon.fgConfiguration.requiredExperienceVip)
     }
 
     override fun getReturnType(): Class<Int> {
