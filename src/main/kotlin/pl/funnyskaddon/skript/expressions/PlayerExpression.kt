@@ -6,6 +6,7 @@ import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer
+import org.bukkit.entity.Player
 import org.bukkit.event.Event
 
 abstract class PlayerExpression<T> : SimpleExpression<T>() {
@@ -22,9 +23,27 @@ abstract class PlayerExpression<T> : SimpleExpression<T>() {
         return true
     }
 
+    fun getOfflinePlayer(event: Event?): OfflinePlayer? {
+        return try {
+            player?.getSingle(event)
+        } catch (ex: Exception) {
+            null
+        }
+    }
+
+    fun getPlayer(event: Event?): Player? {
+        val offlinePlayer: OfflinePlayer? = getOfflinePlayer(event)
+
+        if (offlinePlayer != null && offlinePlayer.isOnline) {
+            return offlinePlayer.player
+        }
+
+        return null
+    }
+
     fun getUser(event: Event?): User? {
         return try {
-            User.get(player?.getSingle(event))
+            User.get(getOfflinePlayer(event))
         } catch (ex: Exception) {
             null
         }

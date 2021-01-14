@@ -8,16 +8,16 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.guild.*
+import net.dzikoysk.funnyguilds.event.guild.GuildRenameEvent
 import org.bukkit.event.Event
 
-class EventTimeExpression : SimpleExpression<Long>() {
+class EventStringExpression : SimpleExpression<String>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventTimeExpression::class.java,
-                Long::class.javaObjectType,
+                EventStringExpression::class.java,
+                String::class.javaObjectType,
                 ExpressionType.SIMPLE,
                 *EventType.patterns
             )
@@ -26,23 +26,26 @@ class EventTimeExpression : SimpleExpression<Long>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        BAN("time", GuildBanEvent::class.java) {
-            override fun get(event: Event): Long? {
-                if(event is GuildBanEvent) {
-                    return event.time
-                }
-                return null
-            }
-        },
-
-        EXTEND_VALIDITY("[extend( |-)]time", GuildExtendValidityEvent::class.java) {
-            override fun get(event: Event): Long? {
-                if(event is GuildExtendValidityEvent) {
-                    return event.extendTime
+        RENAME("[new( |-)]name", GuildRenameEvent::class.java) {
+            override fun get(event: Event): String? {
+                if (event is GuildRenameEvent) {
+                    return event.newName
                 }
                 return null
             }
         };
+
+        /*
+            In future, maybe
+         */
+        /*RETAG("[new( |-)]TAG", GuildRenameEvent::class.java) {
+            override fun get(event: Event): String? {
+                if(event is GuildRenameEvent) {
+                    return event.newName
+                }
+                return null
+            }
+        };*/
 
         init {
             this.pattern = "[the] $pattern"
@@ -57,7 +60,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
             }
         }
 
-        abstract operator fun get(event: Event): Long?
+        abstract operator fun get(event: Event): String?
     }
 
     private lateinit var type: EventType
@@ -79,9 +82,9 @@ class EventTimeExpression : SimpleExpression<Long>() {
         return true
     }
 
-    override fun get(event: Event): Array<Long?>? {
+    override fun get(event: Event): Array<String?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
             }
         }
@@ -93,11 +96,11 @@ class EventTimeExpression : SimpleExpression<Long>() {
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " time"
+        return "the " + type.name + " reason"
     }
 
-    override fun getReturnType(): Class<out Long> {
-        return Long::class.javaObjectType
+    override fun getReturnType(): Class<out String> {
+        return String::class.javaObjectType
     }
 
 }

@@ -4,8 +4,6 @@ import pl.funnyskaddon.skript.conditions.guild.ConditionLoaderGuild;
 import pl.funnyskaddon.skript.conditions.player.ConditionLoaderPlayer;
 import pl.funnyskaddon.skript.effects.guilds.EffectLoaderGuild;
 import pl.funnyskaddon.skript.effects.player.EffectLoaderPlayer;
-import pl.funnyskaddon.skript.events.guild.EventLoaderGuild;
-import pl.funnyskaddon.skript.events.player.EventLoaderPlayer;
 import pl.funnyskaddon.skript.expressions.guild.ExpressionLoaderGuild;
 
 import java.util.ArrayList;
@@ -16,11 +14,6 @@ public class SkriptLoader {
     public void loadExpressions() {
         new ExpressionLoaderGuild();
         //new ExpressionLoaderPlayer();
-    }
-
-    public void loadEvents() {
-        new EventLoaderGuild();
-        new EventLoaderPlayer();
     }
 
     public void loadEffects() {

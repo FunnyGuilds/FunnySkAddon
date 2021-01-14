@@ -70,7 +70,9 @@ class FunnySkAddon : JavaPlugin() {
             "effects.guild",
             "effects.player",
             "events.guild",
-            "events.player",
+            "events.guild.ally",
+            "events.guild.member",
+            "events.rank",
             "expressions.events",
             "expressions.guild",
             "expressions.player",
@@ -80,7 +82,6 @@ class FunnySkAddon : JavaPlugin() {
         val skriptLoader = SkriptLoader()
         skriptLoader.loadConditions()
         skriptLoader.loadEffects()
-        skriptLoader.loadEvents()
         skriptLoader.loadExpressions()
 
         val pluginId = 6363
