@@ -2,9 +2,9 @@ package pl.funnyskaddon.skript.conditions.player
 
 import ch.njol.skript.Skript
 import org.bukkit.event.Event
-import pl.funnyskaddon.NegationUtil
 import pl.funnyskaddon.skript.conditions.GuildPlayerCondition
 import pl.funnyskaddon.util.GuildUtil
+import pl.funnyskaddon.util.NegationUtil
 
 class PlayerIsInGuildRegionCondition : GuildPlayerCondition() {
 

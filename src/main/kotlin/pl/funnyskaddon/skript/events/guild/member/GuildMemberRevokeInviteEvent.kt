@@ -12,7 +12,7 @@ class GuildMemberRevokeInviteEvent : SimpleEvent() {
                 GuildMemberRevokeInviteEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberAcceptInviteEvent::class.java,
                 "member revoke (invite|invitation)"
-            );
+            )
         }
     }
 

@@ -12,7 +12,7 @@ class GuildMemberLeaveEvent : SimpleEvent() {
                 GuildMemberLeaveEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaveEvent::class.java,
                 "member leave"
-            );
+            )
         }
     }
 

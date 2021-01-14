@@ -12,7 +12,7 @@ class GuildMemberLeaderEvent : SimpleEvent() {
                 GuildMemberLeaderEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaderEvent::class.java,
                 "member leader"
-            );
+            )
         }
     }
 

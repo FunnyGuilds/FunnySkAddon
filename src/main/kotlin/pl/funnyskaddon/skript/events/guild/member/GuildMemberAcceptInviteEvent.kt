@@ -12,7 +12,7 @@ class GuildMemberAcceptInviteEvent : SimpleEvent() {
                 GuildMemberAcceptInviteEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberAcceptInviteEvent::class.java,
                 "member accept (invite|invitation)"
-            );
+            )
         }
     }
 

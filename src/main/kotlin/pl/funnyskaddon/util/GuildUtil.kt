@@ -31,9 +31,9 @@ class GuildUtil {
             val location = player?.location
             val region = guild?.region
             if (location != null && region != null) {
-                    return ((location.x > region.upperX && location.x < region.lowerX || location.x < region.upperX && location.x > region.lowerX)
-                            && (location.y > region.upperY && location.y < region.lowerY || location.y < region.upperY && location.y > region.lowerY)
-                            && (location.z > region.upperZ && location.z < region.lowerZ || location.z < region.upperZ && location.z > region.lowerZ))
+                return ((location.x > region.upperX && location.x < region.lowerX || location.x < region.upperX && location.x > region.lowerX)
+                        && (location.y > region.upperY && location.y < region.lowerY || location.y < region.upperY && location.y > region.lowerY)
+                        && (location.z > region.upperZ && location.z < region.lowerZ || location.z < region.upperZ && location.z > region.lowerZ))
             }
             return false
         }
