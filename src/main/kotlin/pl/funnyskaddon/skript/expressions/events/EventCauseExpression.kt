@@ -13,6 +13,7 @@ import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
 import ch.njol.util.coll.CollectionUtils
 import net.dzikoysk.funnyguilds.basic.guild.Guild
+import net.dzikoysk.funnyguilds.basic.rank.Rank
 import net.dzikoysk.funnyguilds.basic.user.User
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.guild.*
@@ -21,11 +22,15 @@ import net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.member.*
+import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.*
 import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
+import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 import pl.funnyskaddon.skript.events.guild.GuildBreakAllianceGuild
 import pl.funnyskaddon.skript.expressions.guild.GuildFromNameExpression
 import pl.funnyskaddon.util.GuildUtil
@@ -254,6 +259,61 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
                 }
                 return null
             }
+        },
+
+        REGION_ENTER("cause", GuildRegionEnterEvent::class.java) {
+            override fun get(event: Event): FunnyEvent.EventCause? {
+                if(event is GuildRegionEnterEvent) {
+                    return event.eventCause
+                }
+                return null
+            }
+        },
+
+        REGION_LEAVE("cause", GuildRegionLeaveEvent::class.java) {
+            override fun get(event: Event): FunnyEvent.EventCause? {
+                if(event is GuildRegionLeaveEvent) {
+                    return event.eventCause
+                }
+                return null
+            }
+        },
+
+
+        KILLS_CHANGE("cause", KillsChangeEvent::class.java) {
+            override fun get(event: Event): FunnyEvent.EventCause? {
+                if(event is KillsChangeEvent) {
+                    return event.eventCause
+                }
+                return null
+            }
+        },
+
+        DEATHS_CHANGE("cause", DeathsChangeEvent::class.java) {
+            override fun get(event: Event): FunnyEvent.EventCause? {
+                if(event is DeathsChangeEvent) {
+                    return event.eventCause
+                }
+                return null
+            }
+        },
+
+        POINTS_CHANGE("cause", PointsChangeEvent::class.java) {
+            override fun get(event: Event): FunnyEvent.EventCause? {
+                if(event is PointsChangeEvent) {
+                    return event.eventCause
+                }
+                return null
+            }
+        },
+
+        KILL_POINTS_CHANGE("cause", CustomKillPointsChangeEvent::class.java) {
+            override fun get(event: Event): FunnyEvent.EventCause? {
+                if(event is CustomKillPointsChangeEvent) {
+                    return event.eventCause
+                }
+                return null
+            }
         };
 
         init {
@@ -304,8 +364,8 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " cause"
     }
 
     override fun getReturnType(): Class<out FunnyEvent.EventCause> {

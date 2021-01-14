@@ -54,7 +54,7 @@ class EventLocationExpression : SimpleExpression<Location>() {
             }
         },
 
-        BASE_CHANGE("([new( |-)]location|[new base location)", GuildBaseChangeEvent::class.java) {
+        BASE_CHANGE("([new( |-)]location|[new base location])", GuildBaseChangeEvent::class.java) {
             override fun get(event: Event): Location? {
                 if(event is GuildBaseChangeEvent) {
                     return event.newBaseLocation
@@ -111,8 +111,8 @@ class EventLocationExpression : SimpleExpression<Location>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " location"
     }
 
     override fun getReturnType(): Class<out Location> {

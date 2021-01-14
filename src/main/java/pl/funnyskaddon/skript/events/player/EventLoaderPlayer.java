@@ -13,22 +13,22 @@ public class EventLoaderPlayer {
 
     public EventLoaderPlayer() {
         Skript.registerEvent("kill points change", SimpleEvent.class, CustomKillPointsChangeEvent.class, "kill points change");
-        Skript.registerExpression(KillPointsChangeKiller.class, Player.class, ExpressionType.SIMPLE,
+   /*     Skript.registerExpression(KillPointsChangeKiller.class, Player.class, ExpressionType.SIMPLE,
                 "killer");
         Skript.registerExpression(KillPointsChangeVictim.class, Player.class, ExpressionType.SIMPLE,
                 "victim");
         Skript.registerExpression(KillPointsChangeChange.class, Integer.class, ExpressionType.SIMPLE,
-                "change");
+                "change");*/
         Skript.registerEvent("enter guild region", SimpleEvent.class, GuildRegionEnterEvent.class, "enter guild region");
-        Skript.registerExpression(EnterGuildRegionDoer.class, Player.class, ExpressionType.SIMPLE,
+       /* Skript.registerExpression(EnterGuildRegionDoer.class, Player.class, ExpressionType.SIMPLE,
                 "player");
         Skript.registerExpression(EnterGuildRegionGuild.class, Guild.class, ExpressionType.SIMPLE,
-                "guild");
+                "guild");*/
         Skript.registerEvent("leave guild region", SimpleEvent.class, GuildRegionLeaveEvent.class, "leave guild region");
-        Skript.registerExpression(LeaveGuildRegionDoer.class, Player.class, ExpressionType.SIMPLE,
+     /*   Skript.registerExpression(LeaveGuildRegionDoer.class, Player.class, ExpressionType.SIMPLE,
                 "player");
         Skript.registerExpression(LeaveGuildRegionGuild.class, Guild.class, ExpressionType.SIMPLE,
-                "guild");
+                "guild");*/
     }
 
 }

@@ -166,8 +166,8 @@ class EventMemberExpression : SimpleExpression<Player>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " member"
     }
 
     override fun getReturnType(): Class<out Player> {

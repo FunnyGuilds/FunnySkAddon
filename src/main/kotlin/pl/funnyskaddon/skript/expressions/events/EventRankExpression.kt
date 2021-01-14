@@ -13,6 +13,7 @@ import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
 import ch.njol.util.coll.CollectionUtils
 import net.dzikoysk.funnyguilds.basic.guild.Guild
+import net.dzikoysk.funnyguilds.basic.rank.Rank
 import net.dzikoysk.funnyguilds.basic.user.User
 import net.dzikoysk.funnyguilds.event.guild.*
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent
@@ -20,22 +21,28 @@ import net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.member.*
+import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.RankChangeEvent
+import org.bukkit.block.Block
 import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.*
 import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
+import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 import pl.funnyskaddon.skript.events.guild.GuildBreakAllianceGuild
 import pl.funnyskaddon.skript.expressions.guild.GuildFromNameExpression
 import pl.funnyskaddon.util.GuildUtil
 
-class EventAlliedGuildExpression : SimpleExpression<Guild>() {
+class EventRankExpression : SimpleExpression<Rank>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventAlliedGuildExpression::class.java,
-                Guild::class.java,
+                EventRankExpression::class.java,
+                Rank::class.javaObjectType,
                 ExpressionType.SIMPLE,
                 *EventType.patterns
             )
@@ -44,37 +51,37 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        SEND_ALLY_INVITATION("allied-guild|ally", GuildSendAllyInvitationEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildSendAllyInvitationEvent) {
-                    return event.alliedGuild
+        KILLS_CHANGE("[kills( |-)]rank", KillsChangeEvent::class.java) {
+            override fun get(event: Event): Rank? {
+                if(event is KillsChangeEvent) {
+                    return event.rank
                 }
                 return null
             }
         },
 
-        ACCEPT_ALLY_INVITATION("allied-guild|ally", GuildAcceptAllyInvitationEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildAcceptAllyInvitationEvent) {
-                    return event.alliedGuild
+        DEATHS_CHANGE("[deaths( |-)]rank", DeathsChangeEvent::class.java) {
+            override fun get(event: Event): Rank? {
+                if(event is DeathsChangeEvent) {
+                    return event.rank
                 }
                 return null
             }
         },
 
-        REVOKE_ALLY_INVITATION("allied-guild|ally", GuildRevokeAllyInvitationEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildRevokeAllyInvitationEvent) {
-                    return event.alliedGuild
+        POINTS_CHANGE("[points( |-)]rank", PointsChangeEvent::class.java) {
+            override fun get(event: Event): Rank? {
+                if(event is PointsChangeEvent) {
+                    return event.rank
                 }
                 return null
             }
         },
 
-        BREAK_ALLY("allied-guild|ally", GuildBreakAllyEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildBreakAllyEvent) {
-                    return event.alliedGuild
+        KILL_POINTS_CHANGE("kill( |-)[points( |-)]rank", CustomKillPointsChangeEvent::class.java) {
+            override fun get(event: Event): Rank? {
+                if(event is CustomKillPointsChangeEvent) {
+                    return event.rank
                 }
                 return null
             }
@@ -93,7 +100,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
             }
         }
 
-        abstract operator fun get(event: Event): Guild?
+        abstract operator fun get(event: Event): Rank?
     }
 
     private lateinit var type: EventType
@@ -115,7 +122,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
         return true
     }
 
-    override fun get(event: Event): Array<Guild?>? {
+    override fun get(event: Event): Array<Rank?>? {
         for (classEvent in type.events) {
             if(classEvent.isInstance(event)) {
                 return arrayOf(type[event])
@@ -129,11 +136,11 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " allied guild"
+        return "the " + type.name + " rank"
     }
 
-    override fun getReturnType(): Class<out Guild> {
-        return Guild::class.java
+    override fun getReturnType(): Class<out Rank> {
+        return Rank::class.javaObjectType
     }
 
 }

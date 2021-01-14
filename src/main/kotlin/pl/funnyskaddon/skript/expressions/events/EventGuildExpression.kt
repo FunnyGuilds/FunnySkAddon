@@ -253,6 +253,24 @@ class EventGuildExpression : SimpleExpression<Guild>() {
                 }
                 return null
             }
+        },
+
+        REGION_ENTER("[entered( |-)]guild", GuildRegionEnterEvent::class.java) {
+            override fun get(event: Event): Guild? {
+                if(event is GuildRegionEnterEvent) {
+                    return event.guild
+                }
+                return null
+            }
+        },
+
+        REGION_LEAVE("[leaved( |-)]guild", GuildRegionLeaveEvent::class.java) {
+            override fun get(event: Event): Guild? {
+                if(event is GuildRegionLeaveEvent) {
+                    return event.guild
+                }
+                return null
+            }
         };
 
         init {
@@ -303,8 +321,8 @@ class EventGuildExpression : SimpleExpression<Guild>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " guild"
     }
 
     override fun getReturnType(): Class<out Guild> {

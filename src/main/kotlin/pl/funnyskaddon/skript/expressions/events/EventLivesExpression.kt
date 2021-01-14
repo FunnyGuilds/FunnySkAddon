@@ -20,6 +20,7 @@ import net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.member.*
+import org.bukkit.block.Block
 import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.PlayerDeathEvent
@@ -29,13 +30,13 @@ import pl.funnyskaddon.skript.events.guild.GuildBreakAllianceGuild
 import pl.funnyskaddon.skript.expressions.guild.GuildFromNameExpression
 import pl.funnyskaddon.util.GuildUtil
 
-class EventAlliedGuildExpression : SimpleExpression<Guild>() {
+class EventLivesExpression : SimpleExpression<Int>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventAlliedGuildExpression::class.java,
-                Guild::class.java,
+                EventLivesExpression::class.java,
+                Int::class.javaObjectType,
                 ExpressionType.SIMPLE,
                 *EventType.patterns
             )
@@ -44,37 +45,10 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        SEND_ALLY_INVITATION("allied-guild|ally", GuildSendAllyInvitationEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildSendAllyInvitationEvent) {
-                    return event.alliedGuild
-                }
-                return null
-            }
-        },
-
-        ACCEPT_ALLY_INVITATION("allied-guild|ally", GuildAcceptAllyInvitationEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildAcceptAllyInvitationEvent) {
-                    return event.alliedGuild
-                }
-                return null
-            }
-        },
-
-        REVOKE_ALLY_INVITATION("allied-guild|ally", GuildRevokeAllyInvitationEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildRevokeAllyInvitationEvent) {
-                    return event.alliedGuild
-                }
-                return null
-            }
-        },
-
-        BREAK_ALLY("allied-guild|ally", GuildBreakAllyEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildBreakAllyEvent) {
-                    return event.alliedGuild
+        LIVES_CHANGE("[new( |-)]lives", GuildLivesChangeEvent::class.java) {
+            override fun get(event: Event): Int? {
+                if(event is GuildLivesChangeEvent) {
+                    return event.newLives
                 }
                 return null
             }
@@ -93,7 +67,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
             }
         }
 
-        abstract operator fun get(event: Event): Guild?
+        abstract operator fun get(event: Event): Int?
     }
 
     private lateinit var type: EventType
@@ -115,7 +89,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
         return true
     }
 
-    override fun get(event: Event): Array<Guild?>? {
+    override fun get(event: Event): Array<Int?>? {
         for (classEvent in type.events) {
             if(classEvent.isInstance(event)) {
                 return arrayOf(type[event])
@@ -129,11 +103,11 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " allied guild"
+        return "the " + type.name + " lives"
     }
 
-    override fun getReturnType(): Class<out Guild> {
-        return Guild::class.java
+    override fun getReturnType(): Class<out Int> {
+        return Int::class.javaObjectType
     }
 
 }

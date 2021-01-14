@@ -71,6 +71,7 @@ class FunnySkAddon : JavaPlugin() {
             "effects.player",
             "events.guild",
             "events.player",
+            "expressions.events",
             "expressions.guild",
             "expressions.player",
             "expressions.top"
