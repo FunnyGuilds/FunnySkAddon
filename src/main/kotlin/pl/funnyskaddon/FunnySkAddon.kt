@@ -80,7 +80,6 @@ class FunnySkAddon : JavaPlugin() {
         )
 
         val skriptLoader = SkriptLoader()
-        skriptLoader.loadConditions()
         skriptLoader.loadEffects()
         skriptLoader.loadExpressions()
 

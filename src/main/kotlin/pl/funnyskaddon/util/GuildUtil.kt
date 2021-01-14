@@ -19,7 +19,7 @@ class GuildUtil {
             )
         }
 
-        fun getUpperPoint(guild: Guild): Location? {
+        fun getUpperPoint(guild: Guild): Location {
             val region = guild.region
             return Location(
                 region.world, region.upperX.toDouble(), region.upperY.toDouble(),
@@ -27,19 +27,22 @@ class GuildUtil {
             )
         }
 
-        fun isPlayerInGuildRegion(player: Guild?, guild: Player?): Boolean {
-            val location = player.location
-            val region = guild.region
-            return ((location.x > region.upperX && location.x < region.lowerX || location.x < region.upperX && location.x > region.lowerX)
-                    && (location.y > region.upperY && location.y < region.lowerY || location.y < region.upperY && location.y > region.lowerY)
-                    && (location.z > region.upperZ && location.z < region.lowerZ || location.z < region.upperZ && location.z > region.lowerZ))
+        fun isPlayerInGuildRegion(guild: Guild?, player: Player?): Boolean {
+            val location = player?.location
+            val region = guild?.region
+            if (location != null && region != null) {
+                    return ((location.x > region.upperX && location.x < region.lowerX || location.x < region.upperX && location.x > region.lowerX)
+                            && (location.y > region.upperY && location.y < region.lowerY || location.y < region.upperY && location.y > region.lowerY)
+                            && (location.z > region.upperZ && location.z < region.lowerZ || location.z < region.upperZ && location.z > region.lowerZ))
+            }
+            return false
         }
 
         fun getPlayersInGuildRegion(guild: Guild): Array<Player> {
             val region = guild.region
             val list: MutableList<Player> = ArrayList()
             for (player in region.world.players) {
-                if (this.isPlayerInGuildRegion(player, guild)) {
+                if (this.isPlayerInGuildRegion(guild, player)) {
                     list.add(player)
                 }
             }
