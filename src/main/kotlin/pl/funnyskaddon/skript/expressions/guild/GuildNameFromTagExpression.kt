@@ -6,19 +6,17 @@ import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils
 import org.bukkit.event.Event
-import pl.funnyskaddon.skript.expressions.SpecialGuildExpression
 
-class GuildTagFromNameExpression : SimpleExpression<String>() {
+class GuildNameFromTagExpression : SimpleExpression<String>() {
 
     var tag: Expression<String>? = null
 
     companion object {
         init {
             Skript.registerExpression(
-                GuildTagFromNameExpression::class.java,
+                GuildNameFromTagExpression::class.java,
                 String::class.javaObjectType,
                 ExpressionType.PROPERTY,
                 "guild name from tag %string%"
