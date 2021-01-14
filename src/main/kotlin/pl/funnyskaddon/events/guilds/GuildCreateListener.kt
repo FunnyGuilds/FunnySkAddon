@@ -10,7 +10,7 @@ class GuildCreateListener(private val plugin: FunnySkAddon) : Listener {
     @EventHandler
     fun onCreate(event: GuildPreCreateEvent) {
         plugin.server.scheduler.runTaskLater(plugin, {
-            plugin.server.pluginManager.callEvent(CustomGuildCreateEvent(event.doer.player, event.guild))
+            plugin.server.pluginManager.callEvent(CustomGuildCreateEvent(event.doer.player, event.guild, event.eventCause))
         }, 2)
     }
 

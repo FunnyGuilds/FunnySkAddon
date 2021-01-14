@@ -7,7 +7,6 @@ import pl.funnyskaddon.skript.effects.player.EffectLoaderPlayer;
 import pl.funnyskaddon.skript.events.guild.EventLoaderGuild;
 import pl.funnyskaddon.skript.events.player.EventLoaderPlayer;
 import pl.funnyskaddon.skript.expressions.guild.ExpressionLoaderGuild;
-import pl.funnyskaddon.skript.expressions.top.ExpressionLoaderTop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,6 @@ public class SkriptLoader {
     public void loadExpressions() {
         new ExpressionLoaderGuild();
         //new ExpressionLoaderPlayer();
-        new ExpressionLoaderTop();
     }
 
     public void loadEvents() {
