@@ -9,4 +9,9 @@ depend: [Skript, FunnyGuilds]
 commands:
   funnyskaddon:
     aliases: [fsa]
-    description: Wyswietla informacje o pluginie FunnySkAddon
+    description: Wyswietla informacje o pluginie FunnySkAddon]
+
+permissions:
+  funnyskaddon.cmd:
+    description: Uprawnienie do glownej (i jedynej komendy) w pluginie, /funnyskaddon
+    default: op

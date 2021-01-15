@@ -11,7 +11,7 @@ import pl.funnyskaddon.util.GuildUtil
 
 abstract class ValueExpression<T> : SimpleExpression<Guild>() {
 
-    var value: Expression<T>? = null
+    lateinit var value: Expression<T>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -24,7 +24,7 @@ abstract class ValueExpression<T> : SimpleExpression<Guild>() {
     }
 
     fun getValue(event: Event?): T? {
-        return value?.getSingle(event)
+        return value.getSingle(event)
     }
 
     override fun isSingle(): Boolean {

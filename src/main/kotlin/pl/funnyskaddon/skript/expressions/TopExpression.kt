@@ -10,7 +10,7 @@ import org.bukkit.event.Event
 
 abstract class TopExpression<T> : SimpleExpression<T>() {
 
-    var position: Expression<Number>? = null
+    lateinit var position: Expression<Number>
 
     override fun init(
         expression: Array<Expression<*>>,

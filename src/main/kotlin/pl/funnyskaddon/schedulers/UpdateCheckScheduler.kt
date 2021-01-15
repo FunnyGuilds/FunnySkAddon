@@ -13,7 +13,7 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
             if (plugin.configuration.updateCheck) {
                 val url = "https://github.com/FunnyGuilds/FunnySkAddon/blob/master/VERSION"
                 val latestVersion: String? =
-                    VersionUtil.getLatestVersion(url)
+                    VersionUtil.getLatestVersion(url, plugin.configuration.onlyFullReleases)
                 if (description.version.equals(latestVersion, true).not()) {
                     if (plugin.configuration.simpleUpdateCheck) {
                         plugin.logger.warning("[FSA] Wersja pluginu: " + description.version)

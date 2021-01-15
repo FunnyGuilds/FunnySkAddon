@@ -11,7 +11,7 @@ import org.bukkit.event.Event
 
 abstract class PlayerExpression<T> : SimpleExpression<T>() {
 
-    var player: Expression<OfflinePlayer>? = null
+    lateinit var player: Expression<OfflinePlayer>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -25,7 +25,7 @@ abstract class PlayerExpression<T> : SimpleExpression<T>() {
 
     fun getOfflinePlayer(event: Event?): OfflinePlayer? {
         return try {
-            player?.getSingle(event)
+            player.getSingle(event)
         } catch (ex: Exception) {
             null
         }

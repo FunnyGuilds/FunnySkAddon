@@ -2,7 +2,6 @@ package pl.funnyskaddon.skript.events.guild
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
 
 class GuildEntityExplodeEvent : SimpleEvent() {
 
@@ -13,7 +12,7 @@ class GuildEntityExplodeEvent : SimpleEvent() {
                 GuildEntityExplodeEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildEntityExplodeEvent::class.java,
                 "guild entity explode"
-            );
+            )
         }
     }
 

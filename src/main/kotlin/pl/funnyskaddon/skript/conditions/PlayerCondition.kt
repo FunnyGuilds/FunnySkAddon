@@ -13,7 +13,7 @@ import pl.funnyskaddon.util.GuildUtil
 
 abstract class PlayerCondition : Condition() {
 
-    var player: Expression<OfflinePlayer>? = null
+    lateinit var player: Expression<OfflinePlayer>
 
     override fun init(expression: Array<Expression<*>?>, matchedPattern: Int, isDelayed: Kleenean?, parseResult: SkriptParser.ParseResult?): Boolean {
         player = expression[0] as Expression<OfflinePlayer>
@@ -25,7 +25,7 @@ abstract class PlayerCondition : Condition() {
 
     fun getOfflinePlayer(event: Event?): OfflinePlayer? {
         return try {
-            player?.getSingle(event)
+            player.getSingle(event)
         } catch (ex: Exception) {
             null
         }

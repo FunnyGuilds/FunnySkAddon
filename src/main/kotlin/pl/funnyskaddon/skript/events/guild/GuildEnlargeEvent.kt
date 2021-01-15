@@ -12,7 +12,7 @@ class GuildEnlargeEvent : SimpleEvent() {
                 GuildEnlargeEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildEnlargeEvent::class.java,
                 "guild enlarge"
-            );
+            )
         }
     }
 

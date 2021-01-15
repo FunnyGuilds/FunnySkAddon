@@ -11,10 +11,10 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.util.GuildUtil
 
-abstract class PlayerEffect<T> : Effect() {
+abstract class PlayerEffect<T>(private var inverted: Boolean) : Effect() {
 
-    var player: Expression<OfflinePlayer>? = null
-    var value: Expression<T>? = null
+    lateinit var player: Expression<OfflinePlayer>
+    lateinit var value: Expression<T>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -22,14 +22,19 @@ abstract class PlayerEffect<T> : Effect() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        player = expression[0] as Expression<OfflinePlayer>
-        value = expression[1] as Expression<T>
+        if(inverted || matchedPattern > 1) {
+            value = expression[0] as Expression<T>
+            player = expression[1] as Expression<OfflinePlayer>
+        } else {
+            value = expression[1] as Expression<T>
+            player = expression[0] as Expression<OfflinePlayer>
+        }
         return true
     }
 
     fun getOfflinePlayer(event: Event?): OfflinePlayer? {
         return try {
-            player?.getSingle(event)
+            player.getSingle(event)
         } catch (ex: Exception) {
             null
         }
@@ -54,7 +59,7 @@ abstract class PlayerEffect<T> : Effect() {
     }
 
     fun getValue(event: Event?): T? {
-        return value?.getSingle(event)
+        return value.getSingle(event)
     }
 
     override fun toString(event: Event?, debug: Boolean): String? {

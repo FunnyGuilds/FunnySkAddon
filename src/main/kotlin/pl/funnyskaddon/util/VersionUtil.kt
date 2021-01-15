@@ -7,7 +7,7 @@ import java.net.URL
 
 class VersionUtil {
     companion object {
-        fun getLatestVersion(url: String): String? {
+        private fun getLatestVersions(url: String): MutableList<String>? {
             var input: InputStream? = null
             try {
                 input = URL(url).openStream()
@@ -16,13 +16,29 @@ class VersionUtil {
                 ex.printStackTrace()
             }
             try {
-                return IOUtils.readLines(input)[0]
+                return IOUtils.readLines(input)
             } catch (ex: Exception) {
                 Bukkit.getLogger().info("Unable to determine update!")
                 ex.printStackTrace()
             } finally {
                 IOUtils.closeQuietly(input)
             }
+            return null
+        }
+
+        fun getLatestVersion(url: String, onlyFullRelease: Boolean): String? {
+            val versions: List<String>? = getLatestVersions(url)
+
+            if (versions != null) {
+                var value: String? = versions[0]
+
+                if (!onlyFullRelease) {
+                    value = versions[1]
+                }
+
+                return value
+            }
+
             return null
         }
     }

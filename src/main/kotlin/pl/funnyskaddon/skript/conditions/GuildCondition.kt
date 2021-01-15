@@ -10,10 +10,10 @@ import pl.funnyskaddon.util.GuildUtil
 
 abstract class GuildCondition : Condition() {
 
-    var guild: Expression<Any>? = null
+    lateinit var guild: Expression<Any>
 
     override fun init(expression: Array<Expression<*>?>, matchedPattern: Int, isDelayed: Kleenean?, parseResult: SkriptParser.ParseResult?): Boolean {
-        guild = expression[0] as Expression<Any>?
+        guild = expression[0] as Expression<Any>
         if (parseResult != null) {
             isNegated = ((matchedPattern > 1) xor (parseResult.mark == 1))
         }
@@ -22,7 +22,7 @@ abstract class GuildCondition : Condition() {
 
     fun getGuild(event: Event?): Guild? {
         return try {
-            GuildUtil.getGuild(guild?.getSingle(event))
+            GuildUtil.getGuild(guild.getSingle(event))
         } catch (ex: Exception) {
             null
         }

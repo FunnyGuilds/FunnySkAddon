@@ -2,7 +2,6 @@ package pl.funnyskaddon.skript.events.guild
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
 
 class GuildLivesChangeEvent : SimpleEvent() {
 
@@ -13,7 +12,7 @@ class GuildLivesChangeEvent : SimpleEvent() {
                 GuildLivesChangeEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent::class.java,
                 "guild lives change"
-            );
+            )
         }
     }
 

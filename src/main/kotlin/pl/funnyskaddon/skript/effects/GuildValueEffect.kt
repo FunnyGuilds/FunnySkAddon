@@ -8,9 +8,9 @@ import net.dzikoysk.funnyguilds.basic.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.util.GuildUtil
 
-abstract class ValueGuildEffect<T> : GuildEffect() {
+abstract class GuildValueEffect<T>(private var inverted: Boolean) : GuildEffect() {
 
-    var value: Expression<T>? = null
+    lateinit var value: Expression<T>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -18,12 +18,18 @@ abstract class ValueGuildEffect<T> : GuildEffect() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        value = expression[1] as Expression<T>
+        if(inverted || matchedPattern > 1) {
+            value = expression[0] as Expression<T>
+            guild = expression[1] as Expression<Any>
+        } else {
+            value = expression[1] as Expression<T>
+            guild = expression[0] as Expression<Any>
+        }
         return true
     }
 
     fun getValue(event: Event?): T? {
-        return value?.getSingle(event)
+        return value.getSingle(event)
     }
 
 }

@@ -10,7 +10,7 @@ import pl.funnyskaddon.util.GuildUtil
 
 abstract class GuildEffect : Effect() {
 
-    var guild: Expression<Any>? = null
+    lateinit var guild: Expression<Any>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -24,7 +24,7 @@ abstract class GuildEffect : Effect() {
 
     fun getGuild(event: Event?): Guild? {
         return try {
-            GuildUtil.getGuild(guild?.getSingle(event))
+            GuildUtil.getGuild(guild.getSingle(event))
         } catch (ex: Exception) {
             null
         }

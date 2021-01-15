@@ -13,12 +13,12 @@ import pl.funnyskaddon.util.GuildUtil
 
 abstract class GuildPlayerCondition : Condition() {
 
-    var player: Expression<OfflinePlayer>? = null
-    var guild: Expression<Any>? = null
+    lateinit var player: Expression<OfflinePlayer>
+    lateinit var guild: Expression<Any>
 
     override fun init(expression: Array<Expression<*>?>, matchedPattern: Int, isDelayed: Kleenean?, parseResult: SkriptParser.ParseResult?): Boolean {
         player = expression[0] as Expression<OfflinePlayer>
-        guild = expression[1] as Expression<Any>?
+        guild = expression[1] as Expression<Any>
         if (parseResult != null) {
             isNegated = ((matchedPattern > 1) xor (parseResult.mark == 1))
         }
@@ -27,7 +27,7 @@ abstract class GuildPlayerCondition : Condition() {
 
     fun getOfflinePlayer(event: Event?): OfflinePlayer? {
         return try {
-            player?.getSingle(event)
+            player.getSingle(event)
         } catch (ex: Exception) {
             null
         }
@@ -53,7 +53,7 @@ abstract class GuildPlayerCondition : Condition() {
 
     fun getGuild(event: Event?): Guild? {
         return try {
-            GuildUtil.getGuild(guild?.getSingle(event))
+            GuildUtil.getGuild(guild.getSingle(event))
         } catch (ex: Exception) {
             null
         }
