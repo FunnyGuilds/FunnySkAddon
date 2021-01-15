@@ -11,9 +11,8 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
         val description = plugin.description
         plugin.server.scheduler.runTaskTimer(plugin, {
             if (plugin.configuration.updateCheck) {
-                val url = "https://github.com/FunnyGuilds/FunnySkAddon/blob/master/VERSION"
-                val latestVersion: String? =
-                    VersionUtil.getLatestVersion(url, plugin.configuration.onlyFullReleases)
+                val url = "https://github.com/FunnyGuilds/FunnySkAddon/"
+                val latestVersion: String? = VersionUtil.getLatestVersion("https://raw.githubusercontent.com/FunnyGuilds/FunnySkAddon/master/VERSION", plugin.configuration.onlyFullReleases)
                 if (description.version.equals(latestVersion, true).not()) {
                     if (plugin.configuration.simpleUpdateCheck) {
                         plugin.logger.warning("[FSA] Wersja pluginu: " + description.version)

@@ -9,7 +9,7 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 
-abstract class PlayerExpression<T> : SimpleExpression<T>() {
+abstract class PlayerExpression<T> : FunnyExpression<T>() {
 
     lateinit var player: Expression<OfflinePlayer>
 
@@ -47,14 +47,6 @@ abstract class PlayerExpression<T> : SimpleExpression<T>() {
         } catch (ex: Exception) {
             null
         }
-    }
-
-    override fun isSingle(): Boolean {
-        return true
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
     }
 
 }

@@ -11,7 +11,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.util.GuildUtil
 
-abstract class GuildPlayerCondition : Condition() {
+abstract class GuildPlayerCondition : FunnyCondition() {
 
     lateinit var player: Expression<OfflinePlayer>
     lateinit var guild: Expression<Any>
@@ -57,10 +57,6 @@ abstract class GuildPlayerCondition : Condition() {
         } catch (ex: Exception) {
             null
         }
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
     }
 
 }

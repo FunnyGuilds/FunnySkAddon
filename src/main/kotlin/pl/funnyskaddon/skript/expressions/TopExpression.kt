@@ -8,7 +8,7 @@ import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 
-abstract class TopExpression<T> : SimpleExpression<T>() {
+abstract class TopExpression<T> : FunnyExpression<T>() {
 
     lateinit var position: Expression<Number>
 
@@ -20,14 +20,6 @@ abstract class TopExpression<T> : SimpleExpression<T>() {
     ): Boolean {
         position = expression[0] as Expression<Number>
         return true
-    }
-
-    override fun isSingle(): Boolean {
-        return true
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
     }
 
 }

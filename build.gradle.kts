@@ -6,6 +6,10 @@ plugins {
 group = "pl.funnyskaddon"
 version = "2.0"
 
+tasks.named<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar>("shadowJar") {
+    classifier = null
+}
+
 repositories {
     jcenter()
     mavenCentral()

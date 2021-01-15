@@ -8,7 +8,7 @@ import net.dzikoysk.funnyguilds.basic.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.util.GuildUtil
 
-abstract class GuildCondition : Condition() {
+abstract class GuildCondition : FunnyCondition() {
 
     lateinit var guild: Expression<Any>
 
@@ -26,10 +26,6 @@ abstract class GuildCondition : Condition() {
         } catch (ex: Exception) {
             null
         }
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
     }
 
 }

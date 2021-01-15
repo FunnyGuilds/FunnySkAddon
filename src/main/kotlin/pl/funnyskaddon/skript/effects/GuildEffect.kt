@@ -8,7 +8,7 @@ import net.dzikoysk.funnyguilds.basic.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.util.GuildUtil
 
-abstract class GuildEffect : Effect() {
+abstract class GuildEffect : FunnyEffect() {
 
     lateinit var guild: Expression<Any>
 
@@ -28,10 +28,6 @@ abstract class GuildEffect : Effect() {
         } catch (ex: Exception) {
             null
         }
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
     }
 
 }

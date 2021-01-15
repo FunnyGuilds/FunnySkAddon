@@ -3,7 +3,6 @@ package pl.funnyskaddon.skript.expressions.player
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.guild.Guild
-import net.dzikoysk.funnyguilds.basic.guild.GuildUtils
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.PlayerExpression
 import pl.funnyskaddon.util.GuildUtil

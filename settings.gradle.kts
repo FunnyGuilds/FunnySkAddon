@@ -1,2 +1,2 @@
-rootProject.name = "FunnySkAddon-Kotlin"
+rootProject.name = "FunnySkAddon"
 

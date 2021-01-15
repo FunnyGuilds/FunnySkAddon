@@ -5,7 +5,7 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.util.GuildUtil
+import pl.funnyskaddon.util.getUpperPoint
 
 class GuildUpperBoundLocationExpression : GuildExpression<Location>() {
 
@@ -24,7 +24,7 @@ class GuildUpperBoundLocationExpression : GuildExpression<Location>() {
         val guild = getGuild(event)
 
         if(guild != null) {
-            return arrayOf(GuildUtil.getUpperPoint(guild))
+            return arrayOf(guild.getUpperPoint())
         }
 
         return null

@@ -2,14 +2,10 @@ package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
-import net.dzikoysk.funnyguilds.basic.user.User
-import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.skript.expressions.PlayerExpression
-import pl.funnyskaddon.util.GuildUtil
-import java.util.stream.Collectors
+import pl.funnyskaddon.util.getPlayersInGuildRegion
 
 class GuildPlayersInRegionExpression : GuildExpression<Player>() {
 
@@ -28,7 +24,7 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>() {
         val guild = getGuild(event)
 
         if(guild != null) {
-            return GuildUtil.getPlayersInGuildRegion(guild)
+            return guild.getPlayersInGuildRegion()
         }
 
         return null

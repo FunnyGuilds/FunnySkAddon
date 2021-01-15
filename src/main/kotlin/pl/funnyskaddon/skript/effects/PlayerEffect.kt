@@ -4,14 +4,12 @@ import ch.njol.skript.lang.Effect
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import pl.funnyskaddon.util.GuildUtil
 
-abstract class PlayerEffect<T>(private var inverted: Boolean) : Effect() {
+abstract class PlayerEffect<T>(private var inverted: Boolean) : FunnyEffect() {
 
     lateinit var player: Expression<OfflinePlayer>
     lateinit var value: Expression<T>
@@ -60,10 +58,6 @@ abstract class PlayerEffect<T>(private var inverted: Boolean) : Effect() {
 
     fun getValue(event: Event?): T? {
         return value.getSingle(event)
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
     }
 
 }

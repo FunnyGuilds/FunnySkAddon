@@ -4,14 +4,12 @@ import ch.njol.skript.lang.Condition
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import pl.funnyskaddon.util.GuildUtil
 
-abstract class PlayerCondition : Condition() {
+abstract class PlayerCondition : FunnyCondition() {
 
     lateinit var player: Expression<OfflinePlayer>
 
@@ -47,10 +45,6 @@ abstract class PlayerCondition : Condition() {
         } catch (ex: Exception) {
             null
         }
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
     }
 
 }

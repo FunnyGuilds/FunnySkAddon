@@ -11,44 +11,6 @@ import java.util.*
 
 class GuildUtil {
     companion object {
-        fun getLowerPoint(guild: Guild): Location {
-            val region = guild.region
-            return Location(
-                region.world, region.lowerX.toDouble(), region.lowerY.toDouble(),
-                region.lowerZ.toDouble()
-            )
-        }
-
-        fun getUpperPoint(guild: Guild): Location {
-            val region = guild.region
-            return Location(
-                region.world, region.upperX.toDouble(), region.upperY.toDouble(),
-                region.upperZ.toDouble()
-            )
-        }
-
-        fun isPlayerInGuildRegion(guild: Guild?, player: Player?): Boolean {
-            val location = player?.location
-            val region = guild?.region
-            if (location != null && region != null) {
-                return ((location.x > region.upperX && location.x < region.lowerX || location.x < region.upperX && location.x > region.lowerX)
-                        && (location.y > region.upperY && location.y < region.lowerY || location.y < region.upperY && location.y > region.lowerY)
-                        && (location.z > region.upperZ && location.z < region.lowerZ || location.z < region.upperZ && location.z > region.lowerZ))
-            }
-            return false
-        }
-
-        fun getPlayersInGuildRegion(guild: Guild): Array<Player> {
-            val region = guild.region
-            val list: MutableList<Player> = ArrayList()
-            for (player in region.world.players) {
-                if (this.isPlayerInGuildRegion(guild, player)) {
-                    list.add(player)
-                }
-            }
-            return list.toTypedArray()
-        }
-
         fun getGuildAtLocation(location: Location): Array<Guild>? {
             for (guild in GuildUtils.getGuilds()) {
                 val region = guild.region
@@ -103,4 +65,42 @@ class GuildUtil {
             }
         }
     }
+}
+
+fun Guild.getLowerPoint(): Location {
+    val region = this.region
+    return Location(
+        region.world, region.lowerX.toDouble(), region.lowerY.toDouble(),
+        region.lowerZ.toDouble()
+    )
+}
+
+fun Guild.getUpperPoint(): Location {
+    val region = this.region
+    return Location(
+        region.world, region.upperX.toDouble(), region.upperY.toDouble(),
+        region.upperZ.toDouble()
+    )
+}
+
+fun Guild.isPlayerInGuildRegion(player: Player?): Boolean {
+    val location = player?.location
+    val region = this.region
+    if (location != null && region != null) {
+        return ((location.x > region.upperX && location.x < region.lowerX || location.x < region.upperX && location.x > region.lowerX)
+                && (location.y > region.upperY && location.y < region.lowerY || location.y < region.upperY && location.y > region.lowerY)
+                && (location.z > region.upperZ && location.z < region.lowerZ || location.z < region.upperZ && location.z > region.lowerZ))
+    }
+    return false
+}
+
+fun Guild.getPlayersInGuildRegion(): Array<Player> {
+    val region = this.region
+    val list: MutableList<Player> = ArrayList()
+    for (player in region.world.players) {
+        if (this.isPlayerInGuildRegion(player)) {
+            list.add(player)
+        }
+    }
+    return list.toTypedArray()
 }

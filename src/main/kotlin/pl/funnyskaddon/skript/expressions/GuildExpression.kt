@@ -5,11 +5,10 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.basic.guild.Guild
-import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.event.Event
 import pl.funnyskaddon.util.GuildUtil
 
-abstract class GuildExpression<T> : SimpleExpression<T>() {
+abstract class GuildExpression<T> : FunnyExpression<T>() {
 
     lateinit var guild: Expression<Any>
 
@@ -30,13 +29,4 @@ abstract class GuildExpression<T> : SimpleExpression<T>() {
             null
         }
     }
-
-    override fun isSingle(): Boolean {
-        return true
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
-    }
-
 }
