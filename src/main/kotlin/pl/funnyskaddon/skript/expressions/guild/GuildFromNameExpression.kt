@@ -5,9 +5,9 @@ import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils
 import org.bukkit.event.Event
-import pl.funnyskaddon.skript.expressions.SpecialGuildExpression
+import pl.funnyskaddon.skript.expressions.ValueExpression
 
-class GuildFromNameExpression : SpecialGuildExpression<String>() {
+class GuildFromNameExpression : ValueExpression<String>() {
 
     companion object {
         init {

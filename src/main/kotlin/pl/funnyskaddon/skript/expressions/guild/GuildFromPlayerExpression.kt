@@ -3,13 +3,12 @@ package pl.funnyskaddon.skript.expressions.guild
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.guild.Guild
-import net.dzikoysk.funnyguilds.basic.guild.GuildUtils
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.skript.expressions.SpecialGuildExpression
+import pl.funnyskaddon.skript.expressions.ValueExpression
 
-class GuildFromPlayerExpression : SpecialGuildExpression<OfflinePlayer>() {
+class GuildFromPlayerExpression : ValueExpression<OfflinePlayer>() {
 
     companion object {
         init {

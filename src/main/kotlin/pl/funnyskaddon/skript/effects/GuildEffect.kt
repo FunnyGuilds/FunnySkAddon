@@ -1,17 +1,16 @@
-package pl.funnyskaddon.skript.expressions
+package pl.funnyskaddon.skript.effects
 
+import ch.njol.skript.lang.Effect
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
-import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.basic.guild.Guild
-import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.event.Event
 import pl.funnyskaddon.util.GuildUtil
 
-abstract class SpecialGuildExpression<T> : SimpleExpression<Guild>() {
+abstract class GuildEffect : Effect() {
 
-    var value: Expression<T>? = null
+    var guild: Expression<Any>? = null
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -19,24 +18,20 @@ abstract class SpecialGuildExpression<T> : SimpleExpression<Guild>() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        value = expression[0] as Expression<T>
+        guild = expression[0] as Expression<Any>
         return true
     }
 
-    fun getValue(event: Event?): T? {
-        return value?.getSingle(event)
-    }
-
-    override fun isSingle(): Boolean {
-        return true
+    fun getGuild(event: Event?): Guild? {
+        return try {
+            GuildUtil.getGuild(guild?.getSingle(event))
+        } catch (ex: Exception) {
+            null
+        }
     }
 
     override fun toString(event: Event?, debug: Boolean): String? {
         return null
-    }
-
-    override fun getReturnType(): Class<Guild>? {
-        return Guild::class.java
     }
 
 }
