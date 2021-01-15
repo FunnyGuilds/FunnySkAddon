@@ -23,7 +23,7 @@ class GuildValidityTimeExpression : GuildExpression<Timespan>() {
     override fun get(event: Event): Array<Timespan>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return arrayOf(Timespan(guild.validity - (Date().time)))
         }
 

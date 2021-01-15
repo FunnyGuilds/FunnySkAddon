@@ -4,7 +4,6 @@ import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.skript.expressions.PlayerExpression
 
 class GuildKillsExpression : GuildExpression<Int>() {
 
@@ -22,7 +21,7 @@ class GuildKillsExpression : GuildExpression<Int>() {
     override fun get(event: Event): Array<Int>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return arrayOf(guild.rank.kills)
         }
 

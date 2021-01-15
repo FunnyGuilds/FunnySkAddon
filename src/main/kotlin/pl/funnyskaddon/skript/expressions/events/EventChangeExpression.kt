@@ -31,7 +31,7 @@ class EventChangeExpression : SimpleExpression<Int>() {
 
         KILLS_CHANGE("[kills( |-)]change", KillsChangeEvent::class.java) {
             override fun get(event: Event): Int? {
-                if(event is KillsChangeEvent) {
+                if (event is KillsChangeEvent) {
                     return event.change
                 }
                 return null
@@ -40,7 +40,7 @@ class EventChangeExpression : SimpleExpression<Int>() {
 
         DEATHS_CHANGE("[deaths( |-)]change", DeathsChangeEvent::class.java) {
             override fun get(event: Event): Int? {
-                if(event is DeathsChangeEvent) {
+                if (event is DeathsChangeEvent) {
                     return event.change
                 }
                 return null
@@ -49,7 +49,7 @@ class EventChangeExpression : SimpleExpression<Int>() {
 
         POINTS_CHANGE("[points( |-)]change", PointsChangeEvent::class.java) {
             override fun get(event: Event): Int? {
-                if(event is PointsChangeEvent) {
+                if (event is PointsChangeEvent) {
                     return event.change
                 }
                 return null
@@ -58,7 +58,7 @@ class EventChangeExpression : SimpleExpression<Int>() {
 
         KILL_POINTS_CHANGE("kill( |-)[points( |-)]change", CustomKillPointsChangeEvent::class.java) {
             override fun get(event: Event): Int? {
-                if(event is CustomKillPointsChangeEvent) {
+                if (event is CustomKillPointsChangeEvent) {
                     return event.change
                 }
                 return null
@@ -102,7 +102,7 @@ class EventChangeExpression : SimpleExpression<Int>() {
 
     override fun get(event: Event): Array<Int?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
             }
         }

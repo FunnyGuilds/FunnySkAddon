@@ -5,8 +5,6 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.skript.expressions.FunnyExpression
-import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.skript.expressions.PlayerExpression
 
 class ConfigMoneyForGuildVipExpression : FunnyExpression<Double>() {
 

@@ -27,7 +27,7 @@ class PlayerGuildExpression : PlayerExpression<Guild>() {
             value = user.guild
         }
 
-        if(value != null) {
+        if (value != null) {
             return arrayOf(value)
         }
         return null

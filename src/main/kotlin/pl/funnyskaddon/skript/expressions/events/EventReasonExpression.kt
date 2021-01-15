@@ -8,7 +8,7 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.guild.*
+import net.dzikoysk.funnyguilds.event.guild.GuildBanEvent
 import org.bukkit.event.Event
 
 class EventReasonExpression : SimpleExpression<String>() {
@@ -28,7 +28,7 @@ class EventReasonExpression : SimpleExpression<String>() {
 
         BAN("reason", GuildBanEvent::class.java) {
             override fun get(event: Event): String? {
-                if(event is GuildBanEvent) {
+                if (event is GuildBanEvent) {
                     return event.reason
                 }
                 return null
@@ -72,7 +72,7 @@ class EventReasonExpression : SimpleExpression<String>() {
 
     override fun get(event: Event): Array<String?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
             }
         }

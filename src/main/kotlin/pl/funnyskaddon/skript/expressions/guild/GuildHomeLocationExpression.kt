@@ -2,13 +2,9 @@ package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
-import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.Location
-import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.skript.expressions.PlayerExpression
-import java.util.stream.Collectors
 
 class GuildHomeLocationExpression : GuildExpression<Location>() {
 
@@ -26,7 +22,7 @@ class GuildHomeLocationExpression : GuildExpression<Location>() {
     override fun get(event: Event): Array<Location>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return arrayOf(guild.home)
         }
 

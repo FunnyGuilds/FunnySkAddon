@@ -3,11 +3,9 @@ package pl.funnyskaddon.skript.expressions.guild
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.user.User
-import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.skript.expressions.PlayerExpression
 import java.util.stream.Collectors
 
 class GuildOnlineMembersExpression : GuildExpression<Player>() {
@@ -26,7 +24,7 @@ class GuildOnlineMembersExpression : GuildExpression<Player>() {
     override fun get(event: Event): Array<Player>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return guild.members.stream()
                 .filter { it.offlinePlayer.isOnline }
                 .map(User::getPlayer)

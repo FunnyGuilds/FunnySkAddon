@@ -15,7 +15,7 @@ abstract class GuildValueEffect<T>(private var inverted: Boolean) : GuildEffect(
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        if(inverted || matchedPattern > 1) {
+        if (inverted || matchedPattern > 1) {
             value = expression[0] as Expression<T>
             guild = expression[1] as Expression<Any>
         } else {

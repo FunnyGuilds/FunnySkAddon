@@ -39,7 +39,7 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
     }
 
     override fun isSingle(): Boolean {
-       return true
+        return true
     }
 
     override fun toString(event: Event?, debug: Boolean): String? {

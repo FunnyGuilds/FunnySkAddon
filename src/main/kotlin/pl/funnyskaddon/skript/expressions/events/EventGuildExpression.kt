@@ -35,7 +35,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         CREATE("[created( |-)]guild", CustomGuildCreateEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is CustomGuildCreateEvent) {
+                if (event is CustomGuildCreateEvent) {
                     return event.guild
                 }
                 return null
@@ -44,7 +44,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         DELETE("[deleted( |-)]guild", GuildDeleteEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildDeleteEvent) {
+                if (event is GuildDeleteEvent) {
                     return event.guild
                 }
                 return null
@@ -53,7 +53,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         BAN("[banned( |-)]guild", GuildBanEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildBanEvent) {
+                if (event is GuildBanEvent) {
                     return event.guild
                 }
                 return null
@@ -62,7 +62,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         UNBAN("[unbanned( |-)]guild", GuildUnbanEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildUnbanEvent) {
+                if (event is GuildUnbanEvent) {
                     return event.guild
                 }
                 return null
@@ -71,7 +71,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         MOVE("[moved( |-)]guild", GuildMoveEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMoveEvent) {
+                if (event is GuildMoveEvent) {
                     return event.guild
                 }
                 return null
@@ -80,7 +80,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         BASE_CHANGE("guild", GuildMoveEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMoveEvent) {
+                if (event is GuildMoveEvent) {
                     return event.guild
                 }
                 return null
@@ -89,7 +89,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         RENAME("[renamed( |-)]guild", GuildRenameEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildRenameEvent) {
+                if (event is GuildRenameEvent) {
                     return event.guild
                 }
                 return null
@@ -111,7 +111,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         ENLARGE("[enlarged( |-)]guild", GuildEnlargeEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildEnlargeEvent) {
+                if (event is GuildEnlargeEvent) {
                     return event.guild
                 }
                 return null
@@ -120,7 +120,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         EXTEND_VALIDITY("guild", GuildExtendValidityEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildExtendValidityEvent) {
+                if (event is GuildExtendValidityEvent) {
                     return event.guild
                 }
                 return null
@@ -129,7 +129,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         LIVES_CHANGE("guild", GuildLivesChangeEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildLivesChangeEvent) {
+                if (event is GuildLivesChangeEvent) {
                     return event.guild
                 }
                 return null
@@ -138,7 +138,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         MEMBER_INVITE("guild", GuildMemberInviteEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMemberInviteEvent) {
+                if (event is GuildMemberInviteEvent) {
                     return event.guild
                 }
                 return null
@@ -147,7 +147,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         MEMBER_ACCEPT_INVITE("guild", GuildMemberAcceptInviteEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMemberAcceptInviteEvent) {
+                if (event is GuildMemberAcceptInviteEvent) {
                     return event.guild
                 }
                 return null
@@ -156,7 +156,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         MEMBER_REVOKE_INVITE("guild", GuildMemberRevokeInviteEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMemberRevokeInviteEvent) {
+                if (event is GuildMemberRevokeInviteEvent) {
                     return event.guild
                 }
                 return null
@@ -165,7 +165,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         MEMBER_JOIN("guild", GuildMemberJoinEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMemberJoinEvent) {
+                if (event is GuildMemberJoinEvent) {
                     return event.guild
                 }
                 return null
@@ -174,7 +174,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         MEMBER_LEAVE("guild", GuildMemberLeaveEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMemberLeaveEvent) {
+                if (event is GuildMemberLeaveEvent) {
                     return event.guild
                 }
                 return null
@@ -183,7 +183,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         MEMBER_KICK("guild", GuildMemberKickEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMemberKickEvent) {
+                if (event is GuildMemberKickEvent) {
                     return event.guild
                 }
                 return null
@@ -192,7 +192,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         LEADER_CHANGE("guild", GuildMemberLeaderEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMemberLeaderEvent) {
+                if (event is GuildMemberLeaderEvent) {
                     return event.guild
                 }
                 return null
@@ -201,7 +201,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         DEPUTY_CHANGE("guild", GuildMemberDeputyEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildMemberDeputyEvent) {
+                if (event is GuildMemberDeputyEvent) {
                     return event.guild
                 }
                 return null
@@ -210,7 +210,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         SEND_ALLY_INVITATION("guild", GuildSendAllyInvitationEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildSendAllyInvitationEvent) {
+                if (event is GuildSendAllyInvitationEvent) {
                     return event.guild
                 }
                 return null
@@ -219,7 +219,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         ACCEPT_ALLY_INVITATION("guild", GuildAcceptAllyInvitationEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildAcceptAllyInvitationEvent) {
+                if (event is GuildAcceptAllyInvitationEvent) {
                     return event.guild
                 }
                 return null
@@ -228,7 +228,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         REVOKE_ALLY_INVITATION("guild", GuildRevokeAllyInvitationEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildRevokeAllyInvitationEvent) {
+                if (event is GuildRevokeAllyInvitationEvent) {
                     return event.guild
                 }
                 return null
@@ -237,7 +237,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         BREAK_ALLY("guild", GuildBreakAllyEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildBreakAllyEvent) {
+                if (event is GuildBreakAllyEvent) {
                     return event.guild
                 }
                 return null
@@ -246,7 +246,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         REGION_ENTER("[entered( |-)]guild", GuildRegionEnterEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildRegionEnterEvent) {
+                if (event is GuildRegionEnterEvent) {
                     return event.guild
                 }
                 return null
@@ -255,7 +255,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
         REGION_LEAVE("[leaved( |-)]guild", GuildRegionLeaveEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildRegionLeaveEvent) {
+                if (event is GuildRegionLeaveEvent) {
                     return event.guild
                 }
                 return null
@@ -299,7 +299,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
     override fun get(event: Event): Array<Guild?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
             }
         }

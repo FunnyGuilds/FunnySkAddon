@@ -39,7 +39,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         CREATE("cause", CustomGuildCreateEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is CustomGuildCreateEvent) {
+                if (event is CustomGuildCreateEvent) {
                     return event.eventCause
                 }
                 return null
@@ -48,7 +48,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         DELETE("cause", GuildDeleteEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildDeleteEvent) {
+                if (event is GuildDeleteEvent) {
                     return event.eventCause
                 }
                 return null
@@ -57,7 +57,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         BAN("cause", GuildBanEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildBanEvent) {
+                if (event is GuildBanEvent) {
                     return event.eventCause
                 }
                 return null
@@ -66,7 +66,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         UNBAN("cause", GuildUnbanEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildUnbanEvent) {
+                if (event is GuildUnbanEvent) {
                     return event.eventCause
                 }
                 return null
@@ -75,7 +75,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         MOVE("cause", GuildMoveEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMoveEvent) {
+                if (event is GuildMoveEvent) {
                     return event.eventCause
                 }
                 return null
@@ -84,7 +84,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         BASE_CHANGE("cause", GuildMoveEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMoveEvent) {
+                if (event is GuildMoveEvent) {
                     return event.eventCause
                 }
                 return null
@@ -93,7 +93,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         RENAME("cause", GuildRenameEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildRenameEvent) {
+                if (event is GuildRenameEvent) {
                     return event.eventCause
                 }
                 return null
@@ -115,7 +115,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         ENLARGE("cause", GuildEnlargeEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildEnlargeEvent) {
+                if (event is GuildEnlargeEvent) {
                     return event.eventCause
                 }
                 return null
@@ -124,7 +124,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         EXTEND_VALIDITY("cause", GuildExtendValidityEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildExtendValidityEvent) {
+                if (event is GuildExtendValidityEvent) {
                     return event.eventCause
                 }
                 return null
@@ -133,7 +133,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         LIVES_CHANGE("cause", GuildLivesChangeEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildLivesChangeEvent) {
+                if (event is GuildLivesChangeEvent) {
                     return event.eventCause
                 }
                 return null
@@ -142,7 +142,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         MEMBER_INVITE("cause", GuildMemberInviteEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMemberInviteEvent) {
+                if (event is GuildMemberInviteEvent) {
                     return event.eventCause
                 }
                 return null
@@ -151,7 +151,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         MEMBER_ACCEPT_INVITE("cause", GuildMemberAcceptInviteEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMemberAcceptInviteEvent) {
+                if (event is GuildMemberAcceptInviteEvent) {
                     return event.eventCause
                 }
                 return null
@@ -160,7 +160,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         MEMBER_REVOKE_INVITE("cause", GuildMemberRevokeInviteEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMemberRevokeInviteEvent) {
+                if (event is GuildMemberRevokeInviteEvent) {
                     return event.eventCause
                 }
                 return null
@@ -169,7 +169,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         MEMBER_JOIN("cause", GuildMemberJoinEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMemberJoinEvent) {
+                if (event is GuildMemberJoinEvent) {
                     return event.eventCause
                 }
                 return null
@@ -178,7 +178,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         MEMBER_LEAVE("cause", GuildMemberLeaveEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMemberLeaveEvent) {
+                if (event is GuildMemberLeaveEvent) {
                     return event.eventCause
                 }
                 return null
@@ -187,7 +187,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         MEMBER_KICK("cause", GuildMemberKickEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMemberKickEvent) {
+                if (event is GuildMemberKickEvent) {
                     return event.eventCause
                 }
                 return null
@@ -196,7 +196,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         LEADER_CHANGE("cause", GuildMemberLeaderEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMemberLeaderEvent) {
+                if (event is GuildMemberLeaderEvent) {
                     return event.eventCause
                 }
                 return null
@@ -205,7 +205,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         DEPUTY_CHANGE("cause", GuildMemberDeputyEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildMemberDeputyEvent) {
+                if (event is GuildMemberDeputyEvent) {
                     return event.eventCause
                 }
                 return null
@@ -214,7 +214,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         SEND_ALLY_INVITATION("cause", GuildSendAllyInvitationEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildSendAllyInvitationEvent) {
+                if (event is GuildSendAllyInvitationEvent) {
                     return event.eventCause
                 }
                 return null
@@ -223,7 +223,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         ACCEPT_ALLY_INVITATION("cause", GuildAcceptAllyInvitationEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildAcceptAllyInvitationEvent) {
+                if (event is GuildAcceptAllyInvitationEvent) {
                     return event.eventCause
                 }
                 return null
@@ -232,7 +232,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         REVOKE_ALLY_INVITATION("cause", GuildRevokeAllyInvitationEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildRevokeAllyInvitationEvent) {
+                if (event is GuildRevokeAllyInvitationEvent) {
                     return event.eventCause
                 }
                 return null
@@ -241,7 +241,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         BREAK_ALLY("cause", GuildBreakAllyEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildBreakAllyEvent) {
+                if (event is GuildBreakAllyEvent) {
                     return event.eventCause
                 }
                 return null
@@ -250,7 +250,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         REGION_ENTER("cause", GuildRegionEnterEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildRegionEnterEvent) {
+                if (event is GuildRegionEnterEvent) {
                     return event.eventCause
                 }
                 return null
@@ -259,7 +259,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         REGION_LEAVE("cause", GuildRegionLeaveEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is GuildRegionLeaveEvent) {
+                if (event is GuildRegionLeaveEvent) {
                     return event.eventCause
                 }
                 return null
@@ -269,7 +269,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         KILLS_CHANGE("cause", KillsChangeEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is KillsChangeEvent) {
+                if (event is KillsChangeEvent) {
                     return event.eventCause
                 }
                 return null
@@ -278,7 +278,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         DEATHS_CHANGE("cause", DeathsChangeEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is DeathsChangeEvent) {
+                if (event is DeathsChangeEvent) {
                     return event.eventCause
                 }
                 return null
@@ -287,7 +287,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         POINTS_CHANGE("cause", PointsChangeEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is PointsChangeEvent) {
+                if (event is PointsChangeEvent) {
                     return event.eventCause
                 }
                 return null
@@ -296,7 +296,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
         KILL_POINTS_CHANGE("cause", CustomKillPointsChangeEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if(event is CustomKillPointsChangeEvent) {
+                if (event is CustomKillPointsChangeEvent) {
                     return event.eventCause
                 }
                 return null
@@ -340,7 +340,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
     override fun get(event: Event): Array<FunnyEvent.EventCause?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
             }
         }

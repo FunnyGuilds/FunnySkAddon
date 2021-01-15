@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.conditions
 
-import ch.njol.skript.lang.Condition
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
@@ -16,7 +15,12 @@ abstract class GuildPlayerCondition : FunnyCondition() {
     lateinit var player: Expression<OfflinePlayer>
     lateinit var guild: Expression<Any>
 
-    override fun init(expression: Array<Expression<*>?>, matchedPattern: Int, isDelayed: Kleenean?, parseResult: SkriptParser.ParseResult?): Boolean {
+    override fun init(
+        expression: Array<Expression<*>?>,
+        matchedPattern: Int,
+        isDelayed: Kleenean?,
+        parseResult: SkriptParser.ParseResult?
+    ): Boolean {
         player = expression[0] as Expression<OfflinePlayer>
         guild = expression[1] as Expression<Any>
         if (parseResult != null) {

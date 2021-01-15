@@ -4,9 +4,7 @@ import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.rank.RankManager
-import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.skript.expressions.PlayerExpression
 import pl.funnyskaddon.skript.expressions.TopExpression
 
 class TopGuildExpression : TopExpression<Guild>() {
@@ -23,14 +21,14 @@ class TopGuildExpression : TopExpression<Guild>() {
     }
 
     override fun get(event: Event): Array<Guild>? {
-        val position = position?.getSingle(event)
+        val position = position.getSingle(event)
         var value: Guild? = null
 
         if (position != null) {
             value = RankManager.getInstance().getGuild(position.toInt())
         }
 
-        if(value != null) {
+        if (value != null) {
             return arrayOf(value)
         }
         return null

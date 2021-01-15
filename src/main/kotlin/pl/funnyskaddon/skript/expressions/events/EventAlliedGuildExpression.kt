@@ -32,7 +32,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
         SEND_ALLY_INVITATION("allied-guild|ally", GuildSendAllyInvitationEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildSendAllyInvitationEvent) {
+                if (event is GuildSendAllyInvitationEvent) {
                     return event.alliedGuild
                 }
                 return null
@@ -41,7 +41,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
         ACCEPT_ALLY_INVITATION("allied-guild|ally", GuildAcceptAllyInvitationEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildAcceptAllyInvitationEvent) {
+                if (event is GuildAcceptAllyInvitationEvent) {
                     return event.alliedGuild
                 }
                 return null
@@ -50,7 +50,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
         REVOKE_ALLY_INVITATION("allied-guild|ally", GuildRevokeAllyInvitationEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildRevokeAllyInvitationEvent) {
+                if (event is GuildRevokeAllyInvitationEvent) {
                     return event.alliedGuild
                 }
                 return null
@@ -59,7 +59,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
         BREAK_ALLY("allied-guild|ally", GuildBreakAllyEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildBreakAllyEvent) {
+                if (event is GuildBreakAllyEvent) {
                     return event.alliedGuild
                 }
                 return null
@@ -103,7 +103,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
     override fun get(event: Event): Array<Guild?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
             }
         }

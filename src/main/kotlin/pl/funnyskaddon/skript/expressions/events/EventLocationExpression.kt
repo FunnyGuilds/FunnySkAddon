@@ -8,7 +8,8 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.guild.*
+import net.dzikoysk.funnyguilds.event.guild.GuildBaseChangeEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildMoveEvent
 import org.bukkit.Location
 import org.bukkit.event.Event
 
@@ -29,7 +30,7 @@ class EventLocationExpression : SimpleExpression<Location>() {
 
         MOVE("[new( |-)]location", GuildMoveEvent::class.java) {
             override fun get(event: Event): Location? {
-                if(event is GuildMoveEvent) {
+                if (event is GuildMoveEvent) {
                     return event.newLocation
                 }
                 return null
@@ -38,7 +39,7 @@ class EventLocationExpression : SimpleExpression<Location>() {
 
         BASE_CHANGE("([new( |-)]location|[new base location])", GuildBaseChangeEvent::class.java) {
             override fun get(event: Event): Location? {
-                if(event is GuildBaseChangeEvent) {
+                if (event is GuildBaseChangeEvent) {
                     return event.newBaseLocation
                 }
                 return null
@@ -82,7 +83,7 @@ class EventLocationExpression : SimpleExpression<Location>() {
 
     override fun get(event: Event): Array<Location?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
             }
         }

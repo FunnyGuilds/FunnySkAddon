@@ -4,7 +4,6 @@ import ch.njol.skript.Skript
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.skript.expressions.PlayerExpression
 
 class GuildTagExpression : GuildExpression<String>() {
 
@@ -22,7 +21,7 @@ class GuildTagExpression : GuildExpression<String>() {
     override fun get(event: Event): Array<String>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return arrayOf(guild.tag)
         }
 

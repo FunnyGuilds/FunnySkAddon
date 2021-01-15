@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.effects
 
-import ch.njol.skript.lang.Effect
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
@@ -20,7 +19,7 @@ abstract class PlayerEffect<T>(private var inverted: Boolean) : FunnyEffect() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        if(inverted || matchedPattern > 1) {
+        if (inverted || matchedPattern > 1) {
             value = expression[0] as Expression<T>
             player = expression[1] as Expression<OfflinePlayer>
         } else {

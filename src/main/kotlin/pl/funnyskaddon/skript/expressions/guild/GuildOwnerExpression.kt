@@ -5,7 +5,6 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.skript.expressions.PlayerExpression
 
 class GuildOwnerExpression : GuildExpression<OfflinePlayer>() {
 
@@ -23,7 +22,7 @@ class GuildOwnerExpression : GuildExpression<OfflinePlayer>() {
     override fun get(event: Event): Array<OfflinePlayer>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return arrayOf(guild.owner.offlinePlayer)
         }
 

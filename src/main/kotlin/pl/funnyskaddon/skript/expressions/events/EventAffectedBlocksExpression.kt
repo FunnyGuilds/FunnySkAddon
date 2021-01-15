@@ -8,7 +8,7 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.guild.*
+import net.dzikoysk.funnyguilds.event.guild.GuildEntityExplodeEvent
 import org.bukkit.block.Block
 import org.bukkit.event.Event
 
@@ -29,7 +29,7 @@ class EventAffectedBlocksExpression : SimpleExpression<Block>() {
 
         ENTITY_EXPLODE("[affected( |-)]blocks", GuildEntityExplodeEvent::class.java) {
             override fun get(event: Event): List<Block>? {
-                if(event is GuildEntityExplodeEvent) {
+                if (event is GuildEntityExplodeEvent) {
                     return event.affectedBlocks
                 }
                 return null
@@ -73,7 +73,7 @@ class EventAffectedBlocksExpression : SimpleExpression<Block>() {
 
     override fun get(event: Event): Array<Block?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return type[event]?.toTypedArray()
             }
         }

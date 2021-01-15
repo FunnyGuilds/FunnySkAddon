@@ -8,7 +8,8 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.guild.*
+import net.dzikoysk.funnyguilds.event.guild.GuildBanEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 import org.bukkit.event.Event
 
 class EventTimeExpression : SimpleExpression<Long>() {
@@ -28,7 +29,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
 
         BAN("time", GuildBanEvent::class.java) {
             override fun get(event: Event): Long? {
-                if(event is GuildBanEvent) {
+                if (event is GuildBanEvent) {
                     return event.time
                 }
                 return null
@@ -37,7 +38,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
 
         EXTEND_VALIDITY("[extend( |-)]time", GuildExtendValidityEvent::class.java) {
             override fun get(event: Event): Long? {
-                if(event is GuildExtendValidityEvent) {
+                if (event is GuildExtendValidityEvent) {
                     return event.extendTime
                 }
                 return null
@@ -81,7 +82,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
 
     override fun get(event: Event): Array<Long?>? {
         for (classEvent in type.events) {
-            if(classEvent.isInstance(event)) {
+            if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
             }
         }

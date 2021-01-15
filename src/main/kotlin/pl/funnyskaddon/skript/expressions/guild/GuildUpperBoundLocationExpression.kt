@@ -23,7 +23,7 @@ class GuildUpperBoundLocationExpression : GuildExpression<Location>() {
     override fun get(event: Event): Array<Location>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return arrayOf(guild.getUpperPoint())
         }
 

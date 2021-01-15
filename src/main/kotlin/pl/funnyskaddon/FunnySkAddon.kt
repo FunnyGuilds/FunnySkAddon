@@ -4,9 +4,9 @@ import ch.njol.skript.Skript
 import ch.njol.skript.SkriptAddon
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.data.configs.PluginConfiguration
+import org.bstats.bukkit.Metrics
 import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
-import pl.funnyskaddon.bstats.bukkit.Metrics
 import pl.funnyskaddon.commands.FunnySkAddonCommand
 import pl.funnyskaddon.data.Configuration
 import pl.funnyskaddon.events.guilds.GuildCreateListener
@@ -86,7 +86,6 @@ class FunnySkAddon : JavaPlugin() {
         val pluginId = 6363
         Metrics(this, pluginId)
     }
-
 
 
 }

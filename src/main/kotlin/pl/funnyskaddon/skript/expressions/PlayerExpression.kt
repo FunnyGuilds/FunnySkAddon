@@ -2,7 +2,6 @@ package pl.funnyskaddon.skript.expressions
 
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
-import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer

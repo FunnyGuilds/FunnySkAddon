@@ -23,7 +23,7 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>() {
     override fun get(event: Event): Array<Player>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return guild.getPlayersInGuildRegion()
         }
 

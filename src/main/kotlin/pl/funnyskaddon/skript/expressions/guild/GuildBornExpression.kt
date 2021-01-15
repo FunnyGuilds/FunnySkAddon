@@ -5,7 +5,6 @@ import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.util.Date
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.expressions.GuildExpression
-import pl.funnyskaddon.skript.expressions.PlayerExpression
 
 class GuildBornExpression : GuildExpression<Date>() {
 
@@ -23,7 +22,7 @@ class GuildBornExpression : GuildExpression<Date>() {
     override fun get(event: Event): Array<Date>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return arrayOf(Date(guild.born))
         }
 

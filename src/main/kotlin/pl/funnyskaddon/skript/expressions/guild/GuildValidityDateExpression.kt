@@ -22,7 +22,7 @@ class GuildValidityDateExpression : GuildExpression<Date>() {
     override fun get(event: Event): Array<Date>? {
         val guild = getGuild(event)
 
-        if(guild != null) {
+        if (guild != null) {
             return arrayOf(Date(guild.validity))
         }
 
