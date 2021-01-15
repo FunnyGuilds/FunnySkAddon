@@ -12,7 +12,6 @@ import pl.funnyskaddon.data.Configuration
 import pl.funnyskaddon.events.guilds.GuildCreateListener
 import pl.funnyskaddon.events.rank.PointsChangeListener
 import pl.funnyskaddon.schedulers.UpdateCheckScheduler
-import pl.funnyskaddon.skript.SkriptLoader
 
 class FunnySkAddon : JavaPlugin() {
 
@@ -80,12 +79,8 @@ class FunnySkAddon : JavaPlugin() {
             "expressions.config"
         )
 
-        val skriptLoader = SkriptLoader()
-        skriptLoader.loadEffects()
-
         val pluginId = 6363
         Metrics(this, pluginId)
     }
-
 
 }

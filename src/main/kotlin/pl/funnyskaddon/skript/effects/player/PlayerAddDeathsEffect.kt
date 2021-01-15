@@ -4,13 +4,13 @@ import ch.njol.skript.Skript
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.effects.PlayerEffect
 
-class PlayerAddDeathsEffect : PlayerEffect<Int>(true) {
+class PlayerAddDeathsEffect : PlayerEffect<Number>(true) {
 
     companion object {
         init {
             Skript.registerEffect(
                 PlayerAddDeathsEffect::class.java,
-                "add %number% deaths to %offlineplayer%(|'s) [rank|ranking]"
+                "add %number% death[s] to %offlineplayer%(|'s) [rank|ranking]"
             )
         }
     }
@@ -21,7 +21,7 @@ class PlayerAddDeathsEffect : PlayerEffect<Int>(true) {
         var change = 0
         val value = getValue(event)
         if (value != null) {
-            change = value
+            change = value.toInt()
         }
 
         user?.rank?.deaths = user?.rank?.deaths?.plus(change)!!
