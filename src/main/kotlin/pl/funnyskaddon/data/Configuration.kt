@@ -12,6 +12,8 @@ class Configuration(private val plugin: FunnySkAddon) {
 
     var noPerm: String? = null
 
+    var devMode = false
+
     fun loadConfiguration() {
         plugin.saveDefaultConfig()
         val config: ConfigurationSection = plugin.config
@@ -20,7 +22,8 @@ class Configuration(private val plugin: FunnySkAddon) {
         onlyFullReleases = config.getBoolean("update.onlyFullReleases")
         simpleUpdateCheck = config.getBoolean("update.simple")
         checkTime = config.getInt("update.time")
-        noPerm = config.getString("message.noperm")
+        noPerm = config.getString("message.noPerm")
+        devMode = config.getBoolean("devMode")
     }
 
 }

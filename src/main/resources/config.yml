@@ -10,5 +10,7 @@ update:
   time: 180
 messages:
   #Wiadomość wsyłana gdy gracz nie ma uprawnień do komendy /funnyskaddon
-  noperm: "&bFunnySkAddon &8> &7Niestety nie posiadasz uprawnien."
+  noPerm: "&bFunnySkAddon &8> &7Niestety nie posiadasz uprawnien."
+#Tryb developerski, służy do generowania dokumentacji, nie ma raczej sensu ustawiać na true
+devMode: false
 

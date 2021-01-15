@@ -1,11 +1,14 @@
 package pl.funnyskaddon.commands
 
+import ch.njol.skript.Skript
+import ch.njol.skript.doc.HTMLGenerator
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.util.color
+import java.io.File
 
 class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
 
@@ -13,6 +16,27 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
         if (!sender.hasPermission("funnyskaddon.cmd")) {
             sender.sendMessage(plugin.configuration.noPerm?.color())
             return true
+        }
+
+        if (args != null) {
+            if(args.isNotEmpty() && args[0]?.equals("gen-docs", true)!! && sender.hasPermission("funnyskaddon.cmd.docs")) {
+                if(plugin.configuration.devMode) {
+                    val templateDir = File(plugin.dataFolder.toString() + "/docs/templates/")
+                    if (!templateDir.exists()) {
+                        Skript.info(sender, "Documentation templates not found. Cannot generate docs!")
+                        return true
+                    }
+                    val outputDir = File(Skript.getInstance().dataFolder.toString() + "/docs/output")
+                    outputDir.mkdirs()
+
+                    val generator = HTMLGenerator(templateDir, outputDir)
+                    Skript.info(sender, "Generating docs...")
+                    generator.generate() // Try to generate docs... hopefully
+                    Skript.info(sender, "Documentation generated!")
+
+                    return true
+                }
+            }
         }
 
         val java = System.getProperty("java.version")
