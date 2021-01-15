@@ -7,6 +7,7 @@ class Configuration(private val plugin: FunnySkAddon) {
 
     var updateCheck = false
     var simpleUpdateCheck = true
+    var checkTime = 180
 
     var noPerm: String? = null
 
@@ -17,6 +18,7 @@ class Configuration(private val plugin: FunnySkAddon) {
 
         updateCheck = config.getBoolean("update.check")
         simpleUpdateCheck = config.getBoolean("update.simple")
+        checkTime = config.getInt("update.time")
         noPerm = config.getString("message.noperm")
     }
 

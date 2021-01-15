@@ -32,7 +32,6 @@ public class GuildDelete extends Effect {
             Guild g = GuildUtil.Companion.getGuild(guild.getSingle(e));
             try {
                 g.delete();
-                RankManager.getInstance().getUser(1);
             } catch (Exception ex) {
                 return;
             }

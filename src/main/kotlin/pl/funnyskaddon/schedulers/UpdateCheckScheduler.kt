@@ -26,7 +26,7 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
                     }
                 }
             }
-        }, 0, 216000)
+        }, 0, plugin.configuration.checkTime * 60L)
     }
 
 }
