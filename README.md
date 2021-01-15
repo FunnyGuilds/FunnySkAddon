@@ -2,7 +2,7 @@
 
 #### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
 #### Twórcy: Peridot, LloydPL
-#### Dokumentacja: https://funnyskaddon.pl
+#### Dokumentacja: https://mlgroupmc.github.io/
 #### bStats: https://bstats.org/plugin/bukkit/FunnySkAddon-Extended/6363
 
 ### Changelog:
