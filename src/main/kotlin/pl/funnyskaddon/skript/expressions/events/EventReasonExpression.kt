@@ -2,6 +2,9 @@ package pl.funnyskaddon.skript.expressions.events
 
 import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Events
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
@@ -10,7 +13,16 @@ import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildBanEvent
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 
+@FunnyDoc
+@Name("Reason")
+@Description(
+    "Zwraca przyczynę bana."
+)
+@Events(
+    "guild ban"
+)
 class EventReasonExpression : SimpleExpression<String>() {
 
     companion object {
@@ -19,7 +31,7 @@ class EventReasonExpression : SimpleExpression<String>() {
                 EventReasonExpression::class.java,
                 String::class.javaObjectType,
                 ExpressionType.SIMPLE,
-                *EventType.patterns
+                *EventType.patterns.toTypedArray()
             )
         }
     }
@@ -40,11 +52,12 @@ class EventReasonExpression : SimpleExpression<String>() {
         }
 
         companion object {
-            val patterns: Array<String?> = arrayOfNulls(values().size)
+            val patterns = mutableSetOf<String>()
 
             init {
-                for (i in patterns.indices) patterns[i] =
-                    values()[i].pattern
+                for (value in values()) {
+                    patterns.add(value.pattern)
+                }
             }
         }
 

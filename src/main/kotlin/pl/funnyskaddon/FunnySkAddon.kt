@@ -64,19 +64,19 @@ class FunnySkAddon : JavaPlugin() {
 
         addon.loadClasses(
             "pl.funnyskaddon.skript",
-            "conditions.guild",
+           /* "conditions.guild",
             "conditions.player",
             "effects.guild",
             "effects.player",
             "events.guild",
             "events.guild.ally",
             "events.guild.member",
-            "events.rank",
+            "events.rank",*/
             "expressions.events",
-            "expressions.guild",
+           /* "expressions.guild",
             "expressions.player",
             "expressions.top",
-            "expressions.config"
+            "expressions.config"*/
         )
 
         val pluginId = 6363

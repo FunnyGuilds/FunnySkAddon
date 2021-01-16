@@ -2,7 +2,9 @@ package pl.funnyskaddon.skript.events.guild
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.util.SimpleEvent
+import pl.funnyskaddon.docs.FunnyDoc
 
+@FunnyDoc
 class GuildEntityExplodeEvent : SimpleEvent() {
 
     companion object {

@@ -2,6 +2,9 @@ package pl.funnyskaddon.skript.expressions.events
 
 import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Events
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
@@ -11,7 +14,17 @@ import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildBanEvent
 import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 
+@FunnyDoc
+@Name("Time")
+@Description(
+    "Zwraca czas."
+)
+@Events(
+    "guild ban",
+    "guild extend validity"
+)
 class EventTimeExpression : SimpleExpression<Long>() {
 
     companion object {
@@ -20,7 +33,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
                 EventTimeExpression::class.java,
                 Long::class.javaObjectType,
                 ExpressionType.SIMPLE,
-                *EventType.patterns
+                *EventType.patterns.toTypedArray()
             )
         }
     }
@@ -50,11 +63,12 @@ class EventTimeExpression : SimpleExpression<Long>() {
         }
 
         companion object {
-            val patterns: Array<String?> = arrayOfNulls(values().size)
+            val patterns = mutableSetOf<String>()
 
             init {
-                for (i in patterns.indices) patterns[i] =
-                    values()[i].pattern
+                for (value in values()) {
+                    patterns.add(value.pattern)
+                }
             }
         }
 

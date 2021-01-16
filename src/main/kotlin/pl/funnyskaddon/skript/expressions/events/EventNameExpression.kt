@@ -11,31 +11,25 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildRenameEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
-@Name("Change")
+@Name("Name")
 @Description(
-    "Zwraca zmiane w rankingu.",
+    "Zwraca nową nazwę gildii."
 )
 @Events(
-    "kills change",
-    "deaths change",
-    "points change",
-    "kills points change"
+    "guild rename"
 )
-class EventChangeExpression : SimpleExpression<Int>() {
+class EventNameExpression : SimpleExpression<String>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventChangeExpression::class.java,
-                Int::class.javaObjectType,
+                EventNameExpression::class.java,
+                String::class.javaObjectType,
                 ExpressionType.SIMPLE,
                 *EventType.patterns.toTypedArray()
             )
@@ -44,37 +38,10 @@ class EventChangeExpression : SimpleExpression<Int>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        KILLS_CHANGE("[rank|ranking] [kills( |-)]change", KillsChangeEvent::class.java) {
-            override fun get(event: Event): Int? {
-                if (event is KillsChangeEvent) {
-                    return event.change
-                }
-                return null
-            }
-        },
-
-        DEATHS_CHANGE("[rank|ranking] [deaths( |-)]change", DeathsChangeEvent::class.java) {
-            override fun get(event: Event): Int? {
-                if (event is DeathsChangeEvent) {
-                    return event.change
-                }
-                return null
-            }
-        },
-
-        POINTS_CHANGE("[rank|ranking] [points( |-)]change", PointsChangeEvent::class.java) {
-            override fun get(event: Event): Int? {
-                if (event is PointsChangeEvent) {
-                    return event.change
-                }
-                return null
-            }
-        },
-
-        KILL_POINTS_CHANGE("kill [rank|ranking] [points( |-)]change", CustomKillPointsChangeEvent::class.java) {
-            override fun get(event: Event): Int? {
-                if (event is CustomKillPointsChangeEvent) {
-                    return event.change
+        RENAME("[new( |-)]name", GuildRenameEvent::class.java) {
+            override fun get(event: Event): String? {
+                if (event is GuildRenameEvent) {
+                    return event.newName
                 }
                 return null
             }
@@ -94,7 +61,7 @@ class EventChangeExpression : SimpleExpression<Int>() {
             }
         }
 
-        abstract operator fun get(event: Event): Int?
+        abstract operator fun get(event: Event): String?
     }
 
     private lateinit var type: EventType
@@ -116,7 +83,7 @@ class EventChangeExpression : SimpleExpression<Int>() {
         return true
     }
 
-    override fun get(event: Event): Array<Int?>? {
+    override fun get(event: Event): Array<String?>? {
         for (classEvent in type.events) {
             if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
@@ -130,11 +97,11 @@ class EventChangeExpression : SimpleExpression<Int>() {
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " change"
+        return "the " + type.name + " new name"
     }
 
-    override fun getReturnType(): Class<out Int> {
-        return Int::class.javaObjectType
+    override fun getReturnType(): Class<out String> {
+        return String::class.javaObjectType
     }
 
 }

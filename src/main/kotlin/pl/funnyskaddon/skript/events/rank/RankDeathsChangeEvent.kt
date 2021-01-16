@@ -3,7 +3,9 @@ package pl.funnyskaddon.skript.events.rank
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.util.SimpleEvent
 import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
+import pl.funnyskaddon.docs.FunnyDoc
 
+@FunnyDoc
 class RankDeathsChangeEvent : SimpleEvent() {
 
     companion object {
@@ -12,7 +14,7 @@ class RankDeathsChangeEvent : SimpleEvent() {
                 "Deaths Change",
                 RankDeathsChangeEvent::class.java,
                 DeathsChangeEvent::class.java,
-                "deaths change"
+                "[player] [rank|ranking] deaths change"
             )
         }
     }

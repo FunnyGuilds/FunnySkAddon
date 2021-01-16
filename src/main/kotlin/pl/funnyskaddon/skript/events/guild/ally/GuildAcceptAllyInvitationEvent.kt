@@ -2,16 +2,18 @@ package pl.funnyskaddon.skript.events.guild.ally
 
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.util.SimpleEvent
+import pl.funnyskaddon.docs.FunnyDoc
 
+@FunnyDoc
 class GuildAcceptAllyInvitationEvent : SimpleEvent() {
 
     companion object {
         init {
             Skript.registerEvent(
-                "Accept Ally Invitation",
+                "Guild Accept Ally Invitation",
                 GuildAcceptAllyInvitationEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent::class.java,
-                "accept ally (invite|invitation)"
+                "guild accept ally (invite|invitation)"
             )
         }
     }

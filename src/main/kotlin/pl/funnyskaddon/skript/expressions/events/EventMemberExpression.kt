@@ -2,6 +2,9 @@ package pl.funnyskaddon.skript.expressions.events
 
 import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Events
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
@@ -11,7 +14,18 @@ import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.member.*
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 
+@FunnyDoc
+@Name("Member")
+@Description("Zwraca członka który uczestniczył w wydarzeniu.")
+@Events(
+    "guild member join",
+    "guild member leave",
+    "guild member kick",
+    "guild member leader",
+    "guild member deputy",
+)
 class EventMemberExpression : SimpleExpression<Player>() {
 
     companion object {
@@ -20,14 +34,14 @@ class EventMemberExpression : SimpleExpression<Player>() {
                 EventMemberExpression::class.java,
                 Player::class.java,
                 ExpressionType.SIMPLE,
-                *EventType.patterns
+                *EventType.patterns.toTypedArray()
             )
         }
     }
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        MEMBER_INVITE("doer", GuildMemberInviteEvent::class.java) {
+        MEMBER_INVITE("member", GuildMemberInviteEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is GuildMemberInviteEvent) {
                     return event.member.player
@@ -36,7 +50,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
             }
         },
 
-        MEMBER_ACCEPT_INVITE("doer", GuildMemberAcceptInviteEvent::class.java) {
+        MEMBER_ACCEPT_INVITE("member", GuildMemberAcceptInviteEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is GuildMemberAcceptInviteEvent) {
                     return event.member.player
@@ -45,7 +59,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
             }
         },
 
-        MEMBER_REVOKE_INVITE("doer", GuildMemberRevokeInviteEvent::class.java) {
+        MEMBER_REVOKE_INVITE("member", GuildMemberRevokeInviteEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is GuildMemberRevokeInviteEvent) {
                     return event.member.player
@@ -54,7 +68,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
             }
         },
 
-        MEMBER_JOIN("doer", GuildMemberJoinEvent::class.java) {
+        MEMBER_JOIN("member", GuildMemberJoinEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is GuildMemberJoinEvent) {
                     return event.member.player
@@ -63,7 +77,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
             }
         },
 
-        MEMBER_LEAVE("doer", GuildMemberLeaveEvent::class.java) {
+        MEMBER_LEAVE("member", GuildMemberLeaveEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is GuildMemberLeaveEvent) {
                     return event.member.player
@@ -72,7 +86,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
             }
         },
 
-        MEMBER_KICK("doer", GuildMemberKickEvent::class.java) {
+        MEMBER_KICK("member", GuildMemberKickEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is GuildMemberKickEvent) {
                     return event.member.player
@@ -81,7 +95,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
             }
         },
 
-        LEADER_CHANGE("doer", GuildMemberLeaderEvent::class.java) {
+        LEADER_CHANGE("member", GuildMemberLeaderEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is GuildMemberLeaderEvent) {
                     return event.member.player
@@ -90,7 +104,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
             }
         },
 
-        DEPUTY_CHANGE("doer", GuildMemberDeputyEvent::class.java) {
+        DEPUTY_CHANGE("member", GuildMemberDeputyEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is GuildMemberDeputyEvent) {
                     return event.member.player
@@ -104,11 +118,12 @@ class EventMemberExpression : SimpleExpression<Player>() {
         }
 
         companion object {
-            val patterns: Array<String?> = arrayOfNulls(values().size)
+            val patterns = mutableSetOf<String>()
 
             init {
-                for (i in patterns.indices) patterns[i] =
-                    values()[i].pattern
+                for (value in values()) {
+                    patterns.add(value.pattern)
+                }
             }
         }
 

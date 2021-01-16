@@ -2,6 +2,9 @@ package pl.funnyskaddon.skript.expressions.events
 
 import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Events
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
@@ -19,9 +22,44 @@ import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
 import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
 import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 
+@FunnyDoc
+@Name("Player")
+@Description("Zwraca gracza który uczestniczył w wydarzeniu.")
+@Events(
+    "guild delete",
+    "guild delete",
+    "guild ban",
+    "guild unban",
+    "guild move",
+    "guild base change",
+    "guild rename",
+    /*"guild retag", */
+    "guild enlarge",
+    "guild extend validity",
+    "guild lives change",
+    "guild member invite",
+    "guild member accept invite",
+    "guild member revoke invite",
+    "guild member join",
+    "guild member leave",
+    "guild member kick",
+    "guild member leader",
+    "guild member deputy",
+    "guild send ally invitation",
+    "guild ally accept invitation",
+    "guild ally revoke invitation",
+    "guild break ally",
+    "guild region enter",
+    "guild region leave",
+    "kills change",
+    "deaths change",
+    "points change",
+    "kills points change"
+)
 class EventPlayerExpression : SimpleExpression<Player>() {
 
     companion object {
@@ -30,7 +68,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
                 EventPlayerExpression::class.java,
                 Player::class.java,
                 ExpressionType.SIMPLE,
-                *EventType.patterns
+                *EventType.patterns.toTypedArray()
             )
         }
     }
@@ -315,11 +353,12 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         }
 
         companion object {
-            val patterns: Array<String?> = arrayOfNulls(values().size)
+            val patterns = mutableSetOf<String>()
 
             init {
-                for (i in patterns.indices) patterns[i] =
-                    values()[i].pattern
+                for (value in values()) {
+                    patterns.add(value.pattern)
+                }
             }
         }
 

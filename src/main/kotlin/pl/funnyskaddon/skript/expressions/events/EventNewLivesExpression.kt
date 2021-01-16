@@ -2,65 +2,70 @@ package pl.funnyskaddon.skript.expressions.events
 
 import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Events
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.guild.GuildRenameEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 
-class EventStringExpression : SimpleExpression<String>() {
+@FunnyDoc
+@Name("Lives")
+@Description(
+    "Zwraca liczbe żyć gildii po zmianie ich ilości."
+)
+@Events(
+    "guild lives change"
+)
+class EventNewLivesExpression : SimpleExpression<Int>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventStringExpression::class.java,
-                String::class.javaObjectType,
+                EventNewLivesExpression::class.java,
+                Int::class.javaObjectType,
                 ExpressionType.SIMPLE,
-                *EventType.patterns
+                *EventType.patterns.toTypedArray()
             )
         }
     }
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        RENAME("[new( |-)]name", GuildRenameEvent::class.java) {
-            override fun get(event: Event): String? {
-                if (event is GuildRenameEvent) {
-                    return event.newName
+        LIVES_CHANGE("[new( |-)]lives", GuildLivesChangeEvent::class.java) {
+            override fun get(event: Event): Int? {
+                if (event is GuildLivesChangeEvent) {
+                    return event.newLives
                 }
                 return null
             }
         };
-
-        /*
-            In future, maybe
-         */
-        /*RETAG("[new( |-)]TAG", GuildRenameEvent::class.java) {
-            override fun get(event: Event): String? {
-                if(event is GuildRenameEvent) {
-                    return event.newName
-                }
-                return null
-            }
-        };*/
 
         init {
             this.pattern = "[the] $pattern"
         }
 
         companion object {
-            val patterns: Array<String?> = arrayOfNulls(values().size)
+            val patterns = mutableSetOf<String>()
 
             init {
-                for (i in patterns.indices) patterns[i] =
-                    values()[i].pattern
+                for (value in values()) {
+                    patterns.add(value.pattern)
+                }
             }
         }
 
-        abstract operator fun get(event: Event): String?
+        abstract operator fun get(event: Event): Int?
     }
 
     private lateinit var type: EventType
@@ -82,7 +87,7 @@ class EventStringExpression : SimpleExpression<String>() {
         return true
     }
 
-    override fun get(event: Event): Array<String?>? {
+    override fun get(event: Event): Array<Int?>? {
         for (classEvent in type.events) {
             if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
@@ -96,11 +101,11 @@ class EventStringExpression : SimpleExpression<String>() {
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " reason"
+        return "the " + type.name + " change"
     }
 
-    override fun getReturnType(): Class<out String> {
-        return String::class.javaObjectType
+    override fun getReturnType(): Class<out Int> {
+        return Int::class.javaObjectType
     }
 
 }
