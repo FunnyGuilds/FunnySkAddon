@@ -13,7 +13,7 @@ import pl.funnyskaddon.skript.expressions.FunnyExpression
 
 @FunnyDoc
 @Name("All Guilds")
-@Description("Zwraca wszystkie gildie.")
+@Description("Zwraca wszystkie gildie")
 @Examples(
     "loop all guilds:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""

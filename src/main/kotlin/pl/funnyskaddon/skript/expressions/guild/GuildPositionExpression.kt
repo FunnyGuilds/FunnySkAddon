@@ -1,10 +1,18 @@
 package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
 
+@FunnyDoc
+@Name("Guild Top Position")
+@Description("Zwraca pozycje gildii w rankingu")
+@Examples("send \"Pozycja gildii gracza %player% w rankingu: %player's guild top position%\"")
 class GuildPositionExpression : GuildExpression<Int>() {
 
     companion object {

@@ -28,7 +28,7 @@ import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
 @Name("Cause")
-@Description("Zwraca przyczynę wydarzenia.")
+@Description("Zwraca przyczynę wydarzenia")
 @Events(
     "guild delete",
     "guild delete",

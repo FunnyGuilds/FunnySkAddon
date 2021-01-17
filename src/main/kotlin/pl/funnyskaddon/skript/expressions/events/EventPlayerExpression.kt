@@ -28,7 +28,7 @@ import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
 @Name("Player")
-@Description("Zwraca gracza który uczestniczył w wydarzeniu.")
+@Description("Zwraca gracza który uczestniczył w wydarzeniu")
 @Events(
     "guild delete",
     "guild delete",

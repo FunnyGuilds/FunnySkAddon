@@ -11,7 +11,7 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 
 @FunnyDoc
 @Name("Guild Lives")
-@Description("Zwraca liczbe żyć gildii.")
+@Description("Zwraca liczbe żyć gildii")
 @Examples("send \"Liczba żyć gildii FajnaGildia: %\"Fajna Gildia\" guild lives%\"")
 class GuildLivesExpression : GuildExpression<Int>() {
 

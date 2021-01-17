@@ -2,6 +2,7 @@ package pl.funnyskaddon.skript.expressions.top
 
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.rank.RankManager
@@ -12,7 +13,10 @@ import pl.funnyskaddon.skript.expressions.TopExpression
 
 @FunnyDoc
 @Name("Player In Position")
-@Description("Zwraca gracza na danej pozycji w rankingu.")
+@Description("Zwraca gracza na danej pozycji w rankingu")
+@Examples("send \"Gracz na pozycji 1: %player in position 1%\"<br>",
+    "send \"Gracz na pozycji 2: %player in position 2%\"<br>",
+    "send \"Gracz na pozycji 3: %player in position 3%\"")
 class TopPlayerExpression : TopExpression<OfflinePlayer>() {
 
     companion object {
@@ -21,7 +25,7 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
                 TopPlayerExpression::class.java,
                 OfflinePlayer::class.java,
                 ExpressionType.PROPERTY,
-                "player in position %number%"
+                "player in position %number% [of (top|rank|ranking)]"
             )
         }
     }

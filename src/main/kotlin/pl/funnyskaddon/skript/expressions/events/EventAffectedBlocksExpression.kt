@@ -19,10 +19,10 @@ import pl.funnyskaddon.docs.FunnyDoc
 @FunnyDoc
 @Name("Blocks")
 @Description(
-    "Zwraca bloki które wybuchły."
+    "Zwraca bloki które wybuchły"
 )
 @Events(
-    "guild entity exploden"
+    "guild entity explode"
 )
 class EventAffectedBlocksExpression : SimpleExpression<Block>() {
 

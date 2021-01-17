@@ -10,9 +10,9 @@ import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
 
 @FunnyDoc
-@Name("Guild Deaths")
-@Description("Zwraca liczbe śmierci gildii (sume wszystkich śmierci jej członków).")
-@Examples("send \"Liczba śmierci gildii FajnaGildia: %\"Fajna Gildia\" guild deaths%\"")
+@Name("Guild KDR")
+@Description("Zwraca KDR gildii")
+@Examples("send \"KDR gildii FajnaGildia: %\"Fajna Gildia\" guild kdr%\"")
 class GuildKDRExpression : GuildExpression<Number>() {
 
     companion object {

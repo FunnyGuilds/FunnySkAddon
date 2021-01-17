@@ -13,7 +13,7 @@ import pl.funnyskaddon.skript.expressions.ValueExpression
 
 @FunnyDoc
 @Name("Guild From Name")
-@Description("Zwraca gildie po nazwie.")
+@Description("Zwraca gildie po nazwie")
 @Examples("set {_guild} to guild with name \"FajnaGildia\"")
 class GuildFromNameExpression : ValueExpression<String>() {
 

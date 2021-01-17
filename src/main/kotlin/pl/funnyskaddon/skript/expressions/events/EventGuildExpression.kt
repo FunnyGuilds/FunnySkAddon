@@ -24,7 +24,7 @@ import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
 
 @FunnyDoc
 @Name("Guild")
-@Description("Zwraca gildie której dotyczy wydarzenie.")
+@Description("Zwraca gildie której dotyczy wydarzenie")
 @Events(
     "guild delete",
     "guild delete",

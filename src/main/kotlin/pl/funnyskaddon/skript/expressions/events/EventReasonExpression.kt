@@ -18,7 +18,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 @FunnyDoc
 @Name("Reason")
 @Description(
-    "Zwraca przyczynę bana."
+    "Zwraca przyczynę bana"
 )
 @Events(
     "guild ban"

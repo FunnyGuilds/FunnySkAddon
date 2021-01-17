@@ -11,7 +11,7 @@ import pl.funnyskaddon.skript.expressions.PlayerExpression
 
 @FunnyDoc
 @Name("Player Points")
-@Description("Zwraca liczbe punktów rankingowych gracza.")
+@Description("Zwraca liczbe punktów rankingowych gracza")
 @Examples("send \"Liczba punktów rankingowych gracza: %player points%\"")
 class PlayerPointsExpression : PlayerExpression<Int>() {
 
@@ -21,7 +21,7 @@ class PlayerPointsExpression : PlayerExpression<Int>() {
                 PlayerPointsExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%offlineplayer%(|'s) [(rank|ranking)] points [amount|count]"
+                "%offlineplayer%(|'s) [rank|ranking] points [amount|count]"
             )
         }
     }

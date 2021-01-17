@@ -14,7 +14,7 @@ import pl.funnyskaddon.util.getGuildAtLocation
 
 @FunnyDoc
 @Name("Guild At Location")
-@Description("Zwraca gildie w danej lokalizacji.")
+@Description("Zwraca gildie w danej lokalizacji")
 @Examples("set {_guild} to guild at player's location")
 class GuildAtLocationExpression : ValueExpression<Location>() {
 

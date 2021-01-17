@@ -20,7 +20,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 @FunnyDoc
 @Name("Location")
 @Description(
-    "Zwraca lokalizacjei."
+    "Zwraca lokalizację"
 )
 @Events(
     "guild move",

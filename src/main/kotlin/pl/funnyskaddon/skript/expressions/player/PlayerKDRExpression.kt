@@ -11,7 +11,7 @@ import pl.funnyskaddon.skript.expressions.PlayerExpression
 
 @FunnyDoc
 @Name("Player KDR")
-@Description("Zwraca KDR gracza.")
+@Description("Zwraca KDR gracza")
 @Examples("send \"KDR gracza: %player kdr%\"")
 class PlayerKDRExpression : PlayerExpression<Number>() {
 
@@ -21,7 +21,7 @@ class PlayerKDRExpression : PlayerExpression<Number>() {
                 PlayerKDRExpression::class.java,
                 Number::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%offlineplayer%(|'s) [(rank|ranking)] (kdr|kills to deaths ratio)"
+                "%offlineplayer%(|'s) [rank|ranking] (kdr|kills to deaths ratio)"
             )
         }
     }

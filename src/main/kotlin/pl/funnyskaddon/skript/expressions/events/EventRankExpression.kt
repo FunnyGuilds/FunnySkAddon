@@ -22,8 +22,8 @@ import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 @FunnyDoc
 @Name("Rank")
 @Description(
-    "Zwraca obiekt Rank z FunnyGuilds.",
-    "Aktualnie niezbyt przydatne."
+    "Zwraca obiekt Rank z FunnyGuilds<br>",
+    "Aktualnie niezbyt przydatne"
 )
 @Events(
     "kills change",

@@ -18,7 +18,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 @FunnyDoc
 @Name("Name")
 @Description(
-    "Zwraca nową nazwę gildii."
+    "Zwraca nową nazwę gildii"
 )
 @Events(
     "guild rename"

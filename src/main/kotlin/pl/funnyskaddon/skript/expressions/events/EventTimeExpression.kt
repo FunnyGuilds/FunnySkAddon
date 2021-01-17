@@ -19,7 +19,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 @FunnyDoc
 @Name("Time")
 @Description(
-    "Zwraca czas."
+    "Zwraca czas"
 )
 @Events(
     "guild ban",
