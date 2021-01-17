@@ -1,10 +1,18 @@
 package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
 
+@FunnyDoc
+@Name("Guild Points")
+@Description("Zwraca liczbe punktów gildii.")
+@Examples("send \"Liczba punktów rankingowych gildii FajnaGildia: %\"Fajna Gildia\" points%\"")
 class GuildPointsExpression : GuildExpression<Int>() {
 
     companion object {
@@ -13,7 +21,7 @@ class GuildPointsExpression : GuildExpression<Int>() {
                 GuildPointsExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild [(rank|ranking)] points"
+                "%object%(|'s) guild [(rank|ranking)] points [amount|count]"
             )
         }
     }

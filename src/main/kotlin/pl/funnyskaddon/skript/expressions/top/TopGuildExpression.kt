@@ -1,12 +1,18 @@
 package pl.funnyskaddon.skript.expressions.top
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.rank.RankManager
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.TopExpression
 
+@FunnyDoc
+@Name("Guild In Position")
+@Description("Zwraca gildie na danej pozycji w rankingu.")
 class TopGuildExpression : TopExpression<Guild>() {
 
     companion object {
@@ -15,7 +21,7 @@ class TopGuildExpression : TopExpression<Guild>() {
                 TopGuildExpression::class.java,
                 Guild::class.java,
                 ExpressionType.PROPERTY,
-                "player in position %number%"
+                "guild in position %number%"
             )
         }
     }

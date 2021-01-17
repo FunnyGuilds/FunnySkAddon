@@ -1,6 +1,9 @@
 package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
@@ -8,7 +11,12 @@ import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 
+@FunnyDoc
+@Name("Guild Name From Tag")
+@Description("Zwraca nazwe gildii po jej tagu<br>", "<s>Nie wiadomo po co</s>")
+@Examples("send \"Nazwa gildii z tagiem AD4U: %guild name from tag \"AD4U\"%\"")
 class GuildNameFromTagExpression : SimpleExpression<String>() {
 
     var tag: Expression<String>? = null

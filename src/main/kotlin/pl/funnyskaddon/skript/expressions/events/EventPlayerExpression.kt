@@ -55,7 +55,7 @@ import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
     "guild break ally",
     "guild region enter",
     "guild region leave",
-    "kills change",
+    "kill change",
     "deaths change",
     "points change",
     "kills points change"

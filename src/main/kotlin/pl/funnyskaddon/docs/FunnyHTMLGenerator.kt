@@ -67,6 +67,8 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template:
             return@Function false
         }
     ) {
+        Skript.info("Creating documentation for $fileName")
+
         var data: String = this.skeleton
 
         var listOfItems = ""
@@ -167,7 +169,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template:
         } else {
             var eventLinks = ""
 
-            for (eventName in info.events) {
+            for (eventName in info.events.sorted()) {
                 eventLinks += ", <a href=\"events.html#on-" + eventName.toLowerCase()
                     .replace(" ", "-") + "\">" + eventName + "</a>"
             }

@@ -1,12 +1,18 @@
 package pl.funnyskaddon.skript.expressions.top
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.rank.RankManager
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.TopExpression
 
+@FunnyDoc
+@Name("Player In Position")
+@Description("Zwraca gracza na danej pozycji w rankingu.")
 class TopPlayerExpression : TopExpression<OfflinePlayer>() {
 
     companion object {

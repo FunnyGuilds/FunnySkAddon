@@ -11,28 +11,34 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.guild.GuildBaseChangeEvent
-import net.dzikoysk.funnyguilds.event.guild.GuildMoveEvent
-import org.bukkit.Location
+import net.dzikoysk.funnyguilds.event.guild.*
+import net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent
+import net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent
+import net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent
+import net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent
+import net.dzikoysk.funnyguilds.event.guild.member.*
+import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
+import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
+import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
-@Name("Location")
-@Description(
-    "Zwraca lokalizacjei."
-)
+@Name("Victim")
+@Description("Zwraca ofiare która uczestniczyła w wydarzeniu.")
 @Events(
-    "guild move",
-    "guild base change"
+    "kill points change"
 )
-class EventLocationExpression : SimpleExpression<Location>() {
+class EventVictimExpression : SimpleExpression<Player>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventLocationExpression::class.java,
-                Location::class.java,
+                EventVictimExpression::class.java,
+                Player::class.java,
                 ExpressionType.SIMPLE,
                 *EventType.patterns.toTypedArray()
             )
@@ -41,19 +47,10 @@ class EventLocationExpression : SimpleExpression<Location>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        MOVE("[new( |-)]location", GuildMoveEvent::class.java) {
-            override fun get(event: Event): Location? {
-                if (event is GuildMoveEvent) {
-                    return event.newLocation
-                }
-                return null
-            }
-        },
-
-        BASE_CHANGE("[new( |-)][base( |-)]]location", GuildBaseChangeEvent::class.java) {
-            override fun get(event: Event): Location? {
-                if (event is GuildBaseChangeEvent) {
-                    return event.newBaseLocation
+        KILL_POINTS_CHANGE_ATTACKER("victim", CustomKillPointsChangeEvent::class.java) {
+            override fun get(event: Event): Player? {
+                if (event is CustomKillPointsChangeEvent) {
+                    return event.victim
                 }
                 return null
             }
@@ -73,7 +70,7 @@ class EventLocationExpression : SimpleExpression<Location>() {
             }
         }
 
-        abstract operator fun get(event: Event): Location?
+        abstract operator fun get(event: Event): Player?
     }
 
     private lateinit var type: EventType
@@ -95,7 +92,7 @@ class EventLocationExpression : SimpleExpression<Location>() {
         return true
     }
 
-    override fun get(event: Event): Array<Location?>? {
+    override fun get(event: Event): Array<Player?>? {
         for (classEvent in type.events) {
             if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
@@ -109,11 +106,11 @@ class EventLocationExpression : SimpleExpression<Location>() {
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " location"
+        return "the " + type.name + " doer"
     }
 
-    override fun getReturnType(): Class<out Location> {
-        return Location::class.java
+    override fun getReturnType(): Class<out Player> {
+        return Player::class.java
     }
 
 }

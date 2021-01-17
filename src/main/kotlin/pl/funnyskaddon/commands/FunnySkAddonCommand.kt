@@ -1,7 +1,6 @@
 package pl.funnyskaddon.commands
 
 import ch.njol.skript.Skript
-import ch.njol.skript.doc.HTMLGenerator
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -20,8 +19,12 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
         }
 
         if (args != null) {
-            if(args.isNotEmpty() && args[0]?.equals("gen-docs", true)!! && sender.hasPermission("funnyskaddon.cmd.docs")) {
-                if(plugin.configuration.devMode) {
+            if (args.isNotEmpty() && args[0]?.equals(
+                    "gen-docs",
+                    true
+                )!! && sender.hasPermission("funnyskaddon.cmd.docs")
+            ) {
+                if (plugin.configuration.devMode) {
                     val templateDir = File(plugin.dataFolder.toString() + "/docs/templates/")
                     if (!templateDir.exists()) {
                         Skript.info(sender, "Documentation templates not found. Cannot generate docs!")

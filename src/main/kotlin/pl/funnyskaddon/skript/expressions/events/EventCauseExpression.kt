@@ -58,7 +58,7 @@ import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
     "kills change",
     "deaths change",
     "points change",
-    "kills points change"
+    "kill points change"
 )
 class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 

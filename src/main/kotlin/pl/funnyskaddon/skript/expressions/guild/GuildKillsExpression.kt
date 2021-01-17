@@ -1,10 +1,18 @@
 package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
 
+@FunnyDoc
+@Name("Guild Kills")
+@Description("Zwraca liczbe zabójstw gildii (sume wszystkich zabójstw jej członków).")
+@Examples("send \"Liczba zabójstw gildii FajnaGildia: %\"Fajna Gildia\" guild kills%\"")
 class GuildKillsExpression : GuildExpression<Int>() {
 
     companion object {
@@ -13,7 +21,7 @@ class GuildKillsExpression : GuildExpression<Int>() {
                 GuildKillsExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild [(rank|ranking)] kills"
+                "%object%(|'s) guild [(rank|ranking)] kills [amount|count]"
             )
         }
     }

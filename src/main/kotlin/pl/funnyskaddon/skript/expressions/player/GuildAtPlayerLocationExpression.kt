@@ -1,12 +1,20 @@
 package pl.funnyskaddon.skript.expressions.player
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.guild.Guild
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.PlayerExpression
-import pl.funnyskaddon.util.GuildUtil
+import pl.funnyskaddon.util.getGuildAtLocation
 
+@FunnyDoc
+@Name("Guild At Player Location")
+@Description("Zwraca gildie znajdującą się w lokalizacji gracza.")
+@Examples("send \"Gildia na której terenie znajduje sie gracz: %guild at player's location%\"")
 class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
 
     companion object {
@@ -24,7 +32,7 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
         val player = getPlayer(event)
 
         if (player != null) {
-            return GuildUtil.getGuildAtLocation(player.location)
+            return arrayOf(player.location.getGuildAtLocation()!!)
         }
 
         return null
