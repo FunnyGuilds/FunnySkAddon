@@ -38,11 +38,24 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template:
 
     fun generateDocumentation() {
         this.generate("events.html", sortedIterator(Skript.getEvents().iterator(), eventComparator), eventDocItem)
-        this.generate("conditions.html", sortedIterator(Skript.getConditions().iterator(), syntaxElementComparator), conditionDocItem)
-        this.generate("effects.html", sortedIterator(Skript.getEvents().iterator(), syntaxElementComparator), effectDocItem)
-        this.generate("expressions.html", sortedIterator(Skript.getExpressions().iterator(), syntaxElementComparator), expressionDocItem, eventExpressionDocItem, useAlternative = Function {
-            return@Function it.c.getAnnotation(Events::class.java) != null
-        })
+        this.generate(
+            "conditions.html",
+            sortedIterator(Skript.getConditions().iterator(), syntaxElementComparator),
+            conditionDocItem
+        )
+        this.generate(
+            "effects.html",
+            sortedIterator(Skript.getEvents().iterator(), syntaxElementComparator),
+            effectDocItem
+        )
+        this.generate(
+            "expressions.html",
+            sortedIterator(Skript.getExpressions().iterator(), syntaxElementComparator),
+            expressionDocItem,
+            eventExpressionDocItem,
+            useAlternative = Function {
+                return@Function it.c.getAnnotation(Events::class.java) != null
+            })
     }
 
     private fun generate(
@@ -50,7 +63,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template:
         iterator: Iterator<SyntaxElementInfo<*>>,
         docItemFile: File?,
         alternativeDocItemFile: File? = null,
-        useAlternative: Function<SyntaxElementInfo<*>, Boolean> = Function() {
+        useAlternative: Function<SyntaxElementInfo<*>, Boolean> = Function {
             return@Function false
         }
     ) {
@@ -76,12 +89,12 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template:
             }
 
             val info: FunnySyntaxElement = if (item is SkriptEventInfo<*>) {
-                FunnySyntaxElement(item);
+                FunnySyntaxElement(item)
             } else {
-                FunnySyntaxElement(item);
+                FunnySyntaxElement(item)
             }
 
-            FunnySyntaxElement(item);
+            FunnySyntaxElement(item)
             listOfItems += generateItemsListItem(listItem, info)
             docItems += if (useAlternative.apply(item) && alternativeDocItem != null) {
                 generateDocItem(alternativeDocItem, info)
