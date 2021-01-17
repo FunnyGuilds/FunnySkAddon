@@ -12,6 +12,9 @@ tasks.withType<ShadowJar> {
     classifier = ""
 
     relocate("org.bstats.bukkit", "pl.funnyskaddon.bstats")
+    relocate("kotlin", "pl.funnyskaddon.libs.kotlin")
+    relocate("org.intellij", "pl.funnyskaddon.libs.intellij")
+    relocate("org.jetbrains", "pl.funnyskaddon.libs.jetbrains")
 }
 
 repositories {

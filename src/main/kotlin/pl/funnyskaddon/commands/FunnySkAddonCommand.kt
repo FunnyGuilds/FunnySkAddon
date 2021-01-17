@@ -30,9 +30,9 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
                     val outputDir = File(plugin.dataFolder.toString() + "/docs/output")
                     outputDir.mkdirs()
 
-                    val generator = FunnyHTMLGenerator(templateDir, outputDir)
+                    val generator = FunnyHTMLGenerator(plugin, templateDir, outputDir)
                     Skript.info(sender, "Generating docs...")
-                    generator.generate() // Try to generate docs... hopefully
+                    generator.generateDocumentation() // Try to generate docs... hopefully
                     Skript.info(sender, "Documentation generated!")
 
                     return true
