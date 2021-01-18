@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @FunnyDoc
 @Name("Guild Points")
 @Description("Zwraca liczbe punktów gildii")
-@Examples("send \"Liczba punktów rankingowych gildii FajnaGildia: %\"Fajna Gildia\" points%\"")
+@Examples(
+    "send \"%\"Fajna Gildia\" guild points%\"",
+    "set {_points} to \"Fajna Gildia\" guild points"
+)
 class GuildPointsExpression : GuildExpression<Int>() {
 
     companion object {

@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.PlayerExpression
 @FunnyDoc
 @Name("Player Points")
 @Description("Zwraca liczbe punktów rankingowych gracza")
-@Examples("send \"Liczba punktów rankingowych gracza: %player points%\"")
+@Examples(
+    "send \"%player points%\"",
+    "set {_points} to player's points"
+)
 class PlayerPointsExpression : PlayerExpression<Int>() {
 
     companion object {

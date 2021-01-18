@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.PlayerExpression
 @FunnyDoc
 @Name("Player KDR")
 @Description("Zwraca KDR gracza")
-@Examples("send \"KDR gracza: %player kdr%\"")
+@Examples(
+    "send \"%player kdr%\"",
+    "set {_kdr} to player's kdr"
+)
 class PlayerKDRExpression : PlayerExpression<Number>() {
 
     companion object {

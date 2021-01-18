@@ -16,7 +16,10 @@ import pl.funnyskaddon.docs.FunnyDoc
 @FunnyDoc
 @Name("Guild Name From Tag")
 @Description("Zwraca nazwe gildii po jej tagu<br>", "<s>Nie wiadomo po co</s>")
-@Examples("send \"Nazwa gildii z tagiem AD4U: %guild name from tag \"AD4U\"%\"")
+@Examples(
+    "send \"%guild name from tag \"AD4U\"%\"",
+    "set {_name} to guild name with tag \"AD4U\""
+)
 class GuildNameFromTagExpression : SimpleExpression<String>() {
 
     var tag: Expression<String>? = null
@@ -27,7 +30,8 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
                 GuildNameFromTagExpression::class.java,
                 String::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "guild name from tag %string%"
+                "guild name from tag %string%",
+                "guild name with tag %string%"
             )
         }
     }

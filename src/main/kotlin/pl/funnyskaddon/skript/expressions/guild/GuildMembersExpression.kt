@@ -13,9 +13,12 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 import java.util.stream.Collectors
 
 @FunnyDoc
-@Name("Guild Member")
+@Name("Guild Members")
 @Description("Zwraca członków gildii")
-@Examples("send \"Właściciel gildii gracza %player%: %player's guild guild%\"")
+@Examples(
+    "player's guild members:",
+    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
+)
 class GuildMembersExpression : GuildExpression<OfflinePlayer>() {
 
     companion object {
@@ -24,7 +27,7 @@ class GuildMembersExpression : GuildExpression<OfflinePlayer>() {
                 GuildMembersExpression::class.java,
                 OfflinePlayer::class.java,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild deputies"
+                "%object%(|'s) guild members"
             )
         }
     }

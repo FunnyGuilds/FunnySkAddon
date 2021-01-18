@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @FunnyDoc
 @Name("Guild Name")
 @Description("Zwraca nazwe gildii")
-@Examples("send \"Nazwa gildii gracza %player%: %player's guild name%\"")
+@Examples(
+    "send \"%player's guild name%\"",
+    "set {_name} to player's guild name"
+)
 class GuildNameExpression : GuildExpression<String>() {
 
     companion object {

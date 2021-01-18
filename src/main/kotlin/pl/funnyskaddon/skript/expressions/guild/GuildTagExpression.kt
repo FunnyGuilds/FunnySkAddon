@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @FunnyDoc
 @Name("Guild Tag")
 @Description("Zwraca tag gildii")
-@Examples("send \"Tag gildii gracza %player%: %player's guild tag%\"")
+@Examples(
+    "send \"%player's guild tag%\"",
+    "set {_tag} to player's guild tag"
+)
 class GuildTagExpression : GuildExpression<String>() {
 
     companion object {

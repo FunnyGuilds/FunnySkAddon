@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @FunnyDoc
 @Name("Guild Top Position")
 @Description("Zwraca pozycje gildii w rankingu")
-@Examples("send \"Pozycja gildii gracza %player% w rankingu: %player's guild top position%\"")
+@Examples(
+    "send \"%player's guild top position%\"",
+    "set {_position} to player's guild top position"
+)
 class GuildPositionExpression : GuildExpression<Int>() {
 
     companion object {

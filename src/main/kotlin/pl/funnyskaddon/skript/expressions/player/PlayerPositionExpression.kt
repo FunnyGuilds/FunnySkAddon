@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.PlayerExpression
 @FunnyDoc
 @Name("Player Top Position")
 @Description("Zwraca pozycje gracza w rankingu")
-@Examples("send \"Pozycja gracza w rankingu: %player top position%\"")
+@Examples(
+    "send \"%player top position%\"",
+    "set {_position} to player's top position"
+)
 class PlayerPositionExpression : PlayerExpression<Int>() {
 
     companion object {

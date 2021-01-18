@@ -14,9 +14,10 @@ import pl.funnyskaddon.skript.expressions.TopExpression
 @FunnyDoc
 @Name("Guild In Position")
 @Description("Zwraca gildie na danej pozycji w rankingu")
-@Examples("send \"Gildia na pozycji 1: %guild in position 1%\"<br>",
-    "send \"Gildia na pozycji 2: %guild in position 2%\"<br>",
-    "send \"Gildia na pozycji 3: %guild in position 3%\"")
+@Examples(
+    "send \"%guild in position 1%\"",
+    "set {_guildOnPosition} to guild in position 4"
+)
 class TopGuildExpression : TopExpression<Guild>() {
 
     companion object {

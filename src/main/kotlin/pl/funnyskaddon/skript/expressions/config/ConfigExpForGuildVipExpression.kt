@@ -1,11 +1,22 @@
 package pl.funnyskaddon.skript.expressions.config
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.FunnySkAddon
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.FunnyExpression
 
+@FunnyDoc
+@Name("Exp To Create Guild Vip")
+@Description("Zwraca doświadczenie potrzebne do założenia gildii dla graczy z vipem (odpowiednim uprawnieniem)")
+@Examples(
+    "send \"%required experience to create guild with vip%\"",
+    "set {_exp} to required experience to create guild with vip"
+)
 class ConfigExpForGuildVipExpression : FunnyExpression<Int>() {
 
     companion object {

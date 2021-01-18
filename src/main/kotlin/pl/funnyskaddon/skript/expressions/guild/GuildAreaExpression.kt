@@ -1,11 +1,22 @@
 package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
 import kotlin.math.abs
 
+@FunnyDoc
+@Name("Guild Area")
+@Description("Zwraca powierzchnie regionu gildii")
+@Examples(
+    "send \"%\"AC4U\" guild region area%\"",
+    "set {_area} to \"AC4U\" guild region area"
+)
 class GuildAreaExpression : GuildExpression<Int>() {
 
     companion object {

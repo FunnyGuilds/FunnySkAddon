@@ -24,7 +24,6 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.events.guilds.CustomGuildCreateEvent
-import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
 @Name("Player")
@@ -325,24 +324,6 @@ class EventPlayerExpression : SimpleExpression<Player>() {
             override fun get(event: Event): Player? {
                 if (event is PointsChangeEvent) {
                     return event.doer.player
-                }
-                return null
-            }
-        },
-
-        KILL_POINTS_CHANGE_ATTACKER("attacker", CustomKillPointsChangeEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is CustomKillPointsChangeEvent) {
-                    return event.attacker
-                }
-                return null
-            }
-        },
-
-        KILL_POINTS_CHANGE_VICTIM("victim", CustomKillPointsChangeEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is CustomKillPointsChangeEvent) {
-                    return event.victim
                 }
                 return null
             }

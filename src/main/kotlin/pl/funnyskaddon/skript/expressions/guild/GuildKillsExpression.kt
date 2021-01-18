@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @FunnyDoc
 @Name("Guild Kills")
 @Description("Zwraca liczbe zabójstw gildii (sume wszystkich zabójstw jej członków)")
-@Examples("send \"Liczba zabójstw gildii FajnaGildia: %\"Fajna Gildia\" guild kills%\"")
+@Examples(
+    "send \"%\"Fajna Gildia\" guild kills%\"",
+    "set {_kills} to \"Fajna Gildia\" guild kills"
+)
 class GuildKillsExpression : GuildExpression<Int>() {
 
     companion object {

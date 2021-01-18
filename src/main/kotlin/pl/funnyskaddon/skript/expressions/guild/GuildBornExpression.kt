@@ -1,11 +1,22 @@
 package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.util.Date
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
 
+@FunnyDoc
+@Name("Guild Born")
+@Description("Zwraca date narodzin gildii")
+@Examples(
+    "send \"%\"AC4U\" guild born date%\"",
+    "set {_born} to \"AC4U\" guild born date"
+)
 class GuildBornExpression : GuildExpression<Date>() {
 
     companion object {

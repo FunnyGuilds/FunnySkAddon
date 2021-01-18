@@ -13,7 +13,10 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @FunnyDoc
 @Name("Guild Owner")
 @Description("Zwraca właściciela gildii")
-@Examples("send \"Właściciel gildii gracza %player%: %player's guild guild%\"")
+@Examples(
+    "send \"%player's guild owner%\"",
+    "set {_owner} to player's guild owner"
+)
 class GuildOwnerExpression : GuildExpression<OfflinePlayer>() {
 
     companion object {

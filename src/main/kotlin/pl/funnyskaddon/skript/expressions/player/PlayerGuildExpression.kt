@@ -13,7 +13,10 @@ import pl.funnyskaddon.skript.expressions.PlayerExpression
 @FunnyDoc
 @Name("Player Guild")
 @Description("Zwraca gildię gracza")
-@Examples("send \"Gildia gracza: %player guild%\"")
+@Examples(
+    "send \"%player guild%\"",
+    "set {_guild} to player's guild"
+)
 class PlayerGuildExpression : PlayerExpression<Guild>() {
 
     companion object {

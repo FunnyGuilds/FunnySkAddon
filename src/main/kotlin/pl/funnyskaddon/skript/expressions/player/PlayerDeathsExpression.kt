@@ -12,7 +12,10 @@ import pl.funnyskaddon.skript.expressions.PlayerExpression
 @FunnyDoc
 @Name("Player Deaths")
 @Description("Zwraca liczbe śmierci gracza")
-@Examples("send \"Liczba śmierci gracza: %player deaths%\"")
+@Examples(
+    "send \"%player deaths%\"",
+    "set {_deaths} to player's deaths"
+)
 class PlayerDeathsExpression : PlayerExpression<Int>() {
 
     companion object {

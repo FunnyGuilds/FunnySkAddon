@@ -14,9 +14,10 @@ import pl.funnyskaddon.skript.expressions.TopExpression
 @FunnyDoc
 @Name("Player In Position")
 @Description("Zwraca gracza na danej pozycji w rankingu")
-@Examples("send \"Gracz na pozycji 1: %player in position 1%\"<br>",
-    "send \"Gracz na pozycji 2: %player in position 2%\"<br>",
-    "send \"Gracz na pozycji 3: %player in position 3%\"")
+@Examples(
+    "send \"%player in position 1%\"",
+    "set {_playerOnPosition} to player in position 4"
+)
 class TopPlayerExpression : TopExpression<OfflinePlayer>() {
 
     companion object {

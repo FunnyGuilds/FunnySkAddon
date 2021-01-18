@@ -1,11 +1,22 @@
 package pl.funnyskaddon.skript.expressions.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.basic.guild.Guild
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
 
+@FunnyDoc
+@Name("Guild Allies")
+@Description("Zwraca gildie sojusznicze gildii")
+@Examples(
+    "\"AC4U\" guild allies:",
+    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
+)
 class GuildAlliesExpression : GuildExpression<Guild>() {
 
     companion object {

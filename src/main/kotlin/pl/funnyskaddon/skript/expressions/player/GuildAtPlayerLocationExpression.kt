@@ -13,8 +13,11 @@ import pl.funnyskaddon.util.getGuildAtLocation
 
 @FunnyDoc
 @Name("Guild At Player Location")
-@Description("Zwraca gildie znajdującą się w lokalizacji gracza")
-@Examples("send \"Gildia na której terenie znajduje sie gracz: %guild at player's location%\"")
+@Description("Zwraca gildie znajdującą się w lokalizacji gracza (Gildia na której terenie znajduje sie gracz)")
+@Examples(
+    "send \"%guild at player's location%\"",
+    "set {_guild} to guild at player's location"
+)
 class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
 
     companion object {
