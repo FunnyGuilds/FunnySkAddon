@@ -14,7 +14,15 @@ class GuildBanEvent : SimpleEvent() {
                 GuildBanEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildBanEvent::class.java,
                 "guild ban"
-            )
+            ).description("Wywoływany kiedy gildia zostanie zbanowana")
+                .examples(
+                    "on guild ban:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%reason%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%time%\""
+                )
         }
     }
 

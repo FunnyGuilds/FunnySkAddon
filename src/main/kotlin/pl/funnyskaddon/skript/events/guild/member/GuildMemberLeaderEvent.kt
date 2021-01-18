@@ -15,7 +15,14 @@ class GuildMemberLeaderEvent : SimpleEvent() {
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaderEvent::class.java,
                 "guild member (leader|owner)",
                 "guild change (leader|owner)"
-            )
+            ).description("Wywoływany kiedy zostanie wybrany nowy właściciel gildii")
+                .examples(
+                    "on guild member owner:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%member%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
+                )
         }
     }
 

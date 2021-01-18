@@ -14,7 +14,14 @@ class GuildAcceptAllyInvitationEvent : SimpleEvent() {
                 GuildAcceptAllyInvitationEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent::class.java,
                 "guild accept ally (invite|invitation)"
-            )
+            ).description("Wywoływany kiedy gildia zaakceptuje sojusz")
+                .examples(
+                    "on guild accept ally invitation:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%ally%\""
+                )
         }
     }
 

@@ -14,7 +14,14 @@ class GuildMemberRevokeInviteEvent : SimpleEvent() {
                 GuildMemberRevokeInviteEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberAcceptInviteEvent::class.java,
                 "guild member revoke (invite|invitation)"
-            )
+            ).description("Wywoływany kiedy gracz odrzuci zaproszenie do gildii")
+                .examples(
+                    "on guild member revoke invitation:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%member%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
+                )
         }
     }
 

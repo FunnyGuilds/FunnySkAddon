@@ -14,7 +14,14 @@ class GuildRevokeAllyInvitationEvent : SimpleEvent() {
                 GuildRevokeAllyInvitationEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent::class.java,
                 "guild revoke ally (invite|invitation)"
-            )
+            ).description("Wywoływany kiedy gildia odrzuci sojusz")
+                .examples(
+                    "on guild revoke ally invitation:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%ally%\""
+                )
         }
     }
 

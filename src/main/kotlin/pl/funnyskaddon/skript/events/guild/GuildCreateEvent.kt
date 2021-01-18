@@ -15,7 +15,13 @@ class GuildCreateEvent : SimpleEvent() {
                 GuildCreateEvent::class.java,
                 CustomGuildCreateEvent::class.java,
                 "guild (create|creation)"
-            )
+            ).description("Wywoływany kiedy gildia zostanie utworzona")
+                .examples(
+                    "on guild create:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
+                )
         }
     }
 

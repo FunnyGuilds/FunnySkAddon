@@ -14,7 +14,13 @@ class GuildRegionLeaveEvent : SimpleEvent() {
                 GuildRegionLeaveEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildBanEvent::class.java,
                 "guild region leave"
-            )
+            ).description("Wywoływany kiedy gracz opuści teren gildii")
+                .examples(
+                    "on guild region leave:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
+                )
         }
     }
 

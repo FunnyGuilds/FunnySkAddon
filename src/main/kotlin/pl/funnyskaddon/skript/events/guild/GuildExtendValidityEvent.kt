@@ -14,7 +14,14 @@ class GuildExtendValidityEvent : SimpleEvent() {
                 GuildExtendValidityEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent::class.java,
                 "guild extend validity"
-            )
+            ).description("Wywoływany kiedy ważność gildii zostanie przedłużona")
+                .examples(
+                    "on guild extend validity:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%extend time%\""
+                )
         }
     }
 

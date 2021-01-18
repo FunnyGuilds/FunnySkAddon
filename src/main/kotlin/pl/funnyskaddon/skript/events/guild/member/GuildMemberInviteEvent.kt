@@ -14,7 +14,14 @@ class GuildMemberInviteEvent : SimpleEvent() {
                 GuildMemberInviteEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberInviteEvent::class.java,
                 "guild member (invite|invitation)"
-            )
+            ).description("Wywoływany kiedy gracz zostanie zaproszony do gildii")
+                .examples(
+                    "on guild member invite:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%member%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
+                )
         }
     }
 

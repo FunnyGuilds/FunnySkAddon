@@ -14,7 +14,13 @@ class GuildDeleteEvent : SimpleEvent() {
                 GuildDeleteEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildDeleteEvent::class.java,
                 "guild (delete|deletion)"
-            )
+            ).description("Wywoływany kiedy gildia zostanie usunięta")
+                .examples(
+                    "on guild delete:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
+                )
         }
     }
 

@@ -14,7 +14,14 @@ class GuildBaseChangeEvent : SimpleEvent() {
                 GuildBaseChangeEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildBaseChangeEvent::class.java,
                 "guild base change"
-            )
+            ).description("Wywoływany kiedy zmieni się lokalizacja bazy gildii")
+                .examples(
+                    "on guild base change:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%new base location%\""
+                )
         }
     }
 

@@ -14,7 +14,14 @@ class GuildMoveEvent : SimpleEvent() {
                 GuildMoveEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildMoveEvent::class.java,
                 "guild move"
-            )
+            ).description("Wywoływany kiedy zmieni się lokalizacja serca gildii")
+                .examples(
+                    "on guild move:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%new location%\""
+                )
         }
     }
 
