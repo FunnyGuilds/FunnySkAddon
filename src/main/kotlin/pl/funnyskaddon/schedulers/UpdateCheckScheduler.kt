@@ -4,19 +4,23 @@ import org.bukkit.Bukkit
 import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.util.VersionUtil
 import pl.funnyskaddon.util.color
+import java.util.regex.Pattern
 
 class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
+
+    private val PATTERN: Pattern = Pattern.compile("^([0-9]|\\.)+$")
 
     fun start() {
         val description = plugin.description
         plugin.server.scheduler.runTaskTimer(plugin, {
             if (plugin.configuration.updateCheck) {
                 val url = "https://github.com/FunnyGuilds/FunnySkAddon/"
+                val fullRelease = PATTERN.matcher(description.version).matches()
                 val latestVersion: String? = VersionUtil.getLatestVersion(
                     "https://raw.githubusercontent.com/FunnyGuilds/FunnySkAddon/master/VERSION",
-                    plugin.configuration.onlyFullReleases
+                    plugin.configuration.onlyFullReleases && !fullRelease
                 )
-                if (description.version.equals(latestVersion, true).not()) {
+                if (!description.version.equals(latestVersion, true)) {
                     if (plugin.configuration.simpleUpdateCheck) {
                         plugin.logger.warning("[FSA] Wersja pluginu: " + description.version)
                         plugin.logger.warning("[FSA] Najnowsza wersja pluginu: " + latestVersion.toString())
