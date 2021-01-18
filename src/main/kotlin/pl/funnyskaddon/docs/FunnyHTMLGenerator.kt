@@ -174,7 +174,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template:
             var eventLinks = ""
 
             for (eventName in info.events.sorted()) {
-                eventLinks += ", <a href=\"events.html#on-" + eventName.toLowerCase()
+                eventLinks += ", <a href=\"events#on-" + eventName.toLowerCase()
                     .replace(" ", "-") + "\">" + eventName + "</a>"
             }
 

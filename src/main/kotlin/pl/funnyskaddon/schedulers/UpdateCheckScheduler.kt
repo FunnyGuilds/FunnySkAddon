@@ -18,7 +18,7 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
                 val fullRelease = PATTERN.matcher(description.version).matches()
                 val latestVersion: String? = VersionUtil.getLatestVersion(
                     "https://raw.githubusercontent.com/FunnyGuilds/FunnySkAddon/master/VERSION",
-                    plugin.configuration.onlyFullReleases && !fullRelease
+                    plugin.configuration.onlyFullReleases && fullRelease
                 )
                 if (!description.version.equals(latestVersion, true)) {
                     if (plugin.configuration.simpleUpdateCheck) {
