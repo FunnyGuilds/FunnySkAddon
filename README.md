@@ -1,4 +1,4 @@
-# FunnySkAddon
+# FunnySkAddon ![FunnySkAddon CI](https://github.com/FunnyGuilds/FunnySkAddon/workflows/FunnySkAddon%20CI/badge.svg)
 
 #### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
 #### Twórcy: Peridot, LloydPL
