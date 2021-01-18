@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0">
+    <title>Dokumentacja FunnySkAddon - {fsa.version}</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Bootstrap -->
+    <link href="https://funnyskaddon.pl/assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Style -->
+    <link href="https://funnyskaddon.pl/assets/css/style.css" rel="stylesheet">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GYVSXTEQMX"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-GYVSXTEQMX');
+	</script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/"><i class="fas fa-code"></i> FunnySkAddon - Dokumentacja</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/events">Wydarzenia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/conditions">Warunki</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/effects">Efekty</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/expressions">Wyrażenia</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/types">Typy</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 float-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/FunnyGuilds/FunnySkAddon"><i class="fab fa-github"></i> Github</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid p-0" >
+    <section class="main-container col row">
+        <div class="col-auto items-list pt-1 border-end">
+            <ol class="nav flex-column text-dark">
+                {doc.items-list}
+            </ol>
+        </div>
+        <div class="col">
+            {doc.items}
+        </div>
+    </section>
+
+    <section class="col-auto pt-2 row">
+
+    </section>
+</div>
+
+<div class="footer">
+    <div class="copyright">
+        <div class="space-10"></div>
+        &copy;<script> document.write(new Date().getFullYear())</script> - Design by <a href="https://github.com/P3ridot" target="_blank">Peridot</a>
+
+        <div class="space-30"></div>
+    </div>
+</div>
+
+</body>
+
+<!-- Bootstrap -->
+<script src="https://funnyskaddon.pl/assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+</html>

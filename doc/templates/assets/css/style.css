@@ -1,0 +1,64 @@
+a {
+    text-decoration: none!important;
+}
+
+/* Navbar */
+.navbar-brand a {
+    font-size: 1.5rem!important;
+}
+
+.nav-item a {
+    font-size: 1.25rem!important;
+}
+
+/* Items List */
+
+@media (max-width: 1199.98px) {
+    .items-list {
+        border: none !important;
+    }
+}
+
+.items-list .nav-item {
+    margin: 0.15rem 1rem;
+}
+
+.items-list .nav-item a {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Containers */
+.main-container {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.main-container .doc-item {
+    margin: 1rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center !important;
+    margin: 0;
+
+    min-width: 100%;
+}
+
+/* Spaces */
+
+.space-30 {
+    height: 30px;
+    display: block;
+}
+
+.space-20 {
+    height: 20px;
+    display: block;
+}
+
+.space-10 {
+    height: 10px;
+    display: block;
+}
+
