@@ -88,7 +88,7 @@
   * 2.0-Beta
     * Przepisanie całego dodatku na kotlina
     * Dużo nowych wydarzeń, efektów i wyrażeń
-    * Niektóre wydarzenia, warunki, efekty i wyrażenia zostały zmienione, jeśli coś przestało działać można znaleźć odpowiednik w nowej dokumentacji (https://funnyskaddon.pl/) odpowiednik
+    * Niektóre wydarzenia, warunki, efekty i wyrażenia zostały zmienione, jeśli coś przestało działać można znaleźć odpowiednik w nowej dokumentacji (https://funnyskaddon.pl/)
     * Od teraz można znaleźć dokumentacje dodatku pod: https://funnyskaddon.pl/
     * Od teraz w miejscach gdzie podaje się gildie można podać też jej tag lub lokalizacje
     * Naprawienie wielu błędów
