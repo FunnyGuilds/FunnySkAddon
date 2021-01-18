@@ -15,7 +15,13 @@ class RankPointsChangeEvent : SimpleEvent() {
                 RankPointsChangeEvent::class.java,
                 PointsChangeEvent::class.java,
                 "[player] [rank|ranking] points change"
-            )
+            ).description("Wywoływany kiedy zmieni się ilość punktów gracza w rankingu")
+                .examples(
+                    "on player points change:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%change%\""
+                )
         }
     }
 

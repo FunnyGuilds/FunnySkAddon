@@ -15,7 +15,13 @@ class RankKillsChangeEvent : SimpleEvent() {
                 RankKillsChangeEvent::class.java,
                 KillsChangeEvent::class.java,
                 "[player] [rank|ranking] kills change"
-            )
+            ).description("Wywoływany kiedy zmieni się ilość zabójstw gracza w rankingu")
+                .examples(
+                    "on player kills change:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%change%\""
+                )
         }
     }
 

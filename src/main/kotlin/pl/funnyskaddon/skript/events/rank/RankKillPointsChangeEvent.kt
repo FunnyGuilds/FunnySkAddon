@@ -15,7 +15,14 @@ class RankKillPointsChangeEvent : SimpleEvent() {
                 RankKillPointsChangeEvent::class.java,
                 CustomKillPointsChangeEvent::class.java,
                 "[player] kill [rank|ranking] points change"
-            )
+            ).description("Wywoływany kiedy zmieni się ilość punktów gracza w rankingu w wyniku jego zabójstwa")
+                .examples(
+                    "on kill points change:",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%attacker%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%victim%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%change%\""
+                )
         }
     }
 
