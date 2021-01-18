@@ -24,7 +24,7 @@ class GuildAtLocationExpression : ValueExpression<Location>() {
                 GuildAtLocationExpression::class.java,
                 Guild::class.java,
                 ExpressionType.PROPERTY,
-                "guild at %location%"
+                "guild at [location] %location%"
             )
         }
     }

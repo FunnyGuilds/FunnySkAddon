@@ -24,8 +24,8 @@ import pl.funnyskaddon.docs.FunnyDoc
 @Description("Zwraca gildię sojuszniczą która uczestniczyła w wydarzeniu")
 @Events(
     "guild send ally invitation",
-    "guild ally accept invitation",
-    "guild ally revoke invitation",
+    "guild accept ally invitation",
+    "guild revoke ally invitation",
     "guild break ally",
 )
 class EventAlliedGuildExpression : SimpleExpression<Guild>() {
