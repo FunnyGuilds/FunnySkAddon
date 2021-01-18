@@ -87,7 +87,9 @@
     * Przeniesienie klasy Metrics.java (bStats) do innego sub-package'a w celu zapobiegnięcie nadpisywaniu jej przez inne pluginy
   * 2.0-Beta
     * Przepisanie całego dodatku na kotlina
+    * Niektóre wydarzenia, warunki, efekty i wyrażenia zostały zmienione, jeśli coś przestało działać można znaleźć odpowiednik w nowej dokumentacji (https://funnyskaddon.pl/) odpowiednik
     * Dużo nowych wydarzeń, efektów i wyrażeń
+    * Niektóre wydarzenia, warunki, efekty i wyrażenia zostały zmienione, jeśli coś przestało działać można znaleźć odpowiednik w nowej dokumentacji (https://funnyskaddon.pl/) odpowiednik
     * Od teraz w miejscach gdzie podaje się gildie można podać jej tag lub lokalizacje
     * Naprawienie wielu błędów
     * Od teraz można znaleźć dokumentacje dodatku pod: https://funnyskaddon.pl/
