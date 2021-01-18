@@ -88,7 +88,7 @@
   * 2.0-Beta
     * Przepisanie całego dodatku na kotlina
     * Dużo nowych wydarzeń, efektów i wyrażeń
-    * Od teraz w miejscach gdzie podaje sie gildie można podać jej tag lub lokalizacje
+    * Od teraz w miejscach gdzie podaje się gildie można podać jej tag lub lokalizacje
     * Naprawienie wielu błędów
     * Od teraz można znaleźć dokumentacje dodatku pod: https://funnyskaddon.pl/
     * Dodatek zmienił licencje na *GNU General Public License v3.0*
