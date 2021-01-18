@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 
 @FunnyDoc
 @Name("Guild Endercrystal Location")
-@Description("Zwraca lokalizację kryształu/serca gildii")
+@Description("Zwraca lokalizację gildi (jej kryształu/serca)")
 @Examples(
     "send \"%\"AC4U\" guild endercrystal location%\"",
     "set {_enderCrystal} to \"AC4U\" guild endercrystal location"

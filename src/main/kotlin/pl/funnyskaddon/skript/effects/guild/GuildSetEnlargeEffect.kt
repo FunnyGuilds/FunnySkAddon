@@ -1,9 +1,19 @@
 package pl.funnyskaddon.skript.effects.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
 
+@FunnyDoc
+@Name("Set Guild Enlarge")
+@Description("Ustawie poziom powiększenia gildii")
+@Examples(
+    "set enlarge level of \"FajnaNazwa\" guild to 40",
+)
 class GuildSetEnlargeEffect : GuildValueEffect<Number>(false) {
 
     companion object {

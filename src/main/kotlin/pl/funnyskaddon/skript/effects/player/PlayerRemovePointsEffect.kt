@@ -1,9 +1,19 @@
 package pl.funnyskaddon.skript.effects.player
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.PlayerEffect
 
+@FunnyDoc
+@Name("Remove Points")
+@Description("Usuwa punkty z rankingu gracza")
+@Examples(
+    "remove 7 points from player's ranking",
+)
 class PlayerRemovePointsEffect : PlayerEffect<Number>(true) {
 
     companion object {

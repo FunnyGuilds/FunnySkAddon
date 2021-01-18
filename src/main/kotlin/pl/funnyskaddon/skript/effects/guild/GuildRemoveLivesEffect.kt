@@ -1,15 +1,25 @@
 package pl.funnyskaddon.skript.effects.guild
 
 import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
 import org.bukkit.event.Event
+import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
 
-class GuildRemoveLiveEffect : GuildValueEffect<Number>(false) {
+@FunnyDoc
+@Name("Remove Guild Lives")
+@Description("Usuwa życia z gildii")
+@Examples(
+    "remove 4 lives from \"AC4U\" guild",
+)
+class GuildRemoveLivesEffect : GuildValueEffect<Number>(false) {
 
     companion object {
         init {
             Skript.registerEffect(
-                GuildRemoveLiveEffect::class.java,
+                GuildRemoveLivesEffect::class.java,
                 "remove %number% live[s] from %object%(|'s) guild"
             )
         }

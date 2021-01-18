@@ -16,7 +16,7 @@ import pl.funnyskaddon.skript.expressions.ValueExpression
 @Name("Guild From Player")
 @Description(
     "Zwraca gildie po graczu<br>",
-    "Alternatywa: %offlineplayer guild%"
+    "Alternatywa: <b>%offlineplayer%(|'s) guild</b>"
 )
 @Examples("set {_guild} to guild from player")
 class GuildFromPlayerExpression : ValueExpression<OfflinePlayer>() {

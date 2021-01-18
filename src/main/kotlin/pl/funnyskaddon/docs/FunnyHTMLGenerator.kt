@@ -37,7 +37,11 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template:
     }
 
     fun generateDocumentation() {
-        this.generate("events.html", sortedIterator(Skript.getEvents().iterator(), eventComparator), eventDocItem)
+        this.generate(
+            "events.html",
+            sortedIterator(Skript.getEvents().iterator(), eventComparator),
+            eventDocItem
+        )
         this.generate(
             "conditions.html",
             sortedIterator(Skript.getConditions().iterator(), syntaxElementComparator),
@@ -45,7 +49,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template:
         )
         this.generate(
             "effects.html",
-            sortedIterator(Skript.getEvents().iterator(), syntaxElementComparator),
+            sortedIterator(Skript.getEffects().iterator(), syntaxElementComparator),
             effectDocItem
         )
         this.generate(
