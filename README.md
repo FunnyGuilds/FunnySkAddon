@@ -2,7 +2,8 @@
 
 #### O Pluginie: Dodatek do pluginu Skript dodający wsparcie pluginu gildyjnego FunnyGuilds
 #### Twórcy: Peridot, LloydPL
-#### Dokumentacja: https://mlgroupmc.github.io/
+#### Dokumentacja: https://funnyskaddon.pl
+#### Dokumentacja (old): https://mlgroupmc.github.io/
 #### bStats: https://bstats.org/plugin/bukkit/FunnySkAddon-Extended/6363
 
 ### Changelog:
@@ -84,6 +85,12 @@
     * Dodanie do konfiguracji możliwości ustawienia własnej wiadomości o braku uprawnień
   * 1.9.3.1
     * Przeniesienie klasy Metrics.java (bStats) do innego sub-package'a w celu zapobiegnięcie nadpisywaniu jej przez inne pluginy
+  * 2.0-Beta
+    * Przepisanie całego dodatku na kotlina
+    * Dużo nowych wydarzeń, efektów i wyrażeń
+    * Od teraz w miejscach gdzie podaje sie gildie można podać jej tag lub lokalizacje
+    * Naprawienie wielu błędów
+    * Od teraz można znaleźć dokumentacje dodatku pod: https://funnyskaddon.pl/
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
@@ -115,3 +122,8 @@
     * Spigot 1.8.8 - 1.15.2
     * Skript
     * FunnyGuilds 4.5.1 lub nowszy
+  * 2.0 - Beta
+    * Java 8
+    * Spigot 1.8.8 lub nowszy
+    * Skript
+    * FunnyGuilds 4.8.1 lub nowszy
