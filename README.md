@@ -91,6 +91,7 @@
     * Od teraz w miejscach gdzie podaje sie gildie można podać jej tag lub lokalizacje
     * Naprawienie wielu błędów
     * Od teraz można znaleźć dokumentacje dodatku pod: https://funnyskaddon.pl/
+    * Dodatek zmienił licencje na *GNU General Public License v3.0*
 ### Wymagania:
   * 1.0 - 1.7.1:
     * Java 8
@@ -122,7 +123,7 @@
     * Spigot 1.8.8 - 1.15.2
     * Skript
     * FunnyGuilds 4.5.1 lub nowszy
-  * 2.0 - Beta
+  * 2.0-Beta
     * Java 8
     * Spigot 1.8.8 lub nowszy
     * Skript
