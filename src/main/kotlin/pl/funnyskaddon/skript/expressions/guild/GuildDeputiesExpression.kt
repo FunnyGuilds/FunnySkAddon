@@ -16,7 +16,7 @@ import java.util.stream.Collectors
 @Name("Guild Deputies")
 @Description("Zwraca zastępców gildii")
 @Examples(
-    "player's guild deputies:",
+    "loop player's guild deputies:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
 )
 class GuildDeputiesExpression : GuildExpression<OfflinePlayer>() {

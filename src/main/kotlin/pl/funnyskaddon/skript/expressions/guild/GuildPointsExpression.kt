@@ -13,8 +13,8 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @Name("Guild Points")
 @Description("Zwraca liczbe punktów gildii")
 @Examples(
-    "send \"%\"Fajna Gildia\" guild points%\"",
-    "set {_points} to \"Fajna Gildia\" guild points"
+    "send \"%\"\"FajnaGildia\"\" guild points%\"",
+    "set {_points} to \"FajnaGildia\" guild points"
 )
 class GuildPointsExpression : GuildExpression<Int>() {
 

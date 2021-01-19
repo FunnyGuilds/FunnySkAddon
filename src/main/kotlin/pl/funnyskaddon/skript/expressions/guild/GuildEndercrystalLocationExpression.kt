@@ -14,7 +14,7 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @Name("Guild Endercrystal Location")
 @Description("Zwraca lokalizację gildi (jej kryształu/serca)")
 @Examples(
-    "send \"%\"AC4U\" guild endercrystal location%\"",
+    "send \"%\"\"AC4U\"\" guild endercrystal location%\"",
     "set {_enderCrystal} to \"AC4U\" guild endercrystal location"
 )
 class GuildEndercrystalLocationExpression : GuildExpression<Location>() {

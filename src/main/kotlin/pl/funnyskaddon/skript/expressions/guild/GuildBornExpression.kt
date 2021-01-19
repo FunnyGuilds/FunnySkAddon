@@ -14,7 +14,7 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @Name("Guild Born")
 @Description("Zwraca date narodzin gildii")
 @Examples(
-    "send \"%\"AC4U\" guild born date%\"",
+    "send \"%\"\"AC4U\"\" guild born date%\"",
     "set {_born} to \"AC4U\" guild born date"
 )
 class GuildBornExpression : GuildExpression<Date>() {

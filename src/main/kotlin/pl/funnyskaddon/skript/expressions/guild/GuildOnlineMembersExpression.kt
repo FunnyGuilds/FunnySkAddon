@@ -16,7 +16,7 @@ import java.util.stream.Collectors
 @Name("Guild Online Members")
 @Description("Zwraca członków gildii którzy są online")
 @Examples(
-    "player's guild online members:",
+    "loop player's guild online members:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
 )
 class GuildOnlineMembersExpression : GuildExpression<Player>() {

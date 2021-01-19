@@ -14,7 +14,7 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @Name("Guild Allies")
 @Description("Zwraca gildie sojusznicze gildii")
 @Examples(
-    "\"AC4U\" guild allies:",
+    "loop \"AC4U\" guild allies:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
 )
 class GuildAlliesExpression : GuildExpression<Guild>() {

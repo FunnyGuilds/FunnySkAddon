@@ -15,7 +15,7 @@ import pl.funnyskaddon.util.getPlayersInGuildRegion
 @Name("Players In Guild Region")
 @Description("Zwraca liste graczy znajdujących się na terenie gildii")
 @Examples(
-    "players in (location at (100, 100, 100) in world \"world\") guild region:",
+    "loop players in (location at (100, 100, 100) in world \"world\") guild region:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
 )
 class GuildPlayersInRegionExpression : GuildExpression<Player>() {

@@ -14,7 +14,7 @@ import kotlin.math.abs
 @Name("Guild Area")
 @Description("Zwraca powierzchnie regionu gildii")
 @Examples(
-    "send \"%\"AC4U\" guild region area%\"",
+    "send \"%\"\"AC4U\"\" guild region area%\"",
     "set {_area} to \"AC4U\" guild region area"
 )
 class GuildAreaExpression : GuildExpression<Int>() {

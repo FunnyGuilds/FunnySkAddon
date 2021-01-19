@@ -13,8 +13,8 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @Name("Guild KDR")
 @Description("Zwraca KDR gildii")
 @Examples(
-    "send \"%\"Fajna Gildia\" guild kdr%\"",
-    "set {_kdr} to \"Fajna Gildia\" guild kdr"
+    "send \"%\"\"FajnaGildia\"\" guild kdr%\"",
+    "set {_kdr} to \"FajnGildia\" guild kdr"
 )
 class GuildKDRExpression : GuildExpression<Number>() {
 

@@ -13,8 +13,8 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
 @Name("Guild Lives")
 @Description("Zwraca liczbe żyć gildii")
 @Examples(
-    "send \"%\"Fajna Gildia\" guild lives%\"",
-    "set {_lives} to \"Fajna Gildia\" guild lives"
+    "send \"%\"\"FajnaGildia\"\" guild lives%\"",
+    "set {_lives} to \"FajnaGildia\" guild lives"
 )
 class GuildLivesExpression : GuildExpression<Int>() {
 
