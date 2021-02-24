@@ -5,6 +5,9 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import net.dzikoysk.funnyguilds.basic.guild.Guild
+import net.dzikoysk.funnyguilds.event.FunnyEvent
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberJoinEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.PlayerEffect
@@ -30,6 +33,10 @@ class PlayerSetGuildEffect : PlayerEffect<Any>(false) {
     override fun execute(event: Event?) {
         val user = getUser(event)
         val guild = getGuild(event)
+
+        if (!SimpleEventHandler.handle(GuildMemberJoinEvent(FunnyEvent.EventCause.CONSOLE, null, guild, user))) {
+            return
+        }
 
         if (guild == null && user?.guild != null) {
             user.guild.removeMember(user)

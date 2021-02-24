@@ -30,13 +30,7 @@ class GuildAtLocationExpression : ValueExpression<Location>() {
     }
 
     override fun get(event: Event): Array<out Guild>? {
-        val location: Location? = getValue(event)
-
-        if (location != null) {
-            return arrayOf(location.getGuildAtLocation()!!)
-        }
-
-        return null
+        return getValue(event)?.getGuildAtLocation()?.let { arrayOf(it) }
     }
 
 }

@@ -7,7 +7,6 @@ import ch.njol.skript.doc.Name
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.GuildPlayerCondition
-import pl.funnyskaddon.util.NegationUtil
 import pl.funnyskaddon.util.isPlayerInGuildRegion
 
 @FunnyDoc
@@ -30,7 +29,7 @@ class PlayerIsInGuildRegionCondition : GuildPlayerCondition() {
 
     override fun check(event: Event?): Boolean {
         return try {
-            NegationUtil.negation(getGuild(event)?.isPlayerInGuildRegion(getPlayer(event)), isNegated)
+            getGuild(event)?.isPlayerInGuildRegion(getPlayer(event))?.xor(isNegated)!!
         } catch (ex: Exception) {
             !isNegated
         }

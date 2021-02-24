@@ -4,32 +4,32 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.PlayerCondition
+import pl.funnyskaddon.util.isInGuildRegion
 
 @FunnyDoc
-@Name("Is Owner")
-@Description("Sprawdza czy gracz jest właścicielem gildii")
+@Name("Is In Any Guild Region")
+@Description("Sprawdza czy gracz jest na terenie jakiejkolwiek gildii")
 @Examples(
-    "if player is owner:",
-    "if player is not owner:"
+    "if player is in any guild region:",
+    "if player is not in any guild region:"
 )
-class PlayerIsOwnerCondition : PlayerCondition() {
+class PlayerIsInAnyGuildRegionCondition : PlayerCondition() {
 
     companion object {
         init {
             Skript.registerCondition(
-                PlayerIsOwnerCondition::class.java, "(player |)%offlineplayer% is [guild( |-)]owner",
-                "(player |)%offlineplayer% is(n't| not) [guild( |-)]owner"
+                PlayerIsInAnyGuildRegionCondition::class.java, "(player |)%player% is in any guild region",
+                "(player |)%player% is(n't| not) in guild any region"
             )
         }
     }
 
     override fun check(event: Event?): Boolean {
         return try {
-            User.get(getOfflinePlayer(event)).isOwner.xor(isNegated)
+            getPlayer(event)?.isInGuildRegion()?.xor(isNegated)!!
         } catch (ex: Exception) {
             !isNegated
         }

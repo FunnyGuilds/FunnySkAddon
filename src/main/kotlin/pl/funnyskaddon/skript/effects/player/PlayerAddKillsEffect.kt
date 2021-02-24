@@ -4,6 +4,9 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.event.FunnyEvent
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.PlayerEffect
@@ -32,6 +35,10 @@ class PlayerAddKillsEffect : PlayerEffect<Number>(true) {
         val value = getValue(event)
         if (value != null) {
             change = value.toInt()
+        }
+
+        if (!SimpleEventHandler.handle(KillsChangeEvent(FunnyEvent.EventCause.CONSOLE, user?.rank, user, change))) {
+            return
         }
 
         user?.rank?.kills = user?.rank?.kills?.plus(change)!!

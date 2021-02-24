@@ -2,6 +2,7 @@ package pl.funnyskaddon.util
 
 import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils
+import net.dzikoysk.funnyguilds.basic.guild.RegionUtils
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.Location
 import org.bukkit.entity.Player
@@ -37,16 +38,7 @@ class GuildUtil {
 }
 
 fun Location.getGuildAtLocation(): Guild? {
-    for (guild in GuildUtils.getGuilds()) {
-        val region = guild.region
-        if ((this.x > region.upperX && this.x < region.lowerX || this.x < region.upperX && this.x > region.lowerX)
-            && (this.y > region.upperY && this.y < region.lowerY || this.y < region.upperY && this.y > region.lowerY)
-            && (this.z > region.upperZ && this.z < region.lowerZ || this.z < region.upperZ && this.z > region.lowerZ)
-        ) {
-            return guild
-        }
-    }
-    return null
+    return RegionUtils.getAt(this).guild
 }
 
 fun Guild.getLowerPoint(): Location {
@@ -65,15 +57,12 @@ fun Guild.getUpperPoint(): Location {
     )
 }
 
+fun Player.isInGuildRegion(): Boolean {
+    return RegionUtils.getAt(this.location) == null
+}
+
 fun Guild.isPlayerInGuildRegion(player: Player?): Boolean {
-    val location = player?.location
-    val region = this.region
-    if (location != null && region != null) {
-        return ((location.x > region.upperX && location.x < region.lowerX || location.x < region.upperX && location.x > region.lowerX)
-                && (location.y > region.upperY && location.y < region.lowerY || location.y < region.upperY && location.y > region.lowerY)
-                && (location.z > region.upperZ && location.z < region.lowerZ || location.z < region.upperZ && location.z > region.lowerZ))
-    }
-    return false
+    return RegionUtils.getAt(player?.location).equals(this.region)
 }
 
 fun Guild.getPlayersInGuildRegion(): Array<Player> {

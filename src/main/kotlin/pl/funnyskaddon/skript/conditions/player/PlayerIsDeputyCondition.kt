@@ -8,7 +8,6 @@ import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.PlayerCondition
-import pl.funnyskaddon.util.NegationUtil
 
 @FunnyDoc
 @Name("Is Deputy")
@@ -30,7 +29,7 @@ class PlayerIsDeputyCondition : PlayerCondition() {
 
     override fun check(event: Event?): Boolean {
         return try {
-            NegationUtil.negation(User.get(getOfflinePlayer(event)).isDeputy, isNegated)
+            User.get(getOfflinePlayer(event)).isDeputy.xor(isNegated)
         } catch (ex: Exception) {
             !isNegated
         }

@@ -26,15 +26,18 @@ class GuildAddLivesEffect : GuildValueEffect<Number>(false) {
     }
 
     override fun execute(event: Event?) {
-        val guild = getGuild(event)
+        try {
+            val guild = getGuild(event)
 
-        var change = 0
-        val value = getValue(event)
-        if (value != null) {
-            change = value.toInt()
+            var change = 0
+            val value = getValue(event)
+            if (value != null) {
+                change = value.toInt()
+            }
+
+            guild?.lives = guild?.lives?.plus(change)!!
+        } catch (ignored: Exception) {
         }
-
-        guild?.lives = guild?.lives?.plus(change)!!
     }
 
 }

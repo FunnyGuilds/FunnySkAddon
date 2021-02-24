@@ -4,7 +4,7 @@ authors: [Peridot, LloydPL]
 description: Dodatek do pluginu Skript dodajacy wsparcie pluginu gildyjnego FunnyGuilds
 website: funnyskaddon.pl
 main: pl.funnyskaddon.FunnySkAddon
-depend: [Skript, FunnyGuilds]
+softdepend: [Skript, FunnyGuilds]
 
 commands:
   funnyskaddon:

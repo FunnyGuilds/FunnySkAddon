@@ -7,7 +7,6 @@ import ch.njol.skript.doc.Name
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.GuildCondition
-import pl.funnyskaddon.util.NegationUtil
 
 @FunnyDoc
 @Name("Guild Can Be Attacked")
@@ -29,7 +28,7 @@ class GuildCanBeAttackedCondition : GuildCondition() {
 
     override fun check(event: Event?): Boolean {
         return try {
-            NegationUtil.negation(getGuild(event)?.canBeAttacked(), isNegated)
+            getGuild(event)?.canBeAttacked()?.xor(isNegated)!!
         } catch (ex: Exception) {
             !isNegated
         }

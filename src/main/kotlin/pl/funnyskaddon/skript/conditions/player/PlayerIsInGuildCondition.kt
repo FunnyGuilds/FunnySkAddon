@@ -7,7 +7,6 @@ import ch.njol.skript.doc.Name
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.GuildPlayerCondition
-import pl.funnyskaddon.util.NegationUtil
 
 @FunnyDoc
 @Name("Is In Guild")
@@ -29,7 +28,7 @@ class PlayerIsInGuildCondition : GuildPlayerCondition() {
 
     override fun check(event: Event?): Boolean {
         return try {
-            NegationUtil.negation(getGuild(event)?.equals(getUser(event)?.guild), isNegated)
+            (getGuild(event)?.equals(getUser(event)?.guild))?.xor(isNegated)!!
         } catch (ex: Exception) {
             !isNegated
         }

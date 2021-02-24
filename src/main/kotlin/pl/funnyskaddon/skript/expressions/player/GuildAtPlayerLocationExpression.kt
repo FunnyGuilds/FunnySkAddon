@@ -32,13 +32,7 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
     }
 
     override fun get(event: Event): Array<Guild>? {
-        val player = getPlayer(event)
-
-        if (player != null) {
-            return arrayOf(player.location.getGuildAtLocation()!!)
-        }
-
-        return null
+        return getPlayer(event)?.location?.getGuildAtLocation()?.let { arrayOf(it) }
     }
 
     override fun getReturnType(): Class<Guild> {

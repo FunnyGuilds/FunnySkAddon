@@ -19,10 +19,10 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
         }
 
         if (args != null) {
-            if (args.isNotEmpty() && args[0]?.equals(
+            if (args.isNotEmpty() && args[0].equals(
                     "gen-docs",
                     true
-                )!! && sender.hasPermission("funnyskaddon.cmd.docs")
+                ) && sender.hasPermission("funnyskaddon.cmd.docs")
             ) {
                 if (plugin.configuration.devMode) {
                     val templateDir = File(plugin.dataFolder.toString() + "/docs/templates/")
