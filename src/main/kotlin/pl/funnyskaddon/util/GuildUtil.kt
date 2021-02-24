@@ -37,14 +37,12 @@ class GuildUtil {
     }
 }
 
-fun Location.getGuildAtLocation(): Guild? {
-    return RegionUtils.getAt(this).guild
-}
-
 fun Guild.getLowerPoint(): Location {
     val region = this.region
     return Location(
-        region.world, region.lowerX.toDouble(), region.lowerY.toDouble(),
+        region.world,
+        region.lowerX.toDouble(),
+        region.lowerY.toDouble(),
         region.lowerZ.toDouble()
     )
 }
@@ -52,9 +50,15 @@ fun Guild.getLowerPoint(): Location {
 fun Guild.getUpperPoint(): Location {
     val region = this.region
     return Location(
-        region.world, region.upperX.toDouble(), region.upperY.toDouble(),
+        region.world,
+        region.upperX.toDouble(),
+        region.upperY.toDouble(),
         region.upperZ.toDouble()
     )
+}
+
+fun Location.getGuildAtLocation(): Guild? {
+    return RegionUtils.getAt(this).guild
 }
 
 fun Player.isInGuildRegion(): Boolean {
