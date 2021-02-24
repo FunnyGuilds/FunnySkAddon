@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "pl.funnyskaddon"
-version = "2.0"
+version = "2.1"
 
 tasks.withType<ShadowJar> {
     classifier = ""
