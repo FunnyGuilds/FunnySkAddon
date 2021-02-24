@@ -6,11 +6,11 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.util.Date
 import net.dzikoysk.funnyguilds.event.FunnyEvent
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
-import net.dzikoysk.funnyguilds.event.SimpleEventHandler
-import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 
 
 @FunnyDoc
@@ -37,7 +37,15 @@ class GuildSetExpirationDateEffect : GuildValueEffect<Date>(false) {
 
         val change = value?.timestamp?.minus(guild?.validity!!)
 
-        if (!SimpleEventHandler.handle(GuildExtendValidityEvent(FunnyEvent.EventCause.CONSOLE, null, guild, change!!))) {
+        if (!SimpleEventHandler.handle(
+                GuildExtendValidityEvent(
+                    FunnyEvent.EventCause.CONSOLE,
+                    null,
+                    guild,
+                    change!!
+                )
+            )
+        ) {
             return
         }
 

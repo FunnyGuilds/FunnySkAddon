@@ -7,7 +7,6 @@ import ch.njol.skript.doc.Name
 import net.dzikoysk.funnyguilds.basic.user.User
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
-import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberDeputyEvent
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaderEvent
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
