@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "pl.funnyskaddon"
-version = "2.1.1"
+version = "2.1.0"
 
 tasks.withType<ShadowJar> {
     classifier = ""
@@ -32,7 +32,7 @@ dependencies {
     implementation("org.bstats:bstats-bukkit:1.8")
     compileOnly("commons-io:commons-io:2.8.0")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    compileOnly("net.dzikoysk:funnyguilds:4.8.1")
+    compileOnly("net.dzikoysk:funnyguilds:4.9.2")
     compileOnly("com.github.SkriptLang:Skript:2.4.1")
     compileOnly(fileTree("libs") { include("*.jar") })
 }
