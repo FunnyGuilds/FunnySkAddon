@@ -4,6 +4,9 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.event.FunnyEvent
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
@@ -26,18 +29,21 @@ class GuildAddLivesEffect : GuildValueEffect<Number>(false) {
     }
 
     override fun execute(event: Event?) {
-        try {
-            val guild = getGuild(event)
+        val guild = getGuild(event)
 
-            var change = 0
-            val value = getValue(event)
-            if (value != null) {
-                change = value.toInt()
-            }
-
-            guild?.lives = guild?.lives?.plus(change)!!
-        } catch (ignored: Exception) {
+        var change = 0
+        val value = getValue(event)
+        if (value != null) {
+            change = value.toInt()
         }
+
+        val newLives = guild?.lives?.plus(change)!!
+
+        if (!SimpleEventHandler.handle(GuildLivesChangeEvent(FunnyEvent.EventCause.CONSOLE, null, guild, newLives))) {
+            return
+        }
+
+        guild.lives = newLives
     }
 
 }

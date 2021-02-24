@@ -5,6 +5,9 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.util.Timespan
+import net.dzikoysk.funnyguilds.event.FunnyEvent
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
@@ -33,6 +36,10 @@ class GuildRemoveFromExpirationTimeEffect : GuildValueEffect<Timespan>(true) {
         val value = getValue(event)
         if (value != null) {
             change = value.milliSeconds
+        }
+
+        if (!SimpleEventHandler.handle(GuildExtendValidityEvent(FunnyEvent.EventCause.CONSOLE, null, guild, -change))) {
+            return
         }
 
         guild?.validity = guild?.validity?.minus(change)!!

@@ -4,9 +4,13 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.event.FunnyEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent
+
 
 @FunnyDoc
 @Name("Remove Guild Lives")
@@ -34,7 +38,13 @@ class GuildRemoveLivesEffect : GuildValueEffect<Number>(false) {
             change = value.toInt()
         }
 
-        guild?.lives = guild?.lives?.minus(change)!!
+        val newLives = guild?.lives?.minus(change)!!
+
+        if (!SimpleEventHandler.handle(GuildLivesChangeEvent(FunnyEvent.EventCause.CONSOLE, null, guild, newLives))) {
+            return
+        }
+
+        guild.lives = newLives
     }
 
 }

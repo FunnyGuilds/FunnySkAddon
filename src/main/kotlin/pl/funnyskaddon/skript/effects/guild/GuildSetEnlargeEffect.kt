@@ -4,6 +4,10 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.event.FunnyEvent
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildEnlargeEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
@@ -26,7 +30,13 @@ class GuildSetEnlargeEffect : GuildValueEffect<Number>(false) {
     }
 
     override fun execute(event: Event?) {
-        getGuild(event)?.region?.enlarge = getValue(event)?.toInt()!!
+        val guild = getGuild(event)
+
+        if (!SimpleEventHandler.handle(GuildEnlargeEvent(FunnyEvent.EventCause.CONSOLE, null, guild))) {
+            return
+        }
+
+        guild?.region?.enlarge = getValue(event)?.toInt()!!
     }
 
 }

@@ -4,6 +4,10 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.event.FunnyEvent
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildBaseChangeEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildEnlargeEvent
 import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
@@ -27,7 +31,14 @@ class GuildSetHomeEffect : GuildValueEffect<Location>(false) {
     }
 
     override fun execute(event: Event?) {
-        getGuild(event)?.home = getValue(event)
+        val guild = getGuild(event)
+        val value = getValue(event)
+
+        if (!SimpleEventHandler.handle(GuildBaseChangeEvent(FunnyEvent.EventCause.CONSOLE, null, guild, value))) {
+            return
+        }
+
+        guild?.home = value
     }
 
 }

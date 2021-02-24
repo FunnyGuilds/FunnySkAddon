@@ -4,9 +4,13 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.event.FunnyEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildEffect
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildDeleteEvent
+
 
 @FunnyDoc
 @Name("Delete Guild")
@@ -26,7 +30,13 @@ class GuildDeleteEffect : GuildEffect() {
     }
 
     override fun execute(event: Event?) {
-        getGuild(event)?.delete()
+        val guild = getGuild(event)
+
+        if (!SimpleEventHandler.handle(GuildDeleteEvent(FunnyEvent.EventCause.CONSOLE, null, guild))) {
+            return
+        }
+
+        guild?.delete()
     }
 
 }

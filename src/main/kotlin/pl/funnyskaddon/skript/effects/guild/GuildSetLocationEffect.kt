@@ -4,10 +4,14 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.event.FunnyEvent
 import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildMoveEvent
+
 
 @FunnyDoc
 @Name("Set Guild Home")
@@ -27,7 +31,14 @@ class GuildSetLocationEffect : GuildValueEffect<Location>(false) {
     }
 
     override fun execute(event: Event?) {
-        getGuild(event)?.enderCrystal = getValue(event)
+        val guild = getGuild(event)
+        val value = getValue(event)
+
+        if (!SimpleEventHandler.handle(GuildMoveEvent(FunnyEvent.EventCause.CONSOLE, null, guild, value))) {
+            return
+        }
+
+        guild?.enderCrystal = value
     }
 
 }

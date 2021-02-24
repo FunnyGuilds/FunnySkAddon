@@ -5,10 +5,14 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import net.dzikoysk.funnyguilds.basic.user.User
+import net.dzikoysk.funnyguilds.event.FunnyEvent
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberDeputyEvent
+
 
 @FunnyDoc
 @Name("Add Guild Deputy")
@@ -28,7 +32,14 @@ class GuildAddDeputyEffect : GuildValueEffect<OfflinePlayer>(true) {
     }
 
     override fun execute(event: Event?) {
-        getGuild(event)?.addDeputy(User.get(getValue(event)))
+        val user = User.get(getValue(event))
+        val guild = getGuild(event)
+
+        if (!SimpleEventHandler.handle(GuildMemberDeputyEvent(FunnyEvent.EventCause.CONSOLE, null, guild, user))) {
+            return
+        }
+
+        guild?.addDeputy(user)
     }
 
 }
