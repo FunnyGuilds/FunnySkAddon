@@ -12,6 +12,7 @@ import pl.funnyskaddon.data.Configuration
 import pl.funnyskaddon.events.guilds.GuildCreateListener
 import pl.funnyskaddon.events.rank.PointsChangeListener
 import pl.funnyskaddon.schedulers.UpdateCheckScheduler
+import java.util.concurrent.Callable
 
 class FunnySkAddon : JavaPlugin() {
 
@@ -80,7 +81,11 @@ class FunnySkAddon : JavaPlugin() {
         )
 
         val pluginId = 6363
-        Metrics(this, pluginId)
+        val metrics = Metrics(this, pluginId)
+
+        metrics.addCustomChart(Metrics.SimplePie("funnyguilds_version", Callable<String> {
+            this.server.pluginManager.getPlugin("FunnyGuilds").description.version
+        }))
     }
 
 }
