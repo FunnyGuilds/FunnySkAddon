@@ -8,7 +8,7 @@ import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import pl.funnyskaddon.util.GuildUtil
+import pl.funnyskaddon.util.getGuild
 
 abstract class GuildPlayerCondition : FunnyCondition() {
 
@@ -57,7 +57,7 @@ abstract class GuildPlayerCondition : FunnyCondition() {
 
     fun getGuild(event: Event?): Guild? {
         return try {
-            GuildUtil.getGuild(guild.getSingle(event))
+            guild.getSingle(event)?.getGuild()
         } catch (ex: Exception) {
             null
         }

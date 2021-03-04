@@ -8,33 +8,29 @@ import org.bukkit.Location
 import org.bukkit.entity.Player
 import java.util.*
 
-class GuildUtil {
-    companion object {
-        fun getGuild(guildArgument: Any?): Guild? {
-            var guild: Guild? = null
-            when (guildArgument) {
-                is Guild -> {
-                    guild = guildArgument
+fun Any.getGuild(): Guild? {
+    var guild: Guild? = null
+    when (this) {
+        is Guild -> {
+            guild = this
+        }
+        is Player -> {
+            guild = User.get(this).guild
+        }
+        is Location -> {
+            guild = this.getGuildAtLocation()
+        }
+        else -> {
+            try {
+                guild = GuildUtils.getByName(this.toString())
+                if (guild == null) {
+                    guild = GuildUtils.getByTag(this.toString())
                 }
-                is Player -> {
-                    guild = User.get(guildArgument).guild
-                }
-                is Location -> {
-                    guild = guildArgument.getGuildAtLocation()
-                }
-                else -> {
-                    try {
-                        guild = GuildUtils.getByName(guildArgument.toString())
-                        if (guild == null) {
-                            guild = GuildUtils.getByTag(guildArgument.toString())
-                        }
-                    } catch (ex: Exception) {
-                    }
-                }
+            } catch (ex: Exception) {
             }
-            return guild
         }
     }
+    return guild
 }
 
 fun Guild.getLowerPoint(): Location {

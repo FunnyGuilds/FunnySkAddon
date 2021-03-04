@@ -11,7 +11,7 @@ import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberJoinEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.PlayerEffect
-import pl.funnyskaddon.util.GuildUtil
+import pl.funnyskaddon.util.getGuild
 
 @FunnyDoc
 @Name("Set Guild")
@@ -51,7 +51,7 @@ class PlayerSetGuildEffect : PlayerEffect<Any>(false) {
 
     fun getGuild(event: Event?): Guild? {
         return try {
-            GuildUtil.getGuild(getValue(event))
+            getValue(event)?.getGuild()
         } catch (ex: Exception) {
             null
         }
