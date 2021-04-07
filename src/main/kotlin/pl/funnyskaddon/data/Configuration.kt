@@ -1,29 +1,46 @@
 package pl.funnyskaddon.data
 
-import org.bukkit.configuration.ConfigurationSection
-import pl.funnyskaddon.FunnySkAddon
+import eu.okaeri.configs.OkaeriConfig
+import eu.okaeri.configs.annotation.*
 
-class Configuration(private val plugin: FunnySkAddon) {
+@Names(strategy = NameStrategy.HYPHEN_CASE, modifier = NameModifier.TO_LOWER_CASE)
+class Configuration : OkaeriConfig() {
 
-    var updateCheck = false
-    var onlyFullReleases = true
-    var simpleUpdateCheck = true
-    var checkTime = 180
+    @CustomKey("update")
+    var update = Update()
 
-    var noPerm: String? = null
+    @CustomKey("messages")
+    var messages = Messages()
 
+    @Comment("Tryb developerski, służy do generowania dokumentacji, nie ma raczej sensu ustawiać na true")
+    @CustomKey("dev-mode")
     var devMode = false
 
-    fun loadConfiguration() {
-        plugin.saveDefaultConfig()
-        val config: ConfigurationSection = plugin.config
+    class Update : OkaeriConfig() {
+        @Comments(
+            Comment("Update'y wychodzą rzadko ale zawierają dużo, radzimy więc zostawić to włączone"),
+            Comment("Jesli mimo najnowszej wersji wiadomość jest dalej wysyłana mozna wyłączyc")
+        )
+        @CustomKey("check")
+        var updateCheck = false
 
-        updateCheck = config.getBoolean("update.check")
-        onlyFullReleases = config.getBoolean("update.onlyFullReleases")
-        simpleUpdateCheck = config.getBoolean("update.simple")
-        checkTime = config.getInt("update.time")
-        noPerm = config.getString("message.noPerm")
-        devMode = config.getBoolean("devMode")
+        @Comment("Ustawione na false zwraca również \"niepełne\" wydania (Pre-Release)")
+        @CustomKey("only-full-releases")
+        var onlyFullReleases = true
+
+        @Comment("Wyłącza kolory w konsoli jeśli jest ustawione na true")
+        @CustomKey("simple")
+        var simpleUpdateCheck = true
+
+        @Comment("Czas co jaki ma być sprawdzana dostępność aktualizacji w minutach")
+        @CustomKey("time")
+        var checkTime: Int = 180
+    }
+
+    class Messages : OkaeriConfig() {
+        @Comment("Wiadomość wsyłana gdy gracz nie ma uprawnień do komendy /funnyskaddon")
+        @CustomKey("no-perm")
+        var noPerm: String? = "&bFunnySkAddon &8> &7Niestety nie posiadasz uprawnien."
     }
 
 }

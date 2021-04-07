@@ -6,6 +6,7 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
+import net.dzikoysk.funnyguilds.event.guild.GuildPreRenameEvent
 import net.dzikoysk.funnyguilds.event.guild.GuildRenameEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
@@ -33,11 +34,24 @@ class GuildSetNameEffect : GuildValueEffect<String>(false) {
         val guild = getGuild(event)
         val value = getValue(event)
 
-        if (!SimpleEventHandler.handle(GuildRenameEvent(FunnyEvent.EventCause.CONSOLE, null, guild, value))) {
+        val oldName = guild?.name
+
+        if (!SimpleEventHandler.handle(
+                GuildPreRenameEvent(
+                    FunnyEvent.EventCause.CONSOLE,
+                    null,
+                    guild,
+                    oldName,
+                    value
+                )
+            )
+        ) {
             return
         }
 
         guild?.name = value
+
+        SimpleEventHandler.handle(GuildRenameEvent(FunnyEvent.EventCause.CONSOLE, null, guild, oldName, value))
     }
 
 }

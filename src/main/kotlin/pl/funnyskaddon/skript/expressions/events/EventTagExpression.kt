@@ -11,25 +11,25 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.guild.GuildPreRenameEvent
-import net.dzikoysk.funnyguilds.event.guild.GuildRenameEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildPreTagChangeEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildTagChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 
 @FunnyDoc
-@Name("Name")
+@Name("Tag")
 @Description(
-    "Zwraca nazwę gildii przed lub po jej zmianie"
+    "Zwraca tag gildii przed lub po jego zmianie"
 )
 @Events(
-    "guild rename"
+    "guild tag change"
 )
-class EventNameExpression : SimpleExpression<String>() {
+class EventTagExpression : SimpleExpression<String>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventNameExpression::class.java,
+                EventTagExpression::class.java,
                 String::class.javaObjectType,
                 ExpressionType.SIMPLE,
                 *EventType.patterns.toTypedArray()
@@ -39,19 +39,19 @@ class EventNameExpression : SimpleExpression<String>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        RENAME_NEW("new( |-)name", GuildPreRenameEvent::class.java) {
+        RENAME_NEW("new( |-)tag", GuildPreTagChangeEvent::class.java) {
             override fun get(event: Event): String? {
-                if (event is GuildRenameEvent) {
-                    return event.newName
+                if (event is GuildTagChangeEvent) {
+                    return event.newTag
                 }
                 return null
             }
         },
 
-        RENAME_OLD("old( |-)name", GuildPreRenameEvent::class.java) {
+        RENAME_OLD("old( |-)tag", GuildPreTagChangeEvent::class.java) {
             override fun get(event: Event): String? {
-                if (event is GuildRenameEvent) {
-                    return event.oldName
+                if (event is GuildTagChangeEvent) {
+                    return event.oldTag
                 }
                 return null
             }

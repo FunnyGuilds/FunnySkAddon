@@ -2,6 +2,8 @@ package pl.funnyskaddon
 
 import ch.njol.skript.Skript
 import ch.njol.skript.SkriptAddon
+import eu.okaeri.configs.ConfigManager
+import eu.okaeri.configs.yaml.bukkit.YamlBukkitConfigurer
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.data.configs.PluginConfiguration
 import org.bstats.bukkit.Metrics
@@ -12,6 +14,8 @@ import pl.funnyskaddon.data.Configuration
 import pl.funnyskaddon.events.guilds.GuildCreateListener
 import pl.funnyskaddon.events.rank.PointsChangeListener
 import pl.funnyskaddon.schedulers.UpdateCheckScheduler
+import java.io.File
+
 
 class FunnySkAddon : JavaPlugin() {
 
@@ -48,8 +52,12 @@ class FunnySkAddon : JavaPlugin() {
             return
         }
 
-        configuration = Configuration(this)
-        configuration.loadConfiguration()
+        configuration = ConfigManager.create(Configuration::class.java) {
+            it.withConfigurer(YamlBukkitConfigurer())
+            it.withBindFile(File(dataFolder, "config.yml"))
+            it.saveDefaults()
+            it.load(true)
+        }
 
         fgConfiguration = FunnyGuilds.getInstance().pluginConfiguration
 

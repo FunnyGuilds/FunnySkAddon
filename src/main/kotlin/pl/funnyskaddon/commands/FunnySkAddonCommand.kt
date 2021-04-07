@@ -14,7 +14,7 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, cmd: Command?, label: String?, args: Array<String?>?): Boolean {
         if (!sender.hasPermission("funnyskaddon.cmd")) {
-            sender.sendMessage(plugin.configuration.noPerm?.color())
+            sender.sendMessage(plugin.configuration.messages.noPerm?.color())
             return true
         }
 

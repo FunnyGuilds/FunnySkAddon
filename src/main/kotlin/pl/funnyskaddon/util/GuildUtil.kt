@@ -10,6 +10,7 @@ import java.util.*
 
 fun Any.getGuild(): Guild? {
     var guild: Guild? = null
+
     when (this) {
         is Guild -> {
             guild = this
@@ -26,10 +27,11 @@ fun Any.getGuild(): Guild? {
                 if (guild == null) {
                     guild = GuildUtils.getByTag(this.toString())
                 }
-            } catch (ex: Exception) {
+            } catch (ignored: Exception) {
             }
         }
     }
+
     return guild
 }
 
@@ -61,8 +63,12 @@ fun Player.isInGuildRegion(): Boolean {
     return RegionUtils.getAt(this.location) == null
 }
 
+fun Guild.isLocationInGuildRegion(location: Location?): Boolean {
+    return RegionUtils.getAt(location).equals(this.region)
+}
+
 fun Guild.isPlayerInGuildRegion(player: Player?): Boolean {
-    return RegionUtils.getAt(player?.location).equals(this.region)
+    return isLocationInGuildRegion(player?.location)
 }
 
 fun Guild.getPlayersInGuildRegion(): Array<Player> {

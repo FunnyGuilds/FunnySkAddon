@@ -13,15 +13,15 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
     fun start() {
         val description = plugin.description
         plugin.server.scheduler.runTaskTimer(plugin, {
-            if (plugin.configuration.updateCheck) {
+            if (plugin.configuration.update.updateCheck) {
                 val url = "https://github.com/FunnyGuilds/FunnySkAddon/"
                 val fullRelease = PATTERN.matcher(description.version).matches()
                 val latestVersion: String? = VersionUtil.getLatestVersion(
                     "https://raw.githubusercontent.com/FunnyGuilds/FunnySkAddon/master/VERSION",
-                    plugin.configuration.onlyFullReleases && fullRelease
+                    plugin.configuration.update.onlyFullReleases && fullRelease
                 )
                 if (!description.version.equals(latestVersion, true)) {
-                    if (plugin.configuration.simpleUpdateCheck) {
+                    if (plugin.configuration.update.simpleUpdateCheck) {
                         plugin.logger.warning("[FSA] Wersja pluginu: " + description.version)
                         plugin.logger.warning("[FSA] Najnowsza wersja pluginu: " + latestVersion.toString())
                         plugin.logger.warning("[FSA] Wszystkie wersje: " + url)
@@ -34,7 +34,7 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
                     }
                 }
             }
-        }, 0, plugin.configuration.checkTime * 60L * 20L)
+        }, 0, plugin.configuration.update.checkTime * 60L * 20L)
     }
 
 }
