@@ -17,9 +17,8 @@ class Configuration : OkaeriConfig() {
     var devMode = false
 
     class Update : OkaeriConfig() {
-        @Comments(
-            Comment("Update'y wychodzą rzadko ale zawierają dużo, radzimy więc zostawić to włączone"),
-            Comment("Jesli mimo najnowszej wersji wiadomość jest dalej wysyłana mozna wyłączyc")
+        @Comment("Update'y wychodzą rzadko ale zawierają dużo, radzimy więc zostawić to włączone",
+            "Jesli mimo najnowszej wersji wiadomość jest dalej wysyłana mozna wyłączyc"
         )
         @CustomKey("check")
         var updateCheck = false
