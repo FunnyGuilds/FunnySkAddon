@@ -15,7 +15,7 @@ import java.util.*
 import java.util.function.Function
 
 
-class FunnyHTMLGenerator(private val plugin: FunnySkAddon, private val template: File, private val output: File) {
+class FunnyHTMLGenerator(private val plugin: FunnySkAddon, template: File, private val output: File) {
 
     private var skeleton: String
 

@@ -25,12 +25,12 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
                 ) && sender.hasPermission("funnyskaddon.cmd.docs")
             ) {
                 if (plugin.configuration.devMode) {
-                    val templateDir = File(plugin.dataFolder.toString() + "/docs/templates/")
+                    val templateDir = File(plugin.dataFolder, "docs/templates/")
                     if (!templateDir.exists()) {
                         Skript.info(sender, "Documentation templates not found. Cannot generate docs!")
                         return true
                     }
-                    val outputDir = File(plugin.dataFolder.toString() + "/docs/output")
+                    val outputDir = File(plugin.dataFolder, "docs/output")
                     outputDir.mkdirs()
 
                     val generator = FunnyHTMLGenerator(plugin, templateDir, outputDir)
