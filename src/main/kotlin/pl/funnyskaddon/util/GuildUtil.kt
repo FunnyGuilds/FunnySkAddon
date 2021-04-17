@@ -6,7 +6,6 @@ import net.dzikoysk.funnyguilds.basic.guild.RegionUtils
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.Location
 import org.bukkit.entity.Player
-import java.util.*
 
 fun Any.getGuild(): Guild? {
     var guild: Guild? = null

@@ -1,8 +1,11 @@
 package pl.funnyskaddon.docs
 
 import ch.njol.skript.Skript
-import ch.njol.skript.doc.*
-import ch.njol.skript.lang.*
+import ch.njol.skript.doc.Events
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.NoDoc
+import ch.njol.skript.lang.SkriptEventInfo
+import ch.njol.skript.lang.SyntaxElementInfo
 import com.google.common.io.Files
 import pl.funnyskaddon.FunnySkAddon
 import java.io.File

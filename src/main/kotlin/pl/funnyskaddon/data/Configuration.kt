@@ -17,11 +17,12 @@ class Configuration : OkaeriConfig() {
     var devMode = false
 
     class Update : OkaeriConfig() {
-        @Comment("Update'y wychodzą rzadko ale zawierają dużo, radzimy więc zostawić to włączone",
+        @Comment(
+            "Update'y wychodzą rzadko ale zawierają dużo, radzimy więc zostawić to włączone",
             "Jesli mimo najnowszej wersji wiadomość jest dalej wysyłana mozna wyłączyc"
         )
         @CustomKey("check")
-        var updateCheck = false
+        var updateCheck = true
 
         @Comment("Ustawione na false zwraca również \"niepełne\" wydania (Pre-Release)")
         @CustomKey("only-full-releases")
@@ -29,7 +30,7 @@ class Configuration : OkaeriConfig() {
 
         @Comment("Wyłącza kolory w konsoli jeśli jest ustawione na true")
         @CustomKey("simple")
-        var simpleUpdateCheck = true
+        var simpleUpdateCheck = false
 
         @Comment("Czas co jaki ma być sprawdzana dostępność aktualizacji w minutach")
         @CustomKey("time")

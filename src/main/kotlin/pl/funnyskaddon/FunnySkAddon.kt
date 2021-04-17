@@ -16,7 +16,6 @@ import pl.funnyskaddon.events.rank.PointsChangeListener
 import pl.funnyskaddon.schedulers.UpdateCheckScheduler
 import java.io.File
 
-
 class FunnySkAddon : JavaPlugin() {
 
     lateinit var configuration: Configuration
@@ -54,7 +53,7 @@ class FunnySkAddon : JavaPlugin() {
 
         configuration = ConfigManager.create(Configuration::class.java) {
             it.withConfigurer(YamlBukkitConfigurer())
-            it.withBindFile(File(dataFolder, "config.yml"))
+            it.withBindFile(File(this.dataFolder, "config.yml"))
             it.saveDefaults()
             it.load(true)
         }
