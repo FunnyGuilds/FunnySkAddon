@@ -12,7 +12,7 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
 
     fun start() {
         val description = plugin.description
-        plugin.server.scheduler.runTaskTimer(plugin, {
+        plugin.server.scheduler.runTaskTimerAsynchronously(plugin, {
             if (plugin.configuration.update.updateCheck) {
                 val url = "https://github.com/FunnyGuilds/FunnySkAddon/"
                 val fullRelease = PATTERN.matcher(description.version).matches()
