@@ -12,7 +12,10 @@ class CustomGuildCreateEvent(
     val eventCause: FunnyEvent.EventCause
 ) : Event() {
 
-    val handlerList: HandlerList = HandlerList()
+    companion object {
+        @JvmStatic
+        val handlerList: HandlerList = HandlerList()
+    }
 
     override fun getHandlers(): HandlerList {
         return handlerList

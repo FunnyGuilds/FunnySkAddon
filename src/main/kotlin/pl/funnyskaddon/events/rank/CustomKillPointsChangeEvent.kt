@@ -15,11 +15,11 @@ class CustomKillPointsChangeEvent(
     val rank: Rank
 ) : Event(), Cancellable {
 
-    val handlerList: HandlerList = HandlerList()
     private var cancelled = false
 
-    override fun getHandlers(): HandlerList {
-        return handlerList
+    companion object {
+        @JvmStatic
+        val handlerList: HandlerList = HandlerList()
     }
 
     override fun isCancelled(): Boolean {
@@ -28,6 +28,10 @@ class CustomKillPointsChangeEvent(
 
     override fun setCancelled(cancelled: Boolean) {
         this.cancelled = cancelled
+    }
+
+    override fun getHandlers(): HandlerList {
+        return handlerList
     }
 
 }
