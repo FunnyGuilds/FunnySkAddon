@@ -40,7 +40,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.bstats:bstats-bukkit:2.2.1")
-    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:2.7.17")
+    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:3.2.0")
     implementation("commons-io:commons-io:2.11.0")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     compileOnly("net.dzikoysk:funnyguilds:4.9.6")
