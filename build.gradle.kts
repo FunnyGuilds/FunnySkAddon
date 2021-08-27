@@ -44,5 +44,5 @@ dependencies {
     implementation("commons-io:commons-io:2.11.0")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     compileOnly("net.dzikoysk:funnyguilds:4.9.6")
-    compileOnly("com.github.SkriptLang:Skript:2.4.1")
+    compileOnly("com.github.SkriptLang:Skript:2.5.3")
 }
