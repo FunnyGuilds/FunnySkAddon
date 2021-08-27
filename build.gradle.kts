@@ -43,6 +43,6 @@ dependencies {
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:3.2.0")
     implementation("commons-io:commons-io:2.11.0")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    compileOnly("net.dzikoysk:funnyguilds:4.9.6")
+    compileOnly("net.dzikoysk:funnyguilds:4.9.7")
     compileOnly("com.github.SkriptLang:Skript:2.5.3")
 }
