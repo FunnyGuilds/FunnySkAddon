@@ -5,10 +5,12 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
+import org.panda_lang.utilities.commons.function.Option
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.ValueExpression
 
@@ -34,7 +36,13 @@ class GuildFromPlayerExpression : ValueExpression<OfflinePlayer>() {
     }
 
     override fun get(event: Event): Array<Guild> {
-        return arrayOf(User.get(getValue(event)).guild)
+        val user: Option<User> = FunnyGuilds.getInstance().userManager.getUser(getValue(event))
+
+        if (user.isEmpty) {
+            return arrayOf()
+        }
+
+        return arrayOf(user.get().guild)
     }
 
 }

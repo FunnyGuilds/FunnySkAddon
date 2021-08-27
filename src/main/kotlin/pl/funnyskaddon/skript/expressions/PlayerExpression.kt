@@ -3,10 +3,12 @@ package pl.funnyskaddon.skript.expressions
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
+import org.panda_lang.utilities.commons.function.Option
 
 abstract class PlayerExpression<T> : FunnyExpression<T>() {
 
@@ -42,7 +44,13 @@ abstract class PlayerExpression<T> : FunnyExpression<T>() {
 
     fun getUser(event: Event?): User? {
         return try {
-            User.get(getOfflinePlayer(event))
+            val user: Option<User> = FunnyGuilds.getInstance().userManager.getUser(getOfflinePlayer(event))
+
+            if (user.isEmpty) {
+                return null
+            }
+
+            user.get()
         } catch (ex: Exception) {
             null
         }

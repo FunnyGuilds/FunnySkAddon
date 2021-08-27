@@ -1,11 +1,13 @@
 package pl.funnyskaddon.util
 
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.basic.guild.GuildUtils
 import net.dzikoysk.funnyguilds.basic.guild.RegionUtils
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.Location
 import org.bukkit.entity.Player
+import org.panda_lang.utilities.commons.function.Option
 
 fun Any.getGuild(): Guild? {
     var guild: Guild? = null
@@ -15,7 +17,13 @@ fun Any.getGuild(): Guild? {
             guild = this
         }
         is Player -> {
-            guild = User.get(this).guild
+            val user: Option<User> = FunnyGuilds.getInstance().userManager.getUser(player)
+
+            if (user.isEmpty) {
+                return null
+            }
+
+            guild = user.get().guild
         }
         is Location -> {
             guild = this.getGuildAtLocation()

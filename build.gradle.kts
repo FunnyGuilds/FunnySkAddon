@@ -18,8 +18,6 @@ tasks.withType<ShadowJar> {
     //JetBrains
     relocate("org.intellij", "pl.funnyskaddon.libs.intellij")
     relocate("org.jetbrains", "pl.funnyskaddon.libs.jetbrains")
-    //Okaeri
-    relocate("eu.okaeri", "pl.funnyskaddon.libs.okaeri")
     //Apache
     relocate("org.apache", "pl.funnyskaddon.libs.apache")
 
@@ -40,7 +38,6 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.bstats:bstats-bukkit:2.2.1")
-    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:3.2.0")
     implementation("commons-io:commons-io:2.11.0")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     compileOnly("net.dzikoysk:funnyguilds:4.9.7")

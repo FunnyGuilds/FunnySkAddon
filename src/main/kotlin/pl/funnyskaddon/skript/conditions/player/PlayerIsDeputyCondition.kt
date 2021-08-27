@@ -4,8 +4,10 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.basic.user.User
 import org.bukkit.event.Event
+import org.panda_lang.utilities.commons.function.Option
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.PlayerCondition
 
@@ -29,7 +31,13 @@ class PlayerIsDeputyCondition : PlayerCondition() {
 
     override fun check(event: Event?): Boolean {
         return try {
-            User.get(getOfflinePlayer(event)).isDeputy.xor(isNegated)
+            val user: Option<User> = FunnyGuilds.getInstance().userManager.getUser(getOfflinePlayer(event))
+
+            if (user.isEmpty) {
+                return !isNegated
+            }
+
+            user.get().isDeputy.xor(isNegated)
         } catch (ex: Exception) {
             !isNegated
         }

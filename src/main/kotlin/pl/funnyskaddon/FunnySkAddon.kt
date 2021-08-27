@@ -7,6 +7,7 @@ import eu.okaeri.configs.yaml.bukkit.YamlBukkitConfigurer
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.data.configs.PluginConfiguration
 import org.bstats.bukkit.Metrics
+import org.bstats.charts.SimplePie
 import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
 import pl.funnyskaddon.commands.FunnySkAddonCommand
@@ -89,7 +90,7 @@ class FunnySkAddon : JavaPlugin() {
         val pluginId = 6363
         val metrics = Metrics(this, pluginId)
 
-        metrics.addCustomChart(Metrics.SimplePie("funnyguilds_version") {
+        metrics.addCustomChart(SimplePie("funnyguilds_version") {
             this.server.pluginManager.getPlugin("FunnyGuilds").description.version
         })
     }

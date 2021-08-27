@@ -129,7 +129,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, template: File, priva
             return ""
         } else {
             generatedItem = generatedItem.replace("{element.name}", info.name)
-                .replace("{element.id}", info.name.toLowerCase().replace(" ", "-"))
+                .replace("{element.id}", info.name.lowercase().replace(" ", "-"))
         }
 
         generatedItem = if (info.description == null) {
@@ -177,7 +177,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, template: File, priva
             var eventLinks = ""
 
             for (eventName in info.events.sorted()) {
-                eventLinks += ", <a href=\"events#on-" + eventName.toLowerCase()
+                eventLinks += ", <a href=\"events#on-" + eventName.lowercase()
                     .replace(" ", "-") + "\">" + eventName + "</a>"
             }
 
@@ -195,7 +195,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, template: File, priva
 
         if (info.name != null) {
             generatedItem = generatedItem.replace("{element.name}", info.name)
-                .replace("{element.id}", info.name.toLowerCase().replace(" ", "-"))
+                .replace("{element.id}", info.name.lowercase().replace(" ", "-"))
         }
 
         return generatedItem
