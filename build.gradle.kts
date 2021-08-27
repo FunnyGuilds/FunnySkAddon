@@ -41,7 +41,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.bstats:bstats-bukkit:1.8")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:2.7.17")
-    implementation("commons-io:commons-io:2.8.0")
+    implementation("commons-io:commons-io:2.11.0")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     compileOnly("net.dzikoysk:funnyguilds:4.9.6")
     compileOnly("com.github.SkriptLang:Skript:2.4.1")
