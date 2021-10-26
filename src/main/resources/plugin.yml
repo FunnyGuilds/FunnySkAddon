@@ -1,5 +1,5 @@
 name: FunnySkAddon
-version: 2.2.1
+version: @version@
 authors: [Peridot, LloydPL]
 description: Dodatek do pluginu Skript dodajacy wsparcie pluginu gildyjnego FunnyGuilds
 website: funnyskaddon.pl

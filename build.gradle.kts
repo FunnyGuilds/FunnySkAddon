@@ -1,4 +1,5 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
     kotlin("jvm") version "1.5.31"
@@ -9,7 +10,7 @@ group = "pl.funnyskaddon"
 version = "2.2.1"
 
 tasks.withType<ShadowJar> {
-    classifier = ""
+    archiveName = "FunnySkAddon-${project.version}.jar"
 
     //Kotlin
     relocate("kotlin", "pl.funnyskaddon.libs.kotlin")
@@ -24,19 +25,41 @@ tasks.withType<ShadowJar> {
     minimize()
 }
 
+tasks.withType<Copy> {
+    delete(fileTree(project.buildDir) {
+        include("resources/main/plugin.yml")
+    })
+
+    filter(ReplaceTokens::class, "tokens" to mapOf("version" to rootProject.version))
+}
+
+/*processResources {
+    delete fileTree(project.buildDir) {
+        include("resources/main/plugin.yml")
+        include("resources/main/bungee.yml")
+    }
+
+    from(project.sourceSets.main.resources.srcDirs) {
+        include "plugin.yml"
+        include "bungee.yml"
+        filter(ReplaceTokens, tokens: [version: rootProject.version])
+    }
+}*/
+
 repositories {
-    jcenter()
     mavenCentral()
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/" )
-    maven("https://oss.sonatype.org/content/repositories/snapshots/" )
-    maven("https://repo.panda-lang.org/")
+    mavenLocal()
+
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+    maven("https://oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://repo.panda-lang.org/releases/")
     maven("https://jitpack.io")
     maven("https://repo.codemc.org/repository/maven-public")
     maven("https://storehouse.okaeri.eu/repository/maven-public/")
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31")
     implementation("org.bstats:bstats-bukkit:2.2.1")
     implementation("commons-io:commons-io:2.11.0")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
