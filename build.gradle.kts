@@ -62,7 +62,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31")
     implementation("org.bstats:bstats-bukkit:2.2.1")
     implementation("commons-io:commons-io:2.11.0")
-    shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
+    shadow("org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT")
     shadow("net.dzikoysk:funnyguilds:4.9.7")
     shadow("com.github.SkriptLang:Skript:2.5.3")
 }
