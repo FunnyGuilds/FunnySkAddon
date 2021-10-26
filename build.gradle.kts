@@ -33,19 +33,6 @@ tasks.withType<Copy> {
     filter(ReplaceTokens::class, "tokens" to mapOf("version" to rootProject.version))
 }
 
-/*processResources {
-    delete fileTree(project.buildDir) {
-        include("resources/main/plugin.yml")
-        include("resources/main/bungee.yml")
-    }
-
-    from(project.sourceSets.main.resources.srcDirs) {
-        include "plugin.yml"
-        include "bungee.yml"
-        filter(ReplaceTokens, tokens: [version: rootProject.version])
-    }
-}*/
-
 repositories {
     mavenCentral()
     mavenLocal()
