@@ -51,5 +51,5 @@ dependencies {
     implementation("commons-io:commons-io:2.11.0")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     shadow("net.dzikoysk:funnyguilds:4.9.7")
-    shadow("com.github.SkriptLang:Skript:2.5.3")
+    shadow("com.github.SkriptLang:Skript:2.6")
 }
