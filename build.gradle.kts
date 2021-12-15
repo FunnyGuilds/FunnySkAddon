@@ -46,7 +46,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.5.31")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10")
     implementation("org.bstats:bstats-bukkit:2.2.1")
     implementation("commons-io:commons-io:2.11.0")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
