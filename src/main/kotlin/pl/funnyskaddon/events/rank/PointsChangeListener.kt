@@ -14,7 +14,7 @@ class PointsChangeListener(private val plugin: FunnySkAddon) : Listener {
             return
         }
 
-        val change = event.change
+        val change = event.pointsChange
         val attacker = event.doer.player
 
         if (event.doer == event.rank.user) {

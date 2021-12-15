@@ -30,11 +30,11 @@ class GuildEndercrystalLocationExpression : GuildExpression<Location>() {
         }
     }
 
-    override fun get(event: Event): Array<Location>? {
+    override fun get(event: Event): Array<Location?>? {
         val guild = getGuild(event)
 
         if (guild != null) {
-            return arrayOf(guild.enderCrystal)
+            return arrayOf(guild.enderCrystal.orNull)
         }
 
         return null

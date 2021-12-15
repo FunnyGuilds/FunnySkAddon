@@ -3,10 +3,12 @@ package pl.funnyskaddon.skript.effects
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.basic.user.User
+import net.dzikoysk.funnyguilds.FunnyGuilds
+import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
+import panda.std.Option
 
 abstract class PlayerEffect<T>(private var inverted: Boolean) : FunnyEffect() {
 
@@ -49,7 +51,11 @@ abstract class PlayerEffect<T>(private var inverted: Boolean) : FunnyEffect() {
 
     fun getUser(event: Event?): User? {
         return try {
-            User.get(getOfflinePlayer(event))
+            val userOption: Option<User> = FunnyGuilds.getInstance().userManager.findByPlayer(getOfflinePlayer(event))
+            if (userOption.isEmpty) {
+                return null
+            }
+            userOption.get()
         } catch (ex: Exception) {
             null
         }

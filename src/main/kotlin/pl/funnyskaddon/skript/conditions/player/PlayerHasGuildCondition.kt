@@ -5,9 +5,9 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import net.dzikoysk.funnyguilds.FunnyGuilds
-import net.dzikoysk.funnyguilds.basic.user.User
+import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.event.Event
-import org.panda_lang.utilities.commons.function.Option
+import panda.std.Option
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.PlayerCondition
 
@@ -31,7 +31,7 @@ class PlayerHasGuildCondition : PlayerCondition() {
 
     override fun check(event: Event?): Boolean {
         return try {
-            val user: Option<User> = FunnyGuilds.getInstance().userManager.getUser(getOfflinePlayer(event))
+            val user: Option<User> = FunnyGuilds.getInstance().userManager.findByPlayer(getOfflinePlayer(event))
 
             if (user.isEmpty) {
                 return !isNegated

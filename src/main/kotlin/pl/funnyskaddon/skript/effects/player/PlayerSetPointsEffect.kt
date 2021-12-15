@@ -35,7 +35,7 @@ class PlayerSetPointsEffect : PlayerEffect<Number>(false) {
 
         val change: Int = value - rank?.points!!
 
-        if (!SimpleEventHandler.handle(PointsChangeEvent(FunnyEvent.EventCause.CONSOLE, rank, user, change))) {
+        if (!SimpleEventHandler.handle(PointsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change))) {
             return
         }
 

@@ -37,7 +37,7 @@ class PlayerAddKillsEffect : PlayerEffect<Number>(true) {
             change = value.toInt()
         }
 
-        if (!SimpleEventHandler.handle(KillsChangeEvent(FunnyEvent.EventCause.CONSOLE, user?.rank, user, change))) {
+        if (!SimpleEventHandler.handle(KillsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change))) {
             return
         }
 

@@ -9,7 +9,7 @@ import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.basic.guild.GuildUtils
+import net.dzikoysk.funnyguilds.guild.GuildUtils
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 
@@ -46,8 +46,8 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
         return true
     }
 
-    override fun get(event: Event): Array<String> {
-        return arrayOf(GuildUtils.getByTag(tag?.getSingle(event)).name)
+    override fun get(event: Event): Array<String>? {
+        return GuildUtils.getByTag(tag?.getSingle(event))?.let { arrayOf(it.name) }
     }
 
     override fun isSingle(): Boolean {

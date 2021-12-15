@@ -37,7 +37,7 @@ class PlayerAddPointsEffect : PlayerEffect<Number>(true) {
             change = value.toInt()
         }
 
-        if (!SimpleEventHandler.handle(PointsChangeEvent(FunnyEvent.EventCause.CONSOLE, user?.rank, user, change))) {
+        if (!SimpleEventHandler.handle(PointsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change))) {
             return
         }
 

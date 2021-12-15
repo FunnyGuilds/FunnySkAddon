@@ -5,7 +5,7 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
-import net.dzikoysk.funnyguilds.basic.rank.RankManager
+import net.dzikoysk.funnyguilds.rank.RankManager
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc

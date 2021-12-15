@@ -35,7 +35,7 @@ class PlayerSetKillsEffect : PlayerEffect<Number>(false) {
 
         val change: Int = value - rank?.deaths!!
 
-        if (!SimpleEventHandler.handle(DeathsChangeEvent(FunnyEvent.EventCause.CONSOLE, rank, user, change))) {
+        if (!SimpleEventHandler.handle(DeathsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change))) {
             return
         }
 

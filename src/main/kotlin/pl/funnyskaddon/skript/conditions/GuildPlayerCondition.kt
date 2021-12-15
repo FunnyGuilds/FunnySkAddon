@@ -4,12 +4,12 @@ import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.FunnyGuilds
-import net.dzikoysk.funnyguilds.basic.guild.Guild
-import net.dzikoysk.funnyguilds.basic.user.User
+import net.dzikoysk.funnyguilds.guild.Guild
+import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import org.panda_lang.utilities.commons.function.Option
+import panda.std.Option
 import pl.funnyskaddon.util.getGuild
 
 abstract class GuildPlayerCondition : FunnyCondition() {
@@ -51,7 +51,7 @@ abstract class GuildPlayerCondition : FunnyCondition() {
 
     fun getUser(event: Event?): User? {
         return try {
-            val user: Option<User> = FunnyGuilds.getInstance().userManager.getUser(getOfflinePlayer(event))
+            val user: Option<User> = FunnyGuilds.getInstance().userManager.findByPlayer(getOfflinePlayer(event))
 
             if (user.isEmpty) {
                 return null

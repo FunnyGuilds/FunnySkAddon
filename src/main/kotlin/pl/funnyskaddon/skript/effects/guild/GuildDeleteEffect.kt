@@ -4,6 +4,7 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildDeleteEvent
@@ -36,7 +37,7 @@ class GuildDeleteEffect : GuildEffect() {
             return
         }
 
-        guild?.delete()
+        FunnyGuilds.getInstance().guildManager.deleteGuild(guild)
     }
 
 }

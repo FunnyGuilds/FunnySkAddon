@@ -11,11 +11,11 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.basic.guild.Guild
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 

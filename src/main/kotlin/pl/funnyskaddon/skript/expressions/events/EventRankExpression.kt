@@ -11,10 +11,10 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.basic.rank.Rank
 import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
 import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
 import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
+import net.dzikoysk.funnyguilds.user.UserRank
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
@@ -31,13 +31,13 @@ import pl.funnyskaddon.events.rank.CustomKillPointsChangeEvent
     "points change",
     "kills points change"
 )
-class EventRankExpression : SimpleExpression<Rank>() {
+class EventRankExpression : SimpleExpression<UserRank>() {
 
     companion object {
         init {
             Skript.registerExpression(
                 EventRankExpression::class.java,
-                Rank::class.javaObjectType,
+                UserRank::class.javaObjectType,
                 ExpressionType.SIMPLE,
                 *EventType.patterns.toTypedArray()
             )
@@ -47,7 +47,7 @@ class EventRankExpression : SimpleExpression<Rank>() {
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
         KILLS_CHANGE("[kills( |-)]rank", KillsChangeEvent::class.java) {
-            override fun get(event: Event): Rank? {
+            override fun get(event: Event): UserRank? {
                 if (event is KillsChangeEvent) {
                     return event.rank
                 }
@@ -56,7 +56,7 @@ class EventRankExpression : SimpleExpression<Rank>() {
         },
 
         DEATHS_CHANGE("[deaths( |-)]rank", DeathsChangeEvent::class.java) {
-            override fun get(event: Event): Rank? {
+            override fun get(event: Event): UserRank? {
                 if (event is DeathsChangeEvent) {
                     return event.rank
                 }
@@ -65,7 +65,7 @@ class EventRankExpression : SimpleExpression<Rank>() {
         },
 
         POINTS_CHANGE("[points( |-)]rank", PointsChangeEvent::class.java) {
-            override fun get(event: Event): Rank? {
+            override fun get(event: Event): UserRank? {
                 if (event is PointsChangeEvent) {
                     return event.rank
                 }
@@ -74,7 +74,7 @@ class EventRankExpression : SimpleExpression<Rank>() {
         },
 
         KILL_POINTS_CHANGE("kill( |-)[points( |-)]rank", CustomKillPointsChangeEvent::class.java) {
-            override fun get(event: Event): Rank? {
+            override fun get(event: Event): UserRank? {
                 if (event is CustomKillPointsChangeEvent) {
                     return event.rank
                 }
@@ -96,7 +96,7 @@ class EventRankExpression : SimpleExpression<Rank>() {
             }
         }
 
-        abstract operator fun get(event: Event): Rank?
+        abstract operator fun get(event: Event): UserRank?
     }
 
     private lateinit var type: EventType
@@ -118,7 +118,7 @@ class EventRankExpression : SimpleExpression<Rank>() {
         return true
     }
 
-    override fun get(event: Event): Array<Rank?>? {
+    override fun get(event: Event): Array<UserRank?>? {
         for (classEvent in type.events) {
             if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
@@ -135,8 +135,8 @@ class EventRankExpression : SimpleExpression<Rank>() {
         return "the " + type.name + " rank"
     }
 
-    override fun getReturnType(): Class<out Rank> {
-        return Rank::class.javaObjectType
+    override fun getReturnType(): Class<out UserRank> {
+        return UserRank::class.javaObjectType
     }
 
 }

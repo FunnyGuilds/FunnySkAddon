@@ -5,10 +5,9 @@ import ch.njol.skript.SkriptAddon
 import eu.okaeri.configs.ConfigManager
 import eu.okaeri.configs.yaml.bukkit.YamlBukkitConfigurer
 import net.dzikoysk.funnyguilds.FunnyGuilds
-import net.dzikoysk.funnyguilds.data.configs.PluginConfiguration
+import net.dzikoysk.funnyguilds.config.PluginConfiguration
 import org.bstats.bukkit.Metrics
 import org.bstats.charts.SimplePie
-import org.bukkit.plugin.PluginManager
 import org.bukkit.plugin.java.JavaPlugin
 import pl.funnyskaddon.commands.FunnySkAddonCommand
 import pl.funnyskaddon.data.Configuration
@@ -27,9 +26,9 @@ class FunnySkAddon : JavaPlugin() {
     }
 
     override fun onEnable() {
-        val pluginManager: PluginManager = this.server.pluginManager
+        val pluginManager = this.server.pluginManager
 
-        val missing: StringBuilder = StringBuilder()
+        val missing = StringBuilder()
         var shouldStart = true
 
         if (pluginManager.getPlugin("Skript") == null) {
@@ -45,7 +44,7 @@ class FunnySkAddon : JavaPlugin() {
             }
         }
 
-        if (shouldStart.not()) {
+        if (!shouldStart) {
             logger.warning("[FSA] Uruchamianie wstrzymane")
             logger.warning("[FSA] Powod: Brak pluginu $missing!")
             pluginManager.disablePlugin(this)
