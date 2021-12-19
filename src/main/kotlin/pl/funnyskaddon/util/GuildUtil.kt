@@ -2,40 +2,38 @@ package pl.funnyskaddon.util
 
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
-import net.dzikoysk.funnyguilds.guild.GuildUtils
-import net.dzikoysk.funnyguilds.guild.RegionUtils
+import net.dzikoysk.funnyguilds.guild.Region
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.Location
 import org.bukkit.entity.Player
-import panda.std.Option
+import panda.std.stream.PandaStream
+import java.util.stream.Collectors
 
 fun Any.getGuild(): Guild? {
-    var guild: Guild? = null
+    val funnyGuilds = FunnyGuilds.getInstance()
+    val userManager = funnyGuilds.userManager
+    val guildManager = funnyGuilds.guildManager
+
+    val guild: Guild?
 
     when (this) {
         is Guild -> {
             guild = this
         }
         is Player -> {
-            val userOption: Option<User> = FunnyGuilds.getInstance().userManager.findByPlayer(player)
-
-            if (userOption.isEmpty) {
-                return null
-            }
-
-            guild = userOption.get().guild
+            guild = userManager.findByPlayer(player)
+                .map(User::getGuild)
+                .orNull
         }
         is Location -> {
             guild = this.getGuildAtLocation()
         }
         else -> {
-            try {
-                guild = GuildUtils.getByName(this.toString())
-                if (guild == null) {
-                    guild = GuildUtils.getByTag(this.toString())
-                }
-            } catch (ignored: Exception) {
-            }
+            val toString = this.toString()
+
+            guild = guildManager.findByName(toString)
+                .orElse(guildManager.findByTag(toString))
+                .orNull
         }
     }
 
@@ -63,15 +61,20 @@ fun Guild.getUpperPoint(): Location {
 }
 
 fun Location.getGuildAtLocation(): Guild? {
-    return RegionUtils.getAt(this).guild
+    return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(this)
+        .map(Region::getGuild)
+        .orNull
 }
 
 fun Player.isInGuildRegion(): Boolean {
-    return RegionUtils.getAt(this.location) == null
+    return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(this.location)
+        .isPresent
 }
 
 fun Guild.isLocationInGuildRegion(location: Location?): Boolean {
-    return RegionUtils.getAt(location).equals(this.region)
+    return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(location)
+        .filter { region -> region == this.region }
+        .isPresent
 }
 
 fun Guild.isPlayerInGuildRegion(player: Player?): Boolean {
@@ -79,12 +82,7 @@ fun Guild.isPlayerInGuildRegion(player: Player?): Boolean {
 }
 
 fun Guild.getPlayersInGuildRegion(): Array<Player> {
-    val region = this.region
-    val list: MutableList<Player> = ArrayList()
-    for (player in region.world.players) {
-        if (this.isPlayerInGuildRegion(player)) {
-            list.add(player)
-        }
-    }
-    return list.toTypedArray()
+    return PandaStream.of(this.region.world.players)
+        .filter { player -> this.isPlayerInGuildRegion(player) }
+        .collect(Collectors.toList()).toTypedArray()
 }
