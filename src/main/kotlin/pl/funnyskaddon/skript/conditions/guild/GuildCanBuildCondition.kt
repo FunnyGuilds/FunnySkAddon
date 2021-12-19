@@ -4,9 +4,11 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.GuildCondition
+import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Can Build")
@@ -26,9 +28,11 @@ class GuildCanBuildCondition : GuildCondition() {
         }
     }
 
-    override fun check(event: Event?): Boolean {
+    override fun check(event: Event): Boolean {
         return try {
-            getGuild(event)?.canBuild()?.xor(isNegated)!!
+            event.getGuildOption(guildExpression)
+                .map(Guild::canBuild)
+                .isPresent.xor(isNegated)
         } catch (ex: Exception) {
             !isNegated
         }

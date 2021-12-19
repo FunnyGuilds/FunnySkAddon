@@ -7,6 +7,7 @@ import ch.njol.skript.doc.Name
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.GuildCondition
+import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Does Exist")
@@ -26,9 +27,10 @@ class GuildDoesExistCondition : GuildCondition() {
         }
     }
 
-    override fun check(event: Event?): Boolean {
+    override fun check(event: Event): Boolean {
         return try {
-            (getGuild(event) != null).xor(isNegated)
+            event.getGuildOption(guildExpression)
+                .isPresent.xor(isNegated)
         } catch (ex: Exception) {
             !isNegated
         }

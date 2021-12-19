@@ -4,9 +4,12 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.GuildPlayerCondition
+import pl.funnyskaddon.skript.getGuild
+import pl.funnyskaddon.skript.getUserOption
 
 @FunnyDoc
 @Name("Is In Guild")
@@ -26,9 +29,12 @@ class PlayerIsInGuildCondition : GuildPlayerCondition() {
         }
     }
 
-    override fun check(event: Event?): Boolean {
+    override fun check(event: Event): Boolean {
         return try {
-            (getGuild(event)?.equals(getUser(event)?.guild))?.xor(isNegated)!!
+            return event.getUserOption(playerExpression)
+                .map(User::getGuild)
+                .filter { guild -> return@filter guild.equals(event.getGuild(guildExpression)) }
+                .isPresent.xor(isNegated)
         } catch (ex: Exception) {
             !isNegated
         }

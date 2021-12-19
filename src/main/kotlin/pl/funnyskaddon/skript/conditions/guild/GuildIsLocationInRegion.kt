@@ -8,6 +8,8 @@ import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.GuildValueCondition
+import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getValue
 import pl.funnyskaddon.util.isLocationInGuildRegion
 
 @FunnyDoc
@@ -28,9 +30,11 @@ class GuildIsLocationInRegion : GuildValueCondition<Location>(true) {
         }
     }
 
-    override fun check(event: Event?): Boolean {
+    override fun check(event: Event): Boolean {
         return try {
-            getGuild(event)?.isLocationInGuildRegion(getValue(event))?.xor(isNegated)!!
+            event.getGuildOption(guildExpression)
+                .filter { guild -> return@filter guild.isLocationInGuildRegion(event.getValue(valueExpression)) }
+                .isPresent.xor(isNegated)
         } catch (ex: Exception) {
             !isNegated
         }

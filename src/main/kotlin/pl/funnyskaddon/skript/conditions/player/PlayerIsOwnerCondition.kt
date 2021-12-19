@@ -4,12 +4,11 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.event.Event
-import panda.std.Option
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.conditions.PlayerCondition
+import pl.funnyskaddon.skript.getUserOption
 
 @FunnyDoc
 @Name("Is Owner")
@@ -29,15 +28,11 @@ class PlayerIsOwnerCondition : PlayerCondition() {
         }
     }
 
-    override fun check(event: Event?): Boolean {
+    override fun check(event: Event): Boolean {
         return try {
-            val user: Option<User> = FunnyGuilds.getInstance().userManager.findByPlayer(getOfflinePlayer(event))
-
-            if (user.isEmpty) {
-                return !isNegated
-            }
-
-            user.get().isOwner.xor(isNegated)
+            return event.getUserOption(playerExpression)
+                .filter(User::isOwner)
+                .isPresent.xor(isNegated)
         } catch (ex: Exception) {
             !isNegated
         }
