@@ -4,6 +4,10 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.FunnyGuilds
+import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalAddPlayerRequest
+import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalRemovePlayerRequest
+import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalUpdatePlayer
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberJoinEvent
@@ -39,7 +43,13 @@ class PlayerSetGuildEffect : PlayerEffect<Any>(false) {
                     .map(Any::getGuild)
                     .orNull
 
+                val concurrencyManager = FunnyGuilds.getInstance().concurrencyManager
+
                 if (user.hasGuild() && guild != null) {
+                    if (user.isOwner) {
+                        return@peek
+                    }
+
                     if (!SimpleEventHandler.handle(
                             GuildMemberLeaveEvent(FunnyEvent.EventCause.CONSOLE, null, user.guild, user)
                         )
@@ -48,6 +58,10 @@ class PlayerSetGuildEffect : PlayerEffect<Any>(false) {
                     }
                     user.guild.removeMember(user)
                     user.removeGuild()
+                    concurrencyManager.postRequests(
+                        PrefixGlobalRemovePlayerRequest(user.name),
+                        PrefixGlobalUpdatePlayer(user.player)
+                    )
                 } else {
                     if (guild == null) {
                         return@peek
@@ -62,6 +76,7 @@ class PlayerSetGuildEffect : PlayerEffect<Any>(false) {
 
                     guild.addMember(user)
                     user.guild = guild
+                    concurrencyManager.postRequests(PrefixGlobalAddPlayerRequest(user.name))
                 }
             }
     }
