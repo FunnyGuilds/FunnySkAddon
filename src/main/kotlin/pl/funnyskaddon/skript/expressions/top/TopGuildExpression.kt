@@ -5,11 +5,12 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
-import net.dzikoysk.funnyguilds.rank.RankManager
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.TopExpression
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Guild In Position")
@@ -32,17 +33,11 @@ class TopGuildExpression : TopExpression<Guild>() {
     }
 
     override fun get(event: Event): Array<Guild>? {
-        val position = position.getSingle(event)
-        var value: Guild? = null
-
-        if (position != null) {
-            value = RankManager.getInstance().getGuild(position.toInt())
-        }
-
-        if (value != null) {
-            return arrayOf(value)
-        }
-        return null
+        return event.getValueOption(positionExpression)
+            .map(Number::toInt)
+            .map { position -> return@map FunnyGuilds.getInstance().rankManager.getGuild(position) }
+            .map { guild -> return@map arrayOf(guild) }
+            .orNull
     }
 
     override fun getReturnType(): Class<Guild> {

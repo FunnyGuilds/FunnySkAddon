@@ -8,7 +8,7 @@ import org.bukkit.event.Event
 
 abstract class ValueExpression<T> : FunnyExpression<Guild>() {
 
-    lateinit var value: Expression<T>
+    protected lateinit var valueExpression: Expression<T>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -16,12 +16,12 @@ abstract class ValueExpression<T> : FunnyExpression<Guild>() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        value = expression[0] as Expression<T>
+        valueExpression = expression[0] as Expression<T>
         return true
     }
 
     fun getValue(event: Event?): T? {
-        return value.getSingle(event)
+        return valueExpression.getSingle(event)
     }
 
     override fun getReturnType(): Class<Guild>? {

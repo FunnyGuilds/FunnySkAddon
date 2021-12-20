@@ -12,7 +12,7 @@ import panda.std.Option
 
 abstract class PlayerExpression<T> : FunnyExpression<T>() {
 
-    lateinit var player: Expression<OfflinePlayer>
+    protected lateinit var playerExpression: Expression<OfflinePlayer>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -20,13 +20,13 @@ abstract class PlayerExpression<T> : FunnyExpression<T>() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        player = expression[0] as Expression<OfflinePlayer>
+        playerExpression = expression[0] as Expression<OfflinePlayer>
         return true
     }
 
     fun getOfflinePlayer(event: Event?): OfflinePlayer? {
         return try {
-            player.getSingle(event)
+            playerExpression.getSingle(event)
         } catch (ex: Exception) {
             null
         }

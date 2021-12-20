@@ -6,7 +6,7 @@ import ch.njol.util.Kleenean
 
 abstract class TopExpression<T> : FunnyExpression<T>() {
 
-    lateinit var position: Expression<Number>
+    protected lateinit var positionExpression: Expression<Number>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -14,7 +14,7 @@ abstract class TopExpression<T> : FunnyExpression<T>() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        position = expression[0] as Expression<Number>
+        positionExpression = expression[0] as Expression<Number>
         return true
     }
 

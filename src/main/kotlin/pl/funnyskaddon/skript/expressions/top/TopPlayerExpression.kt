@@ -5,11 +5,12 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
-import net.dzikoysk.funnyguilds.rank.RankManager
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.TopExpression
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Player In Position")
@@ -32,17 +33,11 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
     }
 
     override fun get(event: Event): Array<OfflinePlayer>? {
-        val position = position.getSingle(event)
-        var value: OfflinePlayer? = null
-
-        if (position != null) {
-            value = RankManager.getInstance().getUser(position.toInt()).offlinePlayer
-        }
-
-        if (value != null) {
-            return arrayOf(value)
-        }
-        return null
+        return event.getValueOption(positionExpression)
+            .map(Number::toInt)
+            .map { position -> return@map FunnyGuilds.getInstance().rankManager.getUser(position).offlinePlayer }
+            .map { user -> return@map arrayOf(user) }
+            .orNull
     }
 
     override fun getReturnType(): Class<OfflinePlayer> {

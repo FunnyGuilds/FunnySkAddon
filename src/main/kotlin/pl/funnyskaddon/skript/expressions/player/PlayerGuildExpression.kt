@@ -9,6 +9,7 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.PlayerExpression
+import pl.funnyskaddon.skript.getUserOption
 
 @FunnyDoc
 @Name("Player Guild")
@@ -31,17 +32,10 @@ class PlayerGuildExpression : PlayerExpression<Guild>() {
     }
 
     override fun get(event: Event): Array<Guild>? {
-        val user = getUser(event)
-        var value: Guild? = null
-
-        if (user != null) {
-            value = user.guild
-        }
-
-        if (value != null) {
-            return arrayOf(value)
-        }
-        return null
+        return event.getUserOption(playerExpression)
+            .map { user -> user.guild }
+            .map { guild -> arrayOf(guild) }
+            .orNull
     }
 
     override fun getReturnType(): Class<Guild> {

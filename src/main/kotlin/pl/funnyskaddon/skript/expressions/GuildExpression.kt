@@ -9,7 +9,7 @@ import pl.funnyskaddon.util.getGuild
 
 abstract class GuildExpression<T> : FunnyExpression<T>() {
 
-    lateinit var guild: Expression<Any>
+    protected lateinit var guildExpression: Expression<Any>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -17,13 +17,13 @@ abstract class GuildExpression<T> : FunnyExpression<T>() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        guild = expression[0] as Expression<Any>
+        guildExpression = expression[0] as Expression<Any>
         return true
     }
 
     fun getGuild(event: Event?): Guild? {
         return try {
-            guild.getSingle(event)?.getGuild()
+            guildExpression.getSingle(event)?.getGuild()
         } catch (ex: Exception) {
             null
         }

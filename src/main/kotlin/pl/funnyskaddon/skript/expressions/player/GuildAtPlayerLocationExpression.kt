@@ -9,6 +9,7 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.PlayerExpression
+import pl.funnyskaddon.skript.getPlayerOption
 import pl.funnyskaddon.util.getGuildAtLocation
 
 @FunnyDoc
@@ -31,8 +32,11 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
         }
     }
 
-    override fun get(event: Event): Array<Guild>? {
-        return getPlayer(event)?.location?.getGuildAtLocation()?.let { arrayOf(it) }
+    override fun get(event: Event): Array<Guild?>? {
+        return event.getPlayerOption(playerExpression)
+            .map { player -> player.location.getGuildAtLocation() }
+            .map { guild -> arrayOf(guild) }
+            .orNull
     }
 
     override fun getReturnType(): Class<Guild> {
