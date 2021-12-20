@@ -9,6 +9,7 @@ import ch.njol.skript.util.Timespan
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 import java.util.*
 
 @FunnyDoc
@@ -32,13 +33,10 @@ class GuildValidityTimeExpression : GuildExpression<Timespan>() {
     }
 
     override fun get(event: Event): Array<Timespan>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return arrayOf(Timespan(guild.validity - (Date().time)))
-        }
-
-        return null
+        return event.getGuildOption(guildExpression)
+            .map { guild -> Timespan(guild.validity - (Date().time)) }
+            .map { value -> arrayOf(value) }
+            .orNull
     }
 
     override fun getReturnType(): Class<Timespan> {

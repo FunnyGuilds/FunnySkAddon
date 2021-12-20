@@ -5,9 +5,11 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild PvP")
@@ -30,13 +32,10 @@ class GuildPvPExpression : GuildExpression<Boolean>() {
     }
 
     override fun get(event: Event): Array<Boolean>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return arrayOf(guild.pvP)
-        }
-
-        return null
+        return event.getGuildOption(guildExpression)
+            .map(Guild::getPvP)
+            .map { value -> arrayOf(value) }
+            .orNull
     }
 
     override fun getReturnType(): Class<Boolean> {

@@ -34,7 +34,7 @@ class PlayerGuildExpression : PlayerExpression<Guild>() {
     override fun get(event: Event): Array<Guild>? {
         return event.getUserOption(playerExpression)
             .map { user -> user.guild }
-            .map { guild -> arrayOf(guild) }
+            .map { value -> arrayOf(value) }
             .orNull
     }
 

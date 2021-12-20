@@ -5,10 +5,13 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.guild.Guild
+import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Owner")
@@ -31,13 +34,11 @@ class GuildOwnerExpression : GuildExpression<OfflinePlayer>() {
     }
 
     override fun get(event: Event): Array<OfflinePlayer>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return arrayOf(guild.owner.offlinePlayer)
-        }
-
-        return null
+        return event.getGuildOption(guildExpression)
+            .map(Guild::getOwner)
+            .map(User::getOfflinePlayer)
+            .map { value -> arrayOf(value) }
+            .orNull
     }
 
     override fun getReturnType(): Class<OfflinePlayer> {

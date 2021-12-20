@@ -6,9 +6,11 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.util.Date
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Born")
@@ -31,13 +33,11 @@ class GuildBornExpression : GuildExpression<Date>() {
     }
 
     override fun get(event: Event): Array<Date>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return arrayOf(Date(guild.born))
-        }
-
-        return null
+        return event.getGuildOption(guildExpression)
+            .map(Guild::getBorn)
+            .map { born -> Date(born) }
+            .map { value -> arrayOf(value) }
+            .orNull
     }
 
     override fun getReturnType(): Class<Date> {

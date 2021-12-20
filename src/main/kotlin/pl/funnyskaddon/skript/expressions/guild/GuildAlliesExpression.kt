@@ -9,6 +9,8 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
+import java.util.stream.Collectors
 
 @FunnyDoc
 @Name("Guild Allies")
@@ -30,14 +32,11 @@ class GuildAlliesExpression : GuildExpression<Guild>() {
         }
     }
 
-    override fun get(event: Event): Array<Guild>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return guild.allies.toTypedArray()
-        }
-
-        return null
+    override fun get(event: Event): Array<Guild> {
+        return event.getGuildOption(guildExpression).toStream()
+            .flatMap(Guild::getAllies)
+            .collect(Collectors.toSet())
+            .toTypedArray()
     }
 
     override fun getReturnType(): Class<Guild> {

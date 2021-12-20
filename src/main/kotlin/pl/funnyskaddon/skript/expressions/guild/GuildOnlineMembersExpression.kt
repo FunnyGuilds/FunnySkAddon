@@ -5,16 +5,18 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 import java.util.stream.Collectors
 
 @FunnyDoc
 @Name("Guild Online Members")
-@Description("Zwraca członków gildii którzy są online")
+@Description("Zwraca członków gildii, którzy są online")
 @Examples(
     "loop player's guild online members:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
@@ -32,18 +34,12 @@ class GuildOnlineMembersExpression : GuildExpression<Player>() {
         }
     }
 
-    override fun get(event: Event): Array<Player>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return guild.members.stream()
-                .filter { it.offlinePlayer.isOnline }
-                .map(User::getPlayer)
-                .collect(Collectors.toList())
-                .toTypedArray()
-        }
-
-        return null
+    override fun get(event: Event): Array<Player> {
+        return event.getGuildOption(guildExpression).toStream()
+            .flatMap(Guild::getOnlineMembers)
+            .map(User::getPlayer)
+            .collect(Collectors.toSet())
+            .toTypedArray()
     }
 
     override fun getReturnType(): Class<Player> {

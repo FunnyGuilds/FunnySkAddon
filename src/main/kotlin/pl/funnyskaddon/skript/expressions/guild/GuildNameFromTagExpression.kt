@@ -9,9 +9,11 @@ import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.guild.GuildUtils
+import net.dzikoysk.funnyguilds.FunnyGuilds
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Guild Name From Tag")
@@ -22,7 +24,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 )
 class GuildNameFromTagExpression : SimpleExpression<String>() {
 
-    var tag: Expression<String>? = null
+    private lateinit var tagExpression: Expression<String>
 
     companion object {
         init {
@@ -42,12 +44,16 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        tag = expression[0] as Expression<String>
+        tagExpression = expression[0] as Expression<String>
         return true
     }
 
     override fun get(event: Event): Array<String>? {
-        return GuildUtils.getByTag(tag?.getSingle(event))?.let { arrayOf(it.name) }
+        return event.getValueOption(tagExpression)
+            .flatMap(FunnyGuilds.getInstance().guildManager::findByTag)
+            .map(Guild::getName)
+            .map { value -> arrayOf(value) }
+            .orNull
     }
 
     override fun isSingle(): Boolean {
@@ -57,7 +63,6 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
     override fun toString(event: Event?, debug: Boolean): String? {
         return null
     }
-
 
     override fun getReturnType(): Class<out String> {
         return String::class.javaObjectType

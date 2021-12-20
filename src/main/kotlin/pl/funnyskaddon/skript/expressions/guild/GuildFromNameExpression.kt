@@ -5,11 +5,12 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
-import net.dzikoysk.funnyguilds.guild.GuildUtils
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.ValueExpression
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Guild From Name")
@@ -29,8 +30,11 @@ class GuildFromNameExpression : ValueExpression<String>() {
         }
     }
 
-    override fun get(event: Event): Array<Guild?> {
-        return arrayOf(GuildUtils.getByName(getValue(event)))
+    override fun get(event: Event): Array<Guild>? {
+        return event.getValueOption(valueExpression)
+            .flatMap(FunnyGuilds.getInstance().guildManager::findByName)
+            .map { value -> arrayOf(value) }
+            .orNull
     }
 
 }

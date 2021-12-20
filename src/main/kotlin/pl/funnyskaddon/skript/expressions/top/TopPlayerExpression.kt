@@ -35,8 +35,8 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
     override fun get(event: Event): Array<OfflinePlayer>? {
         return event.getValueOption(positionExpression)
             .map(Number::toInt)
-            .map { position -> return@map FunnyGuilds.getInstance().rankManager.getUser(position).offlinePlayer }
-            .map { user -> return@map arrayOf(user) }
+            .map { position -> FunnyGuilds.getInstance().rankManager.getUser(position).offlinePlayer }
+            .map { value -> arrayOf(value) }
             .orNull
     }
 

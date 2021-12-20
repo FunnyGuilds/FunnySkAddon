@@ -8,6 +8,7 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild KDR")
@@ -16,31 +17,29 @@ import pl.funnyskaddon.skript.expressions.GuildExpression
     "send \"%\"\"FajnaGildia\"\" guild kdr%\"",
     "set {_kdr} to \"FajnGildia\" guild kdr"
 )
-class GuildKDRExpression : GuildExpression<Number>() {
+class GuildKDRExpression : GuildExpression<Float>() {
 
     companion object {
         init {
             Skript.registerExpression(
                 GuildKDRExpression::class.java,
-                Number::class.javaObjectType,
+                Float::class.javaObjectType,
                 ExpressionType.PROPERTY,
                 "%object%(|'s) guild [(rank|ranking)] kdr"
             )
         }
     }
 
-    override fun get(event: Event): Array<Number>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return arrayOf(guild.rank.kdr)
-        }
-
-        return null
+    override fun get(event: Event): Array<Float> {
+        return event.getGuildOption(guildExpression)
+            .map { guild -> guild.rank.kdr }
+            .orElse(0F)
+            .map { value -> arrayOf(value) }
+            .get()
     }
 
-    override fun getReturnType(): Class<Number> {
-        return Number::class.javaObjectType
+    override fun getReturnType(): Class<Float> {
+        return Float::class.javaObjectType
     }
 
 }

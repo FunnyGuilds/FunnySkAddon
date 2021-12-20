@@ -34,7 +34,7 @@ class PlayerKillsExpression : PlayerExpression<Int>() {
         return event.getUserOption(playerExpression)
             .map { user -> user.rank.kills }
             .orElse(0)
-            .map { kills -> arrayOf(kills) }
+            .map { value -> arrayOf(value) }
             .get()
     }
 

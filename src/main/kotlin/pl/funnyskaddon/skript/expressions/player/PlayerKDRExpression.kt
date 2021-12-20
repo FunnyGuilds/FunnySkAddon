@@ -34,7 +34,7 @@ class PlayerKDRExpression : PlayerExpression<Number>() {
         return event.getUserOption(playerExpression)
             .map { user -> user.rank.kdr }
             .orElse(0F)
-            .map { kdr -> arrayOf(kdr) }
+            .map { value -> arrayOf(value) }
             .get()
 
     }

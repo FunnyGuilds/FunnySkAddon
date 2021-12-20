@@ -35,8 +35,8 @@ class TopGuildExpression : TopExpression<Guild>() {
     override fun get(event: Event): Array<Guild>? {
         return event.getValueOption(positionExpression)
             .map(Number::toInt)
-            .map { position -> return@map FunnyGuilds.getInstance().rankManager.getGuild(position) }
-            .map { guild -> return@map arrayOf(guild) }
+            .map { position -> FunnyGuilds.getInstance().rankManager.getGuild(position) }
+            .map { value -> arrayOf(value) }
             .orNull
     }
 

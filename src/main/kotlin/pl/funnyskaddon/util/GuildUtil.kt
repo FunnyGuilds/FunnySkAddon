@@ -26,7 +26,9 @@ fun Any.getGuild(): Guild? {
                 .orNull
         }
         is Location -> {
-            guild = this.getGuildAtLocation()
+            guild = FunnyGuilds.getInstance().regionManager.findRegionAtLocation(this)
+                .map(Region::getGuild)
+                .orNull
         }
         else -> {
             val toString = this.toString()
@@ -60,12 +62,6 @@ fun Guild.getUpperPoint(): Location {
     )
 }
 
-fun Location.getGuildAtLocation(): Guild? {
-    return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(this)
-        .map(Region::getGuild)
-        .orNull
-}
-
 fun Player.isInGuildRegion(): Boolean {
     return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(this.location)
         .isPresent
@@ -81,8 +77,8 @@ fun Guild.isPlayerInGuildRegion(player: Player?): Boolean {
     return isLocationInGuildRegion(player?.location)
 }
 
-fun Guild.getPlayersInGuildRegion(): Array<Player> {
+fun Guild.getPlayersInGuildRegion(): Set<Player> {
     return PandaStream.of(this.region.world.players)
         .filter { player -> this.isPlayerInGuildRegion(player) }
-        .collect(Collectors.toList()).toTypedArray()
+        .collect(Collectors.toSet())
 }

@@ -5,12 +5,14 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
+import net.dzikoysk.funnyguilds.guild.Region
+import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.PlayerExpression
 import pl.funnyskaddon.skript.getPlayerOption
-import pl.funnyskaddon.util.getGuildAtLocation
 
 @FunnyDoc
 @Name("Guild At Player Location")
@@ -32,10 +34,12 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
         }
     }
 
-    override fun get(event: Event): Array<Guild?>? {
+    override fun get(event: Event): Array<Guild>? {
         return event.getPlayerOption(playerExpression)
-            .map { player -> player.location.getGuildAtLocation() }
-            .map { guild -> arrayOf(guild) }
+            .map(Player::getLocation)
+            .flatMap(FunnyGuilds.getInstance().regionManager::findRegionAtLocation)
+            .map(Region::getGuild)
+            .map { value -> arrayOf(value) }
             .orNull
     }
 

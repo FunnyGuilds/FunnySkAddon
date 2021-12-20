@@ -5,11 +5,14 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 import pl.funnyskaddon.util.getPlayersInGuildRegion
+import java.util.stream.Collectors
 
 @FunnyDoc
 @Name("Players In Guild Region")
@@ -31,14 +34,11 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>() {
         }
     }
 
-    override fun get(event: Event): Array<Player>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return guild.getPlayersInGuildRegion()
-        }
-
-        return null
+    override fun get(event: Event): Array<Player> {
+        return event.getGuildOption(guildExpression).toStream()
+            .flatMap(Guild::getPlayersInGuildRegion)
+            .collect(Collectors.toSet())
+            .toTypedArray()
     }
 
     override fun getReturnType(): Class<Player> {

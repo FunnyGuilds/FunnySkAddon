@@ -34,7 +34,7 @@ class PlayerPointsExpression : PlayerExpression<Int>() {
         return event.getUserOption(playerExpression)
             .map { user -> user.rank.points }
             .orElse(0)
-            .map { points -> arrayOf(points) }
+            .map { value -> arrayOf(value) }
             .get()
     }
 

@@ -8,6 +8,7 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Points")
@@ -29,14 +30,12 @@ class GuildPointsExpression : GuildExpression<Int>() {
         }
     }
 
-    override fun get(event: Event): Array<Int>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            return arrayOf(guild.rank.position)
-        }
-
-        return null
+    override fun get(event: Event): Array<Int> {
+        return event.getGuildOption(guildExpression)
+            .map { guild -> guild.rank.averagePoints }
+            .orElse(0)
+            .map { value -> arrayOf(value) }
+            .get()
     }
 
     override fun getReturnType(): Class<Int> {

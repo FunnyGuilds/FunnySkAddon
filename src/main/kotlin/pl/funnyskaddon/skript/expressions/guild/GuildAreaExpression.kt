@@ -5,9 +5,11 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expressions.GuildExpression
+import pl.funnyskaddon.skript.getGuildOption
 import kotlin.math.abs
 
 @FunnyDoc
@@ -31,16 +33,11 @@ class GuildAreaExpression : GuildExpression<Int>() {
     }
 
     override fun get(event: Event): Array<Int>? {
-        val guild = getGuild(event)
-
-        if (guild != null) {
-            val region = guild.region
-            val area: Int = abs((region.lowerX - region.upperX) * (region.lowerZ - region.upperZ))
-
-            return arrayOf(area)
-        }
-
-        return null
+        return event.getGuildOption(guildExpression)
+            .map(Guild::getRegion)
+            .map { region -> abs((region.lowerX - region.upperX) * (region.lowerZ - region.upperZ)) }
+            .map { value -> arrayOf(value) }
+            .orNull
     }
 
     override fun getReturnType(): Class<Int> {
