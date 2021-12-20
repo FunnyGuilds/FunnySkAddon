@@ -6,10 +6,12 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
-import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.PlayerEffect
+import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Set Kills")
@@ -28,18 +30,23 @@ class PlayerSetKillsEffect : PlayerEffect<Number>(false) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val user = getUser(event)
-        val rank = user?.rank
-        val value = getValue(event)?.toInt()!!
+    override fun execute(event: Event) {
+        event.getUserOption(playerExpression)
+            .peek { user ->
+                var value = event.getValueOption(valueExpression)
+                    .orElse(0)
+                    .get()
+                    .toInt()
 
-        val change: Int = value - rank?.deaths!!
+                val killsChangeEvent =
+                    KillsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, value - user.rank.kills)
+                if (!SimpleEventHandler.handle(killsChangeEvent)) {
+                    return@peek
+                }
+                value = user.rank.kills + killsChangeEvent.killsChange
 
-        if (!SimpleEventHandler.handle(DeathsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change))) {
-            return
-        }
-
-        rank.deaths = value
+                user.rank.kills = value
+            }
     }
 
 }

@@ -10,6 +10,8 @@ import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.PlayerEffect
+import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Set Points")
@@ -28,18 +30,23 @@ class PlayerSetPointsEffect : PlayerEffect<Number>(false) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val user = getUser(event)
-        val rank = user?.rank
-        val value = getValue(event)?.toInt()!!
+    override fun execute(event: Event) {
+        event.getUserOption(playerExpression)
+            .peek { user ->
+                var value = event.getValueOption(valueExpression)
+                    .orElse(0)
+                    .get()
+                    .toInt()
 
-        val change: Int = value - rank?.points!!
+                val pointsChangeEvent =
+                    PointsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, value - user.rank.points)
+                if (!SimpleEventHandler.handle(pointsChangeEvent)) {
+                    return@peek
+                }
+                value = user.rank.points + pointsChangeEvent.pointsChange
 
-        if (!SimpleEventHandler.handle(PointsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change))) {
-            return
-        }
-
-        rank.points = value
+                user.rank.points = value
+            }
     }
 
 }

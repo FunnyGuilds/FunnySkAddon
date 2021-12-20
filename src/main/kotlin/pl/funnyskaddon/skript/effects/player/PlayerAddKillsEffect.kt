@@ -10,6 +10,8 @@ import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.PlayerEffect
+import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Add Kills")
@@ -28,20 +30,22 @@ class PlayerAddKillsEffect : PlayerEffect<Number>(true) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val user = getUser(event)
+    override fun execute(event: Event) {
+        event.getUserOption(playerExpression)
+            .peek { user ->
+                var change = event.getValueOption(valueExpression)
+                    .orElse(0)
+                    .get()
+                    .toInt()
 
-        var change = 0
-        val value = getValue(event)
-        if (value != null) {
-            change = value.toInt()
-        }
+                val killsChangeEvent = KillsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change)
+                if (!SimpleEventHandler.handle(killsChangeEvent)) {
+                    return@peek
+                }
+                change = killsChangeEvent.killsChange
 
-        if (!SimpleEventHandler.handle(KillsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change))) {
-            return
-        }
-
-        user?.rank?.kills = user?.rank?.kills?.plus(change)!!
+                user.rank.updateKills { kills -> kills + change }
+            }
     }
 
 }
