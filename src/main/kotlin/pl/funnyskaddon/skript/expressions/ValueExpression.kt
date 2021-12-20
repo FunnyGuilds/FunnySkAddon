@@ -4,7 +4,6 @@ import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.guild.Guild
-import org.bukkit.event.Event
 
 abstract class ValueExpression<T> : FunnyExpression<Guild>() {
 
@@ -18,10 +17,6 @@ abstract class ValueExpression<T> : FunnyExpression<Guild>() {
     ): Boolean {
         valueExpression = expression[0] as Expression<T>
         return true
-    }
-
-    fun getValue(event: Event?): T? {
-        return valueExpression.getSingle(event)
     }
 
     override fun getReturnType(): Class<Guild>? {

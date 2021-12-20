@@ -62,19 +62,14 @@ fun Guild.getUpperPoint(): Location {
     )
 }
 
-fun Player.isInGuildRegion(): Boolean {
-    return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(this.location)
-        .isPresent
-}
-
 fun Guild.isLocationInGuildRegion(location: Location?): Boolean {
     return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(location)
         .filter { region -> region == this.region }
         .isPresent
 }
 
-fun Guild.isPlayerInGuildRegion(player: Player?): Boolean {
-    return isLocationInGuildRegion(player?.location)
+fun Guild.isPlayerInGuildRegion(player: Player): Boolean {
+    return isLocationInGuildRegion(player.location)
 }
 
 fun Guild.getPlayersInGuildRegion(): Set<Player> {
