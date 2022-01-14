@@ -5,6 +5,7 @@ description: Dodatek do pluginu Skript dodajacy wsparcie pluginu gildyjnego Funn
 website: funnyskaddon.pl
 main: pl.funnyskaddon.FunnySkAddon
 softdepend: [Skript, FunnyGuilds]
+api-version: 1.13
 
 commands:
   funnyskaddon:
