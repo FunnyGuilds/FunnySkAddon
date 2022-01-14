@@ -9,11 +9,11 @@ import net.dzikoysk.funnyguilds.config.PluginConfiguration
 import org.bstats.bukkit.Metrics
 import org.bstats.charts.SimplePie
 import org.bukkit.plugin.java.JavaPlugin
-import pl.funnyskaddon.commands.FunnySkAddonCommand
+import pl.funnyskaddon.command.FunnySkAddonCommand
 import pl.funnyskaddon.data.Configuration
-import pl.funnyskaddon.events.guilds.GuildCreateListener
-import pl.funnyskaddon.events.rank.PointsChangeListener
-import pl.funnyskaddon.schedulers.UpdateCheckScheduler
+import pl.funnyskaddon.event.guild.GuildCreateListener
+import pl.funnyskaddon.event.rank.PointsChangeListener
+import pl.funnyskaddon.scheduler.UpdateCheckScheduler
 import java.io.File
 
 class FunnySkAddon : JavaPlugin() {
@@ -71,19 +71,19 @@ class FunnySkAddon : JavaPlugin() {
 
         addon.loadClasses(
             "pl.funnyskaddon.skript",
-            "conditions.guild",
-            "conditions.player",
-            "effects.guild",
-            "effects.player",
-            "events.guild",
-            "events.guild.ally",
-            "events.guild.member",
-            "events.rank",
-            "expressions.events",
-            "expressions.guild",
-            "expressions.player",
-            "expressions.top",
-            "expressions.config"
+            "condition.guild",
+            "condition.player",
+            "effect.guild",
+            "effect.player",
+            "event.guild",
+            "event.guild.ally",
+            "event.guild.member",
+            "event.rank",
+            "expression.event",
+            "expression.guild",
+            "expression.player",
+            "expression.top",
+            "expression.config"
         )
 
         val pluginId = 6363

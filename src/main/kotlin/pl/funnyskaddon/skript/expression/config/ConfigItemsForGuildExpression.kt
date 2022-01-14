@@ -1,0 +1,42 @@
+package pl.funnyskaddon.skript.expression.config
+
+import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.lang.ExpressionType
+import org.bukkit.event.Event
+import org.bukkit.inventory.ItemStack
+import pl.funnyskaddon.FunnySkAddon
+import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.expression.FunnyExpression
+
+@FunnyDoc
+@Name("Items To Create Guild")
+@Description("Zwraca przedmioty potrzebne do założenia gildii")
+@Examples(
+    "send \"%required items to create guild%\"",
+    "set {_items} to required items to create guild"
+)
+class ConfigItemsForGuildExpression : FunnyExpression<ItemStack>() {
+
+    companion object {
+        init {
+            Skript.registerExpression(
+                ConfigItemsForGuildExpression::class.java,
+                ItemStack::class.java,
+                ExpressionType.PROPERTY,
+                "[required] items (to create|for) guild"
+            )
+        }
+    }
+
+    override fun get(event: Event): Array<ItemStack> {
+        return FunnySkAddon.fgConfiguration.createItems.toTypedArray()
+    }
+
+    override fun getReturnType(): Class<ItemStack> {
+        return ItemStack::class.java
+    }
+
+}
