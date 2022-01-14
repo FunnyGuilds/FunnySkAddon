@@ -40,7 +40,8 @@ fun Event.getUser(expression: Expression<OfflinePlayer>): User? {
 }
 
 fun Event.getUserOption(expression: Expression<OfflinePlayer>): Option<User> {
-    return FunnyGuilds.getInstance().userManager.findByPlayer(getOfflinePlayer(expression))
+    return getOfflinePlayerOption(expression)
+        .flatMap(FunnyGuilds.getInstance().userManager::findByPlayer)
 }
 
 fun Event.getGuild(expression: Expression<Any>): Guild? {
