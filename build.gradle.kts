@@ -15,7 +15,7 @@ tasks.withType<ShadowJar> {
     //Kotlin
     relocate("kotlin", "pl.funnyskaddon.libs.kotlin")
     //BStats
-    relocate("org.bstats.bukkit", "pl.funnyskaddon.bstats")
+    relocate("org.bstats", "pl.funnyskaddon.bstats")
     //JetBrains
     relocate("org.intellij", "pl.funnyskaddon.libs.intellij")
     relocate("org.jetbrains", "pl.funnyskaddon.libs.jetbrains")
