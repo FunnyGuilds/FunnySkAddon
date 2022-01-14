@@ -5,15 +5,20 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import net.dzikoysk.funnyguilds.FunnyGuilds
+import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalAddPlayerRequest
+import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalRemovePlayerRequest
+import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalUpdatePlayer
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberJoinEvent
-import net.dzikoysk.funnyguilds.user.User
+import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaveEvent
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import panda.std.Option
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.util.getGuild
 
 
 @FunnyDoc
@@ -36,21 +41,49 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val userOption: Option<User> = FunnyGuilds.getInstance().userManager.findByPlayer(getValue(event))
-        if (userOption.isEmpty) {
-            return
-        }
-        val user = userOption.get()
+    override fun execute(event: Event) {
+        event.getUserOption(valueExpression)
+            .peek { user ->
+                val guild = event.getValueOption(valueExpression)
+                    .map(Any::getGuild)
+                    .orNull
 
-        val guild = getGuild(event)
+                val concurrencyManager = FunnyGuilds.getInstance().concurrencyManager
 
-        if (!SimpleEventHandler.handle(GuildMemberJoinEvent(FunnyEvent.EventCause.CONSOLE, null, guild, user))) {
-            return
-        }
+                if (user.hasGuild() && guild != null) {
+                    if (user.isOwner) {
+                        return@peek
+                    }
 
-        guild?.addMember(user)
-        user?.guild = guild
+                    if (!SimpleEventHandler.handle(
+                            GuildMemberLeaveEvent(FunnyEvent.EventCause.CONSOLE, null, user.guild, user)
+                        )
+                    ) {
+                        return@peek
+                    }
+                    user.guild.removeMember(user)
+                    user.removeGuild()
+                    concurrencyManager.postRequests(
+                        PrefixGlobalRemovePlayerRequest(user.name),
+                        PrefixGlobalUpdatePlayer(user.player)
+                    )
+                } else {
+                    if (guild == null) {
+                        return@peek
+                    }
+
+                    if (!SimpleEventHandler.handle(
+                            GuildMemberJoinEvent(FunnyEvent.EventCause.CONSOLE, null, guild, user)
+                        )
+                    ) {
+                        return@peek
+                    }
+
+                    guild.addMember(user)
+                    user.guild = guild
+                    concurrencyManager.postRequests(PrefixGlobalAddPlayerRequest(user.name))
+                }
+            }
     }
 
 }

@@ -11,6 +11,7 @@ import net.dzikoysk.funnyguilds.event.guild.GuildDeleteEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildEffect
+import pl.funnyskaddon.skript.getGuildOption
 
 
 @FunnyDoc
@@ -30,14 +31,22 @@ class GuildDeleteEffect : GuildEffect() {
         }
     }
 
-    override fun execute(event: Event?) {
-        val guild = getGuild(event)
+    override fun execute(event: Event) {
+        event.getGuildOption(guildExpression)
+            .peek { guild ->
+                if (!SimpleEventHandler.handle(
+                        GuildDeleteEvent(
+                            FunnyEvent.EventCause.CONSOLE,
+                            null,
+                            guild
+                        )
+                    )
+                ) {
+                    return@peek
+                }
 
-        if (!SimpleEventHandler.handle(GuildDeleteEvent(FunnyEvent.EventCause.CONSOLE, null, guild))) {
-            return
-        }
-
-        FunnyGuilds.getInstance().guildManager.deleteGuild(guild)
+                FunnyGuilds.getInstance().guildManager.deleteGuild(guild)
+            }
     }
 
 }

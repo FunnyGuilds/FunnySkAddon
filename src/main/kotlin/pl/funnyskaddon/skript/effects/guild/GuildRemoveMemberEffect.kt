@@ -5,15 +5,17 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import net.dzikoysk.funnyguilds.FunnyGuilds
+import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalRemovePlayerRequest
+import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalUpdatePlayer
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberKickEvent
-import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import panda.std.Option
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getUserOption
 
 
 @FunnyDoc
@@ -33,21 +35,34 @@ class GuildRemoveMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val userOption: Option<User> = FunnyGuilds.getInstance().userManager.findByPlayer(getValue(event))
-        if (userOption.isEmpty) {
-            return
-        }
-        val user = userOption.get()
+    override fun execute(event: Event) {
+        event.getGuildOption(guildExpression)
+            .peek { guild ->
+                event.getUserOption(valueExpression)
+                    .peek userPeek@{ user ->
+                        if (!SimpleEventHandler.handle(
+                                GuildMemberKickEvent(
+                                    FunnyEvent.EventCause.CONSOLE,
+                                    null,
+                                    guild,
+                                    user
+                                )
+                            )
+                        ) {
+                            return@userPeek
+                        }
 
-        val guild = getGuild(event)
+                        FunnyGuilds.getInstance().concurrencyManager.postRequests(PrefixGlobalRemovePlayerRequest(user.name))
 
-        if (!SimpleEventHandler.handle(GuildMemberKickEvent(FunnyEvent.EventCause.CONSOLE, null, guild, user))) {
-            return
-        }
+                        guild.removeMember(user)
+                        user.removeGuild()
 
-        guild?.removeMember(user)
-        user?.guild = null
+                        val player = user.player
+                        if (player != null) {
+                            FunnyGuilds.getInstance().concurrencyManager.postRequests(PrefixGlobalUpdatePlayer(player))
+                        }
+                    }
+            }
     }
 
 }

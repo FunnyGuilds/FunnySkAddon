@@ -33,18 +33,16 @@ class PlayerRemovePointsEffect : PlayerEffect<Number>(true) {
     override fun execute(event: Event) {
         event.getUserOption(playerExpression)
             .peek { user ->
-                var change = -event.getValueOption(valueExpression)
-                    .orElse(0)
-                    .get()
-                    .toInt()
+                event.getValueOption(valueExpression)
+                    .map(Number::toInt)
+                    .peek valuePeek@{ value ->
+                        val pointsChangeEvent = PointsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, -value)
+                        if (!SimpleEventHandler.handle(pointsChangeEvent)) {
+                            return@valuePeek
+                        }
 
-                val pointsChangeEvent = PointsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, change)
-                if (!SimpleEventHandler.handle(pointsChangeEvent)) {
-                    return@peek
-                }
-                change = pointsChangeEvent.pointsChange
-
-                user.rank.updatePoints { points -> points - change }
+                        user.rank.updatePoints { points -> points + pointsChangeEvent.pointsChange }
+                    }
             }
     }
 

@@ -10,6 +10,8 @@ import net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Set Guild Lives")
@@ -28,15 +30,20 @@ class GuildSetLivesEffect : GuildValueEffect<Number>(false) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val guild = getGuild(event)
-        val value = getValue(event)?.toInt()!!
+    override fun execute(event: Event) {
+        event.getGuildOption(guildExpression)
+            .peek { guild ->
+                event.getValueOption(valueExpression)
+                    .map(Number::toInt)
+                    .peek valuePeek@{ value ->
+                        val livesChangeEvent = GuildLivesChangeEvent(FunnyEvent.EventCause.CONSOLE, null, guild, value)
+                        if (!SimpleEventHandler.handle(livesChangeEvent)) {
+                            return@valuePeek
+                        }
 
-        if (!SimpleEventHandler.handle(GuildLivesChangeEvent(FunnyEvent.EventCause.CONSOLE, null, guild, value))) {
-            return
-        }
-
-        guild?.lives = value
+                        guild.lives = livesChangeEvent.newLives
+                    }
+            }
     }
 
 }

@@ -11,6 +11,8 @@ import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getValueOption
 
 
 @FunnyDoc
@@ -31,25 +33,26 @@ class GuildSetExpirationDateEffect : GuildValueEffect<Date>(false) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val guild = getGuild(event)
-        val value = getValue(event)
+    override fun execute(event: Event) {
+        event.getGuildOption(guildExpression)
+            .peek { guild ->
+                event.getValueOption(valueExpression)
+                    .peek valuePeek@{ value ->
+                        if (!SimpleEventHandler.handle(
+                                GuildExtendValidityEvent(
+                                    FunnyEvent.EventCause.CONSOLE,
+                                    null,
+                                    guild,
+                                    value.timestamp - guild.validity
+                                )
+                            )
+                        ) {
+                            return@valuePeek
+                        }
 
-        val change = value?.timestamp?.minus(guild?.validity!!)
-
-        if (!SimpleEventHandler.handle(
-                GuildExtendValidityEvent(
-                    FunnyEvent.EventCause.CONSOLE,
-                    null,
-                    guild,
-                    change!!
-                )
-            )
-        ) {
-            return
-        }
-
-        guild?.validity = value.timestamp
+                        guild.validity = value.timestamp
+                    }
+            }
     }
 
 }

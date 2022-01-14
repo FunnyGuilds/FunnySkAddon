@@ -8,8 +8,11 @@ import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildEnlargeEvent
 import org.bukkit.event.Event
+import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Set Guild Enlarge")
@@ -28,14 +31,20 @@ class GuildSetEnlargeEffect : GuildValueEffect<Number>(false) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val guild = getGuild(event)
+    override fun execute(event: Event) {
+        event.getGuildOption(guildExpression)
+            .peek { guild ->
+                event.getValueOption(valueExpression)
+                    .map(Number::toInt)
+                    .peek valuePeek@{ value ->
+                        if (!SimpleEventHandler.handle(GuildEnlargeEvent(FunnyEvent.EventCause.CONSOLE, null, guild))) {
+                            return@valuePeek
+                        }
 
-        if (!SimpleEventHandler.handle(GuildEnlargeEvent(FunnyEvent.EventCause.CONSOLE, null, guild))) {
-            return
-        }
-
-        guild?.region?.enlarge = getValue(event)?.toInt()!!
+                        guild.region.enlarge = value
+                        guild.region.size = value * FunnySkAddon.fgConfiguration.enlargeSize
+                    }
+            }
     }
 
 }

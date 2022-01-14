@@ -33,19 +33,17 @@ class PlayerSetDeathsEffect : PlayerEffect<Number>(false) {
     override fun execute(event: Event) {
         event.getUserOption(playerExpression)
             .peek { user ->
-                var value = event.getValueOption(valueExpression)
-                    .orElse(0)
-                    .get()
-                    .toInt()
+                event.getValueOption(valueExpression)
+                    .map(Number::toInt)
+                    .peek valuePeek@{ value ->
+                        val deathsChangeEvent =
+                            DeathsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, value - user.rank.deaths)
+                        if (!SimpleEventHandler.handle(deathsChangeEvent)) {
+                            return@valuePeek
+                        }
 
-                val deathsChangeEvent =
-                    DeathsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, value - user.rank.deaths)
-                if (!SimpleEventHandler.handle(deathsChangeEvent)) {
-                    return@peek
-                }
-                value = user.rank.deaths + deathsChangeEvent.deathsChange
-
-                user.rank.deaths = value
+                        user.rank.deaths = user.rank.deaths + deathsChangeEvent.deathsChange
+                    }
             }
     }
 

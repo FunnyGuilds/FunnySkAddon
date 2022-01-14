@@ -11,6 +11,8 @@ import net.dzikoysk.funnyguilds.event.guild.GuildRenameEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getValueOption
 
 
 @FunnyDoc
@@ -30,28 +32,32 @@ class GuildSetNameEffect : GuildValueEffect<String>(false) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val guild = getGuild(event)
-        val value = getValue(event)
+    override fun execute(event: Event) {
+        event.getGuildOption(guildExpression)
+            .peek { guild ->
+                event.getValueOption(valueExpression)
+                    .peek valuePeek@{ value ->
+                        val oldName = guild.tag
 
-        val oldName = guild?.name
+                        val guildPreRenameEvent =
+                            GuildPreRenameEvent(FunnyEvent.EventCause.CONSOLE, null, guild, oldName, value)
+                        if (!SimpleEventHandler.handle(guildPreRenameEvent)) {
+                            return@valuePeek
+                        }
 
-        if (!SimpleEventHandler.handle(
-                GuildPreRenameEvent(
-                    FunnyEvent.EventCause.CONSOLE,
-                    null,
-                    guild,
-                    oldName,
-                    value
-                )
-            )
-        ) {
-            return
-        }
+                        guild.name = guildPreRenameEvent.newName
 
-        guild?.name = value
-
-        SimpleEventHandler.handle(GuildRenameEvent(FunnyEvent.EventCause.CONSOLE, null, guild, oldName, value))
+                        SimpleEventHandler.handle(
+                            GuildRenameEvent(
+                                FunnyEvent.EventCause.CONSOLE,
+                                null,
+                                guild,
+                                oldName,
+                                value
+                            )
+                        )
+                    }
+            }
     }
 
 }

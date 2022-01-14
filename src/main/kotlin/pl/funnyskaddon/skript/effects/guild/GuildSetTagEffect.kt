@@ -11,6 +11,8 @@ import net.dzikoysk.funnyguilds.event.guild.GuildTagChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effects.GuildValueEffect
+import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Set Guild Tag")
@@ -29,28 +31,32 @@ class GuildSetTagEffect : GuildValueEffect<String>(false) {
         }
     }
 
-    override fun execute(event: Event?) {
-        val guild = getGuild(event)
-        val value = getValue(event)
+    override fun execute(event: Event) {
+        event.getGuildOption(guildExpression)
+            .peek { guild ->
+                event.getValueOption(valueExpression)
+                    .peek valuePeek@{ value ->
+                        val oldTag = guild.tag
 
-        val oldTag = guild?.tag
+                        val guildPreTagChangeEvent =
+                            GuildPreTagChangeEvent(FunnyEvent.EventCause.CONSOLE, null, guild, oldTag, value)
+                        if (!SimpleEventHandler.handle(guildPreTagChangeEvent)) {
+                            return@valuePeek
+                        }
 
-        if (!SimpleEventHandler.handle(
-                GuildPreTagChangeEvent(
-                    FunnyEvent.EventCause.CONSOLE,
-                    null,
-                    guild,
-                    oldTag,
-                    value
-                )
-            )
-        ) {
-            return
-        }
+                        guild.tag = guildPreTagChangeEvent.newTag
 
-        guild?.tag = value
-
-        SimpleEventHandler.handle(GuildTagChangeEvent(FunnyEvent.EventCause.CONSOLE, null, guild, oldTag, value))
+                        SimpleEventHandler.handle(
+                            GuildTagChangeEvent(
+                                FunnyEvent.EventCause.CONSOLE,
+                                null,
+                                guild,
+                                oldTag,
+                                value
+                            )
+                        )
+                    }
+            }
     }
 
 }
