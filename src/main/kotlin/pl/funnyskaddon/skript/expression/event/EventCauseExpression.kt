@@ -128,27 +128,23 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
             }
         },
 
-        RENAME("cause", GuildRenameEvent::class.java) {
+        RENAME("cause", GuildPreRenameEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildRenameEvent) {
+                if (event is GuildPreRenameEvent) {
                     return event.eventCause
                 }
                 return null
             }
         },
 
-        /*
-            In future, maybe
-         */
-        /*RETAG("[retaged( |-)]guild", GuildRenameEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if(event is GuildRenameEvent) {
-                    return event.guild
+        TAG_CHANGE("cause", GuildPreTagChangeEvent::class.java) {
+            override fun get(event: Event): FunnyEvent.EventCause? {
+                if (event is GuildPreTagChangeEvent) {
+                    return event.eventCause
                 }
                 return null
             }
-        },*/
-
+        },
 
         ENLARGE("cause", GuildEnlargeEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {

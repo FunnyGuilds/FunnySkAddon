@@ -127,26 +127,23 @@ class EventPlayerExpression : SimpleExpression<Player>() {
             }
         },
 
-        RENAME("(player|doer)", GuildRenameEvent::class.java) {
+        RENAME("(player|doer)", GuildPreRenameEvent::class.java) {
             override fun get(event: Event): Player? {
-                if (event is GuildRenameEvent) {
+                if (event is GuildPreRenameEvent) {
                     return event.doer.player
                 }
                 return null
             }
         },
 
-        /*
-            In future, maybe
-         */
-        /*RETAG("player|doer", GuildRenameEvent::class.java) {
+        TAG_CHANGE("player|doer", GuildPreTagChangeEvent::class.java) {
             override fun get(event: Event): Player? {
-                if(event is GuildRenameEvent) {
+                if (event is GuildPreTagChangeEvent) {
                     return event.doer.player
                 }
                 return null
             }
-        },*/
+        },
 
         ENLARGE("(player|doer)", GuildEnlargeEvent::class.java) {
             override fun get(event: Event): Player? {

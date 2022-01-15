@@ -12,7 +12,6 @@ import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildPreTagChangeEvent
-import net.dzikoysk.funnyguilds.event.guild.GuildTagChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 
@@ -39,18 +38,18 @@ class EventTagExpression : SimpleExpression<String>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        RENAME_NEW("new( |-)tag", GuildPreTagChangeEvent::class.java) {
+        TAG_CHANGE_NEW("new( |-)tag", GuildPreTagChangeEvent::class.java) {
             override fun get(event: Event): String? {
-                if (event is GuildTagChangeEvent) {
+                if (event is GuildPreTagChangeEvent) {
                     return event.newTag
                 }
                 return null
             }
         },
 
-        RENAME_OLD("old( |-)tag", GuildPreTagChangeEvent::class.java) {
+        TAG_CHANGE_OLD("old( |-)tag", GuildPreTagChangeEvent::class.java) {
             override fun get(event: Event): String? {
-                if (event is GuildTagChangeEvent) {
+                if (event is GuildPreTagChangeEvent) {
                     return event.oldTag
                 }
                 return null

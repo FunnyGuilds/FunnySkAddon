@@ -120,27 +120,23 @@ class EventGuildExpression : SimpleExpression<Guild>() {
             }
         },
 
-        RENAME("[renamed( |-)]guild", GuildRenameEvent::class.java) {
+        RENAME("[renamed( |-)]guild", GuildPreRenameEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if (event is GuildRenameEvent) {
+                if (event is GuildPreRenameEvent) {
                     return event.guild
                 }
                 return null
             }
         },
 
-        /*
-            In future, maybe
-         */
-        /*RETAG("[retaged( |-)]guild", GuildRenameEvent::class.java) {
+        TAG_CHANGE("(([retaged( |-)]guild)|guild with changed tag)", GuildPreTagChangeEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if(event is GuildRenameEvent) {
+                if (event is GuildPreTagChangeEvent) {
                     return event.guild
                 }
                 return null
             }
-        },*/
-
+        },
 
         ENLARGE("[enlarged( |-)]guild", GuildEnlargeEvent::class.java) {
             override fun get(event: Event): Guild? {
