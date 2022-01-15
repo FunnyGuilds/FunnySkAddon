@@ -25,7 +25,7 @@ class GuildAddLivesEffect : GuildValueEffect<Number>(false) {
         init {
             Skript.registerEffect(
                 GuildAddLivesEffect::class.java,
-                "add %number% live[s] to %object%(|'s) guild"
+                "add %number% live[s] to %object%['s] guild"
             )
         }
     }

@@ -25,7 +25,7 @@ class PlayerKDRExpression : PlayerExpression<Number>() {
                 PlayerKDRExpression::class.java,
                 Number::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%offlineplayer%(|'s) [rank|ranking] (kdr|kills to deaths ratio)"
+                "%offlineplayer%['s] [(rank|ranking)] ((kdr|kills to deaths ratio))"
             )
         }
     }

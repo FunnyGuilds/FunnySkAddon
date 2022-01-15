@@ -25,7 +25,7 @@ class PlayerDeathsExpression : PlayerExpression<Int>() {
                 PlayerDeathsExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%offlineplayer%(|'s) [(rank|ranking)] deaths [amount|count]"
+                "%offlineplayer%['s] [(rank|ranking)] deaths [(amount|count)]"
             )
         }
     }

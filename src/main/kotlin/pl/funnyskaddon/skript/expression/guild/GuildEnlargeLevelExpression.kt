@@ -25,7 +25,7 @@ class GuildEnlargeLevelExpression : GuildExpression<Int>() {
                 GuildEnlargeLevelExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild [region] enlarge (level|lvl)"
+                "%object%['s] guild [region] enlarge ((level|lvl))"
             )
         }
     }

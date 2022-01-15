@@ -25,7 +25,7 @@ class PlayerSetKillsEffect : PlayerEffect<Number>(false) {
         init {
             Skript.registerEffect(
                 PlayerSetKillsEffect::class.java,
-                "set [(number|amount) of] %offlineplayer%(|'s) [rank|ranking] kills to %number%"
+                "set [(number|amount) of] %offlineplayer%['s] [(rank|ranking)] kills to %number%"
             )
         }
     }

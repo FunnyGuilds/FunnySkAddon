@@ -25,7 +25,7 @@ class PlayerRemovePointsEffect : PlayerEffect<Number>(true) {
         init {
             Skript.registerEffect(
                 PlayerRemovePointsEffect::class.java,
-                "remove %number% point[s] from %offlineplayer%(|'s) [rank|ranking]"
+                "remove %number% point[s] from %offlineplayer%['s] [(rank|ranking)]"
             )
         }
     }

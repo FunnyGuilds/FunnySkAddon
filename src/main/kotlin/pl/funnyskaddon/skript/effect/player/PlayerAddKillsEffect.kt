@@ -25,7 +25,7 @@ class PlayerAddKillsEffect : PlayerEffect<Number>(true) {
         init {
             Skript.registerEffect(
                 PlayerAddKillsEffect::class.java,
-                "add %number% kill[s] to %offlineplayer%(|'s) [rank|ranking]"
+                "add %number% kill[s] to %offlineplayer%['s] [(rank|ranking)]"
             )
         }
     }

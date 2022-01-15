@@ -25,7 +25,7 @@ class GuildDeathsExpression : GuildExpression<Int>() {
                 GuildDeathsExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild [(rank|ranking)] deaths [amount|count]"
+                "%object%['s] guild [(rank|ranking)] deaths [(amount|count)]"
             )
         }
     }

@@ -23,7 +23,6 @@ import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.event.guild.CustomGuildCreateEvent
 
 @FunnyDoc
 @Name("Player")
@@ -74,10 +73,10 @@ class EventPlayerExpression : SimpleExpression<Player>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        CREATE("(player|doer)", CustomGuildCreateEvent::class.java) {
+        CREATE("(player|doer)", GuildCreateEvent::class.java) {
             override fun get(event: Event): Player? {
-                if (event is CustomGuildCreateEvent) {
-                    return event.player
+                if (event is GuildCreateEvent) {
+                    return event.doer.player
                 }
                 return null
             }

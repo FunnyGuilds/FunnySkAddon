@@ -27,7 +27,7 @@ class GuildBornExpression : GuildExpression<Date>() {
                 GuildBornExpression::class.java,
                 Date::class.java,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild born [date]"
+                "%object%['s] guild born [date]"
             )
         }
     }

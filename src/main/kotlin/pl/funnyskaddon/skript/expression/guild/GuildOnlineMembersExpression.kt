@@ -29,7 +29,7 @@ class GuildOnlineMembersExpression : GuildExpression<Player>() {
                 GuildOnlineMembersExpression::class.java,
                 Player::class.java,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild online members"
+                "%object%['s] guild online members"
             )
         }
     }

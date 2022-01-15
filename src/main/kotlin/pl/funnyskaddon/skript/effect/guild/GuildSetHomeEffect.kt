@@ -26,7 +26,7 @@ class GuildSetHomeEffect : GuildValueEffect<Location>(false) {
         init {
             Skript.registerEffect(
                 GuildSetHomeEffect::class.java,
-                "set %object%(|'s) guild (home|base) location to %location%"
+                "set %object%['s] guild (home|base) location to %location%"
             )
         }
     }

@@ -28,7 +28,7 @@ class GuildSetExpirationDateEffect : GuildValueEffect<Date>(false) {
         init {
             Skript.registerEffect(
                 GuildSetExpirationDateEffect::class.java,
-                "set (expiration|validity) [date|time] of %object%(|'s) guild to %date%"
+                "set (expiration|validity) [(date|time)] of %object%['s] guild to %date%"
             )
         }
     }

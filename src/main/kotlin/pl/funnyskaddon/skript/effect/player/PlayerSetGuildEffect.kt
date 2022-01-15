@@ -32,7 +32,7 @@ class PlayerSetGuildEffect : PlayerEffect<Any>(false) {
 
     companion object {
         init {
-            Skript.registerEffect(PlayerSetGuildEffect::class.java, "set %offlineplayer%(|'s) guild to %object%")
+            Skript.registerEffect(PlayerSetGuildEffect::class.java, "set %offlineplayer%['s] guild to %object%")
         }
     }
 

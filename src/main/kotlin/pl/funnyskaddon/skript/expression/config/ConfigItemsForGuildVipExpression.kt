@@ -26,7 +26,7 @@ class ConfigItemsForGuildVipExpression : FunnyExpression<ItemStack>() {
                 ConfigItemsForGuildVipExpression::class.java,
                 ItemStack::class.java,
                 ExpressionType.PROPERTY,
-                "[required] items (to create|for) guild [for|with] vip"
+                "[required] items (to create|for) guild [(for|with)] vip"
             )
         }
     }

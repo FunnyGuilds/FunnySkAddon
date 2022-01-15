@@ -25,7 +25,7 @@ class GuildPositionExpression : GuildExpression<Int>() {
                 GuildPositionExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild [(rank|ranking)] position"
+                "%object%['s] guild [(rank|ranking)] position"
             )
         }
     }

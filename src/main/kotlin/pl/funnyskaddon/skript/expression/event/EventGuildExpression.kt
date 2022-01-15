@@ -20,7 +20,6 @@ import net.dzikoysk.funnyguilds.event.guild.member.*
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.event.guild.CustomGuildCreateEvent
 
 @FunnyDoc
 @Name("Guild")
@@ -67,9 +66,9 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        CREATE("[created( |-)]guild", CustomGuildCreateEvent::class.java) {
+        CREATE("[created( |-)]guild", GuildCreateEvent::class.java) {
             override fun get(event: Event): Guild? {
-                if (event is CustomGuildCreateEvent) {
+                if (event is GuildCreateEvent) {
                     return event.guild
                 }
                 return null

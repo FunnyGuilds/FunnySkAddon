@@ -25,7 +25,7 @@ class ConfigExpForGuildVipExpression : FunnyExpression<Int>() {
                 ConfigExpForGuildVipExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "[required] (exp|experience) (to create|for) guild [for|with] vip",
+                "[required] (exp|experience) (to create|for) guild [(for|with)] vip",
             )
         }
     }

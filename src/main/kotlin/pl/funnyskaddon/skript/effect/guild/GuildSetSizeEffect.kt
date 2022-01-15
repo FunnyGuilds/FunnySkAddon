@@ -22,7 +22,7 @@ class GuildSetSizeEffect : GuildValueEffect<Number>(false) {
         init {
             Skript.registerEffect(
                 GuildSetSizeEffect::class.java,
-                "set size of %object%(|'s) guild to %number%"
+                "set size of %object%['s] guild to %number%"
             )
         }
     }

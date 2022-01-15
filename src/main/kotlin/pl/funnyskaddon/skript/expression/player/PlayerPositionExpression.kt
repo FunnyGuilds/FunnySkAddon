@@ -25,7 +25,7 @@ class PlayerPositionExpression : PlayerExpression<Int>() {
                 PlayerPositionExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%offlineplayer%(|'s) [top|rank|ranking] position"
+                "%offlineplayer%['s] [(top|rank|ranking)] position"
             )
         }
     }

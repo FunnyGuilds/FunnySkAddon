@@ -25,7 +25,7 @@ import pl.funnyskaddon.util.getGuild
 @Name("Add Guild Member")
 @Description(
     "Dodaje gracza do gildii<br>",
-    "Alternatywa: <b>set %offlineplayer%(|'s) guild to %object%</b>"
+    "Alternatywa: <b>set %offlineplayer%['s] guild to %object%</b>"
 )
 @Examples(
     "add player to \"AC4U\" guild members",
@@ -36,7 +36,7 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
         init {
             Skript.registerEffect(
                 GuildAddMemberEffect::class.java,
-                "add %offlineplayer% to %object%(|'s) guild members"
+                "add %offlineplayer% to %object%['s] guild members"
             )
         }
     }

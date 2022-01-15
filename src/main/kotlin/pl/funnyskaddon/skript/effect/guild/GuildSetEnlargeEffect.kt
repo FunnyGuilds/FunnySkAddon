@@ -26,7 +26,7 @@ class GuildSetEnlargeEffect : GuildValueEffect<Number>(false) {
         init {
             Skript.registerEffect(
                 GuildSetEnlargeEffect::class.java,
-                "set enlarge [level|lvl] of %object%(|'s) guild to %number%"
+                "set enlarge [(level|lvl)] of %object%['s] guild to %number%"
             )
         }
     }

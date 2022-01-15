@@ -26,7 +26,7 @@ class PlayerGuildExpression : PlayerExpression<Guild>() {
                 PlayerGuildExpression::class.java,
                 Guild::class.java,
                 ExpressionType.PROPERTY,
-                "%offlineplayer%(|'s) guild"
+                "%offlineplayer%['s] guild"
             )
         }
     }

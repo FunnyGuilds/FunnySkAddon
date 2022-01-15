@@ -3,7 +3,6 @@ package pl.funnyskaddon.skript.event.guild
 import ch.njol.skript.Skript
 import ch.njol.skript.lang.util.SimpleEvent
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.event.guild.CustomGuildCreateEvent
 
 @FunnyDoc
 class GuildCreateEvent : SimpleEvent() {
@@ -13,7 +12,7 @@ class GuildCreateEvent : SimpleEvent() {
             Skript.registerEvent(
                 "Guild Create",
                 GuildCreateEvent::class.java,
-                CustomGuildCreateEvent::class.java,
+                net.dzikoysk.funnyguilds.event.guild.GuildCreateEvent::class.java,
                 "guild (create|creation)"
             ).description("Wywoływany kiedy gildia zostanie utworzona")
                 .examples(

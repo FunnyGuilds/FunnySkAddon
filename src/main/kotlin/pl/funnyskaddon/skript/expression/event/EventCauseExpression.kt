@@ -23,7 +23,6 @@ import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
 import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.event.guild.CustomGuildCreateEvent
 import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
@@ -75,9 +74,9 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        CREATE("cause", CustomGuildCreateEvent::class.java) {
+        CREATE("cause", GuildCreateEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is CustomGuildCreateEvent) {
+                if (event is GuildCreateEvent) {
                     return event.eventCause
                 }
                 return null

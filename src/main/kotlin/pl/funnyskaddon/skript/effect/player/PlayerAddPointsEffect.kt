@@ -25,7 +25,7 @@ class PlayerAddPointsEffect : PlayerEffect<Number>(true) {
         init {
             Skript.registerEffect(
                 PlayerAddPointsEffect::class.java,
-                "add %number% point[s] to %offlineplayer%(|'s) [rank|ranking]"
+                "add %number% point[s] to %offlineplayer%['s] [(rank|ranking)]"
             )
         }
     }

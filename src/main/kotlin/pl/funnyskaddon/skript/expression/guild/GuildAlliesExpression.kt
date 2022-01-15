@@ -27,7 +27,7 @@ class GuildAlliesExpression : GuildExpression<Guild>() {
                 GuildAlliesExpression::class.java,
                 Guild::class.java,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild allies"
+                "%object%['s] guild allies"
             )
         }
     }

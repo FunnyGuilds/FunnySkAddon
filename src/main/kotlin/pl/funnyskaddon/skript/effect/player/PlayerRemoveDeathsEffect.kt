@@ -25,7 +25,7 @@ class PlayerRemoveDeathsEffect : PlayerEffect<Number>(true) {
         init {
             Skript.registerEffect(
                 PlayerRemoveDeathsEffect::class.java,
-                "remove %number% death[s] from %offlineplayer%(|'s) [rank|ranking]"
+                "remove %number% death[s] from %offlineplayer%['s] [(rank|ranking)]"
             )
         }
     }

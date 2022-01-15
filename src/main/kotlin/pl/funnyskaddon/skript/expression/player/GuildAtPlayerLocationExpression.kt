@@ -29,7 +29,7 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
                 GuildAtPlayerLocationExpression::class.java,
                 Guild::class.java,
                 ExpressionType.PROPERTY,
-                "guild at %offlineplayer%(|'s) location"
+                "guild at %offlineplayer%['s] location"
             )
         }
     }

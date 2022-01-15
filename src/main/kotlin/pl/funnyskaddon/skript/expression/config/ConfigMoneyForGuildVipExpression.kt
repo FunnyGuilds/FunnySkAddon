@@ -25,7 +25,7 @@ class ConfigMoneyForGuildVipExpression : FunnyExpression<Double>() {
                 ConfigMoneyForGuildVipExpression::class.java,
                 Double::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "[required] money (to create|for) guild [for|with] vip"
+                "[required] money (to create|for) guild [(for|with)] vip"
             )
         }
     }

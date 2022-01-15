@@ -25,7 +25,7 @@ class PlayerSetPointsEffect : PlayerEffect<Number>(false) {
         init {
             Skript.registerEffect(
                 PlayerSetPointsEffect::class.java,
-                "set [(number|amount) of] %offlineplayer%(|'s) [rank|ranking] points to %number%"
+                "set [(number|amount) of] %offlineplayer%['s] [(rank|ranking)] points to %number%"
             )
         }
     }

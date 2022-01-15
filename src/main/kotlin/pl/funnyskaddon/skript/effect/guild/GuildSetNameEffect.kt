@@ -27,7 +27,7 @@ class GuildSetNameEffect : GuildValueEffect<String>(false) {
         init {
             Skript.registerEffect(
                 GuildSetNameEffect::class.java,
-                "set %object%(|'s) guild name to %string%"
+                "set %object%['s] guild name to %string%"
             )
         }
     }

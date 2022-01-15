@@ -26,7 +26,7 @@ class GuildSetOwnerEffect : GuildValueEffect<OfflinePlayer>(false) {
         init {
             Skript.registerEffect(
                 GuildSetOwnerEffect::class.java,
-                "set %object%(|'s) guild owner to %offlineplayer%"
+                "set %object%['s] guild owner to %offlineplayer%"
             )
         }
     }

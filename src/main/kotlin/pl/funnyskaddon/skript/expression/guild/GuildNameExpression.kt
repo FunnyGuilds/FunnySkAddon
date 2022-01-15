@@ -26,7 +26,7 @@ class GuildNameExpression : GuildExpression<String>() {
                 GuildNameExpression::class.java,
                 String::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%(|'s) guild name"
+                "%object%['s] guild name"
             )
         }
     }

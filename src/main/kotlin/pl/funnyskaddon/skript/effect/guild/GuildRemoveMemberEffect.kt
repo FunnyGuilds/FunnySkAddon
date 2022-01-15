@@ -30,7 +30,7 @@ class GuildRemoveMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
         init {
             Skript.registerEffect(
                 GuildRemoveMemberEffect::class.java,
-                "remove %offlineplayer% from %object%(|'s) guild members"
+                "remove %offlineplayer% from %object%['s] guild members"
             )
         }
     }
