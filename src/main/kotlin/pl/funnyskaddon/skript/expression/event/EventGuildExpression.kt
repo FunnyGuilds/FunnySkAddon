@@ -32,7 +32,7 @@ import pl.funnyskaddon.docs.FunnyDoc
     "guild move",
     "guild base change",
     "guild rename",
-    /*"guild retag", */
+    "guild tag change",
     "guild enlarge",
     "guild extend validity",
     "guild lives change",

@@ -87,7 +87,7 @@ class EventLocationExpression : SimpleExpression<Location>() {
         type = EventType.values()[matchedPattern]
         if (!ScriptLoader.isCurrentEvent(*type.events)) {
             Skript.error(
-                "The " + type.name + " message can only be used in a " + type.name + " event",
+                "The '" + type.pattern + "' can only be used in a " + type.name + " event",
                 ErrorQuality.SEMANTIC_ERROR
             )
             return false
