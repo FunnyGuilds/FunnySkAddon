@@ -14,5 +14,5 @@ commands:
 
 permissions:
   funnyskaddon.cmd:
-    description: Uprawnienie do glownej (i jedynej komendy) w pluginie, /funnyskaddon
+    description: Uprawnienie do glownej (i jedynej komendy) w pluginie - /funnyskaddon
     default: op
