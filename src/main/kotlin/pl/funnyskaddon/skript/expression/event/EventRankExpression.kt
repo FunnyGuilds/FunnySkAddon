@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
@@ -49,7 +48,7 @@ class EventRankExpression : SimpleExpression<UserRank>() {
         KILLS_CHANGE("[kills( |-)]rank", KillsChangeEvent::class.java) {
             override fun get(event: Event): UserRank? {
                 if (event is KillsChangeEvent) {
-                    return event.rank
+                    return event.affected.rank
                 }
                 return null
             }
@@ -58,7 +57,7 @@ class EventRankExpression : SimpleExpression<UserRank>() {
         DEATHS_CHANGE("[deaths( |-)]rank", DeathsChangeEvent::class.java) {
             override fun get(event: Event): UserRank? {
                 if (event is DeathsChangeEvent) {
-                    return event.rank
+                    return event.affected.rank
                 }
                 return null
             }
@@ -67,7 +66,7 @@ class EventRankExpression : SimpleExpression<UserRank>() {
         POINTS_CHANGE("[points( |-)]rank", PointsChangeEvent::class.java) {
             override fun get(event: Event): UserRank? {
                 if (event is PointsChangeEvent) {
-                    return event.rank
+                    return event.affected.rank
                 }
                 return null
             }
@@ -108,7 +107,7 @@ class EventRankExpression : SimpleExpression<UserRank>() {
         parseResult: SkriptParser.ParseResult
     ): Boolean {
         type = EventType.values()[matchedPattern]
-        if (!ScriptLoader.isCurrentEvent(*type.events)) {
+        if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
             Skript.error(
                 "The '" + type.pattern + "' can only be used in a " + type.name + " event",
                 ErrorQuality.SEMANTIC_ERROR
@@ -131,12 +130,12 @@ class EventRankExpression : SimpleExpression<UserRank>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " rank"
-    }
-
     override fun getReturnType(): Class<out UserRank> {
         return UserRank::class.javaObjectType
+    }
+
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " rank"
     }
 
 }

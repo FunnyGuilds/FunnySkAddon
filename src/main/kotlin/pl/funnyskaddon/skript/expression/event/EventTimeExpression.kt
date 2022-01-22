@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
@@ -84,7 +83,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
         parseResult: SkriptParser.ParseResult
     ): Boolean {
         type = EventType.values()[matchedPattern]
-        if (!ScriptLoader.isCurrentEvent(*type.events)) {
+        if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
             Skript.error(
                 "The '" + type.pattern + "' can only be used in a " + type.name + " event",
                 ErrorQuality.SEMANTIC_ERROR
@@ -107,12 +106,12 @@ class EventTimeExpression : SimpleExpression<Long>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " time"
-    }
-
     override fun getReturnType(): Class<out Long> {
         return Long::class.javaObjectType
+    }
+
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " time"
     }
 
 }

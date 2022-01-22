@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
@@ -43,39 +42,29 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        SEND_ALLY_INVITATION("allied-guild|ally", GuildSendAllyInvitationEvent::class.java) {
+        ALLY_GUILD(
+            "allied-guild|ally",
+            GuildSendAllyInvitationEvent::class.java,
+            GuildAcceptAllyInvitationEvent::class.java,
+            GuildRevokeAllyInvitationEvent::class.java,
+            GuildBreakAllyEvent::class.java
+        ) {
             override fun get(event: Event): Guild? {
-                if (event is GuildSendAllyInvitationEvent) {
-                    return event.alliedGuild
+                return when (event) {
+                    is GuildSendAllyInvitationEvent -> {
+                        event.alliedGuild
+                    }
+                    is GuildAcceptAllyInvitationEvent -> {
+                        event.alliedGuild
+                    }
+                    is GuildRevokeAllyInvitationEvent -> {
+                        event.alliedGuild
+                    }
+                    is GuildBreakAllyEvent -> {
+                        event.alliedGuild
+                    }
+                    else -> null
                 }
-                return null
-            }
-        },
-
-        ACCEPT_ALLY_INVITATION("allied-guild|ally", GuildAcceptAllyInvitationEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if (event is GuildAcceptAllyInvitationEvent) {
-                    return event.alliedGuild
-                }
-                return null
-            }
-        },
-
-        REVOKE_ALLY_INVITATION("allied-guild|ally", GuildRevokeAllyInvitationEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if (event is GuildRevokeAllyInvitationEvent) {
-                    return event.alliedGuild
-                }
-                return null
-            }
-        },
-
-        BREAK_ALLY("allied-guild|ally", GuildBreakAllyEvent::class.java) {
-            override fun get(event: Event): Guild? {
-                if (event is GuildBreakAllyEvent) {
-                    return event.alliedGuild
-                }
-                return null
             }
         };
 
@@ -105,7 +94,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
         parseResult: SkriptParser.ParseResult
     ): Boolean {
         type = EventType.values()[matchedPattern]
-        if (!ScriptLoader.isCurrentEvent(*type.events)) {
+        if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
             Skript.error(
                 "The '" + type.pattern + "' can only be used in a " + type.name + " event",
                 ErrorQuality.SEMANTIC_ERROR
@@ -128,12 +117,12 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " allied guild"
-    }
-
     override fun getReturnType(): Class<out Guild> {
         return Guild::class.java
+    }
+
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " allied guild"
     }
 
 }
