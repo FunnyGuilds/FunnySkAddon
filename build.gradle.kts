@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "pl.funnyskaddon"
-version = "2.2.11-Beta"
+version = "2.2.12-Beta"
 
 tasks.withType<ShadowJar> {
     archiveFileName.set("FunnySkAddon-${project.version}.jar")
