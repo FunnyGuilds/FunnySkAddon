@@ -30,14 +30,10 @@ class PlayerIsInGuildCondition : GuildPlayerCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return try {
-            return event.getUserOption(playerExpression)
-                .map(User::getGuild)
-                .filter { guild -> return@filter guild.equals(event.getGuild(guildExpression)) }
-                .isPresent.xor(isNegated)
-        } catch (ex: Exception) {
-            !isNegated
-        }
+        return event.getUserOption(playerExpression)
+            .map(User::getGuild)
+            .filter { guild -> return@filter guild.equals(event.getGuild(guildExpression)) }
+            .isPresent.xor(isNegated)
     }
 
 }

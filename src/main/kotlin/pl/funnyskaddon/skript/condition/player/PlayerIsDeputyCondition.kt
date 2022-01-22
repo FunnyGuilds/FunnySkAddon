@@ -29,13 +29,9 @@ class PlayerIsDeputyCondition : PlayerCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return try {
-            return event.getUserOption(playerExpression)
-                .filter(User::isDeputy)
-                .isPresent.xor(isNegated)
-        } catch (ex: Exception) {
-            !isNegated
-        }
+        return event.getUserOption(playerExpression)
+            .filter(User::isDeputy)
+            .isPresent.xor(isNegated)
     }
 
 }

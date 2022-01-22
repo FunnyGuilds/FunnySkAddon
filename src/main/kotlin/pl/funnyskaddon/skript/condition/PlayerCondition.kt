@@ -17,7 +17,9 @@ abstract class PlayerCondition : FunnyCondition() {
     ): Boolean {
         playerExpression = expression[0] as Expression<OfflinePlayer>
         if (parseResult != null) {
-            isNegated = ((matchedPattern > 1) xor (parseResult.mark == 1))
+            println(matchedPattern)
+            println(parseResult.mark)
+            isNegated = ((matchedPattern >= 1) xor (parseResult.mark == 1))
         }
         return true
     }

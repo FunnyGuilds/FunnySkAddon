@@ -29,13 +29,9 @@ class PlayerIsOwnerCondition : PlayerCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return try {
-            return event.getUserOption(playerExpression)
-                .filter(User::isOwner)
-                .isPresent.xor(isNegated)
-        } catch (ex: Exception) {
-            !isNegated
-        }
+        return event.getUserOption(playerExpression)
+            .filter(User::isOwner)
+            .isPresent.xor(isNegated)
     }
 
 }

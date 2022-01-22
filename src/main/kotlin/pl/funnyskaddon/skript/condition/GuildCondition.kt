@@ -16,7 +16,7 @@ abstract class GuildCondition : FunnyCondition() {
     ): Boolean {
         guildExpression = expression[0] as Expression<Any>
         if (parseResult != null) {
-            isNegated = ((matchedPattern > 1) xor (parseResult.mark == 1))
+            isNegated = ((matchedPattern >= 1) xor (parseResult.mark == 1))
         }
         return true
     }

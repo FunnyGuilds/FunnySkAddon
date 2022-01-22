@@ -29,13 +29,9 @@ class GuildCanBeAttackedCondition : GuildCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return try {
-            event.getGuildOption(guildExpression)
-                .map(Guild::canBeAttacked)
-                .isPresent.xor(isNegated)
-        } catch (ex: Exception) {
-            !isNegated
-        }
+        return event.getGuildOption(guildExpression)
+            .map(Guild::canBeAttacked)
+            .isPresent.xor(isNegated)
     }
 
 }
