@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
@@ -12,18 +11,8 @@ import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.FunnyEvent
-import net.dzikoysk.funnyguilds.event.guild.*
-import net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent
-import net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent
-import net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent
-import net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent
-import net.dzikoysk.funnyguilds.event.guild.member.*
-import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
 @Name("Cause")
@@ -36,7 +25,7 @@ import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
     "guild move",
     "guild base change",
     "guild rename",
-    /*"guild retag", */
+    "guild tag change",
     "guild enlarge",
     "guild extend validity",
     "guild lives change",
@@ -74,262 +63,9 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        CREATE("cause", GuildCreateEvent::class.java) {
+        FUNNY("cause", FunnyEvent::class.java) {
             override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildCreateEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        DELETE("cause", GuildDeleteEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildDeleteEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        BAN("cause", GuildBanEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildBanEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        UNBAN("cause", GuildUnbanEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildUnbanEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        MOVE("cause", GuildMoveEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMoveEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        BASE_CHANGE("cause", GuildMoveEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMoveEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        RENAME("cause", GuildPreRenameEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildPreRenameEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        TAG_CHANGE("cause", GuildPreTagChangeEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildPreTagChangeEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        ENLARGE("cause", GuildEnlargeEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildEnlargeEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        EXTEND_VALIDITY("cause", GuildExtendValidityEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildExtendValidityEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        LIVES_CHANGE("cause", GuildLivesChangeEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildLivesChangeEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        MEMBER_INVITE("cause", GuildMemberInviteEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMemberInviteEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        MEMBER_ACCEPT_INVITE("cause", GuildMemberAcceptInviteEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMemberAcceptInviteEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        MEMBER_REVOKE_INVITE("cause", GuildMemberRevokeInviteEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMemberRevokeInviteEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        MEMBER_JOIN("cause", GuildMemberJoinEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMemberJoinEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        MEMBER_LEAVE("cause", GuildMemberLeaveEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMemberLeaveEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        MEMBER_KICK("cause", GuildMemberKickEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMemberKickEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        LEADER_CHANGE("cause", GuildMemberLeaderEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMemberLeaderEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        DEPUTY_CHANGE("cause", GuildMemberDeputyEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildMemberDeputyEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        SEND_ALLY_INVITATION("cause", GuildSendAllyInvitationEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildSendAllyInvitationEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        ACCEPT_ALLY_INVITATION("cause", GuildAcceptAllyInvitationEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildAcceptAllyInvitationEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        REVOKE_ALLY_INVITATION("cause", GuildRevokeAllyInvitationEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildRevokeAllyInvitationEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        BREAK_ALLY("cause", GuildBreakAllyEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildBreakAllyEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        REGION_ENTER("cause", GuildRegionEnterEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildRegionEnterEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        REGION_LEAVE("cause", GuildRegionLeaveEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is GuildRegionLeaveEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-
-        KILLS_CHANGE("cause", KillsChangeEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is KillsChangeEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        DEATHS_CHANGE("cause", DeathsChangeEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is DeathsChangeEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        POINTS_CHANGE("cause", PointsChangeEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is PointsChangeEvent) {
-                    return event.eventCause
-                }
-                return null
-            }
-        },
-
-        KILL_POINTS_CHANGE("cause", CustomKillPointsChangeEvent::class.java) {
-            override fun get(event: Event): FunnyEvent.EventCause? {
-                if (event is CustomKillPointsChangeEvent) {
+                if (event is FunnyEvent) {
                     return event.eventCause
                 }
                 return null
@@ -362,7 +98,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
         parseResult: SkriptParser.ParseResult
     ): Boolean {
         type = EventType.values()[matchedPattern]
-        if (!ScriptLoader.isCurrentEvent(*type.events)) {
+        if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
             Skript.error(
                 "The '" + type.pattern + "' can only be used in a " + type.name + " event",
                 ErrorQuality.SEMANTIC_ERROR
@@ -385,12 +121,12 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " cause"
-    }
-
     override fun getReturnType(): Class<out FunnyEvent.EventCause> {
         return FunnyEvent.EventCause::class.java
+    }
+
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " cause"
     }
 
 }

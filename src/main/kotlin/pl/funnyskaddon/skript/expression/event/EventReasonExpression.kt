@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
@@ -73,7 +72,7 @@ class EventReasonExpression : SimpleExpression<String>() {
         parseResult: SkriptParser.ParseResult
     ): Boolean {
         type = EventType.values()[matchedPattern]
-        if (!ScriptLoader.isCurrentEvent(*type.events)) {
+        if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
             Skript.error(
                 "The '" + type.pattern + "' can only be used in a " + type.name + " event",
                 ErrorQuality.SEMANTIC_ERROR
@@ -96,12 +95,12 @@ class EventReasonExpression : SimpleExpression<String>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " reason"
-    }
-
     override fun getReturnType(): Class<out String> {
         return String::class.javaObjectType
+    }
+
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " reason"
     }
 
 }

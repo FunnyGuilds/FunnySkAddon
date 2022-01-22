@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.ScriptLoader
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
@@ -41,75 +40,45 @@ class EventMemberExpression : SimpleExpression<Player>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        MEMBER_INVITE("member", GuildMemberInviteEvent::class.java) {
+        MEMBER(
+            "member",
+            GuildMemberInviteEvent::class.java,
+            GuildMemberAcceptInviteEvent::class.java,
+            GuildMemberRevokeInviteEvent::class.java,
+            GuildMemberJoinEvent::class.java,
+            GuildMemberLeaveEvent::class.java,
+            GuildMemberKickEvent::class.java,
+            GuildMemberLeaderEvent::class.java,
+            GuildMemberDeputyEvent::class.java
+        ) {
             override fun get(event: Event): Player? {
-                if (event is GuildMemberInviteEvent) {
-                    return event.member.player
+                return when (event) {
+                    is GuildMemberInviteEvent -> {
+                        event.member.player
+                    }
+                    is GuildMemberAcceptInviteEvent -> {
+                        event.member.player
+                    }
+                    is GuildMemberRevokeInviteEvent -> {
+                        event.member.player
+                    }
+                    is GuildMemberJoinEvent -> {
+                        event.member.player
+                    }
+                    is GuildMemberLeaveEvent -> {
+                        event.member.player
+                    }
+                    is GuildMemberKickEvent -> {
+                        event.member.player
+                    }
+                    is GuildMemberLeaderEvent -> {
+                        event.member.player
+                    }
+                    is GuildMemberDeputyEvent -> {
+                        event.member.player
+                    }
+                    else -> null
                 }
-                return null
-            }
-        },
-
-        MEMBER_ACCEPT_INVITE("member", GuildMemberAcceptInviteEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is GuildMemberAcceptInviteEvent) {
-                    return event.member.player
-                }
-                return null
-            }
-        },
-
-        MEMBER_REVOKE_INVITE("member", GuildMemberRevokeInviteEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is GuildMemberRevokeInviteEvent) {
-                    return event.member.player
-                }
-                return null
-            }
-        },
-
-        MEMBER_JOIN("member", GuildMemberJoinEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is GuildMemberJoinEvent) {
-                    return event.member.player
-                }
-                return null
-            }
-        },
-
-        MEMBER_LEAVE("member", GuildMemberLeaveEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is GuildMemberLeaveEvent) {
-                    return event.member.player
-                }
-                return null
-            }
-        },
-
-        MEMBER_KICK("member", GuildMemberKickEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is GuildMemberKickEvent) {
-                    return event.member.player
-                }
-                return null
-            }
-        },
-
-        LEADER_CHANGE("member", GuildMemberLeaderEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is GuildMemberLeaderEvent) {
-                    return event.member.player
-                }
-                return null
-            }
-        },
-
-        DEPUTY_CHANGE("member", GuildMemberDeputyEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is GuildMemberDeputyEvent) {
-                    return event.member.player
-                }
-                return null
             }
         };
 
@@ -139,7 +108,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
         parseResult: SkriptParser.ParseResult
     ): Boolean {
         type = EventType.values()[matchedPattern]
-        if (!ScriptLoader.isCurrentEvent(*type.events)) {
+        if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
             Skript.error(
                 "The '" + type.pattern + "' can only be used in a " + type.name + " event",
                 ErrorQuality.SEMANTIC_ERROR
@@ -162,12 +131,12 @@ class EventMemberExpression : SimpleExpression<Player>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " member"
-    }
-
     override fun getReturnType(): Class<out Player> {
         return Player::class.java
+    }
+
+    override fun toString(event: Event?, debug: Boolean): String {
+        return "the " + type.name + " member"
     }
 
 }
