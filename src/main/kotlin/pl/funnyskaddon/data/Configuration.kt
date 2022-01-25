@@ -28,10 +28,6 @@ class Configuration : OkaeriConfig() {
         @CustomKey("only-full-releases")
         var onlyFullReleases = true
 
-        @Comment("Wyłącza kolory w konsoli jeśli jest ustawione na true")
-        @CustomKey("simple")
-        var simpleUpdateCheck = false
-
         @Comment("Czas co jaki ma być sprawdzana dostępność aktualizacji w minutach")
         @CustomKey("time")
         var checkTime: Int = 180
