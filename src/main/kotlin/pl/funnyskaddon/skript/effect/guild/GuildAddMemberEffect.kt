@@ -36,7 +36,7 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
         init {
             Skript.registerEffect(
                 GuildAddMemberEffect::class.java,
-                "add %offlineplayer% to %object%['s] guild members"
+                "add %offlineplayer% to %object%['s] [guild] members"
             )
         }
     }

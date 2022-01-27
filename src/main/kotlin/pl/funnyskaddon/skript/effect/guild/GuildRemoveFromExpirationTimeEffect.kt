@@ -26,7 +26,7 @@ class GuildRemoveFromExpirationTimeEffect : GuildValueEffect<Timespan>(true) {
         init {
             Skript.registerEffect(
                 GuildRemoveFromExpirationTimeEffect::class.java,
-                "remove %timespan% from %object%['s] guild (expiration|validity) [time]"
+                "remove %timespan% from %object%['s] [guild] (expiration|validity) [time]"
             )
         }
     }

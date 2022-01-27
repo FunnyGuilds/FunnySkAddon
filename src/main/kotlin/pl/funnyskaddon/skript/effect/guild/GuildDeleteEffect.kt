@@ -26,7 +26,7 @@ class GuildDeleteEffect : GuildEffect() {
         init {
             Skript.registerEffect(
                 GuildDeleteEffect::class.java,
-                "delete %object%['s] guild"
+                "delete %object%['s] [guild]"
             )
         }
     }
