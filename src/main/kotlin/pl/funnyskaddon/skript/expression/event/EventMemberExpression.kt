@@ -17,7 +17,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 
 @FunnyDoc
 @Name("Member")
-@Description("Zwraca członka który uczestniczył w wydarzeniu")
+@Description("Zwraca członka, który uczestniczył w wydarzeniu")
 @Events(
     "guild member join",
     "guild member leave",

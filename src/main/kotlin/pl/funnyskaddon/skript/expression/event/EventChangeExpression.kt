@@ -20,7 +20,7 @@ import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
 @FunnyDoc
 @Name("Change")
 @Description(
-    "Zwraca zmiane w rankingu",
+    "Zwraca zmianę w rankingu",
 )
 @Events(
     "kills change",

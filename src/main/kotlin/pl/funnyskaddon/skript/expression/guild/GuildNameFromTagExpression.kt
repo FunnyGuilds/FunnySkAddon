@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Guild Name From Tag")
-@Description("Zwraca nazwe gildii po jej tagu<br>", "<s>Nie wiadomo po co</s>")
+@Description("Zwraca nazwę gildii po jej tagu<br>", "<s>Nie wiadomo po co</s>")
 @Examples(
     "send \"%guild name from tag \"AD4U\"%\"",
     "set {_name} to guild name with tag \"AD4U\""

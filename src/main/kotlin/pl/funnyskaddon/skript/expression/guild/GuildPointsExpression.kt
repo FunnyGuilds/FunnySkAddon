@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Points")
-@Description("Zwraca liczbe punktów gildii")
+@Description("Zwraca liczbę punktów gildii")
 @Examples(
     "send \"%\"\"FajnaGildia\"\" guild points%\"",
     "set {_points} to \"FajnaGildia\" guild points"

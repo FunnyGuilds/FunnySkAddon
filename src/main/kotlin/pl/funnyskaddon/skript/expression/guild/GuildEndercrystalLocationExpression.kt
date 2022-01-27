@@ -14,7 +14,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Endercrystal Location")
-@Description("Zwraca lokalizację gildi (jej kryształu/serca)")
+@Description("Zwraca lokalizację gildii (jej kryształu/serca)")
 @Examples(
     "send \"%\"\"AC4U\"\" guild endercrystal location%\"",
     "set {_enderCrystal} to \"AC4U\" guild endercrystal location"

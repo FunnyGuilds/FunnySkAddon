@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getUserOption
 
 @FunnyDoc
 @Name("Player Kills")
-@Description("Zwraca liczbe zabójstw gracza")
+@Description("Zwraca liczbę zabójstw gracza")
 @Examples(
     "send \"%player kills%\"",
     "set {_kills} to player's kills"

@@ -13,7 +13,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Name")
-@Description("Zwraca nazwe gildii")
+@Description("Zwraca nazwę gildii")
 @Examples(
     "send \"%player's guild name%\"",
     "set {_name} to player's guild name"

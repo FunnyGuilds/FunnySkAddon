@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Deaths")
-@Description("Zwraca liczbe śmierci gildii (sume wszystkich śmierci jej członków)")
+@Description("Zwraca liczbę śmierci gildii (sumę wszystkich śmierci jej członków)")
 @Examples(
     "send \"%\"\"FajnaGildia\"\" guild deaths%\"",
     "set {_deaths} to \"FajnaGildia\" guild deaths"

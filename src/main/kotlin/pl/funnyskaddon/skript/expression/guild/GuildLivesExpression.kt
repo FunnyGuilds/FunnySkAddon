@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Lives")
-@Description("Zwraca liczbe żyć gildii")
+@Description("Zwraca liczbę żyć gildii")
 @Examples(
     "send \"%\"\"FajnaGildia\"\" guild lives%\"",
     "set {_lives} to \"FajnaGildia\" guild lives"

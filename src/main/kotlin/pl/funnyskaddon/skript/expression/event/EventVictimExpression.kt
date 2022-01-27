@@ -17,7 +17,7 @@ import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
 @Name("Victim")
-@Description("Zwraca ofiare która uczestniczyła w wydarzeniu")
+@Description("Zwraca ofiarę, która uczestniczyła w wydarzeniu")
 @Events(
     "kill points change"
 )

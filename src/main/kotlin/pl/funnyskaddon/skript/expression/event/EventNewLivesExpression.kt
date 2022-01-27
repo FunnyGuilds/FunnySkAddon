@@ -17,7 +17,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 @FunnyDoc
 @Name("Lives")
 @Description(
-    "Zwraca liczbę żyć gildii po zmianie ich ilości"
+    "Zwraca liczbę żyć gildii po ich zmianie"
 )
 @Events(
     "guild lives change"

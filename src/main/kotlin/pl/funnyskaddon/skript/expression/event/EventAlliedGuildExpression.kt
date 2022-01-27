@@ -20,7 +20,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 
 @FunnyDoc
 @Name("Ally")
-@Description("Zwraca gildię sojuszniczą która uczestniczyła w wydarzeniu")
+@Description("Zwraca gildię sojuszniczą, która uczestniczyła w wydarzeniu")
 @Events(
     "guild send ally invitation",
     "guild accept ally invitation",

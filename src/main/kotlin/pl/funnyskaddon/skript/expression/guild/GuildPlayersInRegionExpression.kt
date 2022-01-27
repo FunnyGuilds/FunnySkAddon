@@ -16,7 +16,7 @@ import java.util.stream.Collectors
 
 @FunnyDoc
 @Name("Players In Guild Region")
-@Description("Zwraca liste graczy znajdujących się na terenie gildii")
+@Description("Zwraca listę graczy znajdujących się na terenie gildii")
 @Examples(
     "loop players in (location at (100, 100, 100) in world \"world\") guild region:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""

@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getUserOption
 
 @FunnyDoc
 @Name("Player Points")
-@Description("Zwraca liczbe punktów rankingowych gracza")
+@Description("Zwraca liczbę punktów rankingowych gracza")
 @Examples(
     "send \"%player points%\"",
     "set {_points} to player's points"
