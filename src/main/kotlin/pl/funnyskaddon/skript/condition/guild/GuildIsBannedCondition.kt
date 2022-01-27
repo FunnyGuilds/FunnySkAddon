@@ -31,7 +31,7 @@ class GuildIsBannedCondition : GuildCondition() {
     override fun check(event: Event): Boolean {
         return event.getGuildOption(guildExpression)
             .map(Guild::isBanned)
-            .isPresent.xor(isNegated)
+            .orElseGet(false).xor(isNegated)
     }
 
 }

@@ -31,8 +31,8 @@ class PlayerIsInGuildRegionCondition : GuildPlayerCondition() {
 
     override fun check(event: Event): Boolean {
         return event.getPlayerOption(playerExpression)
-            .filter { player -> event.getGuild(guildExpression)?.isPlayerInGuildRegion(player) ?: false }
-            .isPresent.xor(isNegated)
+            .map { player -> event.getGuild(guildExpression)?.isPlayerInGuildRegion(player) ?: false }
+            .orElseGet(false).xor(isNegated)
     }
 
 }

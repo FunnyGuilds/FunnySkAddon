@@ -31,7 +31,7 @@ class GuildCanBuildCondition : GuildCondition() {
     override fun check(event: Event): Boolean {
         return event.getGuildOption(guildExpression)
             .map(Guild::canBuild)
-            .isPresent.xor(isNegated)
+            .orElseGet(false).xor(isNegated)
     }
 
 }

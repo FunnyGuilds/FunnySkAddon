@@ -30,8 +30,8 @@ class PlayerIsOwnerCondition : PlayerCondition() {
 
     override fun check(event: Event): Boolean {
         return event.getUserOption(playerExpression)
-            .filter(User::isOwner)
-            .isPresent.xor(isNegated)
+            .map(User::isOwner)
+            .orElseGet(false).xor(isNegated)
     }
 
 }
