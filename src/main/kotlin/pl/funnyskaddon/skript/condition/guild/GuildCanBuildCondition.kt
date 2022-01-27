@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Can Build")
-@Description("Sprawdza czy gildia może budować")
+@Description("Sprawdza, czy gildia może budować")
 @Examples(
     "if guild \"AC4U\" can build:",
     "if guild \"AC4U\" can't be build:"

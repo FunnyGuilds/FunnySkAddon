@@ -14,8 +14,8 @@ class RankDeathsChangeEvent : SimpleEvent() {
                 "Deaths Change",
                 RankDeathsChangeEvent::class.java,
                 DeathsChangeEvent::class.java,
-                "[player] [rank|ranking] deaths change"
-            ).description("Wywoływany kiedy zmieni się ilość śmierci gracza w rankingu")
+                "[player] [(rank|ranking)] deaths change"
+            ).description("Wywoływany, kiedy zmieni się liczba śmierci gracza w rankingu")
                 .examples(
                     "on player deaths change:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

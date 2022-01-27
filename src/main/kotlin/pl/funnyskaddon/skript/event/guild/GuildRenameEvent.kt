@@ -14,7 +14,7 @@ class GuildRenameEvent : SimpleEvent() {
                 GuildRenameEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildPreRenameEvent::class.java,
                 "guild rename"
-            ).description("Wywoływany kiedy zmieni się nazwa gildii")
+            ).description("Wywoływany, kiedy zmieni się nazwa gildii")
                 .examples(
                     "on guild rename:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

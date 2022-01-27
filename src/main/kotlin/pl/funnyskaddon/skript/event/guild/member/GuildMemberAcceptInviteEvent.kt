@@ -14,7 +14,7 @@ class GuildMemberAcceptInviteEvent : SimpleEvent() {
                 GuildMemberAcceptInviteEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberAcceptInviteEvent::class.java,
                 "guild member accept (invite|invitation)"
-            ).description("Wywoływany kiedy gracz zaakceptuje zaproszenie do gildii")
+            ).description("Wywoływany, kiedy gracz zaakceptuje zaproszenie do gildii")
                 .examples(
                     "on guild member accept invitation:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

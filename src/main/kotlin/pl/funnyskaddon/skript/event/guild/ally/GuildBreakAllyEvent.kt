@@ -14,7 +14,7 @@ class GuildBreakAllyEvent : SimpleEvent() {
                 GuildBreakAllyEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent::class.java,
                 "guild break ally"
-            ).description("Wywoływany kiedy gildia rozwiąże sojusz")
+            ).description("Wywoływany, kiedy gildia rozwiąże sojusz")
                 .examples(
                     "on guild break ally:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

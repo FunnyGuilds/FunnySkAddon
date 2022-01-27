@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getPlayerOption
 
 @FunnyDoc
 @Name("Is In Any Guild Region")
-@Description("Sprawdza czy gracz jest na terenie jakiejkolwiek gildii")
+@Description("Sprawdza, czy gracz jest na terenie jakiejkolwiek gildii")
 @Examples(
     "if player is in any guild region:",
     "if player is not in any guild region:"

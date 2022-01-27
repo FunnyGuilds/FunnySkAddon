@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getUserOption
 
 @FunnyDoc
 @Name("Is Owner")
-@Description("Sprawdza czy gracz jest właścicielem gildii")
+@Description("Sprawdza, czy gracz jest właścicielem gildii")
 @Examples(
     "if player is owner:",
     "if player is not owner:"
@@ -31,7 +31,8 @@ class PlayerIsOwnerCondition : PlayerCondition() {
     override fun check(event: Event): Boolean {
         return event.getUserOption(playerExpression)
             .map(User::isOwner)
-            .orElseGet(false).xor(isNegated)
+            .orElseGet(false)
+            .xor(isNegated)
     }
 
 }

@@ -14,7 +14,7 @@ class GuildMemberDeputyEvent : SimpleEvent() {
                 GuildMemberDeputyEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberDeputyEvent::class.java,
                 "guild member deputy"
-            ).description("Wywoływany kiedy zostanie wybrany nowy zastępca gildii")
+            ).description("Wywoływany, kiedy zostanie wybrany nowy zastępca gildii")
                 .examples(
                     "on guild member deputy:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

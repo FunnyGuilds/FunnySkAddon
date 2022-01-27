@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Set Guild Name")
-@Description("Ustawia (zmienia) nazwe gildii")
+@Description("Ustawia (zmienia) nazwę gildii")
 @Examples(
     "set \"AC4U\" guild name to \"FajnaNazwa\"",
 )

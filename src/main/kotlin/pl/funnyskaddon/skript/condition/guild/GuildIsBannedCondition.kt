@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Is Banned")
-@Description("Sprawdza czy gildia jest zbanowana")
+@Description("Sprawdza, czy gildia jest zbanowana")
 @Examples(
     "if guild \"AC4U\" is banned:",
     "if guild \"AC4U\" is not banned:"

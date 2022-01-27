@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getUserOption
 
 @FunnyDoc
 @Name("Is Deputy")
-@Description("Sprawdza czy gracz jest zastępcą gildii")
+@Description("Sprawdza, czy gracz jest zastępcą gildii")
 @Examples(
     "if player is deputy:",
     "if player is not deputy:"

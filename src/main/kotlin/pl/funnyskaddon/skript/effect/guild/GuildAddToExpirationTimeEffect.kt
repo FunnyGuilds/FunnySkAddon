@@ -16,7 +16,7 @@ import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Add To Expiration Time")
-@Description("Dodaje czas do daty wygaśnięcia gildii")
+@Description("Dodaje daną ilość czasu do daty wygaśnięcia gildii")
 @Examples(
     "add 1 day to \"FajnaNazwa\" guild expiration time",
 )

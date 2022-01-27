@@ -41,7 +41,7 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
         }
     }
 
-    override fun execute(event: Event) {
+    public override fun execute(event: Event) {
         event.getUserOption(valueExpression)
             .peek { user ->
                 val guild = event.getValueOption(valueExpression)

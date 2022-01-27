@@ -13,7 +13,7 @@ import pl.funnyskaddon.util.isPlayerInGuildRegion
 
 @FunnyDoc
 @Name("Is In Guild Region")
-@Description("Sprawdza czy gracz jest na terenie danej gildii")
+@Description("Sprawdza, czy gracz jest na terenie danej gildii")
 @Examples(
     "if player is in guild \"AC4U\" region:",
     "if player is not in guild \"AC4U\" region:"

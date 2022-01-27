@@ -15,7 +15,7 @@ import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Set Guild Lives")
-@Description("Ustawie ilość żyć gildii")
+@Description("Ustawie liczbę żyć gildii")
 @Examples(
     "set amount \"FajnaNazwa\" guild lives to 6",
 )

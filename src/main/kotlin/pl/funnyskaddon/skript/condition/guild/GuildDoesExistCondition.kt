@@ -11,7 +11,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Does Exist")
-@Description("Sprawdza czy gildia istnieje")
+@Description("Sprawdza, czy gildia istnieje")
 @Examples(
     "if guild \"AC4U\" exists:",
     "if guild \"AC4U\" doesn't exists:"

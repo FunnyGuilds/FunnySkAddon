@@ -14,7 +14,7 @@ class GuildMemberKickEvent : SimpleEvent() {
                 GuildMemberKickEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberKickEvent::class.java,
                 "guild member kick"
-            ).description("Wywoływany kiedy gracz zostanie wyrzucony z gildii")
+            ).description("Wywoływany, kiedy gracz zostanie wyrzucony z gildii")
                 .examples(
                     "on guild kick:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

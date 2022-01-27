@@ -14,7 +14,7 @@ class GuildLivesChangeEvent : SimpleEvent() {
                 GuildLivesChangeEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent::class.java,
                 "guild lives change"
-            ).description("Wywoływany kiedy zmieni się ilość żyć gildii")
+            ).description("Wywoływany, kiedy zmieni się liczba żyć gildii")
                 .examples(
                     "on guild lives change:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

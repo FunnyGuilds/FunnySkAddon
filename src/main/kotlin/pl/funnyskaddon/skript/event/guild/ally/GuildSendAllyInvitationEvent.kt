@@ -14,7 +14,7 @@ class GuildSendAllyInvitationEvent : SimpleEvent() {
                 GuildSendAllyInvitationEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent::class.java,
                 "guild send ally (invite|invitation)"
-            ).description("Wywoływany kiedy zostanie wysłane zaproszenie do sojuszu")
+            ).description("Wywoływany, kiedy zostanie wysłane zaproszenie do sojuszu")
                 .examples(
                     "on guild send ally invitation:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

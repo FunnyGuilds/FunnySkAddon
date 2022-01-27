@@ -15,7 +15,7 @@ import pl.funnyskaddon.skript.getValueOption
 
 @FunnyDoc
 @Name("Add Points")
-@Description("Dodaje points do rankingu gracza")
+@Description("Dodaje punkty do rankingu gracza")
 @Examples(
     "add 5 points to player's ranking",
 )

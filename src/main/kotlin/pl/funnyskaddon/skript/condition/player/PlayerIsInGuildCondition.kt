@@ -13,7 +13,7 @@ import pl.funnyskaddon.skript.getUserOption
 
 @FunnyDoc
 @Name("Is In Guild")
-@Description("Sprawdza czy gracz jest członkiem danej gildii")
+@Description("Sprawdza, czy gracz jest członkiem danej gildii")
 @Examples(
     "if player is in guild \"AC4U\":",
     "if player is not in guild \"AC4U\":"

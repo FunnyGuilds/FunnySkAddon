@@ -14,7 +14,7 @@ class GuildCreateEvent : SimpleEvent() {
                 GuildCreateEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildCreateEvent::class.java,
                 "guild (create|creation)"
-            ).description("Wywoływany kiedy gildia zostanie utworzona")
+            ).description("Wywoływany, kiedy gildia zostanie utworzona")
                 .examples(
                     "on guild create:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

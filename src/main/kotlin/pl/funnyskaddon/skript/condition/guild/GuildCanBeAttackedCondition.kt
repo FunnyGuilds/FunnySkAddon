@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild Can Be Attacked")
-@Description("Sprawdza czy gildia może być zaatakowana")
+@Description("Sprawdza, czy gildia może zostać zaatakowana")
 @Examples(
     "if guild \"AC4U\" can be attacked:",
     "if guild \"AC4U\" can't be attacked:"

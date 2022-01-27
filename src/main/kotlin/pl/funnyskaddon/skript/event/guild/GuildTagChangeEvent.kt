@@ -14,7 +14,7 @@ class GuildTagChangeEvent : SimpleEvent() {
                 GuildTagChangeEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.GuildPreTagChangeEvent::class.java,
                 "guild tag change"
-            ).description("Wywoływany kiedy zmieni się tag gildii")
+            ).description("Wywoływany, kiedy zmieni się tag gildii")
                 .examples(
                     "on guild tag change:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

@@ -14,7 +14,7 @@ class GuildMemberLeaveEvent : SimpleEvent() {
                 GuildMemberLeaveEvent::class.java,
                 net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaveEvent::class.java,
                 "guild member leave"
-            ).description("Wywoływany kiedy gracz opuści gildie")
+            ).description("Wywoływany, kiedy gracz opuści gildie")
                 .examples(
                     "on guild member leave",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",

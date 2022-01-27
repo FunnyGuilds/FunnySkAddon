@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.getGuildOption
 
 @FunnyDoc
 @Name("Guild PvP Is Enabled")
-@Description("Sprawdza czy gildia ma włączone pvp")
+@Description("Sprawdza, czy gildia ma włączone pvp")
 @Examples(
     "if guild \"AC4U\" pvp is enabled:",
     "if guild \"AC4U\" pvp is disabled:"
