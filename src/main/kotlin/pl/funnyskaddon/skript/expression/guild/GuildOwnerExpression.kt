@@ -28,7 +28,7 @@ class GuildOwnerExpression : GuildExpression<OfflinePlayer>() {
                 GuildOwnerExpression::class.java,
                 OfflinePlayer::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] guild (owner|leader)"
+                "%object%['s] [guild] (owner|leader)"
             )
         }
     }

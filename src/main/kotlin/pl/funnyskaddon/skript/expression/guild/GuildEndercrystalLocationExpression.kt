@@ -27,7 +27,7 @@ class GuildEndercrystalLocationExpression : GuildExpression<Location>() {
                 GuildEndercrystalLocationExpression::class.java,
                 Location::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] guild [(endercrystal|core)] location"
+                "%object%['s] [guild] [(endercrystal|core)] location"
             )
         }
     }

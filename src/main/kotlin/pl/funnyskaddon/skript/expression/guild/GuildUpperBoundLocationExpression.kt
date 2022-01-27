@@ -28,7 +28,7 @@ class GuildUpperBoundLocationExpression : GuildExpression<Location>() {
                 GuildUpperBoundLocationExpression::class.java,
                 Location::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] guild [region] (upper|up) (bound|point) [location]"
+                "%object%['s] [guild] [region] (upper|up) (bound|point) [location]"
             )
         }
     }

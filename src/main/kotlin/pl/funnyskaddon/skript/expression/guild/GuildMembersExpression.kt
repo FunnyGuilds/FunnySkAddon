@@ -29,7 +29,7 @@ class GuildMembersExpression : GuildExpression<OfflinePlayer>() {
                 GuildMembersExpression::class.java,
                 OfflinePlayer::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] guild members"
+                "%object%['s] [guild] members"
             )
         }
     }

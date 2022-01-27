@@ -27,7 +27,7 @@ class GuildHomeLocationExpression : GuildExpression<Location>() {
                 GuildHomeLocationExpression::class.java,
                 Location::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] guild (home|base) location"
+                "%object%['s] [guild] (home|base) location"
             )
         }
     }
