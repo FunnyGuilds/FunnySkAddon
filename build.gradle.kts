@@ -21,6 +21,8 @@ tasks.withType<ShadowJar> {
     relocate("org.jetbrains", "pl.funnyskaddon.libs.jetbrains")
     //Apache
     relocate("org.apache", "pl.funnyskaddon.libs.apache")
+    //Okaeri
+    relocate("eu.okaeri", "pl.funnyskaddon.libs.okaeri")
 
     minimize()
 }
