@@ -6,6 +6,7 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.FunnyGuilds
+import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
@@ -35,7 +36,8 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
     override fun get(event: Event): Array<OfflinePlayer>? {
         return event.getValueOption(positionExpression)
             .map(Number::toInt)
-            .map { position -> FunnyGuilds.getInstance().rankManager.getUser(position).offlinePlayer }
+            .map { position -> FunnyGuilds.getInstance().rankManager.getUser(position) }
+            .map(User::getOfflinePlayer)
             .map { value -> arrayOf(value) }
             .orNull
     }
