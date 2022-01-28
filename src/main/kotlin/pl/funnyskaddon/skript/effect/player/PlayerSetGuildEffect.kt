@@ -22,15 +22,13 @@ class PlayerSetGuildEffect : PlayerEffect<Any>(false) {
 
     companion object {
 
-        private val GUILD_ADD_MEMBER = GuildAddMemberEffect()
-
         init {
             Skript.registerEffect(PlayerSetGuildEffect::class.java, "set %offlineplayer%['s] guild to %object%")
         }
     }
 
     override fun execute(event: Event) {
-        GUILD_ADD_MEMBER.execute(event)
+        GuildAddMemberEffect.execute(event, valueExpression, playerExpression)
     }
 
 }
