@@ -29,7 +29,8 @@ class GuildDoesExistCondition : GuildCondition() {
 
     override fun check(event: Event): Boolean {
         return event.getGuildOption(guildExpression)
-            .isPresent.xor(isNegated)
+            .isPresent
+            .xor(isNegated)
     }
 
 }

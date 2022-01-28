@@ -31,7 +31,8 @@ class PlayerIsInAnyGuildRegionCondition : PlayerCondition() {
     override fun check(event: Event): Boolean {
         return event.getPlayerOption(playerExpression)
             .map { player -> FunnyGuilds.getInstance().regionManager.isInRegion(player.location) }
-            .orElseGet(false).xor(isNegated)
+            .orElseGet(false)
+            .xor(isNegated)
     }
 
 }

@@ -31,7 +31,8 @@ class PlayerHasGuildCondition : PlayerCondition() {
     override fun check(event: Event): Boolean {
         return event.getUserOption(playerExpression)
             .map(User::hasGuild)
-            .orElseGet(false).xor(isNegated)
+            .orElseGet(false)
+            .xor(isNegated)
     }
 
 }
