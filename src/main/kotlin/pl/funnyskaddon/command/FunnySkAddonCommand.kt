@@ -7,7 +7,7 @@ import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.docs.FunnyHTMLGenerator
-import pl.funnyskaddon.util.color
+import pl.funnyskaddon.extension.color
 import java.io.File
 
 class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {

@@ -8,7 +8,7 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import panda.std.Option
-import pl.funnyskaddon.util.getGuild
+import pl.funnyskaddon.extension.getGuild
 
 fun <T> Event.getValue(expression: Expression<T>): T? {
     return expression.getSingle(this)

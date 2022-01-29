@@ -1,4 +1,4 @@
-package pl.funnyskaddon.util
+package pl.funnyskaddon.extension
 
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild

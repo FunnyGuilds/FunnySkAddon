@@ -1,10 +1,9 @@
-package pl.funnyskaddon.scheduler
+package pl.funnyskaddon.update
 
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 import pl.funnyskaddon.FunnySkAddon
-import pl.funnyskaddon.util.VersionUtil
-import pl.funnyskaddon.util.color
+import pl.funnyskaddon.extension.color
 import java.util.regex.Pattern
 
 class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
@@ -22,7 +21,7 @@ class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
             val description = plugin.description
 
             val fullRelease = PATTERN.matcher(description.version).matches()
-            val latestVersion: String? = VersionUtil.getLatestVersion(
+            val latestVersion: String = VersionChecker.getLatestVersion(
                 "https://raw.githubusercontent.com/FunnyGuilds/FunnySkAddon/master/VERSION",
                 plugin.configuration.update.onlyFullReleases && fullRelease
             )

@@ -7,10 +7,10 @@ import ch.njol.skript.doc.Name
 import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.isLocationInGuildRegion
 import pl.funnyskaddon.skript.condition.GuildValueCondition
 import pl.funnyskaddon.skript.getGuildOption
 import pl.funnyskaddon.skript.getValue
-import pl.funnyskaddon.util.isLocationInGuildRegion
 
 @FunnyDoc
 @Name("Is Location In Guild Region")

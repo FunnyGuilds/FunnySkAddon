@@ -9,9 +9,9 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.getLowerPoint
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuildOption
-import pl.funnyskaddon.util.getLowerPoint
 
 @FunnyDoc
 @Name("Guild Lower Bound Location")

@@ -1,4 +1,4 @@
-package pl.funnyskaddon.util
+package pl.funnyskaddon.extension
 
 import net.md_5.bungee.api.ChatColor
 

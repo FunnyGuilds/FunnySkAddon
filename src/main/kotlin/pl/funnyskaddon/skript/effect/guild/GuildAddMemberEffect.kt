@@ -18,10 +18,10 @@ import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.getGuild
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getUserOption
 import pl.funnyskaddon.skript.getValueOption
-import pl.funnyskaddon.util.getGuild
 
 
 @FunnyDoc

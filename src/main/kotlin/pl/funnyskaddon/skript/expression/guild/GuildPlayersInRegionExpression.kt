@@ -9,9 +9,9 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.getPlayersInGuildRegion
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuildOption
-import pl.funnyskaddon.util.getPlayersInGuildRegion
 import java.util.stream.Collectors
 
 @FunnyDoc

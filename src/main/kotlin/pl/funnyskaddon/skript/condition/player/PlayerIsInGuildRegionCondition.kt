@@ -6,10 +6,10 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.isPlayerInGuildRegion
 import pl.funnyskaddon.skript.condition.GuildPlayerCondition
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getPlayerOption
-import pl.funnyskaddon.util.isPlayerInGuildRegion
 
 @FunnyDoc
 @Name("Is In Guild Region")

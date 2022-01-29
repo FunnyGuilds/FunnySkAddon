@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin
 import pl.funnyskaddon.command.FunnySkAddonCommand
 import pl.funnyskaddon.data.Configuration
 import pl.funnyskaddon.event.rank.PointsChangeListener
-import pl.funnyskaddon.scheduler.UpdateCheckScheduler
+import pl.funnyskaddon.update.UpdateCheckScheduler
 import java.io.File
 
 class FunnySkAddon : JavaPlugin() {

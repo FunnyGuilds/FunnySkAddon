@@ -9,9 +9,9 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.getUpperPoint
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuildOption
-import pl.funnyskaddon.util.getUpperPoint
 
 @FunnyDoc
 @Name("Guild Upper Bound Location")
