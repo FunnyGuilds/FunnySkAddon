@@ -2,6 +2,7 @@ package pl.funnyskaddon.update
 
 import org.apache.commons.io.IOUtils
 import org.bukkit.Bukkit
+import java.io.IOException
 import java.io.InputStream
 import java.net.URL
 import java.nio.charset.StandardCharsets
@@ -13,7 +14,7 @@ class VersionChecker {
 
             try {
                 input = URL(url).openStream()
-            } catch (ex: Exception) {
+            } catch (ex: IOException) {
                 Bukkit.getLogger().severe("Unable to check for updates")
                 ex.printStackTrace()
                 return emptyList()
@@ -21,7 +22,7 @@ class VersionChecker {
 
             try {
                 return IOUtils.readLines(input, StandardCharsets.UTF_8)
-            } catch (ex: Exception) {
+            } catch (ex: IOException) {
                 Bukkit.getLogger().severe("Unable to determine update")
                 ex.printStackTrace()
             } finally {
