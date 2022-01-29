@@ -10,7 +10,7 @@ group = "pl.funnyskaddon"
 version = "2.2.16-Beta"
 
 tasks.withType<ShadowJar> {
-    archiveFileName.set("FunnySkAddon-${project.version}.jar")
+    archiveFileName.set("FunnySkAddon ${project.version}.jar")
 
     //Kotlin
     relocate("kotlin", "pl.funnyskaddon.libs.kotlin")
