@@ -14,32 +14,28 @@ fun Any.getGuild(): Guild? {
     val userManager = funnyGuilds.userManager
     val guildManager = funnyGuilds.guildManager
 
-    val guild: Guild?
-
     when (this) {
         is Guild -> {
-            guild = this
+            return this
         }
         is Player -> {
-            guild = userManager.findByPlayer(player)
+            return userManager.findByPlayer(this)
                 .map(User::getGuild)
                 .orNull
         }
         is Location -> {
-            guild = FunnyGuilds.getInstance().regionManager.findRegionAtLocation(this)
+            return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(this)
                 .map(Region::getGuild)
                 .orNull
         }
         else -> {
             val toString = this.toString()
 
-            guild = guildManager.findByName(toString)
+            return guildManager.findByName(toString)
                 .orElse(guildManager.findByTag(toString))
                 .orNull
         }
     }
-
-    return guild
 }
 
 fun Guild.getLowerPoint(): Location {
@@ -64,8 +60,8 @@ fun Guild.getUpperPoint(): Location {
 
 fun Guild.isLocationInGuildRegion(location: Location?): Boolean {
     return FunnyGuilds.getInstance().regionManager.findRegionAtLocation(location)
-        .filter { region -> region == this.region }
-        .isPresent
+        .map { region -> region == this.region }
+        .orElseGet(false)
 }
 
 fun Guild.isPlayerInGuildRegion(player: Player): Boolean {
