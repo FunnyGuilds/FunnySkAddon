@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin
 import pl.funnyskaddon.command.FunnySkAddonCommand
 import pl.funnyskaddon.data.Configuration
 import pl.funnyskaddon.event.rank.PointsChangeListener
+import pl.funnyskaddon.update.PlayerJoinListener
 import pl.funnyskaddon.update.UpdateCheckScheduler
 import java.io.File
 
@@ -56,17 +57,16 @@ class FunnySkAddon : JavaPlugin() {
             it.saveDefaults()
             it.load(true)
         }
-
         fgConfiguration = FunnyGuilds.getInstance().pluginConfiguration
 
-        pluginManager.registerEvents(PointsChangeListener(this), this)
-
         getCommand("funnyskaddon").executor = FunnySkAddonCommand(this)
+
+        pluginManager.registerEvents(PointsChangeListener(this), this)
+        pluginManager.registerEvents(PlayerJoinListener(this), this)
 
         UpdateCheckScheduler(this).start()
 
         addon = Skript.registerAddon(this)
-
         addon.loadClasses(
             "pl.funnyskaddon.skript",
             "condition.guild",
@@ -86,7 +86,6 @@ class FunnySkAddon : JavaPlugin() {
 
         val pluginId = 6363
         val metrics = Metrics(this, pluginId)
-
         metrics.addCustomChart(SimplePie("funnyguilds_version") {
             this.server.pluginManager.getPlugin("FunnyGuilds").description.version
         })

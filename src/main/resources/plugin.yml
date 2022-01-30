@@ -16,3 +16,6 @@ permissions:
   funnyskaddon.cmd:
     description: Uprawnienie do glownej (i jedynej komendy) w pluginie - /funnyskaddon
     default: op
+  funnyskaddon.update.check:
+    description: Uprawnienie odpowiedzialne za to czy gracz ma otrzymywac powiadomienie o dostępnej aktualizacji pluginu przy wejsciu na serwer
+    default: op
