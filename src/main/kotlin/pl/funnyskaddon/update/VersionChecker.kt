@@ -59,7 +59,7 @@ class VersionChecker {
             val description = plugin.description
 
             val fullRelease = FULL_RELEASE_PATTERN.matcher(description.version).matches()
-            val latestVersion: String = VersionChecker.getLatestVersion(
+            val latestVersion: String = getLatestVersion(
                 "https://raw.githubusercontent.com/FunnyGuilds/FunnySkAddon/master/VERSION",
                 plugin.configuration.update.onlyFullReleases && fullRelease
             )
@@ -71,7 +71,7 @@ class VersionChecker {
             sendUpdateMessage(receiver, description.version, latestVersion)
         }
 
-        fun sendUpdateMessage(receiver: CommandSender, currentVersion: String, latestVersion: String) {
+        private fun sendUpdateMessage(receiver: CommandSender, currentVersion: String, latestVersion: String) {
             val github = "https://github.com/funnyguilds/funnyskaddon"
             val discord = "https://discord.com/invite/CYvyq3u"
 
