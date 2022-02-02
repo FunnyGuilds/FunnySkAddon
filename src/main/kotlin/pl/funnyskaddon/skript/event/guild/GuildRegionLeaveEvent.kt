@@ -12,7 +12,7 @@ class GuildRegionLeaveEvent : SimpleEvent() {
             Skript.registerEvent(
                 "Guild Region Leave",
                 GuildRegionLeaveEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.GuildBanEvent::class.java,
+                net.dzikoysk.funnyguilds.event.guild.GuildRegionLeaveEvent::class.java,
                 "guild region leave"
             ).description("Wywoływany, kiedy gracz opuści teren gildii")
                 .examples(
