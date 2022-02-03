@@ -26,6 +26,11 @@ class GuildDeleteEffect : GuildEffect() {
         init {
             Skript.registerEffect(
                 GuildDeleteEffect::class.java,
+                "delete %guild%",
+                "delete %string%",
+                "delete %offlineplayer%['s] [guild]",
+                "delete %location%['s] [guild]",
+                "delete %block%['s] [guild]",
                 "delete %object%['s] [guild]"
             )
         }
