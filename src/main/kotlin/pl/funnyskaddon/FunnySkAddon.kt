@@ -81,7 +81,8 @@ class FunnySkAddon : JavaPlugin() {
             "expression.guild",
             "expression.player",
             "expression.top",
-            "expression.config"
+            "expression.config",
+            "type"
         )
 
         val pluginId = 6363
