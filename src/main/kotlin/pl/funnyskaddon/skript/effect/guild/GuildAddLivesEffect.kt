@@ -27,7 +27,7 @@ class GuildAddLivesEffect : GuildValueEffect<Number>(false) {
                 GuildAddLivesEffect::class.java,
                 "add %number% live[s] to %guild%",
                 "add %number% live[s] to %string%",
-                "add %number% live[s] to %offlinplayer%['s] guild",
+                "add %number% live[s] to %offlineplayer%['s] guild",
                 "add %number% live[s] to %location%['s] guild",
                 "add %number% live[s] to %block%['s] guild",
                 "add %number% live[s] to %object%['s] guild"
