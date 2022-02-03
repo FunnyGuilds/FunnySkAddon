@@ -24,7 +24,7 @@ class GuildTagExpression : GuildExpression<String>() {
         init {
             Skript.registerExpression(
                 GuildTagExpression::class.java,
-                String::class.javaObjectType,
+                String::class.java,
                 ExpressionType.PROPERTY,
                 "%guild%['s] tag",
                 "%string%['s] tag",
@@ -44,7 +44,7 @@ class GuildTagExpression : GuildExpression<String>() {
     }
 
     override fun getReturnType(): Class<String> {
-        return String::class.javaObjectType
+        return String::class.java
     }
 
 }

@@ -16,10 +16,10 @@ abstract class GuildValueCondition<T>(private var inverted: Boolean) : GuildCond
     ): Boolean {
         if (inverted) {
             valueExpression = expression[0] as Expression<T>
-            guildExpression = expression[1] as Expression<Any>
+            guildExpression = expression[1] as Expression<*>
         } else {
             valueExpression = expression[1] as Expression<T>
-            guildExpression = expression[0] as Expression<Any>
+            guildExpression = expression[0] as Expression<*>
         }
         return true
     }

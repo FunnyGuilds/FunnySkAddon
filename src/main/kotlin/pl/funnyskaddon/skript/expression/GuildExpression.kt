@@ -6,7 +6,7 @@ import ch.njol.util.Kleenean
 
 abstract class GuildExpression<T> : FunnyExpression<T>() {
 
-    protected lateinit var guildExpression: Expression<Any>
+    protected lateinit var guildExpression: Expression<*>
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -14,7 +14,7 @@ abstract class GuildExpression<T> : FunnyExpression<T>() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        guildExpression = expression[0] as Expression<Any>
+        guildExpression = expression[0]
         return true
     }
 

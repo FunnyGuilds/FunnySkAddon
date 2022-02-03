@@ -44,10 +44,10 @@ fun Event.getUserOption(expression: Expression<OfflinePlayer>): Option<User> {
         .flatMap(FunnyGuilds.getInstance().userManager::findByPlayer)
 }
 
-fun Event.getGuild(expression: Expression<Any>): Guild? {
+fun Event.getGuild(expression: Expression<*>): Guild? {
     return expression.getSingle(this)?.getGuild()
 }
 
-fun Event.getGuildOption(expression: Expression<Any>): Option<Guild> {
+fun Event.getGuildOption(expression: Expression<*>): Option<Guild> {
     return Option.of(this.getGuild(expression))
 }

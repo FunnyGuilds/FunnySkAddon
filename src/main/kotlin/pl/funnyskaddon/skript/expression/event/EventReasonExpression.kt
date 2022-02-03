@@ -28,7 +28,7 @@ class EventReasonExpression : SimpleExpression<String>() {
         init {
             Skript.registerExpression(
                 EventReasonExpression::class.java,
-                String::class.javaObjectType,
+                String::class.java,
                 ExpressionType.SIMPLE,
                 *EventType.patterns.toTypedArray()
             )
@@ -96,7 +96,7 @@ class EventReasonExpression : SimpleExpression<String>() {
     }
 
     override fun getReturnType(): Class<out String> {
-        return String::class.javaObjectType
+        return String::class.java
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
