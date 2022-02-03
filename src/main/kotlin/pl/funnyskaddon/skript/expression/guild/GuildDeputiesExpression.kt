@@ -29,7 +29,12 @@ class GuildDeputiesExpression : GuildExpression<OfflinePlayer>() {
                 GuildDeputiesExpression::class.java,
                 OfflinePlayer::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] deputies"
+                "%guild%['s] deputies",
+                "%string%['s] deputies",
+                "%offlineplayer%['s] guild['s] deputies",
+                "%location%['s] guild['s] deputies",
+                "%block%['s] guild['s] deputies",
+                "%object%['s] guild['s] deputies"
             )
         }
     }

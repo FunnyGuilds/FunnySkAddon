@@ -27,7 +27,12 @@ class GuildAreaExpression : GuildExpression<Int>() {
                 GuildAreaExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] [region] area"
+                "%guild%['s] [region] area",
+                "%string%['s] [region] area",
+                "%offlineplayer%['s] guild['s] [region] area",
+                "%location%['s] guild['s] [region] area",
+                "%block%['s] guild['s] [region] area",
+                "%object%['s] guild['s] [region] area"
             )
         }
     }

@@ -26,7 +26,12 @@ class GuildNameExpression : GuildExpression<String>() {
                 GuildNameExpression::class.java,
                 String::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] name"
+                "%guild%['s] name",
+                "%string%['s] name",
+                "%offlineplayer%['s] guild['s] name",
+                "%location%['s] guild['s] name",
+                "%block%['s] guild['s] name",
+                "%object%['s] guild['s] name"
             )
         }
     }

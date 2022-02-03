@@ -26,7 +26,12 @@ class GuildTagExpression : GuildExpression<String>() {
                 GuildTagExpression::class.java,
                 String::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] tag"
+                "%guild%['s] tag",
+                "%string%['s] tag",
+                "%offlineplayer%['s] guild['s] tag",
+                "%location%['s] guild['s] tag",
+                "%block%['s] guild['s] tag",
+                "%object%['s] guild['s] tag",
             )
         }
     }

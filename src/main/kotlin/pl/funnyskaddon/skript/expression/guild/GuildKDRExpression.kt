@@ -25,7 +25,12 @@ class GuildKDRExpression : GuildExpression<Float>() {
                 GuildKDRExpression::class.java,
                 Float::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] [(rank|ranking)] kdr"
+                "%guild%['s] [(rank|ranking)] kdr",
+                "%string%['s] [(rank|ranking)] kdr",
+                "%offlineplayer%['s] guild['s] [(rank|ranking)] kdr",
+                "%location%['s] guild['s] [(rank|ranking)] kdr",
+                "%block%['s] guild['s] [(rank|ranking)] kdr",
+                "%object%['s] guild['s] [(rank|ranking)] kdr"
             )
         }
     }

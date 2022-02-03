@@ -25,7 +25,12 @@ class GuildEnlargeLevelExpression : GuildExpression<Int>() {
                 GuildEnlargeLevelExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] [region] enlarge ((level|lvl))"
+                "%guild%['s] [region] enlarge (level|lvl)",
+                "%string%['s] [region] enlarge (level|lvl)",
+                "%offlineplayer%['s] guild['s] [region] enlarge (level|lvl)",
+                "%location%['s] guild['s] [region] enlarge (level|lvl)",
+                "%block%['s] guild['s] [region] enlarge (level|lvl)",
+                "%object%['s] guild['s] [region] enlarge (level|lvl)"
             )
         }
     }

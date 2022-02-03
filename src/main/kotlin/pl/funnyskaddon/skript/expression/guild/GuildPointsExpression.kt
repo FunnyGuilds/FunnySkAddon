@@ -25,7 +25,12 @@ class GuildPointsExpression : GuildExpression<Int>() {
                 GuildPointsExpression::class.java,
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] [(rank|ranking)] points [(amount|count)]"
+                "%guild%['s]  [(rank|ranking)] points [(amount|count)]",
+                "%string%['s]  [(rank|ranking)] points [(amount|count)]",
+                "%offlineplayer%['s] guild['s]  [(rank|ranking)] points [(amount|count)]",
+                "%location%['s] guild['s]  [(rank|ranking)] points [(amount|count)]",
+                "%block%['s] guild['s]  [(rank|ranking)] points [(amount|count)]",
+                "%object%['s] guild['s]  [(rank|ranking)] points [(amount|count)]",
             )
         }
     }
