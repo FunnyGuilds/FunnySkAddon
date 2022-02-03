@@ -22,7 +22,12 @@ class GuildSetSizeEffect : GuildValueEffect<Number>(false) {
         init {
             Skript.registerEffect(
                 GuildSetSizeEffect::class.java,
-                "set size of %object%['s] [guild] to %number%"
+                "set size of %object% %number%",
+                "set size of %string% to %number%",
+                "set size of %offlineplayer%['s] [guild] to %number%",
+                "set size of %location%['s] [guild] to %number%",
+                "set size of %block%['s] [guild] to %number%",
+                "set size of %object%['s] [guild] to %number%",
             )
         }
     }

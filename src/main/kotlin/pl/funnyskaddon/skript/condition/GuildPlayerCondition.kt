@@ -8,7 +8,7 @@ import org.bukkit.OfflinePlayer
 abstract class GuildPlayerCondition : FunnyCondition() {
 
     protected lateinit var playerExpression: Expression<OfflinePlayer>
-    protected lateinit var guildExpression: Expression<Any>
+    protected lateinit var guildExpression: Expression<*>
 
     override fun init(
         expression: Array<Expression<*>?>,
@@ -17,7 +17,7 @@ abstract class GuildPlayerCondition : FunnyCondition() {
         parseResult: SkriptParser.ParseResult?
     ): Boolean {
         playerExpression = expression[0] as Expression<OfflinePlayer>
-        guildExpression = expression[1] as Expression<Any>
+        guildExpression = expression[1] as Expression<*>
         if (parseResult != null) {
             isNegated = ((matchedPattern >= 1) xor (parseResult.mark == 1))
         }

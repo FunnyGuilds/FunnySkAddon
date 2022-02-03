@@ -27,6 +27,11 @@ class GuildSetNameEffect : GuildValueEffect<String>(false) {
         init {
             Skript.registerEffect(
                 GuildSetNameEffect::class.java,
+                "set %guild%['s] name to %string%",
+                "set %string%['s] [guild] name to %string%",
+                "set %offlineplayer%['s] [guild] name to %string%",
+                "set %location%['s] [guild] name to %string%",
+                "set %block%['s] [guild] name to %string%",
                 "set %object%['s] [guild] name to %string%"
             )
         }

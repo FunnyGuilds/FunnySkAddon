@@ -29,7 +29,13 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>() {
                 GuildPlayersInRegionExpression::class.java,
                 Player::class.java,
                 ExpressionType.PROPERTY,
-                "players in %object%['s] [guild] region"
+                "players in %guild%['s] region",
+                "players in %string%['s] region",
+                "players in %offlineplayer%['s] [guild] region",
+                "players in %location%['s] [guild] region",
+                "players in %location%['s] [guild] region",
+                "players in %block%['s] [guild] region",
+                "players in %object%['s] [guild] region",
             )
         }
     }

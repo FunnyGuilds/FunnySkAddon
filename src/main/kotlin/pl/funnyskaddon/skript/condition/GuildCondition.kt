@@ -6,7 +6,7 @@ import ch.njol.util.Kleenean
 
 abstract class GuildCondition : FunnyCondition() {
 
-    lateinit var guildExpression: Expression<Any>
+    lateinit var guildExpression: Expression<*>
 
     override fun init(
         expression: Array<Expression<*>?>,
@@ -14,7 +14,7 @@ abstract class GuildCondition : FunnyCondition() {
         isDelayed: Kleenean?,
         parseResult: SkriptParser.ParseResult?
     ): Boolean {
-        guildExpression = expression[0] as Expression<Any>
+        guildExpression = expression[0] as Expression<*>
         if (parseResult != null) {
             isNegated = ((matchedPattern >= 1) xor (parseResult.mark == 1))
         }

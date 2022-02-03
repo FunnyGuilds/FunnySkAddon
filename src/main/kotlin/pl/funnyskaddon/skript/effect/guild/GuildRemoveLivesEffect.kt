@@ -26,6 +26,11 @@ class GuildRemoveLivesEffect : GuildValueEffect<Number>(false) {
         init {
             Skript.registerEffect(
                 GuildRemoveLivesEffect::class.java,
+                "remove %number% live[s] from %guild%",
+                "remove %number% live[s] from %string%['s]",
+                "remove %number% live[s] from %offlineplayer%['s] [guild]",
+                "remove %number% live[s] from %location%['s] [guild]",
+                "remove %number% live[s] from %block%['s] [guild]",
                 "remove %number% live[s] from %object%['s] [guild]"
             )
         }

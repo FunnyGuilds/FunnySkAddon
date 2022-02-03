@@ -26,7 +26,12 @@ class GuildSetHomeEffect : GuildValueEffect<Location>(false) {
         init {
             Skript.registerEffect(
                 GuildSetHomeEffect::class.java,
-                "set %object%['s] [guild] (home|base) location to %location%"
+                "set %guild%['s] (home|base) location to %location%",
+                "set %string%['s] (home|base) location to %location%",
+                "set %offlineplayer%['s] [guild] (home|base) location to %location%",
+                "set %location%['s] [guild] (home|base) location to %location%",
+                "set %block%['s] [guild] (home|base) location to %location%",
+                "set %object%['s] [guild] (home|base) location to %location%",
             )
         }
     }

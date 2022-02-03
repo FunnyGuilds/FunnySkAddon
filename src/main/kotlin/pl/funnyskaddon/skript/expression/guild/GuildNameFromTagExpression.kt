@@ -30,7 +30,7 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
         init {
             Skript.registerExpression(
                 GuildNameFromTagExpression::class.java,
-                String::class.javaObjectType,
+                String::class.java,
                 ExpressionType.PROPERTY,
                 "guild name from tag %string%",
                 "guild name with tag %string%"
@@ -65,7 +65,7 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
     }
 
     override fun getReturnType(): Class<out String> {
-        return String::class.javaObjectType
+        return String::class.java
     }
 
 }

@@ -8,6 +8,7 @@ import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.SkriptString
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuildOption
 
@@ -18,28 +19,34 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%player's guild tag%\"",
     "set {_tag} to player's guild tag"
 )
-class GuildTagExpression : GuildExpression<String>() {
+class GuildTagExpression : GuildExpression<SkriptString>() {
 
     companion object {
         init {
             Skript.registerExpression(
                 GuildTagExpression::class.java,
-                String::class.javaObjectType,
+                SkriptString::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] tag"
+                "%guild%['s] tag",
+                "%string%['s] tag",
+                "%offlineplayer%['s] guild['s] tag",
+                "%location%['s] guild['s] tag",
+                "%block%['s] guild['s] tag",
+                "%object%['s] guild['s] tag",
             )
         }
     }
 
-    override fun get(event: Event): Array<String>? {
+    override fun get(event: Event): Array<SkriptString>? {
         return event.getGuildOption(guildExpression)
             .map(Guild::getTag)
+            .map { SkriptString(it) }
             .map { value -> arrayOf(value) }
             .orNull
     }
 
-    override fun getReturnType(): Class<String> {
-        return String::class.javaObjectType
+    override fun getReturnType(): Class<SkriptString> {
+        return SkriptString::class.java
     }
 
 }

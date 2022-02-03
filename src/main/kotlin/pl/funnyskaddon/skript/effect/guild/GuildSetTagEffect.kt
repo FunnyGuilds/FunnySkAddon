@@ -26,6 +26,11 @@ class GuildSetTagEffect : GuildValueEffect<String>(false) {
         init {
             Skript.registerEffect(
                 GuildSetTagEffect::class.java,
+                "set %guild%['s] tag to %string%",
+                "set %string%['s] [guild] tag to %string%",
+                "set %offlineplayer%['s] [guild] tag to %string%",
+                "set %location%['s] [guild] tag to %string%",
+                "set %block%['s] [guild] tag to %string%",
                 "set %object%['s] [guild] tag to %string%"
             )
         }

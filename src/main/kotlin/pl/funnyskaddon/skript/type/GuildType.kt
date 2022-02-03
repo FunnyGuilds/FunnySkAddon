@@ -31,7 +31,7 @@ class GuildType {
                         }
 
                         override fun toVariableNameString(guild: Guild): String {
-                            return "guild: ${guild.name}"
+                            return guild.name
                         }
 
                         override fun toString(guild: Guild, flags: Int): String {

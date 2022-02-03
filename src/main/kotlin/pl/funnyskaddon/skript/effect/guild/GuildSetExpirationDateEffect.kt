@@ -28,6 +28,11 @@ class GuildSetExpirationDateEffect : GuildValueEffect<Date>(false) {
         init {
             Skript.registerEffect(
                 GuildSetExpirationDateEffect::class.java,
+                "set (expiration|validity) [(date|time)] of %guild% to %date%",
+                "set (expiration|validity) [(date|time)] of %string% to %date%",
+                "set (expiration|validity) [(date|time)] of %offlineplayer%['s] [guild] to %date%",
+                "set (expiration|validity) [(date|time)] of %location%['s] [guild] to %date%",
+                "set (expiration|validity) [(date|time)] of %block%['s] [guild] to %date%",
                 "set (expiration|validity) [(date|time)] of %object%['s] [guild] to %date%"
             )
         }

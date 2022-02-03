@@ -27,7 +27,12 @@ class GuildValidityDateExpression : GuildExpression<Date>() {
                 GuildValidityDateExpression::class.java,
                 Date::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] validity date"
+                "%guild%['s] validity date",
+                "%string%['s] validity date",
+                "%offlineplayer%['s] guild['s] validity date",
+                "%location%['s] guild['s] validity date",
+                "%block%['s] guild['s] validity date",
+                "%object%['s] guild['s] validity date",
             )
         }
     }

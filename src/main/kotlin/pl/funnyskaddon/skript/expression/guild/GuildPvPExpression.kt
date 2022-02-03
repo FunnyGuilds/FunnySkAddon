@@ -26,7 +26,12 @@ class GuildPvPExpression : GuildExpression<Boolean>() {
                 GuildPvPExpression::class.java,
                 Boolean::class.javaObjectType,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] pvp [[is] enabled]"
+                "%guild%['s] pvp [[is] enabled]",
+                "%string%['s] pvp [[is] enabled]",
+                "%offlineplayer%['s] guild['s] pvp [[is] enabled]",
+                "%location%['s] guild['s] pvp [[is] enabled]",
+                "%block%['s] guild['s] pvp [[is] enabled]",
+                "%object%['s] guild['s] pvp [[is] enabled]"
             )
         }
     }

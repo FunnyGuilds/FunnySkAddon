@@ -27,7 +27,12 @@ class GuildEndercrystalLocationExpression : GuildExpression<Location>() {
                 GuildEndercrystalLocationExpression::class.java,
                 Location::class.java,
                 ExpressionType.PROPERTY,
-                "%object%['s] [guild] [(endercrystal|core)] location"
+                "%guild%['s] (endercrystal|core) [location]",
+                "%string%['s] (endercrystal|core) [location]",
+                "%offlineplayer%['s] guild['s] (endercrystal|core) [location]",
+                "%location%['s] guild['s] (endercrystal|core) [location]",
+                "%block%['s] guild['s] (endercrystal|core) [location]",
+                "%object%['s] guild['s] (endercrystal|core) [location]"
             )
         }
     }
