@@ -36,7 +36,7 @@ class EventRankExpression : SimpleExpression<UserRank>() {
         init {
             Skript.registerExpression(
                 EventRankExpression::class.java,
-                UserRank::class.javaObjectType,
+                UserRank::class.java,
                 ExpressionType.SIMPLE,
                 *EventType.patterns.toTypedArray()
             )
@@ -131,7 +131,7 @@ class EventRankExpression : SimpleExpression<UserRank>() {
     }
 
     override fun getReturnType(): Class<out UserRank> {
-        return UserRank::class.javaObjectType
+        return UserRank::class.java
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
