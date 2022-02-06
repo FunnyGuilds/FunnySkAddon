@@ -46,4 +46,11 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
         return OfflinePlayer::class.java
     }
 
+    override fun toString(e: Event?, debug: Boolean): String {
+        if (e != null) {
+            return "player at position ${positionExpression.toString(e, debug)}"
+        }
+        return "guild at position of top"
+    }
+
 }

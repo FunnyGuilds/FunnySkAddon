@@ -20,7 +20,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%player's guild owner%\"",
     "set {_owner} to player's guild owner"
 )
-class GuildOwnerExpression : GuildExpression<OfflinePlayer>() {
+class GuildOwnerExpression : GuildExpression<OfflinePlayer>("owner of") {
 
     companion object {
         init {

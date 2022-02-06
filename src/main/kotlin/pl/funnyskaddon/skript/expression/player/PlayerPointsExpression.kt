@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getUserOption
     "send \"%player points%\"",
     "set {_points} to player's points"
 )
-class PlayerPointsExpression : PlayerExpression<Int>() {
+class PlayerPointsExpression : PlayerExpression<Int>("ranking points of") {
 
     companion object {
         init {

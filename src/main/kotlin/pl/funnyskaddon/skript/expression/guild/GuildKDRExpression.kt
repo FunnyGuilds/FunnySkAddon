@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"\"FajnaGildia\"\" guild kdr%\"",
     "set {_kdr} to \"FajnGildia\" guild kdr"
 )
-class GuildKDRExpression : GuildExpression<Float>() {
+class GuildKDRExpression : GuildExpression<Float>("kdr of") {
 
     companion object {
         init {

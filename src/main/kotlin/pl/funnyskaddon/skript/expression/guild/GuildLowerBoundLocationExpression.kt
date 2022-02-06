@@ -20,7 +20,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"AC4U\" guild region lower bound%\"",
     "set {_lowerBound} to \"AC4U\" guild region lower bound"
 )
-class GuildLowerBoundLocationExpression : GuildExpression<Location>() {
+class GuildLowerBoundLocationExpression : GuildExpression<Location>("lower bound location of") {
 
     companion object {
         init {

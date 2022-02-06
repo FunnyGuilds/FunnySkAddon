@@ -18,15 +18,15 @@ import pl.funnyskaddon.skript.expression.FunnyExpression
     "send \"%required items to join guild%\"",
     "set {_items} to required items to join guild"
 )
-class ConfigItemsToJoinGuildVipExpression : FunnyExpression<ItemStack>() {
+class ConfigItemsToJoinGuildExpression : FunnyExpression<ItemStack>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                ConfigItemsToJoinGuildVipExpression::class.java,
+                ConfigItemsToJoinGuildExpression::class.java,
                 ItemStack::class.java,
                 ExpressionType.PROPERTY,
-                "[required] items (to|for) join guuild"
+                "[required] items (to|for) join guild"
             )
         }
     }
@@ -35,8 +35,16 @@ class ConfigItemsToJoinGuildVipExpression : FunnyExpression<ItemStack>() {
         return FunnySkAddon.fgConfiguration.joinItems.toTypedArray()
     }
 
+    override fun isSingle(): Boolean {
+        return false
+    }
+
     override fun getReturnType(): Class<ItemStack> {
         return ItemStack::class.java
+    }
+
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "items required to join a guild"
     }
 
 }

@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%player's guild tag%\"",
     "set {_tag} to player's guild tag"
 )
-class GuildTagExpression : GuildExpression<String>() {
+class GuildTagExpression : GuildExpression<String>("tag of") {
 
     companion object {
         init {

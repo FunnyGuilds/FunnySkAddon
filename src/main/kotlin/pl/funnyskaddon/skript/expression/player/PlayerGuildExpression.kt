@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.getUserOption
     "send \"%player guild%\"",
     "set {_guild} to player's guild"
 )
-class PlayerGuildExpression : PlayerExpression<Guild>() {
+class PlayerGuildExpression : PlayerExpression<Guild>("guild of") {
 
     companion object {
         init {

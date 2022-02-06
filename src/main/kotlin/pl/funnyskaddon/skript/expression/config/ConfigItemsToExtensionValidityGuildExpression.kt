@@ -35,8 +35,16 @@ class ConfigItemsToExtensionValidityGuildExpression : FunnyExpression<ItemStack>
         return FunnySkAddon.fgConfiguration.validityItems.toTypedArray()
     }
 
+    override fun isSingle(): Boolean {
+        return false
+    }
+
     override fun getReturnType(): Class<ItemStack> {
         return ItemStack::class.java
+    }
+
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "items required to extend guild validity"
     }
 
 }

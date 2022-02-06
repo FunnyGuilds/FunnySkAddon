@@ -4,7 +4,6 @@ import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
-import org.bukkit.event.Event
 
 abstract class FunnyExpression<T> : SimpleExpression<T>() {
 
@@ -19,10 +18,6 @@ abstract class FunnyExpression<T> : SimpleExpression<T>() {
 
     override fun isSingle(): Boolean {
         return true
-    }
-
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return null
     }
 
 }

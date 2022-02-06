@@ -19,7 +19,7 @@ import kotlin.math.abs
     "send \"%\"\"AC4U\"\" guild region area%\"",
     "set {_area} to \"AC4U\" guild region area"
 )
-class GuildAreaExpression : GuildExpression<Int>() {
+class GuildAreaExpression : GuildExpression<Int>("area of") {
 
     companion object {
         init {

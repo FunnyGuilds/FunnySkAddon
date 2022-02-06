@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getUserOption
     "send \"%player deaths%\"",
     "set {_deaths} to player's deaths"
 )
-class PlayerDeathsExpression : PlayerExpression<Int>() {
+class PlayerDeathsExpression : PlayerExpression<Int>("deaths of") {
 
     companion object {
         init {

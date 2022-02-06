@@ -19,7 +19,7 @@ import java.util.*
     "send \"%\"AC4U\" guild validity time%\"",
     "set {_time} to \"AC4U\" guild validity time"
 )
-class GuildValidityTimeExpression : GuildExpression<Timespan>() {
+class GuildValidityTimeExpression : GuildExpression<Timespan>("validity time of") {
 
     companion object {
         init {
