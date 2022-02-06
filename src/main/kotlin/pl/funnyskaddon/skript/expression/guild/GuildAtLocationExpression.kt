@@ -39,4 +39,8 @@ class GuildAtLocationExpression : ValueExpression<Location>() {
             .orNull
     }
 
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "guild at location" + valueExpression.toString(e, debug)
+    }
+
 }

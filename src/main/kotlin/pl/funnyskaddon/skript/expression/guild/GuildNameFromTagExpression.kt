@@ -61,7 +61,7 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
     }
 
     override fun toString(event: Event?, debug: Boolean): String? {
-        return null
+        return "guild name from tag"
     }
 
     override fun getReturnType(): Class<out String> {

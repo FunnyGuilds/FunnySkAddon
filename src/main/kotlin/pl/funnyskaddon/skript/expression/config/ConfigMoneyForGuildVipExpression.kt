@@ -38,4 +38,8 @@ class ConfigMoneyForGuildVipExpression : FunnyExpression<Double>() {
         return Double::class.javaObjectType
     }
 
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "money required for vip to create a guild"
+    }
+
 }

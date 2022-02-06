@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"AC4U\" guild enlarge level%\"",
     "set {_enlarge} to \"AC4U\" guild enlarge level"
 )
-class GuildEnlargeLevelExpression : GuildExpression<Int>() {
+class GuildEnlargeLevelExpression : GuildExpression<Int>("enlarge level of") {
 
     companion object {
         init {

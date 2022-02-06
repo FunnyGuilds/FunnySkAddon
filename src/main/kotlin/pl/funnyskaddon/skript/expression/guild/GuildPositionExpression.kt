@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%player's guild top position%\"",
     "set {_position} to player's guild top position"
 )
-class GuildPositionExpression : GuildExpression<Int>() {
+class GuildPositionExpression : GuildExpression<Int>("ranking position of") {
 
     companion object {
         init {

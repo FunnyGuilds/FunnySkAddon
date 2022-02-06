@@ -44,4 +44,11 @@ class TopGuildExpression : TopExpression<Guild>() {
         return Guild::class.java
     }
 
+    override fun toString(e: Event?, debug: Boolean): String {
+        if (e != null) {
+            return "guild at position ${positionExpression.toString(e, debug)}"
+        }
+        return "guild at position of top"
+    }
+
 }

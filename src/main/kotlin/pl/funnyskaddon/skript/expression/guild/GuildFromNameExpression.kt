@@ -37,4 +37,8 @@ class GuildFromNameExpression : ValueExpression<String>() {
             .orNull
     }
 
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "guild from name " + valueExpression.toString(e, debug)
+    }
+
 }

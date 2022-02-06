@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"\"FajnaGildia\"\" guild points%\"",
     "set {_points} to \"FajnaGildia\" guild points"
 )
-class GuildPointsExpression : GuildExpression<Int>() {
+class GuildPointsExpression : GuildExpression<Int>("ranking points of") {
 
     companion object {
         init {

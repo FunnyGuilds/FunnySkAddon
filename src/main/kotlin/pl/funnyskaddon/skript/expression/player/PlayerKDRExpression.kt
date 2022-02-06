@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getUserOption
     "send \"%player kdr%\"",
     "set {_kdr} to player's kdr"
 )
-class PlayerKDRExpression : PlayerExpression<Number>() {
+class PlayerKDRExpression : PlayerExpression<Number>("kdr of") {
 
     companion object {
         init {

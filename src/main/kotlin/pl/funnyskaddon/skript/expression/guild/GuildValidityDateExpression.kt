@@ -19,7 +19,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"AC4U\" guild validity date%\"",
     "set {_time} to \"AC4U\" guild validity date"
 )
-class GuildValidityDateExpression : GuildExpression<Date>() {
+class GuildValidityDateExpression : GuildExpression<Date>("validity date of") {
 
     companion object {
         init {

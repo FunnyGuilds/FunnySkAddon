@@ -19,7 +19,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"AC4U\" guild home location%\"",
     "set {_home} to \"AC4U\" guild home location"
 )
-class GuildHomeLocationExpression : GuildExpression<Location>() {
+class GuildHomeLocationExpression : GuildExpression<Location>("home location of") {
 
     companion object {
         init {

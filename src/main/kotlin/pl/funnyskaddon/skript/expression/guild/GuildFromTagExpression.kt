@@ -37,4 +37,8 @@ class GuildFromTagExpression : ValueExpression<String>() {
             .orNull
     }
 
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "guild from tag " + valueExpression.toString(e, debug)
+    }
+
 }
