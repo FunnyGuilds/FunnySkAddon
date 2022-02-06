@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%player's guild name%\"",
     "set {_name} to player's guild name"
 )
-class GuildNameExpression : GuildExpression<String>() {
+class GuildNameExpression : GuildExpression<String>("name of") {
 
     companion object {
         init {

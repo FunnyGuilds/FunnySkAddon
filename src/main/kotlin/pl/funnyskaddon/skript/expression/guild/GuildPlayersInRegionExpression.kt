@@ -21,7 +21,7 @@ import java.util.stream.Collectors
     "loop players in (location at (100, 100, 100) in world \"world\") guild region:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
 )
-class GuildPlayersInRegionExpression : GuildExpression<Player>() {
+class GuildPlayersInRegionExpression : GuildExpression<Player>("players in region of") {
 
     companion object {
         init {
@@ -45,6 +45,10 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>() {
             .flatMap(Guild::getPlayersInGuildRegion)
             .collect(Collectors.toSet())
             .toTypedArray()
+    }
+
+    override fun isSingle(): Boolean {
+        return false
     }
 
     override fun getReturnType(): Class<Player> {

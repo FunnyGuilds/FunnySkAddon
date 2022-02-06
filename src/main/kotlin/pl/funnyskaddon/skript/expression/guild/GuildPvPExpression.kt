@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"AC4U\" guild pvp%\"",
     "set {_pvpStatus} to \"AC4U\" guild pvp"
 )
-class GuildPvPExpression : GuildExpression<Boolean>() {
+class GuildPvPExpression : GuildExpression<Boolean>("pvp of") {
 
     companion object {
         init {

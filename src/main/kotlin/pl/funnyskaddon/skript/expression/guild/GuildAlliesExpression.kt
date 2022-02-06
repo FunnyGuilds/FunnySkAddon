@@ -19,7 +19,7 @@ import java.util.stream.Collectors
     "loop \"AC4U\" guild allies:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
 )
-class GuildAlliesExpression : GuildExpression<Guild>() {
+class GuildAlliesExpression : GuildExpression<Guild>("allies of") {
 
     companion object {
         init {
@@ -42,6 +42,10 @@ class GuildAlliesExpression : GuildExpression<Guild>() {
             .flatMap(Guild::getAllies)
             .collect(Collectors.toSet())
             .toTypedArray()
+    }
+
+    override fun isSingle(): Boolean {
+        return false
     }
 
     override fun getReturnType(): Class<Guild> {

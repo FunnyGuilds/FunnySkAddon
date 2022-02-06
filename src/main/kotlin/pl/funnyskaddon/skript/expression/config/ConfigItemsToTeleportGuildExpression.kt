@@ -35,8 +35,16 @@ class ConfigItemsToTeleportGuildExpression : FunnyExpression<ItemStack>() {
         return FunnySkAddon.fgConfiguration.baseItems.toTypedArray()
     }
 
+    override fun isSingle(): Boolean {
+        return false
+    }
+
     override fun getReturnType(): Class<ItemStack> {
         return ItemStack::class.java
+    }
+
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "items required to teleport a guild"
     }
 
 }

@@ -20,7 +20,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"AC4U\" guild region upper bound%\"",
     "set {_upperBound} to \"AC4U\" guild region upper bound"
 )
-class GuildUpperBoundLocationExpression : GuildExpression<Location>() {
+class GuildUpperBoundLocationExpression : GuildExpression<Location>("upper bound location of") {
 
     companion object {
         init {

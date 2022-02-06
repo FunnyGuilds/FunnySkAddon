@@ -21,7 +21,7 @@ import java.util.stream.Collectors
     "loop player's guild deputies:",
     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
 )
-class GuildDeputiesExpression : GuildExpression<OfflinePlayer>() {
+class GuildDeputiesExpression : GuildExpression<OfflinePlayer>("deputies of") {
 
     companion object {
         init {
@@ -45,6 +45,10 @@ class GuildDeputiesExpression : GuildExpression<OfflinePlayer>() {
             .map(User::getOfflinePlayer)
             .collect(Collectors.toSet())
             .toTypedArray()
+    }
+
+    override fun isSingle(): Boolean {
+        return false
     }
 
     override fun getReturnType(): Class<OfflinePlayer> {

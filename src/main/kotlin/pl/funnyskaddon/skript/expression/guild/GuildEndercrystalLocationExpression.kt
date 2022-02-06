@@ -19,7 +19,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"\"AC4U\"\" guild endercrystal location%\"",
     "set {_enderCrystal} to \"AC4U\" guild endercrystal location"
 )
-class GuildEndercrystalLocationExpression : GuildExpression<Location>() {
+class GuildEndercrystalLocationExpression : GuildExpression<Location>("endercrystal location of") {
 
     companion object {
         init {

@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"\"FajnaGildia\"\" guild deaths%\"",
     "set {_deaths} to \"FajnaGildia\" guild deaths"
 )
-class GuildDeathsExpression : GuildExpression<Int>() {
+class GuildDeathsExpression : GuildExpression<Int>("deaths of") {
 
     companion object {
         init {

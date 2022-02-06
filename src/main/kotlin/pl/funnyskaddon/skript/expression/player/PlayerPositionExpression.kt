@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getUserOption
     "send \"%player top position%\"",
     "set {_position} to player's top position"
 )
-class PlayerPositionExpression : PlayerExpression<Int>() {
+class PlayerPositionExpression : PlayerExpression<Int>("ranking position of") {
 
     companion object {
         init {

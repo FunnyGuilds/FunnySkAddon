@@ -35,8 +35,16 @@ class GuildListExpression : FunnyExpression<Guild>() {
         return FunnyGuilds.getInstance().guildManager.guilds.toTypedArray()
     }
 
+    override fun isSingle(): Boolean {
+        return false
+    }
+
     override fun getReturnType(): Class<Guild> {
         return Guild::class.java
+    }
+
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "all guilds"
     }
 
 }

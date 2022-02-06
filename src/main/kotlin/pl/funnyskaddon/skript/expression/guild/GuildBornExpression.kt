@@ -19,7 +19,7 @@ import pl.funnyskaddon.skript.getGuildOption
     "send \"%\"\"AC4U\"\" guild born date%\"",
     "set {_born} to \"AC4U\" guild born date"
 )
-class GuildBornExpression : GuildExpression<Date>() {
+class GuildBornExpression : GuildExpression<Date>("born data of") {
 
     companion object {
         init {

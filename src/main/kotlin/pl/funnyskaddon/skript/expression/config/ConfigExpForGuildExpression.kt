@@ -38,4 +38,8 @@ class ConfigExpForGuildExpression : FunnyExpression<Int>() {
         return Int::class.javaObjectType
     }
 
+    override fun toString(e: Event?, debug: Boolean): String {
+        return "experience required to create a guild"
+    }
+
 }

@@ -6,7 +6,7 @@ import org.bukkit.event.Event
 abstract class FunnyEffect : Effect() {
 
     override fun toString(event: Event?, debug: Boolean): String? {
-        return null
+        return "funny effect"
     }
 
 }
