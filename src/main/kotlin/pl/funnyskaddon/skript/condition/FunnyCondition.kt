@@ -5,7 +5,7 @@ import org.bukkit.event.Event
 
 abstract class FunnyCondition : Condition() {
 
-    override fun toString(event: Event?, debug: Boolean): String? {
+    override fun toString(event: Event?, debug: Boolean): String {
         return "funny condition"
     }
 

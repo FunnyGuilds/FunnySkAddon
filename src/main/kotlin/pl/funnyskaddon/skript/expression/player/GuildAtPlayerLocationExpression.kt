@@ -21,7 +21,7 @@ import pl.funnyskaddon.skript.getPlayerOption
     "send \"%guild at player's location%\"",
     "set {_guild} to guild at player's location"
 )
-class GuildAtPlayerLocationExpression : PlayerExpression<Guild>("") {
+class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
 
     companion object {
         init {
