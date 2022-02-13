@@ -8,7 +8,7 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.PlayerExpression
-import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getUser
 
 @FunnyDoc
 @Name("Player KDR")
@@ -31,7 +31,7 @@ class PlayerKDRExpression : PlayerExpression<Number>("kdr of") {
     }
 
     override fun get(event: Event): Array<Float> {
-        return event.getUserOption(playerExpression)
+        return event.getUser(playerExpression)
             .map { user -> user.rank.kdr }
             .orElse(0F)
             .map { value -> arrayOf(value) }

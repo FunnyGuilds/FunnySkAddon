@@ -9,7 +9,7 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 import kotlin.math.abs
 
 @FunnyDoc
@@ -38,8 +38,8 @@ class GuildAreaExpression : GuildExpression<Int>("area of") {
     }
 
     override fun get(event: Event): Array<Int>? {
-        return event.getGuildOption(guildExpression)
-            .map(Guild::getRegion)
+        return event.getGuild(guildExpression)
+            .flatMap(Guild::getRegion)
             .map { region -> abs((region.lowerX - region.upperX) * (region.lowerZ - region.upperZ)) }
             .map { value -> arrayOf(value) }
             .orNull

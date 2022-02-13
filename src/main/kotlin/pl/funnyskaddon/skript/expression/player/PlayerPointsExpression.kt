@@ -8,7 +8,7 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.PlayerExpression
-import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getUser
 
 @FunnyDoc
 @Name("Player Points")
@@ -31,7 +31,7 @@ class PlayerPointsExpression : PlayerExpression<Int>("ranking points of") {
     }
 
     override fun get(event: Event): Array<Int> {
-        return event.getUserOption(playerExpression)
+        return event.getUser(playerExpression)
             .map { user -> user.rank.points }
             .orElse(0)
             .map { value -> arrayOf(value) }

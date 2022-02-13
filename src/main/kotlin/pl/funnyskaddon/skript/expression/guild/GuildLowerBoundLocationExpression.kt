@@ -6,12 +6,12 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
+import net.dzikoysk.funnyguilds.guild.Region
 import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.extension.getLowerPoint
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild Lower Bound Location")
@@ -39,10 +39,11 @@ class GuildLowerBoundLocationExpression : GuildExpression<Location>("lower bound
     }
 
     override fun get(event: Event): Array<Location>? {
-        return event.getGuildOption(guildExpression)
-            .map(Guild::getLowerPoint)
+        return event.getGuild(guildExpression)
+            .flatMap(Guild::getRegion)
+            .map(Region::getLowerCorner)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Location> {

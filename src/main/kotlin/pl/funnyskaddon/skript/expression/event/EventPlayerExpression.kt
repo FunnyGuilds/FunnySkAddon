@@ -70,7 +70,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         FUNNY("(player|doer)", FunnyEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is FunnyEvent) {
-                    return event.doer.player
+                    return event.doer.player.orNull()
                 }
                 return null
             }
@@ -79,7 +79,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         KILLS_CHANGE("[kills( |-)change( |-)](player|doer)", KillsChangeEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is KillsChangeEvent) {
-                    return event.doer.player
+                    return event.doer.player.orNull()
                 }
                 return null
             }
@@ -88,7 +88,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         DEATHS_CHANGE("[deaths( |-)change( |-)](player|doer)", DeathsChangeEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is DeathsChangeEvent) {
-                    return event.doer.player
+                    return event.doer.player.orNull()
                 }
                 return null
             }
@@ -97,7 +97,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         POINTS_CHANGE("[points( |-)change( |-)](player|doer)", PointsChangeEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is PointsChangeEvent) {
-                    return event.doer.player
+                    return event.doer.player.orNull()
                 }
                 return null
             }

@@ -20,7 +20,7 @@ class EventExpressionUtil {
                         if (event.doer == null) {
                             return null
                         }
-                        return event.doer.player
+                        return event.doer.player.orNull()
                     }
                 }, 0
             )

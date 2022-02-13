@@ -13,7 +13,7 @@ import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getValue
 
 @FunnyDoc
 @Name("Guild Name From Tag")
@@ -49,7 +49,7 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
     }
 
     override fun get(event: Event): Array<String>? {
-        return event.getValueOption(tagExpression)
+        return event.getValue(tagExpression)
             .flatMap(FunnyGuilds.getInstance().guildManager::findByTag)
             .map(Guild::getName)
             .map { value -> arrayOf(value) }

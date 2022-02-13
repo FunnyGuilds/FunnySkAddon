@@ -8,7 +8,7 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild KDR")
@@ -36,7 +36,7 @@ class GuildKDRExpression : GuildExpression<Float>("kdr of") {
     }
 
     override fun get(event: Event): Array<Float> {
-        return event.getGuildOption(guildExpression)
+        return event.getGuild(guildExpression)
             .map { guild -> guild.rank.kdr }
             .orElse(0F)
             .map { value -> arrayOf(value) }

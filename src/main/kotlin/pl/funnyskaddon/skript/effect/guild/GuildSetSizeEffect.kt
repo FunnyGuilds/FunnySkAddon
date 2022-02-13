@@ -4,11 +4,12 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
-import pl.funnyskaddon.skript.getGuildOption
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getGuild
+import pl.funnyskaddon.skript.getValue
 
 @FunnyDoc
 @Name("Set Guild Size")
@@ -33,11 +34,12 @@ class GuildSetSizeEffect : GuildValueEffect<Number>(false) {
     }
 
     override fun execute(event: Event) {
-        event.getGuildOption(guildExpression)
-            .peek { guild ->
-                event.getValueOption(valueExpression)
+        event.getGuild(guildExpression)
+            .flatMap(Guild::getRegion)
+            .peek { region ->
+                event.getValue(valueExpression)
                     .map(Number::toInt)
-                    .peek { value -> guild.region.size = value }
+                    .peek { value -> region.size = value }
             }
     }
 

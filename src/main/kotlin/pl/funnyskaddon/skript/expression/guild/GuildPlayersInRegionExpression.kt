@@ -11,7 +11,7 @@ import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getPlayersInGuildRegion
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
 
 @FunnyDoc
@@ -41,7 +41,7 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>("players in regio
     }
 
     override fun get(event: Event): Array<Player> {
-        return event.getGuildOption(guildExpression).toStream()
+        return event.getGuild(guildExpression).toStream()
             .flatMap(Guild::getPlayersInGuildRegion)
             .collect(Collectors.toSet())
             .toTypedArray()

@@ -10,7 +10,7 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild Validity Date")
@@ -38,7 +38,7 @@ class GuildValidityDateExpression : GuildExpression<Date>("validity date of") {
     }
 
     override fun get(event: Event): Array<Date>? {
-        return event.getGuildOption(guildExpression)
+        return event.getGuild(guildExpression)
             .map(Guild::getValidity)
             .map { validity -> Date(validity) }
             .map { value -> arrayOf(value) }

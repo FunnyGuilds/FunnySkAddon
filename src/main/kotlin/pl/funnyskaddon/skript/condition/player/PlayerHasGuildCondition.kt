@@ -8,7 +8,7 @@ import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.PlayerCondition
-import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getUser
 
 @FunnyDoc
 @Name("Has Guild")
@@ -29,7 +29,7 @@ class PlayerHasGuildCondition : PlayerCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return event.getUserOption(playerExpression)
+        return event.getUser(playerExpression)
             .map(User::hasGuild)
             .orElseGet(false)
             .xor(isNegated)

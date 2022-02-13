@@ -5,10 +5,11 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild Enlarge Level")
@@ -36,8 +37,9 @@ class GuildEnlargeLevelExpression : GuildExpression<Int>("enlarge level of") {
     }
 
     override fun get(event: Event): Array<Int>? {
-        return event.getGuildOption(guildExpression)
-            .map { guild -> guild.region.enlarge }
+        return event.getGuild(guildExpression)
+            .flatMap(Guild::getRegion)
+            .map { region -> region.enlarge }
             .orElse(0)
             .map { value -> arrayOf(value) }
             .get()

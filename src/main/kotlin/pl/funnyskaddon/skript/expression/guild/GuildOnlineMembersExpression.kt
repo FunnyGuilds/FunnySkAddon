@@ -11,7 +11,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
 
 @FunnyDoc
@@ -40,9 +40,9 @@ class GuildOnlineMembersExpression : GuildExpression<Player>("online members of"
     }
 
     override fun get(event: Event): Array<Player> {
-        return event.getGuildOption(guildExpression).toStream()
+        return event.getGuild(guildExpression).toStream()
             .flatMap(Guild::getOnlineMembers)
-            .map(User::getPlayer)
+            .flatMap(User::getPlayer)
             .collect(Collectors.toSet())
             .toTypedArray()
     }

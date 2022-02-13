@@ -8,7 +8,7 @@ import net.dzikoysk.funnyguilds.FunnyGuilds
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.PlayerCondition
-import pl.funnyskaddon.skript.getPlayerOption
+import pl.funnyskaddon.skript.getPlayer
 
 @FunnyDoc
 @Name("Is In Any Guild Region")
@@ -29,7 +29,7 @@ class PlayerIsInAnyGuildRegionCondition : PlayerCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return event.getPlayerOption(playerExpression)
+        return event.getPlayer(playerExpression)
             .map { player -> FunnyGuilds.getInstance().regionManager.isInRegion(player.location) }
             .orElseGet(false)
             .xor(isNegated)

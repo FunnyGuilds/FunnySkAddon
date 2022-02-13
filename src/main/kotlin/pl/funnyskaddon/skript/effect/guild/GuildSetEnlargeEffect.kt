@@ -11,8 +11,8 @@ import org.bukkit.event.Event
 import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
-import pl.funnyskaddon.skript.getGuildOption
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getGuild
+import pl.funnyskaddon.skript.getValue
 
 @FunnyDoc
 @Name("Set Guild Enlarge")
@@ -37,17 +37,19 @@ class GuildSetEnlargeEffect : GuildValueEffect<Number>(false) {
     }
 
     override fun execute(event: Event) {
-        event.getGuildOption(guildExpression)
+        event.getGuild(guildExpression)
             .peek { guild ->
-                event.getValueOption(valueExpression)
+                event.getValue(valueExpression)
                     .map(Number::toInt)
                     .peek valuePeek@{ value ->
                         if (!SimpleEventHandler.handle(GuildEnlargeEvent(FunnyEvent.EventCause.CONSOLE, null, guild))) {
                             return@valuePeek
                         }
 
-                        guild.region.enlarge = value
-                        guild.region.size = value * FunnySkAddon.fgConfiguration.enlargeSize
+                        guild.region.peek { region ->
+                            region.enlarge = value
+                            region.size = value * FunnySkAddon.fgConfiguration.enlargeSize
+                        }
                     }
             }
     }

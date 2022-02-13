@@ -54,28 +54,28 @@ class EventMemberExpression : SimpleExpression<Player>() {
             override fun get(event: Event): Player? {
                 return when (event) {
                     is GuildMemberInviteEvent -> {
-                        event.member.player
+                        event.member.player.orNull()
                     }
                     is GuildMemberAcceptInviteEvent -> {
-                        event.member.player
+                        event.member.player.orNull()
                     }
                     is GuildMemberRevokeInviteEvent -> {
-                        event.member.player
+                        event.member.player.orNull()
                     }
                     is GuildMemberJoinEvent -> {
-                        event.member.player
+                        event.member.player.orNull()
                     }
                     is GuildMemberLeaveEvent -> {
-                        event.member.player
+                        event.member.player.orNull()
                     }
                     is GuildMemberKickEvent -> {
-                        event.member.player
+                        event.member.player.orNull()
                     }
                     is GuildMemberLeaderEvent -> {
-                        event.member.player
+                        event.member.player.orNull()
                     }
                     is GuildMemberDeputyEvent -> {
-                        event.member.player
+                        event.member.player.orNull()
                     }
                     else -> null
                 }

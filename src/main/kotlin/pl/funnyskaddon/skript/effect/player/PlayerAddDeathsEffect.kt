@@ -10,8 +10,8 @@ import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.PlayerEffect
-import pl.funnyskaddon.skript.getUserOption
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getUser
+import pl.funnyskaddon.skript.getValue
 
 
 @FunnyDoc
@@ -32,9 +32,9 @@ class PlayerAddDeathsEffect : PlayerEffect<Number>(true) {
     }
 
     override fun execute(event: Event) {
-        event.getUserOption(playerExpression)
+        event.getUser(playerExpression)
             .peek { user ->
-                event.getValueOption(valueExpression)
+                event.getValue(valueExpression)
                     .map(Number::toInt)
                     .peek valuePeek@{ value ->
                         val deathsChangeEvent = DeathsChangeEvent(FunnyEvent.EventCause.CONSOLE, user, user, value)
