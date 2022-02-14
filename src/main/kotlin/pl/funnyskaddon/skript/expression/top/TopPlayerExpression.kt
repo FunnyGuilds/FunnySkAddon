@@ -6,12 +6,13 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.FunnyGuilds
+import net.dzikoysk.funnyguilds.rank.DefaultTops
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.TopExpression
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getValue
 
 @FunnyDoc
 @Name("Player In Position")
@@ -28,18 +29,25 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
                 TopPlayerExpression::class.java,
                 OfflinePlayer::class.java,
                 ExpressionType.PROPERTY,
-                "player in position %number% [of (top|rank|ranking)]"
+                "player in position %number% [of (top|rank|ranking)]",
+                "player in position %number% [of %-string% (top|rank|ranking)]"
             )
         }
     }
 
     override fun get(event: Event): Array<OfflinePlayer>? {
-        return event.getValueOption(positionExpression)
+        return event.getValue(positionExpression)
             .map(Number::toInt)
-            .map { position -> FunnyGuilds.getInstance().rankManager.getUser(position) }
+            .flatMap { position ->
+                val type: String = event.getValue(typeExpression).orElseGet(DefaultTops.USER_POINTS_TOP)
+                FunnyGuilds.getInstance().userRankManager.getUser(
+                    type,
+                    position
+                )
+            }
             .map(User::getOfflinePlayer)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<OfflinePlayer> {
@@ -48,9 +56,10 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {
-            return "player at position ${positionExpression.toString(e, debug)}"
+            val type: String = e.getValue(typeExpression).orElseGet(DefaultTops.USER_POINTS_TOP)
+            return "player at position ${positionExpression.toString(e, debug)} in $type top"
         }
-        return "guild at position of top"
+        return "player at position of top"
     }
 
 }

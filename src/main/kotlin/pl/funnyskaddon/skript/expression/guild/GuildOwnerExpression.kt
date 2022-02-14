@@ -11,7 +11,7 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild Owner")
@@ -39,11 +39,11 @@ class GuildOwnerExpression : GuildExpression<OfflinePlayer>("owner of") {
     }
 
     override fun get(event: Event): Array<OfflinePlayer>? {
-        return event.getGuildOption(guildExpression)
+        return event.getGuild(guildExpression)
             .map(Guild::getOwner)
             .map(User::getOfflinePlayer)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<OfflinePlayer> {

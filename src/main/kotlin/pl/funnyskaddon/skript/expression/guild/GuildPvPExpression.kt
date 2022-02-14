@@ -9,7 +9,7 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild PvP")
@@ -37,10 +37,10 @@ class GuildPvPExpression : GuildExpression<Boolean>("pvp of") {
     }
 
     override fun get(event: Event): Array<Boolean>? {
-        return event.getGuildOption(guildExpression)
+        return event.getGuild(guildExpression)
             .map(Guild::getPvP)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Boolean> {

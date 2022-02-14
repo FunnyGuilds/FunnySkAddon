@@ -9,7 +9,7 @@ import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.GuildPlayerCondition
 import pl.funnyskaddon.skript.getGuild
-import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getUser
 
 @FunnyDoc
 @Name("Is In Guild")
@@ -30,7 +30,7 @@ class PlayerIsInGuildCondition : GuildPlayerCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return event.getUserOption(playerExpression)
+        return event.getUser(playerExpression)
             .map(User::getGuild)
             .map { guild -> guild.equals(event.getGuild(guildExpression)) }
             .orElseGet(false)

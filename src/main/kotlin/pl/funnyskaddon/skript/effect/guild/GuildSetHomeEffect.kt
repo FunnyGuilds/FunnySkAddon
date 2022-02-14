@@ -11,8 +11,8 @@ import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
-import pl.funnyskaddon.skript.getGuildOption
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getGuild
+import pl.funnyskaddon.skript.getValue
 
 @FunnyDoc
 @Name("Set Guild Home")
@@ -37,16 +37,16 @@ class GuildSetHomeEffect : GuildValueEffect<Location>(false) {
     }
 
     override fun execute(event: Event) {
-        event.getGuildOption(guildExpression)
+        event.getGuild(guildExpression)
             .peek { guild ->
-                event.getValueOption(valueExpression)
+                event.getValue(valueExpression)
                     .peek valuePeek@{ value ->
                         val livesChangeEvent = GuildBaseChangeEvent(FunnyEvent.EventCause.CONSOLE, null, guild, value)
                         if (!SimpleEventHandler.handle(livesChangeEvent)) {
                             return@valuePeek
                         }
 
-                        guild.home = value
+                        guild.setHome(value)
                     }
             }
     }

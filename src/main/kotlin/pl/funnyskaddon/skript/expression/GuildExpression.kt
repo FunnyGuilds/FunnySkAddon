@@ -28,7 +28,7 @@ abstract class GuildExpression<T>() : FunnyExpression<T>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null && !toString.isNullOrEmpty()) {
-            return toString + " guild \"" + e.getGuild(guildExpression).toString() + "\""
+            return "$toString guild \"${e.getGuild(guildExpression)}\""
         }
         return "$toString guild"
     }

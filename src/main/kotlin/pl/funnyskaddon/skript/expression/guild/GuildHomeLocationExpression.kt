@@ -10,7 +10,7 @@ import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild Home Location")
@@ -38,10 +38,10 @@ class GuildHomeLocationExpression : GuildExpression<Location>("home location of"
     }
 
     override fun get(event: Event): Array<Location>? {
-        return event.getGuildOption(guildExpression)
-            .map(Guild::getHome)
+        return event.getGuild(guildExpression)
+            .flatMap(Guild::getHome)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Location> {

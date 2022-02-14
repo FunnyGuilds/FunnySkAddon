@@ -12,7 +12,7 @@ import org.bukkit.Location
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.ValueExpression
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getValue
 
 @FunnyDoc
 @Name("Guild At Location")
@@ -32,11 +32,11 @@ class GuildAtLocationExpression : ValueExpression<Location>() {
     }
 
     override fun get(event: Event): Array<Guild>? {
-        return event.getValueOption(valueExpression)
+        return event.getValue(valueExpression)
             .flatMap(FunnyGuilds.getInstance().regionManager::findRegionAtLocation)
             .map(Region::getGuild)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun toString(e: Event?, debug: Boolean): String {

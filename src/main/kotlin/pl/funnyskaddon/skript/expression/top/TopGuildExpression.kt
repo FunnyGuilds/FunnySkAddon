@@ -7,10 +7,11 @@ import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
+import net.dzikoysk.funnyguilds.rank.DefaultTops
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.TopExpression
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getValue
 
 @FunnyDoc
 @Name("Guild In Position")
@@ -27,17 +28,24 @@ class TopGuildExpression : TopExpression<Guild>() {
                 TopGuildExpression::class.java,
                 Guild::class.java,
                 ExpressionType.PROPERTY,
-                "guild in position %number% [of (top|rank|ranking)]"
+                "guild in position %number% [of (top|rank|ranking)]",
+                "guild in position %number% [of %-string% (top|rank|ranking)]"
             )
         }
     }
 
     override fun get(event: Event): Array<Guild>? {
-        return event.getValueOption(positionExpression)
+        return event.getValue(positionExpression)
             .map(Number::toInt)
-            .map { position -> FunnyGuilds.getInstance().rankManager.getGuild(position) }
+            .flatMap { position ->
+                val type: String = event.getValue(typeExpression).orElseGet(DefaultTops.GUILD_AVG_POINTS_TOP)
+                FunnyGuilds.getInstance().guildRankManager.getGuild(
+                    type,
+                    position
+                )
+            }
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Guild> {
@@ -46,7 +54,8 @@ class TopGuildExpression : TopExpression<Guild>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {
-            return "guild at position ${positionExpression.toString(e, debug)}"
+            val type: String = e.getValue(typeExpression).orElseGet(DefaultTops.GUILD_AVG_POINTS_TOP)
+            return "guild at position ${positionExpression.toString(e, debug)} in $type top"
         }
         return "guild at position of top"
     }

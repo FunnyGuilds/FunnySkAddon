@@ -11,8 +11,8 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
-import pl.funnyskaddon.skript.getGuildOption
-import pl.funnyskaddon.skript.getUserOption
+import pl.funnyskaddon.skript.getGuild
+import pl.funnyskaddon.skript.getUser
 
 @FunnyDoc
 @Name("Set Guild Owner")
@@ -37,9 +37,9 @@ class GuildSetOwnerEffect : GuildValueEffect<OfflinePlayer>(false) {
     }
 
     override fun execute(event: Event) {
-        event.getGuildOption(guildExpression)
+        event.getGuild(guildExpression)
             .peek { guild ->
-                event.getUserOption(valueExpression)
+                event.getUser(valueExpression)
                     .peek userPeek@{ user ->
                         if (!SimpleEventHandler.handle(
                                 GuildMemberLeaderEvent(

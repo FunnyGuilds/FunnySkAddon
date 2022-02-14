@@ -9,7 +9,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.isPlayerInGuildRegion
 import pl.funnyskaddon.skript.condition.GuildPlayerCondition
 import pl.funnyskaddon.skript.getGuild
-import pl.funnyskaddon.skript.getPlayerOption
+import pl.funnyskaddon.skript.getPlayer
 
 @FunnyDoc
 @Name("Is In Guild Region")
@@ -30,8 +30,11 @@ class PlayerIsInGuildRegionCondition : GuildPlayerCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return event.getPlayerOption(playerExpression)
-            .map { player -> event.getGuild(guildExpression)?.isPlayerInGuildRegion(player) ?: false }
+        return event.getPlayer(playerExpression)
+            .map { player ->
+                event.getGuild(guildExpression).map { guild -> guild.isPlayerInGuildRegion(player) }
+                    .orElseGet(false)
+            }
             .orElseGet(false)
             .xor(isNegated)
     }

@@ -9,7 +9,7 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
 
 @FunnyDoc
@@ -38,7 +38,7 @@ class GuildAlliesExpression : GuildExpression<Guild>("allies of") {
     }
 
     override fun get(event: Event): Array<Guild> {
-        return event.getGuildOption(guildExpression).toStream()
+        return event.getGuild(guildExpression).toStream()
             .flatMap(Guild::getAllies)
             .collect(Collectors.toSet())
             .toTypedArray()

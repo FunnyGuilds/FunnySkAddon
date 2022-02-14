@@ -8,7 +8,7 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.GuildCondition
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild PvP Is Enabled")
@@ -29,7 +29,7 @@ class GuildPvPIsEnabledCondition : GuildCondition() {
     }
 
     override fun check(event: Event): Boolean {
-        return event.getGuildOption(guildExpression)
+        return event.getGuild(guildExpression)
             .map(Guild::getPvP)
             .orElseGet(false)
             .xor(isNegated)

@@ -20,8 +20,8 @@ import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getGuild
 import pl.funnyskaddon.skript.effect.GuildValueEffect
-import pl.funnyskaddon.skript.getUserOption
-import pl.funnyskaddon.skript.getValueOption
+import pl.funnyskaddon.skript.getUser
+import pl.funnyskaddon.skript.getValue
 
 
 @FunnyDoc
@@ -49,11 +49,11 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
         }
 
         fun execute(event: Event, guildExpression: Expression<Any>, playerExpression: Expression<OfflinePlayer>) {
-            event.getUserOption(playerExpression)
+            event.getUser(playerExpression)
                 .peek { user ->
-                    val guild = event.getValueOption(guildExpression)
-                        .map(Any::getGuild)
-                        .orNull
+                    val guild = event.getValue(guildExpression)
+                        .flatMap(Any::getGuild)
+                        .orNull()
 
                     if (user.hasGuild()) {
                         if (user.isOwner) {
@@ -90,7 +90,7 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
             }
 
             guild.addMember(member)
-            member.guild = guild
+            member.setGuild(guild)
             FunnyGuilds.getInstance().concurrencyManager.postRequests(PrefixGlobalAddPlayerRequest(member.name))
 
             return true
@@ -98,17 +98,22 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
 
         private fun removerFromGuild(member: User): Boolean {
             if (!SimpleEventHandler.handle(
-                    GuildMemberLeaveEvent(FunnyEvent.EventCause.CONSOLE, null, member.guild, member)
+                    GuildMemberLeaveEvent(FunnyEvent.EventCause.CONSOLE, null, member.guild.get(), member)
                 )
             ) {
                 return false
             }
-            member.guild.removeMember(member)
-            member.removeGuild()
-            FunnyGuilds.getInstance().concurrencyManager.postRequests(
-                PrefixGlobalRemovePlayerRequest(member.name),
-                PrefixGlobalUpdatePlayer(member.player)
-            )
+            member.guild.peek { guild ->
+                member.removeGuild()
+                guild.removeMember(member)
+            }
+
+            member.player.peek { player ->
+                FunnyGuilds.getInstance().concurrencyManager.postRequests(
+                    PrefixGlobalRemovePlayerRequest(member.name),
+                    PrefixGlobalUpdatePlayer(player)
+                )
+            }
 
             return true
         }

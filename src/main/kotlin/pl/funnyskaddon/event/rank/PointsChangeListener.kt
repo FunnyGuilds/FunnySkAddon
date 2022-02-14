@@ -22,14 +22,14 @@ class PointsChangeListener(private val plugin: FunnySkAddon) : Listener {
         }
         val victim = event.affected.player
 
-        if (attacker == null || victim == null) {
+        if (attacker.isEmpty || victim.isEmpty) {
             return
         }
         plugin.server.pluginManager.callEvent(
             CustomKillPointsChangeEvent(
                 event.eventCause,
-                attacker,
-                victim,
+                attacker.get(),
+                victim.get(),
                 change,
                 event.affected.rank
             )

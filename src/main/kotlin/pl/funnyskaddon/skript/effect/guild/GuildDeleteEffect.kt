@@ -11,7 +11,7 @@ import net.dzikoysk.funnyguilds.event.guild.GuildDeleteEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildEffect
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 
 @FunnyDoc
@@ -37,7 +37,7 @@ class GuildDeleteEffect : GuildEffect() {
     }
 
     override fun execute(event: Event) {
-        event.getGuildOption(guildExpression)
+        event.getGuild(guildExpression)
             .peek { guild ->
                 if (!SimpleEventHandler.handle(
                         GuildDeleteEvent(
@@ -50,7 +50,7 @@ class GuildDeleteEffect : GuildEffect() {
                     return@peek
                 }
 
-                FunnyGuilds.getInstance().guildManager.deleteGuild(guild)
+                FunnyGuilds.getInstance().guildManager.deleteGuild(FunnyGuilds.getInstance(), guild)
             }
     }
 

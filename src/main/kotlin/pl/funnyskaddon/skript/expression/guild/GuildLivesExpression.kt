@@ -8,7 +8,7 @@ import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
-import pl.funnyskaddon.skript.getGuildOption
+import pl.funnyskaddon.skript.getGuild
 
 @FunnyDoc
 @Name("Guild Lives")
@@ -37,7 +37,7 @@ class GuildLivesExpression : GuildExpression<Int>("lives of") {
     }
 
     override fun get(event: Event): Array<Int>? {
-        return event.getGuildOption(guildExpression)
+        return event.getGuild(guildExpression)
             .map { guild -> guild.lives }
             .orElse(0)
             .map { value -> arrayOf(value) }

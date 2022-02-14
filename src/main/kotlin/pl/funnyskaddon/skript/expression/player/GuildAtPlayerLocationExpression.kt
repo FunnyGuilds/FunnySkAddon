@@ -12,7 +12,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.PlayerExpression
-import pl.funnyskaddon.skript.getPlayerOption
+import pl.funnyskaddon.skript.getPlayer
 
 @FunnyDoc
 @Name("Guild At Player Location")
@@ -35,12 +35,12 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
     }
 
     override fun get(event: Event): Array<Guild>? {
-        return event.getPlayerOption(playerExpression)
+        return event.getPlayer(playerExpression)
             .map(Player::getLocation)
             .flatMap(FunnyGuilds.getInstance().regionManager::findRegionAtLocation)
             .map(Region::getGuild)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Guild> {
