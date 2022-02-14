@@ -42,7 +42,7 @@ class GuildBornExpression : GuildExpression<Date>("born data of") {
             .map(Guild::getBorn)
             .map { born -> Date(born) }
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Date> {

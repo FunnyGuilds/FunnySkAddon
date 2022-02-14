@@ -42,7 +42,7 @@ class GuildAreaExpression : GuildExpression<Int>("area of") {
             .flatMap(Guild::getRegion)
             .map { region -> abs((region.lowerX - region.upperX) * (region.lowerZ - region.upperZ)) }
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Int> {

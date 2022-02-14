@@ -53,7 +53,7 @@ class GuildType {
                                     "uuid",
                                     UUID::class.java
                                 )
-                            ).orNull
+                            ).orNull()
                         }
 
                         override fun deserialize(guild: Guild, fields: Fields) {

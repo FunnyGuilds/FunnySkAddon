@@ -34,7 +34,7 @@ class GuildFromTagExpression : ValueExpression<String>() {
         return event.getValue(valueExpression)
             .flatMap(FunnyGuilds.getInstance().guildManager::findByTag)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun toString(e: Event?, debug: Boolean): String {

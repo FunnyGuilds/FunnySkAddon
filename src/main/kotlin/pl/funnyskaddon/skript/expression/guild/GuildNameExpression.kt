@@ -40,7 +40,7 @@ class GuildNameExpression : GuildExpression<String>("name of") {
         return event.getGuild(guildExpression)
             .map(Guild::getName)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<String> {

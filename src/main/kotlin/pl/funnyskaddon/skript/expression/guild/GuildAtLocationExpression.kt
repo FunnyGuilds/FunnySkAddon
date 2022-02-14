@@ -36,7 +36,7 @@ class GuildAtLocationExpression : ValueExpression<Location>() {
             .flatMap(FunnyGuilds.getInstance().regionManager::findRegionAtLocation)
             .map(Region::getGuild)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun toString(e: Event?, debug: Boolean): String {

@@ -40,7 +40,7 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
             .flatMap(FunnyGuilds.getInstance().regionManager::findRegionAtLocation)
             .map(Region::getGuild)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Guild> {

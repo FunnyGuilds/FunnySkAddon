@@ -53,7 +53,7 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
             .flatMap(FunnyGuilds.getInstance().guildManager::findByTag)
             .map(Guild::getName)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun isSingle(): Boolean {

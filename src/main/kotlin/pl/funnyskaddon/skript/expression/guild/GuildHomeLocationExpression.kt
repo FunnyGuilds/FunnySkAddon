@@ -41,7 +41,7 @@ class GuildHomeLocationExpression : GuildExpression<Location>("home location of"
         return event.getGuild(guildExpression)
             .flatMap(Guild::getHome)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Location> {

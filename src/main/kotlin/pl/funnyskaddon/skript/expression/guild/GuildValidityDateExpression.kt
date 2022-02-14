@@ -42,7 +42,7 @@ class GuildValidityDateExpression : GuildExpression<Date>("validity date of") {
             .map(Guild::getValidity)
             .map { validity -> Date(validity) }
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Date> {

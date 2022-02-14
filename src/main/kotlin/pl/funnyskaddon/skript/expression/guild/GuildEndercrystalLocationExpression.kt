@@ -41,7 +41,7 @@ class GuildEndercrystalLocationExpression : GuildExpression<Location>("endercrys
         return event.getGuild(guildExpression)
             .flatMap(Guild::getEnderCrystal)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Location> {

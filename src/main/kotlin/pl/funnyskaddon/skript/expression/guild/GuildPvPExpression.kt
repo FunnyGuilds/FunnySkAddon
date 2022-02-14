@@ -40,7 +40,7 @@ class GuildPvPExpression : GuildExpression<Boolean>("pvp of") {
         return event.getGuild(guildExpression)
             .map(Guild::getPvP)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Boolean> {

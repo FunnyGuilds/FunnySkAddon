@@ -41,7 +41,7 @@ class GuildValidityTimeExpression : GuildExpression<Timespan>("validity time of"
         return event.getGuild(guildExpression)
             .map { guild -> Timespan(guild.validity - (Date().time)) }
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<Timespan> {

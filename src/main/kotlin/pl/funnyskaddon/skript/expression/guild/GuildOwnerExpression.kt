@@ -43,7 +43,7 @@ class GuildOwnerExpression : GuildExpression<OfflinePlayer>("owner of") {
             .map(Guild::getOwner)
             .map(User::getOfflinePlayer)
             .map { value -> arrayOf(value) }
-            .orNull
+            .orNull()
     }
 
     override fun getReturnType(): Class<OfflinePlayer> {
