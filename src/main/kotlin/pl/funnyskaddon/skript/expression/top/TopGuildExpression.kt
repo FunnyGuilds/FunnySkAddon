@@ -28,7 +28,8 @@ class TopGuildExpression : TopExpression<Guild>() {
                 TopGuildExpression::class.java,
                 Guild::class.java,
                 ExpressionType.PROPERTY,
-                "guild in position %number% [of (top|rank|ranking)]"
+                "guild in position %number% [of (top|rank|ranking)]",
+                "guild in position %number% [of %-string% (top|rank|ranking)]"
             )
         }
     }
@@ -37,8 +38,9 @@ class TopGuildExpression : TopExpression<Guild>() {
         return event.getValue(positionExpression)
             .map(Number::toInt)
             .flatMap { position ->
+                val type: String = event.getValue(typeExpression).orElseGet(DefaultTops.GUILD_AVG_POINTS_TOP)
                 FunnyGuilds.getInstance().guildRankManager.getGuild(
-                    DefaultTops.GUILD_AVG_POINTS_TOP,
+                    type,
                     position
                 )
             }
@@ -52,7 +54,8 @@ class TopGuildExpression : TopExpression<Guild>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {
-            return "guild at position ${positionExpression.toString(e, debug)}"
+            val type: String = e.getValue(typeExpression).orElseGet(DefaultTops.GUILD_AVG_POINTS_TOP)
+            return "guild at position ${positionExpression.toString(e, debug)} in $type top"
         }
         return "guild at position of top"
     }

@@ -29,7 +29,8 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
                 TopPlayerExpression::class.java,
                 OfflinePlayer::class.java,
                 ExpressionType.PROPERTY,
-                "player in position %number% [of (top|rank|ranking)]"
+                "player in position %number% [of (top|rank|ranking)]",
+                "player in position %number% [of %-string% (top|rank|ranking)]"
             )
         }
     }
@@ -38,8 +39,9 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
         return event.getValue(positionExpression)
             .map(Number::toInt)
             .flatMap { position ->
+                val type: String = event.getValue(typeExpression).orElseGet(DefaultTops.USER_POINTS_TOP)
                 FunnyGuilds.getInstance().userRankManager.getUser(
-                    DefaultTops.USER_POINTS_TOP,
+                    type,
                     position
                 )
             }
@@ -54,9 +56,10 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {
-            return "player at position ${positionExpression.toString(e, debug)}"
+            val type: String = e.getValue(typeExpression).orElseGet(DefaultTops.USER_POINTS_TOP)
+            return "player at position ${positionExpression.toString(e, debug)} in $type top"
         }
-        return "guild at position of top"
+        return "player at position of top"
     }
 
 }

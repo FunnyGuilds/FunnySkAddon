@@ -28,7 +28,7 @@ abstract class PlayerExpression<T>() : FunnyExpression<T>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null && !toString.isNullOrEmpty()) {
-            return toString + " player \"" + playerExpression.toString(e, debug) + "\""
+            return "$toString player \"${playerExpression.toString(e, debug)}\""
         }
         return "$toString player"
     }

@@ -10,24 +10,39 @@ import org.bukkit.event.Event
 import panda.std.Option
 import pl.funnyskaddon.extension.getGuild
 
-fun <T> Event.getValue(expression: Expression<T>): Option<T> {
+fun <T> Event.getValue(expression: Expression<T>?): Option<T> {
+    if (expression == null) {
+        return Option.none()
+    }
     return Option.of(expression.getSingle(this))
 }
 
-fun Event.getOfflinePlayer(expression: Expression<OfflinePlayer>): Option<OfflinePlayer> {
+fun Event.getOfflinePlayer(expression: Expression<OfflinePlayer>?): Option<OfflinePlayer> {
+    if (expression == null) {
+        return Option.none()
+    }
     return Option.of((expression.getSingle(this)))
 }
 
-fun Event.getPlayer(expression: Expression<OfflinePlayer>): Option<Player> {
+fun Event.getPlayer(expression: Expression<OfflinePlayer>?): Option<Player> {
+    if (expression == null) {
+        return Option.none()
+    }
     return getOfflinePlayer(expression)
         .map { it.player }
 }
 
-fun Event.getUser(expression: Expression<OfflinePlayer>): Option<User> {
+fun Event.getUser(expression: Expression<OfflinePlayer>?): Option<User> {
+    if (expression == null) {
+        return Option.none()
+    }
     return getOfflinePlayer(expression)
         .flatMap(FunnyGuilds.getInstance().userManager::findByPlayer)
 }
 
-fun Event.getGuild(expression: Expression<*>): Option<Guild> {
+fun Event.getGuild(expression: Expression<*>?): Option<Guild> {
+    if (expression == null) {
+        return Option.none()
+    }
     return expression.getSingle(this)?.getGuild() ?: Option.none()
 }

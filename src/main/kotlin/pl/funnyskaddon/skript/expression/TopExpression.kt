@@ -7,6 +7,7 @@ import ch.njol.util.Kleenean
 abstract class TopExpression<T> : FunnyExpression<T>() {
 
     protected lateinit var positionExpression: Expression<Number>
+    protected var typeExpression: Expression<String>? = null
 
     override fun init(
         expression: Array<Expression<*>>,
@@ -15,6 +16,7 @@ abstract class TopExpression<T> : FunnyExpression<T>() {
         parseResult: SkriptParser.ParseResult
     ): Boolean {
         positionExpression = expression[0] as Expression<Number>
+        typeExpression = if (expression.size > 1) expression[1] as Expression<String> else null
         return true
     }
 
