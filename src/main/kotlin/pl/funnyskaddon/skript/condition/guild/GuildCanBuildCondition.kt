@@ -17,13 +17,24 @@ import pl.funnyskaddon.skript.getGuild
     "if guild \"AC4U\" can build:",
     "if guild \"AC4U\" can't be build:"
 )
-class GuildCanBuildCondition : GuildCondition() {
+class GuildCanBuildCondition : GuildCondition(7) {
 
     companion object {
         init {
             Skript.registerCondition(
-                GuildCanBuildCondition::class.java, "guild %object% can build",
-                "guild %object% (cannot|can't) build"
+                GuildCanBuildCondition::class.java,
+                "%guild% can build",
+                "%string% can build",
+                "%offlineplayer%['s] guild can build",
+                "guild at %location% can build",
+                "guild at %block% can build",
+                "%object%['s] guild can build",
+                "%guild% (can't|cannot|can not) build",
+                "%string% (can't|cannot|can not) build",
+                "%offlineplayer%['s] guild (can't|cannot|can not) build",
+                "guild at %location% (can't|cannot|can not) build",
+                "guild at %block% (can't|cannot|can not) build",
+                "%object%['s] guild (can't|cannot|can not) build",
             )
         }
     }

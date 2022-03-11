@@ -4,7 +4,8 @@ import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 
-abstract class GuildValueCondition<T>(private var inverted: Boolean) : GuildCondition() {
+abstract class GuildValueCondition<T>(private var inverted: Boolean, invertedIndex: Int = 2) :
+    GuildCondition(invertedIndex) {
 
     protected lateinit var valueExpression: Expression<T>
 
