@@ -27,7 +27,7 @@ class GuildAddToExpirationTimeEffect : GuildValueEffect<Timespan>(true) {
             Skript.registerEffect(
                 GuildAddToExpirationTimeEffect::class.java,
                 "add %timespan% to %guild%['s] (expiration|validity) [(date|time)]",
-                "add %timespan% to %string%['s] (expiration|validity) [(date|time)]",
+                "add %timespan% to %string%['s] [guild] (expiration|validity) [(date|time)]",
                 "add %timespan% to %offlineplayer%['s] [guild] (expiration|validity) [(date|time)]",
                 "add %timespan% to %location%['s] [guild] (expiration|validity) [(date|time)]",
                 "add %timespan% to %block%['s] [guild] (expiration|validity) [(date|time)]",

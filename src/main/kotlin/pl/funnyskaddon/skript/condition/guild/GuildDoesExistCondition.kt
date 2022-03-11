@@ -16,13 +16,24 @@ import pl.funnyskaddon.skript.getGuild
     "if guild \"AC4U\" exists:",
     "if guild \"AC4U\" doesn't exists:"
 )
-class GuildDoesExistCondition : GuildCondition() {
+class GuildDoesExistCondition : GuildCondition(7) {
 
     companion object {
         init {
             Skript.registerCondition(
-                GuildDoesExistCondition::class.java, "guild %object% (does|) exist(s|)",
-                "guild %object% (doesn't|does not) exist(s|)"
+                GuildDoesExistCondition::class.java,
+                "%guild% [does] exist[s]",
+                "%string% [guild] [does] exist[s]",
+                "guild at %location% [does] exist[s]",
+                "guild at %block% [does] exist[s]",
+                "%offlineplayer%['s] guild [does] exist[s]",
+                "%object%['s] guild [does] exist[s]",
+                "%guild% does(n't|not) exist[s]",
+                "%string% [guild] does(n't|not) exist[s]",
+                "guild at %location% does(n't|not) exist[s]",
+                "guild at %block% does(n't|not) exist[s]",
+                "%offlineplayer%['s] guild does(n't|not)exist[s]",
+                "%object%['s] guild does(n't|not) exist[s]",
             )
         }
     }

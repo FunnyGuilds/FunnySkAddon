@@ -26,7 +26,7 @@ class GuildKillsExpression : GuildExpression<Int>("kills of") {
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
                 "%guild%['s] [(rank|ranking)] kills [(amount|count)]",
-                "%string%['s] [(rank|ranking)] kills [(amount|count)]",
+                "%string%['s] [guild] [(rank|ranking)] kills [(amount|count)]",
                 "%offlineplayer%['s] guild['s] [(rank|ranking)] kills [(amount|count)]",
                 "%location%['s] guild['s] [(rank|ranking)] kills [(amount|count)]",
                 "%block%['s] guild['s] [(rank|ranking)] kills [(amount|count)]",

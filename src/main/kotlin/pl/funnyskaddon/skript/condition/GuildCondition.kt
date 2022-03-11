@@ -4,7 +4,7 @@ import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 
-abstract class GuildCondition : FunnyCondition() {
+abstract class GuildCondition(private val negatedIndex: Int = 1) : FunnyCondition() {
 
     lateinit var guildExpression: Expression<*>
 
@@ -16,7 +16,7 @@ abstract class GuildCondition : FunnyCondition() {
     ): Boolean {
         guildExpression = expression[0] as Expression<*>
         if (parseResult != null) {
-            isNegated = ((matchedPattern >= 1) xor (parseResult.mark == 1))
+            isNegated = ((matchedPattern >= negatedIndex) xor (parseResult.mark == 1))
         }
         return true
     }

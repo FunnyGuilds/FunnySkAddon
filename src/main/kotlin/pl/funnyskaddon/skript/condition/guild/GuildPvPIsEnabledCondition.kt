@@ -17,13 +17,24 @@ import pl.funnyskaddon.skript.getGuild
     "if guild \"AC4U\" pvp is enabled:",
     "if guild \"AC4U\" pvp is disabled:"
 )
-class GuildPvPIsEnabledCondition : GuildCondition() {
+class GuildPvPIsEnabledCondition : GuildCondition(7) {
 
     companion object {
         init {
             Skript.registerCondition(
-                GuildPvPIsEnabledCondition::class.java, "guild %object% pvp is (enabled|on)",
-                "guild %object% pvp is (disabled|off)"
+                GuildPvPIsEnabledCondition::class.java,
+                "%guild%['s] pvp is (enabled|on)",
+                "%string% [guild]['s] pvp is (enabled|on)",
+                "%offlineplayer%['s] guild['s] pvp is (enabled|on)",
+                "guild at %location% pvp is (enabled|on)",
+                "guild at %block% pvp is (enabled|on)",
+                "%object%['s] guild['s] pvp is (enabled|on)",
+                "%guild%['s] pvp is (disabled|off)",
+                "%string% [guild]['s] pvp is (disabled|off)",
+                "%offlineplayer%['s] guild['s] pvp is (disabled|off)",
+                "guild at %location% pvp is (disabled|off)",
+                "guild at %block% pvp is (disabled|off)",
+                "%object%['s] guild['s] pvp is (disabled|off)",
             )
         }
     }

@@ -17,13 +17,24 @@ import pl.funnyskaddon.skript.getGuild
     "if guild \"AC4U\" can be attacked:",
     "if guild \"AC4U\" can't be attacked:"
 )
-class GuildCanBeAttackedCondition : GuildCondition() {
+class GuildCanBeAttackedCondition : GuildCondition(7) {
 
     companion object {
         init {
             Skript.registerCondition(
-                GuildCanBeAttackedCondition::class.java, "guild %object% can be attacked",
-                "guild %object% (cannot|can't) be attacked"
+                GuildCanBeAttackedCondition::class.java,
+                "%guild% can be attacked",
+                "%string% [guild] can be attacked",
+                "%offlineplayer%['s] guild can be attacked",
+                "guild at %location% can be attacked",
+                "guild at %block% can be attacked",
+                "%object%['s] guild can be attacked",
+                "%guild% (cannot|can't) be attacked",
+                "%string% [guild] (cannot|can't) be attacked",
+                "%offlineplayer%['s] guild (cannot|can't) be attacked",
+                "guild at %location% (cannot|can't) be attacked",
+                "guild at %block% (cannot|can't) be attacked",
+                "%object%['s] guild (cannot|can't) be attacked",
             )
         }
     }

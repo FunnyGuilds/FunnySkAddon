@@ -31,7 +31,7 @@ class GuildOnlineDeputiesExpression : GuildExpression<Player>("online deputies o
                 ExpressionType.PROPERTY,
                 "%object%['s] [guild] online deputies",
                 "%guild%['s] online deputies",
-                "%string%['s] online deputies",
+                "%string%['s] [guild] online deputies",
                 "%offlineplayer%['s] guild['s] online deputies",
                 "%location%['s] guild['s] online deputies",
                 "%block%['s] guild['s] online deputies",

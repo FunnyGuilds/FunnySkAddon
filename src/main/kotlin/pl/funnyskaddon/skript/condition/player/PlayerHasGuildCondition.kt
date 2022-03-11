@@ -22,8 +22,9 @@ class PlayerHasGuildCondition : PlayerCondition() {
     companion object {
         init {
             Skript.registerCondition(
-                PlayerHasGuildCondition::class.java, "(player |)%offlineplayer% has guild",
-                "(player |)%offlineplayer% (does not|doesn't) have guild"
+                PlayerHasGuildCondition::class.java,
+                "[player] %offlineplayer% has guild",
+                "[player] %offlineplayer% (does not|doesn't) have guild"
             )
         }
     }

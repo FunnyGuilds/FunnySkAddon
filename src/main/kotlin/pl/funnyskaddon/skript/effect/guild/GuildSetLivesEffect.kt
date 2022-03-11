@@ -26,7 +26,7 @@ class GuildSetLivesEffect : GuildValueEffect<Number>(false) {
             Skript.registerEffect(
                 GuildSetLivesEffect::class.java,
                 "set [(number|amount) of] %guild%['s] lives to %number%",
-                "set [(number|amount) of] %string%['s] lives to %number%",
+                "set [(number|amount) of] %string%['s] [guild] lives to %number%",
                 "set [(number|amount) of] %object%['s] [guild] lives to %number%",
                 "set [(number|amount) of] %object%['s] [guild] lives to %number%",
                 "set [(number|amount) of] %object%['s] [guild] lives to %number%",

@@ -22,8 +22,9 @@ class PlayerIsOwnerCondition : PlayerCondition() {
     companion object {
         init {
             Skript.registerCondition(
-                PlayerIsOwnerCondition::class.java, "(player |)%offlineplayer% is [guild( |-)]owner",
-                "(player |)%offlineplayer% is(n't| not) [guild( |-)]owner"
+                PlayerIsOwnerCondition::class.java,
+                "[player] %offlineplayer% is [guild( |-)]owner",
+                "[player] %offlineplayer% is(n't| not) [guild( |-)]owner"
             )
         }
     }

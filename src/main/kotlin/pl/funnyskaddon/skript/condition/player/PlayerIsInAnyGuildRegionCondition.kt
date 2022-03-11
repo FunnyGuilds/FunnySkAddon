@@ -22,8 +22,9 @@ class PlayerIsInAnyGuildRegionCondition : PlayerCondition() {
     companion object {
         init {
             Skript.registerCondition(
-                PlayerIsInAnyGuildRegionCondition::class.java, "(player |)%player% is in any guild region",
-                "(player |)%player% is(n't| not) in any guild region"
+                PlayerIsInAnyGuildRegionCondition::class.java,
+                "[player] %player% is in any guild region",
+                "[player] %player% is(n't| not) in any guild region"
             )
         }
     }

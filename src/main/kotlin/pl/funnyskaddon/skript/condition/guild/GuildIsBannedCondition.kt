@@ -17,13 +17,24 @@ import pl.funnyskaddon.skript.getGuild
     "if guild \"AC4U\" is banned:",
     "if guild \"AC4U\" is not banned:"
 )
-class GuildIsBannedCondition : GuildCondition() {
+class GuildIsBannedCondition : GuildCondition(7) {
 
     companion object {
         init {
             Skript.registerCondition(
-                GuildIsBannedCondition::class.java, "guild %object% is banned",
-                "guild %object% is(n't| not) banned"
+                GuildIsBannedCondition::class.java,
+                "%guild% is banned",
+                "%string% [guild] is banned",
+                "%offlineplayer%['s] guild is banned",
+                "guild at %location% is banned",
+                "guild at %block% is banned",
+                "%object%['s] guild is banned",
+                "%guild% is(n't| not) banned",
+                "%string% [guild] is(n't| not) banned",
+                "%offlineplayer%['s] guild is(n't| not) banned",
+                "guild at %location% is(n't| not) banned",
+                "guild at %block% is(n't| not) banned",
+                "%object%['s] guild is(n't| not) banned",
             )
         }
     }

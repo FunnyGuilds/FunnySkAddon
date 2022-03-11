@@ -28,7 +28,7 @@ class GuildHomeLocationExpression : GuildExpression<Location>("home location of"
                 Location::class.java,
                 ExpressionType.PROPERTY,
                 "%guild%['s] (home|base) [location]",
-                "%string%['s] (home|base) [location]",
+                "%string%['s] [guild] (home|base) [location]",
                 "%offlineplayer%['s] guild['s] (home|base) [location]",
                 "%location%['s] guild['s] (home|base) [location]",
                 "%block%['s] guild['s] (home|base) [location]",
