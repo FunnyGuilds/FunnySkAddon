@@ -29,7 +29,7 @@ class GuildLowerBoundLocationExpression : GuildExpression<Location>("lower bound
                 Location::class.java,
                 ExpressionType.PROPERTY,
                 "%guild%['s] [region] (lower|down) (bound|point) [location]",
-                "%string%['s] [region] (lower|down) (bound|point) [location]",
+                "%string%['s] [guild] [region] (lower|down) (bound|point) [location]",
                 "%offlineplayer%['s] guild['s] [region] (lower|down) (bound|point) [location]",
                 "%location%['s] guild['s] [region] (lower|down) (bound|point) [location]",
                 "%block%['s] guild['s] [region] (lower|down) (bound|point) [location]",

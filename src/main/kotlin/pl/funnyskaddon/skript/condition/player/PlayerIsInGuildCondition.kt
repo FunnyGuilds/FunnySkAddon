@@ -24,8 +24,8 @@ class PlayerIsInGuildCondition : GuildPlayerCondition() {
         init {
             Skript.registerCondition(
                 PlayerIsInGuildCondition::class.java,
-                "(player |)%offlineplayer% is in guild %object%",
-                "(player |)%offlineplayer% is(n't| not) in guild %object%"
+                "[player] %offlineplayer% is in guild %object%",
+                "[player] %offlineplayer% is(n't| not) in guild %object%"
             )
         }
     }

@@ -30,7 +30,7 @@ class GuildMembersExpression : GuildExpression<OfflinePlayer>("members of") {
                 OfflinePlayer::class.java,
                 ExpressionType.PROPERTY,
                 "%guild%['s] members",
-                "%string%['s] members",
+                "%string%['s] [guild] members",
                 "%offlineplayer%['s] guild['s] members",
                 "%location%['s] guild['s] members",
                 "%block%['s] guild['s] members",

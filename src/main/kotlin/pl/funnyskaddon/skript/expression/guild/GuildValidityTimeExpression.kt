@@ -28,7 +28,7 @@ class GuildValidityTimeExpression : GuildExpression<Timespan>("validity time of"
                 Timespan::class.java,
                 ExpressionType.PROPERTY,
                 "%guild%['s] validity time",
-                "%string%['s] validity time",
+                "%string%['s] [guild] validity time",
                 "%offlineplayer%['s] guild['s] validity time",
                 "%location%['s] guild['s] validity time",
                 "%block%['s] guild['s] validity time",

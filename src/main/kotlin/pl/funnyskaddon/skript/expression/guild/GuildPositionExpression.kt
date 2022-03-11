@@ -31,7 +31,7 @@ class GuildPositionExpression : GuildExpression<Int>() {
                 Int::class.javaObjectType,
                 ExpressionType.PROPERTY,
                 "%guild%['s] [(rank|ranking)] position [of %-string%]",
-                "%string%['s] [(rank|ranking)] position [of %-string%]",
+                "%string%['s] [guild] [(rank|ranking)] position [of %-string%]",
                 "%offlineplayer%['s] guild['s] [(rank|ranking)] position [of %-string%]",
                 "%location%['s] guild['s] [(rank|ranking)] position [of %-string%]",
                 "%block%['s] guild['s] [(rank|ranking)] position [of %-string%]",

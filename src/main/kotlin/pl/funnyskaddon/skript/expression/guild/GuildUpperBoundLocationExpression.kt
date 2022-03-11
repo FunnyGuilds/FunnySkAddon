@@ -29,7 +29,7 @@ class GuildUpperBoundLocationExpression : GuildExpression<Location>("upper bound
                 Location::class.java,
                 ExpressionType.PROPERTY,
                 "%guild%['s] [region] (upper|up) (bound|point) [location]",
-                "%string%['s] [region] (upper|up) (bound|point) [location]",
+                "%string%['s] [guild] [region] (upper|up) (bound|point) [location]",
                 "%offlineplayer%['s] guild['s] [region] (upper|up) (bound|point) [location]",
                 "%location%['s] guild['s] [region] (upper|up) (bound|point) [location]",
                 "%block%['s] guild['s] [region] (upper|up) (bound|point) [location]",

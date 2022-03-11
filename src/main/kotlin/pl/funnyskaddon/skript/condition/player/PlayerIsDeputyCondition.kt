@@ -23,8 +23,8 @@ class PlayerIsDeputyCondition : PlayerCondition() {
         init {
             Skript.registerCondition(
                 PlayerIsDeputyCondition::class.java,
-                "(player |)%offlineplayer% is deputy",
-                "(player |)%offlineplayer% is(n't| not) deputy"
+                "[player] %offlineplayer% is deputy",
+                "[player] %offlineplayer% is(n't| not) deputy"
             )
         }
     }

@@ -23,8 +23,8 @@ class PlayerHasGuildCondition : PlayerCondition() {
         init {
             Skript.registerCondition(
                 PlayerHasGuildCondition::class.java,
-                "(player |)%offlineplayer% has guild",
-                "(player |)%offlineplayer% (does not|doesn't) have guild"
+                "[player] %offlineplayer% has guild",
+                "[player] %offlineplayer% (does not|doesn't) have guild"
             )
         }
     }

@@ -27,7 +27,7 @@ class GuildLivesExpression : GuildExpression<Int>("lives of") {
                 ExpressionType.PROPERTY,
                 "%object%['s] [guild] lives [(amount|count)]",
                 "%guild%['s] lives [(amount|count)]",
-                "%string%['s] lives [(amount|count)]",
+                "%string%['s] [guild] lives [(amount|count)]",
                 "%offlineplayer%['s] guild['s] lives [(amount|count)]",
                 "%location%['s] guild['s] lives [(amount|count)]",
                 "%block%['s] guild['s] lives [(amount|count)]",

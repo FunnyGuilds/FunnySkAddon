@@ -28,7 +28,7 @@ class GuildAlliesExpression : GuildExpression<Guild>("allies of") {
                 Guild::class.java,
                 ExpressionType.PROPERTY,
                 "%guild%['s] allies",
-                "%string%['s] allies",
+                "%string%['s] [guild] allies",
                 "%offlineplayer%['s] guild['s] allies",
                 "%location%['s] guild['s] allies",
                 "%block%['s] guild['s] allies",

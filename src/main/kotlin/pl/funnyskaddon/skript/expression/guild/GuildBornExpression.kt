@@ -28,7 +28,7 @@ class GuildBornExpression : GuildExpression<Date>("born data of") {
                 Date::class.java,
                 ExpressionType.PROPERTY,
                 "%guild%['s] born [date]",
-                "%string%['s] born [date]",
+                "%string%['s] [guild] born [date]",
                 "%offlineplayer%['s] guild['s] born [date]",
                 "%location%['s] guild['s] born [date]",
                 "%block%['s] guild['s] born [date]",

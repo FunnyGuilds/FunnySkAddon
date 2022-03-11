@@ -24,7 +24,7 @@ class GuildRemoveDeputyEffect : GuildValueEffect<OfflinePlayer>(true) {
             Skript.registerEffect(
                 GuildRemoveDeputyEffect::class.java,
                 "remove %offlineplayer% from %guild%['s] deputies",
-                "remove %offlineplayer% from %string%['s] deputies",
+                "remove %offlineplayer% from %string%['s] [guild] deputies",
                 "remove %offlineplayer% from %offlineplayer%['s] [guild] deputies",
                 "remove %offlineplayer% from %location%['s] [guild] deputies",
                 "remove %offlineplayer% from %block%['s] [guild] deputies",
