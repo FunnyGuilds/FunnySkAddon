@@ -19,6 +19,7 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getGuild
+import pl.funnyskaddon.extension.getPlayerOption
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getUser
 import pl.funnyskaddon.skript.getValue
@@ -91,7 +92,12 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
 
             guild.addMember(member)
             member.setGuild(guild)
-            FunnyGuilds.getInstance().concurrencyManager.postRequests(PrefixGlobalAddPlayerRequest(member.name))
+            FunnyGuilds.getInstance().concurrencyManager.postRequests(
+                PrefixGlobalAddPlayerRequest(
+                    FunnyGuilds.getInstance().individualPrefixManager,
+                    member.name
+                )
+            )
 
             return true
         }
@@ -108,10 +114,12 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
                 guild.removeMember(member)
             }
 
-            member.player.peek { player ->
+            val individualPrefixManager = FunnyGuilds.getInstance().individualPrefixManager
+
+            member.getPlayerOption().peek { player ->
                 FunnyGuilds.getInstance().concurrencyManager.postRequests(
-                    PrefixGlobalRemovePlayerRequest(member.name),
-                    PrefixGlobalUpdatePlayer(player)
+                    PrefixGlobalRemovePlayerRequest(individualPrefixManager, member.name),
+                    PrefixGlobalUpdatePlayer(individualPrefixManager, player)
                 )
             }
 

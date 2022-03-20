@@ -11,6 +11,7 @@ import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.getOfflinePlayer
 import pl.funnyskaddon.skript.expression.TopExpression
 import pl.funnyskaddon.skript.getValue
 
@@ -45,7 +46,7 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
                     position
                 )
             }
-            .map(User::getOfflinePlayer)
+            .flatMap(User::getOfflinePlayer)
             .map { value -> arrayOf(value) }
             .orNull()
     }

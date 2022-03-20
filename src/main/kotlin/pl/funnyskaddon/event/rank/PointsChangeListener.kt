@@ -5,6 +5,7 @@ import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import pl.funnyskaddon.FunnySkAddon
+import pl.funnyskaddon.extension.getPlayerOption
 
 class PointsChangeListener(private val plugin: FunnySkAddon) : Listener {
 
@@ -15,12 +16,12 @@ class PointsChangeListener(private val plugin: FunnySkAddon) : Listener {
         }
 
         val change = event.pointsChange
-        val attacker = event.doer.player
+        val attacker = event.doer.getPlayerOption()
 
         if (event.doer == event.affected) {
             return
         }
-        val victim = event.affected.player
+        val victim = event.affected.getPlayerOption()
 
         if (attacker.isEmpty || victim.isEmpty) {
             return

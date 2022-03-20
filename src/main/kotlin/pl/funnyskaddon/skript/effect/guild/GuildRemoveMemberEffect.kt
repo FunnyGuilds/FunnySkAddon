@@ -13,6 +13,7 @@ import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberKickEvent
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.getPlayerOption
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getUser
@@ -57,14 +58,22 @@ class GuildRemoveMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
                             return@userPeek
                         }
 
-                        FunnyGuilds.getInstance().concurrencyManager.postRequests(PrefixGlobalRemovePlayerRequest(user.name))
+                        FunnyGuilds.getInstance().concurrencyManager.postRequests(
+                            PrefixGlobalRemovePlayerRequest(
+                                FunnyGuilds.getInstance().individualPrefixManager,
+                                user.name
+                            )
+                        )
 
                         guild.removeMember(user)
                         user.removeGuild()
 
-                        user.player.peek { player ->
+                        user.getPlayerOption().peek { player ->
                             FunnyGuilds.getInstance().concurrencyManager.postRequests(
-                                PrefixGlobalUpdatePlayer(player)
+                                PrefixGlobalUpdatePlayer(
+                                    FunnyGuilds.getInstance().individualPrefixManager,
+                                    player
+                                )
                             )
                         }
                     }

@@ -14,6 +14,7 @@ import net.dzikoysk.funnyguilds.event.guild.member.*
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.getPlayerOption
 
 @FunnyDoc
 @Name("Member")
@@ -54,28 +55,28 @@ class EventMemberExpression : SimpleExpression<Player>() {
             override fun get(event: Event): Player? {
                 return when (event) {
                     is GuildMemberInviteEvent -> {
-                        event.member.player.orNull()
+                        event.member.getPlayerOption().orNull()
                     }
                     is GuildMemberAcceptInviteEvent -> {
-                        event.member.player.orNull()
+                        event.member.getPlayerOption().orNull()
                     }
                     is GuildMemberRevokeInviteEvent -> {
-                        event.member.player.orNull()
+                        event.member.getPlayerOption().orNull()
                     }
                     is GuildMemberJoinEvent -> {
-                        event.member.player.orNull()
+                        event.member.getPlayerOption().orNull()
                     }
                     is GuildMemberLeaveEvent -> {
-                        event.member.player.orNull()
+                        event.member.getPlayerOption().orNull()
                     }
                     is GuildMemberKickEvent -> {
-                        event.member.player.orNull()
+                        event.member.getPlayerOption().orNull()
                     }
                     is GuildMemberLeaderEvent -> {
-                        event.member.player.orNull()
+                        event.member.getPlayerOption().orNull()
                     }
                     is GuildMemberDeputyEvent -> {
-                        event.member.player.orNull()
+                        event.member.getPlayerOption().orNull()
                     }
                     else -> null
                 }

@@ -7,6 +7,7 @@ import ch.njol.util.coll.CollectionUtils
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
+import pl.funnyskaddon.extension.getPlayerOption
 
 class EventExpressionUtil {
 
@@ -20,7 +21,7 @@ class EventExpressionUtil {
                         if (event.doer == null) {
                             return null
                         }
-                        return event.doer.player.orNull()
+                        return event.doer.getPlayerOption().orNull()
                     }
                 }, 0
             )
