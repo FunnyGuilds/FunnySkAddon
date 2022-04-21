@@ -16,13 +16,13 @@ tasks.withType<ShadowJar> {
     relocate("kotlin", "pl.funnyskaddon.libs.kotlin")
     //BStats
     relocate("org.bstats", "pl.funnyskaddon.bstats")
-    //JetBrains
-    relocate("org.intellij", "pl.funnyskaddon.libs.intellij")
-    relocate("org.jetbrains", "pl.funnyskaddon.libs.jetbrains")
     //Apache
     relocate("org.apache", "pl.funnyskaddon.libs.apache")
     //Okaeri
     relocate("eu.okaeri", "pl.funnyskaddon.libs.okaeri")
+
+    exclude("org/intellij/lang/annotations/**")
+    exclude("org/jetbrains/annotations/**")
 
     minimize()
 }
