@@ -1,10 +1,12 @@
 package pl.funnyskaddon.command
 
 import ch.njol.skript.Skript
+import ch.njol.skript.SkriptAddon
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import panda.std.stream.PandaStream
 import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.docs.FunnyHTMLGenerator
 import pl.funnyskaddon.extension.color
@@ -49,18 +51,30 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
         val fgVersion = plugin.server.pluginManager.getPlugin("FunnyGuilds").description.version
         val skriptVersion = plugin.server.pluginManager.getPlugin("Skript").description.version
 
+        val skriptAddons = PandaStream.of(Skript.getAddons())
+            .map(SkriptAddon::getName)
+            .toSet()
+        val plugins = PandaStream.of(plugin.server.pluginManager.plugins.toSet())
+            .map { plugin -> plugin.name }
+            .toSet()
+
         sender.sendMessage("&8&m-----------------------------------------------------".color())
         sender.sendMessage("  &bInformacje o Dodatku".color())
         sender.sendMessage("   &7Wersja: &f".color() + plugin.description.version)
         sender.sendMessage("   &7Autorzy: &f".color() + plugin.description.authors)
         sender.sendMessage("   &7Opis: &f".color() + plugin.description.description)
         sender.sendMessage("   &7Strona internetowa: &f".color() + plugin.description.website)
+        sender.sendMessage(" ")
         sender.sendMessage("  &bWersje:".color())
         sender.sendMessage("   &7Java: &f$java".color())
         sender.sendMessage("   &7Bukkit: &f$engine".color())
         sender.sendMessage("   &7FunnySkAddon: &f$fsaVersion".color())
         sender.sendMessage("   &7FunnyGuilds: &f$fgVersion".color())
         sender.sendMessage("   &7Skript: &f$skriptVersion".color())
+        sender.sendMessage(" ")
+        sender.sendMessage("  &bPluginy:".color())
+        sender.sendMessage("   &7Dodatki: &f$skriptAddons".color())
+        sender.sendMessage("   &7Wtyczki: &f$plugins".color())
         sender.sendMessage("&8&m-----------------------------------------------------".color())
 
         return true
