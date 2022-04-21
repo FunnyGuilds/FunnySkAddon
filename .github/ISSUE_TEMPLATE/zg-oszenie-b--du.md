@@ -13,12 +13,12 @@ Jasny i zwięzły opis błędu. Powinien zawierać najważniejsze informacje.
 ---
 
 **Aby zreprodukować**
-Kroki jakie trzeba podjąć aby zreprodukować błąd.
+Kroki jakie należy podjąć, aby zreprodukować błąd.
 
 ---
 
 **Oczekiwane działanie**
-Oczekiwane działanie - coś zachowuje się w sposób *x* ale powinno w sposób *y*.
+Oczekiwane działanie - coś zachowuje się w sposób *x,* ale powinno w sposób *y*.
 
 ---
 
