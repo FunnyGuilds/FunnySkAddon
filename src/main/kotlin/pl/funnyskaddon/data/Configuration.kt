@@ -36,7 +36,7 @@ class Configuration : OkaeriConfig() {
     class Messages : OkaeriConfig() {
         @Comment("Wiadomość wsyłana gdy gracz nie ma uprawnień do komendy /funnyskaddon")
         @CustomKey("no-perm")
-        var noPerm: String? = "&bFunnySkAddon &8> &7Niestety nie posiadasz uprawnien."
+        var noPerm: String = "&bFunnySkAddon &8> &7Niestety nie posiadasz uprawnien."
     }
 
 }
