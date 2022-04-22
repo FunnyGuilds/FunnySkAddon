@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 **Opis błędu**
-Jasny i zwięzły opis błędu. Powinien zawierać najważniejsze informacje.
+Jasny i zwięzły opis błędu. Powinien zawierać najważniejsze informacje. Jeśli występuje błąd w konsoli najlepiej go wrzucić np. na pastebina i też go tutaj wstawić.
 
 ---
 
