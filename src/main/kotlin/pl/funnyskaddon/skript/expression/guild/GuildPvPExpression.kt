@@ -38,7 +38,7 @@ class GuildPvPExpression : GuildExpression<Boolean>("pvp of") {
 
     override fun get(event: Event): Array<Boolean>? {
         return event.getGuild(guildExpression)
-            .map(Guild::getPvP)
+            .map(Guild::hasPvPEnabled)
             .map { value -> arrayOf(value) }
             .orNull()
     }

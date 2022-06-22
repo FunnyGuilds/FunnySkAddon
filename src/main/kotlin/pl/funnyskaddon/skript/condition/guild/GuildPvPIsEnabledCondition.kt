@@ -41,7 +41,7 @@ class GuildPvPIsEnabledCondition : GuildCondition(7) {
 
     override fun check(event: Event): Boolean {
         return event.getGuild(guildExpression)
-            .map(Guild::getPvP)
+            .map(Guild::hasPvPEnabled)
             .orElseGet(false)
             .xor(isNegated)
     }
