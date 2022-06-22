@@ -10,7 +10,7 @@ Stats: [BStats](https://bstats.org/plugin/bukkit/FunnySkAddon-Extended/6363)
 Get the latest stable version: [FunnySkAddon Releases](https://github.com/FunnyGuilds/FunnySkAddon/releases)
 
 #### Requirements
-* FunnyGuilds 4.10.0+
+* FunnyGuilds 4.10.1+
 * Skript 2.6+
 * Spigot 1.8.8+
 * Java 8
