@@ -5,6 +5,7 @@ import ch.njol.skript.registrations.EventValues
 import ch.njol.skript.util.Getter
 import ch.njol.util.coll.CollectionUtils
 import net.dzikoysk.funnyguilds.event.FunnyEvent
+import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.extension.getPlayerOption
@@ -21,7 +22,7 @@ class EventExpressionUtil {
                         if (event.doer == null) {
                             return null
                         }
-                        return event.doer.getPlayerOption().orNull()
+                        return event.doer.flatMap(User::getPlayerOption).orNull()
                     }
                 }, 0
             )

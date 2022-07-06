@@ -14,6 +14,7 @@ import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
 import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
 import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
+import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
@@ -71,7 +72,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         FUNNY("(player|doer)", FunnyEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is FunnyEvent) {
-                    return event.doer.getPlayerOption().orNull()
+                    return event.doer.flatMap(User::getPlayerOption).orNull()
                 }
                 return null
             }
@@ -80,7 +81,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         KILLS_CHANGE("[kills( |-)change( |-)](player|doer)", KillsChangeEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is KillsChangeEvent) {
-                    return event.doer.getPlayerOption().orNull()
+                    return event.doer.flatMap(User::getPlayerOption).orNull()
                 }
                 return null
             }
@@ -89,7 +90,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         DEATHS_CHANGE("[deaths( |-)change( |-)](player|doer)", DeathsChangeEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is DeathsChangeEvent) {
-                    return event.doer.getPlayerOption().orNull()
+                    return event.doer.flatMap(User::getPlayerOption).orNull()
                 }
                 return null
             }
@@ -98,7 +99,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         POINTS_CHANGE("[points( |-)change( |-)](player|doer)", PointsChangeEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is PointsChangeEvent) {
-                    return event.doer.getPlayerOption().orNull()
+                    return event.doer.flatMap(User::getPlayerOption).orNull()
                 }
                 return null
             }
