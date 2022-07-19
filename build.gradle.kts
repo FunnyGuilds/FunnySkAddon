@@ -2,7 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
-    kotlin("jvm") version "1.7.0"
+    kotlin("jvm") version "1.7.10"
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10")
     implementation("org.bstats:bstats-bukkit:3.0.0")
     implementation("commons-io:commons-io:2.11.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:4.0.6")
