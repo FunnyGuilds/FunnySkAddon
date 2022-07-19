@@ -45,8 +45,9 @@ import pl.funnyskaddon.docs.FunnyDoc
     "guild region leave",
     "kills change",
     "deaths change",
-    "points change",
-    "kill points change"
+    "assists change",
+    "logouts change",
+    "points change"
 )
 class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 

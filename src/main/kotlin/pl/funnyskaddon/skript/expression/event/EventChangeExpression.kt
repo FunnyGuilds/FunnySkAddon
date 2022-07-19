@@ -10,12 +10,9 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.*
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
 @Name("Change")
@@ -25,8 +22,9 @@ import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
 @Events(
     "kills change",
     "deaths change",
-    "points change",
-    "kill points change"
+    "assists change",
+    "logouts change",
+    "points change"
 )
 class EventChangeExpression : SimpleExpression<Int>() {
 
@@ -61,19 +59,28 @@ class EventChangeExpression : SimpleExpression<Int>() {
             }
         },
 
-        POINTS_CHANGE("[rank|ranking] [points( |-)]change", PointsChangeEvent::class.java) {
+        ASSISTS_CHANGE("[rank|ranking] [assists( |-)]change", AssistsChangeEvent::class.java) {
             override fun get(event: Event): Int? {
-                if (event is PointsChangeEvent) {
-                    return event.pointsChange
+                if (event is AssistsChangeEvent) {
+                    return event.assistsChange
                 }
                 return null
             }
         },
 
-        KILL_POINTS_CHANGE("kill [rank|ranking] [points( |-)]change", CustomKillPointsChangeEvent::class.java) {
+        LOGOUTS_CHANGE("[rank|ranking] [logouts( |-)]change", LogoutsChangeEvent::class.java) {
             override fun get(event: Event): Int? {
-                if (event is CustomKillPointsChangeEvent) {
-                    return event.change
+                if (event is LogoutsChangeEvent) {
+                    return event.logoutsChange
+                }
+                return null
+            }
+        },
+
+        POINTS_CHANGE("[rank|ranking] [points( |-)]change", PointsChangeEvent::class.java) {
+            override fun get(event: Event): Int? {
+                if (event is PointsChangeEvent) {
+                    return event.pointsChange
                 }
                 return null
             }
