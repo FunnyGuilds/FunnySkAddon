@@ -20,6 +20,7 @@ class RankKillsChangeEvent : SimpleEvent() {
                     "on player kills change:",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
+                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%affected player%\"",
                     "&nbsp;&nbsp;&nbsp;&nbsp;send \"%change%\""
                 )
         }

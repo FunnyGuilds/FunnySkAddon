@@ -10,24 +10,27 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import org.bukkit.entity.Player
+import net.dzikoysk.funnyguilds.event.guild.GuildChatEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildPreChatEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
-@Name("Victim")
-@Description("Zwraca ofiarę, która uczestniczyła w wydarzeniu")
-@Events(
-    "kill points change"
+@Name("Chat Type")
+@Description(
+    "Zwraca typ wiadomości na chacie gildyjnym: PRIVATE, ALLY, ALL"
 )
-class EventVictimExpression : SimpleExpression<Player>() {
+@Events(
+    "guild pre chat event",
+    "guild chat event"
+)
+class EventChatTypeExpression : SimpleExpression<GuildChatEvent.Type>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventVictimExpression::class.java,
-                Player::class.java,
+                EventChatTypeExpression::class.java,
+                GuildChatEvent.Type::class.java,
                 ExpressionType.SIMPLE,
                 *EventType.patterns.toTypedArray()
             )
@@ -36,10 +39,19 @@ class EventVictimExpression : SimpleExpression<Player>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        KILL_POINTS_CHANGE_ATTACKER("victim", CustomKillPointsChangeEvent::class.java) {
-            override fun get(event: Event): Player? {
-                if (event is CustomKillPointsChangeEvent) {
-                    return event.victim
+        PRE_CHAT("[chat( |-)]type", GuildPreChatEvent::class.java) {
+            override fun get(event: Event): GuildChatEvent.Type? {
+                if (event is GuildPreChatEvent) {
+                    return event.type
+                }
+                return null
+            }
+        },
+
+        CHAT("[chat( |-)]type", GuildChatEvent::class.java) {
+            override fun get(event: Event): GuildChatEvent.Type? {
+                if (event is GuildChatEvent) {
+                    return event.type
                 }
                 return null
             }
@@ -59,7 +71,7 @@ class EventVictimExpression : SimpleExpression<Player>() {
             }
         }
 
-        abstract operator fun get(event: Event): Player?
+        abstract operator fun get(event: Event): GuildChatEvent.Type?
     }
 
     private lateinit var type: EventType
@@ -81,7 +93,7 @@ class EventVictimExpression : SimpleExpression<Player>() {
         return true
     }
 
-    override fun get(event: Event): Array<Player?>? {
+    override fun get(event: Event): Array<GuildChatEvent.Type?>? {
         for (classEvent in type.events) {
             if (classEvent.isInstance(event)) {
                 return arrayOf(type[event])
@@ -94,12 +106,12 @@ class EventVictimExpression : SimpleExpression<Player>() {
         return true
     }
 
-    override fun getReturnType(): Class<out Player> {
-        return Player::class.java
+    override fun getReturnType(): Class<out GuildChatEvent.Type> {
+        return GuildChatEvent.Type::class.java
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " doer"
+        return "the " + type.name + " type"
     }
 
 }

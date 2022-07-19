@@ -11,9 +11,7 @@ import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.FunnyEvent
-import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
+import net.dzikoysk.funnyguilds.event.rank.*
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
@@ -49,10 +47,11 @@ import pl.funnyskaddon.extension.getPlayerOption
     "guild break ally",
     "guild region enter",
     "guild region leave",
-    "kill change",
+    "kills change",
     "deaths change",
-    "points change",
-    "kills points change"
+    "assists change",
+    "logouts change",
+    "points change"
 )
 class EventPlayerExpression : SimpleExpression<Player>() {
 
@@ -78,7 +77,7 @@ class EventPlayerExpression : SimpleExpression<Player>() {
             }
         },
 
-        KILLS_CHANGE("[kills( |-)change( |-)](player|doer)", KillsChangeEvent::class.java) {
+        KILLS_CHANGE("[kills( |-)change( |-)](player|doer)|", KillsChangeEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is KillsChangeEvent) {
                     return event.doer.flatMap(User::getPlayerOption).orNull()
@@ -90,6 +89,24 @@ class EventPlayerExpression : SimpleExpression<Player>() {
         DEATHS_CHANGE("[deaths( |-)change( |-)](player|doer)", DeathsChangeEvent::class.java) {
             override fun get(event: Event): Player? {
                 if (event is DeathsChangeEvent) {
+                    return event.doer.flatMap(User::getPlayerOption).orNull()
+                }
+                return null
+            }
+        },
+
+        ASSISTS_CHANGE("[assists( |-)change( |-)](player|doer)", AssistsChangeEvent::class.java) {
+            override fun get(event: Event): Player? {
+                if (event is AssistsChangeEvent) {
+                    return event.doer.flatMap(User::getPlayerOption).orNull()
+                }
+                return null
+            }
+        },
+
+        LOGOUTS_CHANGE("[logouts( |-)change( |-)](player|doer)", LogoutsChangeEvent::class.java) {
+            override fun get(event: Event): Player? {
+                if (event is LogoutsChangeEvent) {
                     return event.doer.flatMap(User::getPlayerOption).orNull()
                 }
                 return null

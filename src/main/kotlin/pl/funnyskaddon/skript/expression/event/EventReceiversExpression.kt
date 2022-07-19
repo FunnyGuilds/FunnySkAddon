@@ -10,33 +10,28 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
-import net.dzikoysk.funnyguilds.event.rank.DeathsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
-import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
-import net.dzikoysk.funnyguilds.user.UserRank
+import net.dzikoysk.funnyguilds.event.guild.GuildChatEvent
+import net.dzikoysk.funnyguilds.event.guild.GuildPreChatEvent
+import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.event.rank.CustomKillPointsChangeEvent
 
 @FunnyDoc
-@Name("Rank")
+@Name("Receivers")
 @Description(
-    "Zwraca obiekt Rank z FunnyGuilds<br>",
-    "Aktualnie niezbyt przydatne"
+    "Zwraca gildie, które otrzymały wiadomość z chatu gildyjnego"
 )
 @Events(
-    "kills change",
-    "deaths change",
-    "points change",
-    "kills points change"
+    "guild pre chat event",
+    "guild chat event"
 )
-class EventRankExpression : SimpleExpression<UserRank>() {
+class EventReceiversExpression : SimpleExpression<Guild>() {
 
     companion object {
         init {
             Skript.registerExpression(
-                EventRankExpression::class.java,
-                UserRank::class.java,
+                EventReceiversExpression::class.java,
+                Guild::class.java,
                 ExpressionType.SIMPLE,
                 *EventType.patterns.toTypedArray()
             )
@@ -45,41 +40,23 @@ class EventRankExpression : SimpleExpression<UserRank>() {
 
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
-        KILLS_CHANGE("[kills( |-)]rank", KillsChangeEvent::class.java) {
-            override fun get(event: Event): UserRank? {
-                if (event is KillsChangeEvent) {
-                    return event.affected.rank
+        PRE_CHAT("[message( |-)]receivers", GuildPreChatEvent::class.java) {
+            override fun get(event: Event): Set<Guild>? {
+                if (event is GuildPreChatEvent) {
+                    return event.receivers
                 }
                 return null
             }
         },
 
-        DEATHS_CHANGE("[deaths( |-)]rank", DeathsChangeEvent::class.java) {
-            override fun get(event: Event): UserRank? {
-                if (event is DeathsChangeEvent) {
-                    return event.affected.rank
+        CHAT("[message( |-)]receivers", GuildChatEvent::class.java) {
+            override fun get(event: Event): Set<Guild>? {
+                if (event is GuildChatEvent) {
+                    return event.receivers
                 }
                 return null
             }
-        },
-
-        POINTS_CHANGE("[points( |-)]rank", PointsChangeEvent::class.java) {
-            override fun get(event: Event): UserRank? {
-                if (event is PointsChangeEvent) {
-                    return event.affected.rank
-                }
-                return null
-            }
-        },
-
-        KILL_POINTS_CHANGE("kill( |-)[points( |-)]rank", CustomKillPointsChangeEvent::class.java) {
-            override fun get(event: Event): UserRank? {
-                if (event is CustomKillPointsChangeEvent) {
-                    return event.rank
-                }
-                return null
-            }
-        };
+        }, ;
 
         init {
             this.pattern = "[the] $pattern"
@@ -95,7 +72,7 @@ class EventRankExpression : SimpleExpression<UserRank>() {
             }
         }
 
-        abstract operator fun get(event: Event): UserRank?
+        abstract operator fun get(event: Event): Set<Guild>?
     }
 
     private lateinit var type: EventType
@@ -117,10 +94,10 @@ class EventRankExpression : SimpleExpression<UserRank>() {
         return true
     }
 
-    override fun get(event: Event): Array<UserRank?>? {
+    override fun get(event: Event): Array<Guild?>? {
         for (classEvent in type.events) {
             if (classEvent.isInstance(event)) {
-                return arrayOf(type[event])
+                return type[event]?.toTypedArray()
             }
         }
         return null
@@ -130,12 +107,12 @@ class EventRankExpression : SimpleExpression<UserRank>() {
         return true
     }
 
-    override fun getReturnType(): Class<out UserRank> {
-        return UserRank::class.java
+    override fun getReturnType(): Class<out Guild> {
+        return Guild::class.java
     }
 
     override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " rank"
+        return "the " + type.name + " receivers"
     }
 
 }

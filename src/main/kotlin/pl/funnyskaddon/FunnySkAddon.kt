@@ -11,7 +11,6 @@ import org.bstats.charts.SimplePie
 import org.bukkit.plugin.java.JavaPlugin
 import pl.funnyskaddon.command.FunnySkAddonCommand
 import pl.funnyskaddon.data.Configuration
-import pl.funnyskaddon.event.rank.PointsChangeListener
 import pl.funnyskaddon.update.PlayerJoinListener
 import pl.funnyskaddon.update.UpdateCheckScheduler
 import java.io.File
@@ -61,7 +60,6 @@ class FunnySkAddon : JavaPlugin() {
 
         getCommand("funnyskaddon").executor = FunnySkAddonCommand(this)
 
-        pluginManager.registerEvents(PointsChangeListener(this), this)
         pluginManager.registerEvents(PlayerJoinListener(this), this)
 
         UpdateCheckScheduler(this).start()
