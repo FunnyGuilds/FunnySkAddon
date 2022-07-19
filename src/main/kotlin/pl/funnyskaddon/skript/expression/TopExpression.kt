@@ -16,7 +16,7 @@ abstract class TopExpression<T> : FunnyExpression<T>() {
         parseResult: SkriptParser.ParseResult
     ): Boolean {
         positionExpression = expression[0] as Expression<Number>
-        typeExpression = if (expression.size > 1) expression[1] as Expression<String> else null
+        typeExpression = if (expression.size > 2) expression[1] as Expression<String> else null
         return true
     }
 

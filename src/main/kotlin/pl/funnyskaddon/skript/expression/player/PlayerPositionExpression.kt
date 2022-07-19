@@ -43,7 +43,7 @@ class PlayerPositionExpression : PlayerExpression<Int>() {
         isDelayed: Kleenean,
         parseResult: SkriptParser.ParseResult
     ): Boolean {
-        typeExpression = if (expression.size > 1) expression[1] as Expression<String> else null
+        typeExpression = if (expression.size > 2) expression[1] as Expression<String> else null
         return super.init(expression, matchedPattern, isDelayed, parseResult)
     }
 
