@@ -51,7 +51,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.22")
     implementation("org.bstats:bstats-bukkit:3.0.0")
     implementation("commons-io:commons-io:2.11.0")
-    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:4.0.7")
+    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:4.0.8")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     shadow("net.dzikoysk.funnyguilds:plugin:4.10.2")
     shadow("com.github.SkriptLang:Skript:2.6.2") {
