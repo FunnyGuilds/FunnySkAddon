@@ -53,7 +53,7 @@ dependencies {
     implementation("commons-io:commons-io:2.11.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:4.0.9")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    shadow("net.dzikoysk.funnyguilds:plugin:4.10.2")
+    shadow("net.dzikoysk.funnyguilds:plugin:4.11.0")
     shadow("com.github.SkriptLang:Skript:2.6.2") {
         isTransitive = false
     }
