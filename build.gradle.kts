@@ -49,7 +49,7 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10")
-    implementation("org.bstats:bstats-bukkit:3.0.0")
+    implementation("org.bstats:bstats-bukkit:3.0.1")
     implementation("commons-io:commons-io:2.11.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:4.0.9")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
