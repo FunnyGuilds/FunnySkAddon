@@ -10,6 +10,7 @@ import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.extension.getPlayerOption
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
@@ -42,7 +43,7 @@ class GuildOnlineMembersExpression : GuildExpression<Player>("online members of"
     override fun get(event: Event): Array<Player> {
         return event.getGuild(guildExpression).toStream()
             .flatMap(Guild::getOnlineMembers)
-            .flatMap(User::getPlayer)
+            .flatMap(User::getPlayerOption)
             .collect(Collectors.toSet())
             .toTypedArray()
     }

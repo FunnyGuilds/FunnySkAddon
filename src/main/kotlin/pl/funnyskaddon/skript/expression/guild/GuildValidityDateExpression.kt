@@ -11,6 +11,7 @@ import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
+import java.time.Instant
 
 @FunnyDoc
 @Name("Guild Validity Date")
@@ -40,6 +41,7 @@ class GuildValidityDateExpression : GuildExpression<Date>("validity date of") {
     override fun get(event: Event): Array<Date>? {
         return event.getGuild(guildExpression)
             .map(Guild::getValidity)
+            .map(Instant::toEpochMilli)
             .map { validity -> Date(validity) }
             .map { value -> arrayOf(value) }
             .orNull()

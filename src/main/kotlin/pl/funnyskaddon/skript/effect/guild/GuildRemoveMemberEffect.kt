@@ -4,16 +4,12 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import net.dzikoysk.funnyguilds.FunnyGuilds
-import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalRemovePlayerRequest
-import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalUpdatePlayer
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberKickEvent
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
-import pl.funnyskaddon.extension.getPlayerOption
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getUser
@@ -58,24 +54,8 @@ class GuildRemoveMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
                             return@userPeek
                         }
 
-                        FunnyGuilds.getInstance().concurrencyManager.postRequests(
-                            PrefixGlobalRemovePlayerRequest(
-                                FunnyGuilds.getInstance().individualPrefixManager,
-                                user.name
-                            )
-                        )
-
                         guild.removeMember(user)
                         user.removeGuild()
-
-                        user.getPlayerOption().peek { player ->
-                            FunnyGuilds.getInstance().concurrencyManager.postRequests(
-                                PrefixGlobalUpdatePlayer(
-                                    FunnyGuilds.getInstance().individualPrefixManager,
-                                    player
-                                )
-                            )
-                        }
                     }
             }
     }

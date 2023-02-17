@@ -42,7 +42,6 @@ repositories {
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://repo.panda-lang.org/releases")
-    maven("https://repo.panda-lang.org/snapshots")
     maven("https://jitpack.io")
     maven("https://repo.codemc.org/repository/maven-public")
     maven("https://storehouse.okaeri.eu/repository/maven-public")
@@ -54,7 +53,7 @@ dependencies {
     implementation("commons-io:commons-io:2.11.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:4.0.9")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    shadow("net.dzikoysk.funnyguilds:plugin:4.10.3-SNAPSHOT")
+    shadow("net.dzikoysk.funnyguilds:plugin:4.11.0")
     shadow("com.github.SkriptLang:Skript:2.6.2") {
         isTransitive = false
     }
