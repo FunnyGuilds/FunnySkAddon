@@ -5,10 +5,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.Expression
-import net.dzikoysk.funnyguilds.FunnyGuilds
-import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalAddPlayerRequest
-import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalRemovePlayerRequest
-import net.dzikoysk.funnyguilds.concurrency.requests.prefix.PrefixGlobalUpdatePlayer
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberJoinEvent
@@ -19,7 +15,6 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getGuild
-import pl.funnyskaddon.extension.getPlayerOption
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getUser
 import pl.funnyskaddon.skript.getValue
@@ -92,12 +87,6 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
 
             guild.addMember(member)
             member.setGuild(guild)
-            FunnyGuilds.getInstance().concurrencyManager.postRequests(
-                PrefixGlobalAddPlayerRequest(
-                    FunnyGuilds.getInstance().individualPrefixManager,
-                    member.name
-                )
-            )
 
             return true
         }
@@ -112,15 +101,6 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
             member.guild.peek { guild ->
                 member.removeGuild()
                 guild.removeMember(member)
-            }
-
-            val individualPrefixManager = FunnyGuilds.getInstance().individualPrefixManager
-
-            member.getPlayerOption().peek { player ->
-                FunnyGuilds.getInstance().concurrencyManager.postRequests(
-                    PrefixGlobalRemovePlayerRequest(individualPrefixManager, member.name),
-                    PrefixGlobalUpdatePlayer(individualPrefixManager, player)
-                )
             }
 
             return true

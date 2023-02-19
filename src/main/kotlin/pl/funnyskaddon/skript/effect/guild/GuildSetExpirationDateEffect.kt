@@ -13,6 +13,9 @@ import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getValue
+import java.time.Duration
+import java.time.Duration.ofMillis
+import java.time.Instant
 
 
 @FunnyDoc
@@ -39,25 +42,32 @@ class GuildSetExpirationDateEffect : GuildValueEffect<Date>(false) {
     }
 
     override fun execute(event: Event) {
-        event.getGuild(guildExpression)
-            .peek { guild ->
-                event.getValue(valueExpression)
-                    .peek valuePeek@{ value ->
-                        if (!SimpleEventHandler.handle(
-                                GuildExtendValidityEvent(
-                                    FunnyEvent.EventCause.CONSOLE,
-                                    null,
-                                    guild,
-                                    value.timestamp - guild.validity
-                                )
-                            )
-                        ) {
-                            return@valuePeek
-                        }
-
-                        guild.validity = value.timestamp
-                    }
-            }
+        event.getGuild(guildExpression).peek { guild ->
+            event.getValue(valueExpression)
+                .map(Date::getTimestamp)
+                .map(Instant::ofEpochMilli)
+                .map { newValidity -> newValidity - guild.validity }
+                .filter { difference ->
+                    return@filter SimpleEventHandler.handle(
+                        GuildExtendValidityEvent(
+                            FunnyEvent.EventCause.CONSOLE,
+                            null,
+                            guild,
+                            difference
+                        )
+                    )
+                }
+                .peek { difference ->
+                    guild.validity = guild.validity + difference
+                }
+        }
     }
+}
 
+private operator fun Instant.minus(newValidity: Instant): Duration {
+    return ofMillis(this.toEpochMilli() - newValidity.toEpochMilli())
+}
+
+private operator fun Duration.minus(validity: Instant?): Duration? {
+    return ofMillis(this.toMillis() - validity!!.toEpochMilli())
 }

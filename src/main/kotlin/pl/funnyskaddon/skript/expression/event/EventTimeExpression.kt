@@ -14,6 +14,7 @@ import net.dzikoysk.funnyguilds.event.guild.GuildBanEvent
 import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
+import java.time.Duration
 
 @FunnyDoc
 @Name("Time")
@@ -40,7 +41,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
     private enum class EventType(var pattern: String, vararg var events: Class<out Event>) {
 
         BAN("time", GuildBanEvent::class.java) {
-            override fun get(event: Event): Long? {
+            override fun get(event: Event): Duration? {
                 if (event is GuildBanEvent) {
                     return event.time
                 }
@@ -49,7 +50,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
         },
 
         EXTEND_VALIDITY("[extend( |-)]time", GuildExtendValidityEvent::class.java) {
-            override fun get(event: Event): Long? {
+            override fun get(event: Event): Duration? {
                 if (event is GuildExtendValidityEvent) {
                     return event.extendTime
                 }
@@ -71,7 +72,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
             }
         }
 
-        abstract operator fun get(event: Event): Long?
+        abstract operator fun get(event: Event): Duration?
     }
 
     private lateinit var type: EventType
@@ -96,7 +97,7 @@ class EventTimeExpression : SimpleExpression<Long>() {
     override fun get(event: Event): Array<Long?>? {
         for (classEvent in type.events) {
             if (classEvent.isInstance(event)) {
-                return arrayOf(type[event])
+                return arrayOf(type[event]?.toMillis() ?: 0L)
             }
         }
         return null

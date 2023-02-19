@@ -10,6 +10,8 @@ import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
+import java.time.Duration
+import java.time.Instant
 import java.util.*
 
 @FunnyDoc
@@ -39,7 +41,8 @@ class GuildValidityTimeExpression : GuildExpression<Timespan>("validity time of"
 
     override fun get(event: Event): Array<Timespan>? {
         return event.getGuild(guildExpression)
-            .map { guild -> Timespan(guild.validity - (Date().time)) }
+            .map { guild -> Duration.between(Instant.now(), guild.validity) }
+            .map { duration -> Timespan(duration.toMillis()) }
             .map { value -> arrayOf(value) }
             .orNull()
     }

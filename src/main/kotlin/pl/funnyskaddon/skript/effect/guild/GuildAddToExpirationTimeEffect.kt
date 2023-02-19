@@ -13,6 +13,7 @@ import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getValue
+import java.time.Duration
 
 @FunnyDoc
 @Name("Add To Expiration Time")
@@ -37,26 +38,22 @@ class GuildAddToExpirationTimeEffect : GuildValueEffect<Timespan>(true) {
     }
 
     override fun execute(event: Event) {
-        event.getGuild(guildExpression)
-            .peek { guild ->
-                event.getValue(valueExpression)
-                    .map(Timespan::getMilliSeconds)
-                    .peek valuePeek@{ value ->
-                        if (!SimpleEventHandler.handle(
-                                GuildExtendValidityEvent(
-                                    FunnyEvent.EventCause.CONSOLE,
-                                    null,
-                                    guild,
-                                    value
-                                )
-                            )
-                        ) {
-                            return@valuePeek
-                        }
-
-                        guild.validity = guild.validity + value
-                    }
-            }
+        event.getGuild(guildExpression).peek { guild ->
+            event.getValue(valueExpression)
+                .map(Timespan::getMilliSeconds)
+                .map(Duration::ofMillis)
+                .filter { value ->
+                    SimpleEventHandler.handle(
+                        GuildExtendValidityEvent(
+                            FunnyEvent.EventCause.CONSOLE,
+                            null,
+                            guild,
+                            value
+                        )
+                    )
+                }
+                .peek { value -> guild.validity = guild.validity + value }
+        }
     }
 
 }

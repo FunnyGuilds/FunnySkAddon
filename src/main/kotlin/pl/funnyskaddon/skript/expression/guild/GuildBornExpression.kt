@@ -11,6 +11,7 @@ import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
+import java.time.Instant
 
 @FunnyDoc
 @Name("Guild Born")
@@ -40,6 +41,7 @@ class GuildBornExpression : GuildExpression<Date>("born data of") {
     override fun get(event: Event): Array<Date>? {
         return event.getGuild(guildExpression)
             .map(Guild::getBorn)
+            .map(Instant::toEpochMilli)
             .map { born -> Date(born) }
             .map { value -> arrayOf(value) }
             .orNull()
