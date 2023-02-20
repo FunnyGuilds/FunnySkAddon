@@ -9,6 +9,39 @@ plugins {
 group = "pl.funnyskaddon"
 version = "2.5.0"
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+kotlin {
+    jvmToolchain(8)
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+
+    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
+    maven("https://repo.panda-lang.org/releases")
+    maven("https://jitpack.io")
+    maven("https://repo.codemc.org/repository/maven-public")
+    maven("https://storehouse.okaeri.eu/repository/maven-public")
+}
+
+dependencies {
+    implementation(kotlin("stdlib"))
+    implementation("org.bstats:bstats-bukkit:3.0.1")
+    implementation("commons-io:commons-io:2.11.0")
+    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.0-beta.3")
+    shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
+    shadow("net.dzikoysk.funnyguilds:plugin:4.11.0")
+    shadow("com.github.SkriptLang:Skript:2.6.2") {
+        isTransitive = false
+    }
+}
+
 tasks.withType<ShadowJar> {
     archiveFileName.set("FunnySkAddon ${project.version}.jar")
 
@@ -33,28 +66,4 @@ tasks.withType<Copy> {
     })
 
     filter(ReplaceTokens::class, "tokens" to mapOf("version" to rootProject.version))
-}
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
-    maven("https://repo.panda-lang.org/releases")
-    maven("https://jitpack.io")
-    maven("https://repo.codemc.org/repository/maven-public")
-    maven("https://storehouse.okaeri.eu/repository/maven-public")
-}
-
-dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.10")
-    implementation("org.bstats:bstats-bukkit:3.0.1")
-    implementation("commons-io:commons-io:2.11.0")
-    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.0-beta.3")
-    shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    shadow("net.dzikoysk.funnyguilds:plugin:4.11.0")
-    shadow("com.github.SkriptLang:Skript:2.6.2") {
-        isTransitive = false
-    }
 }
