@@ -2,7 +2,7 @@ import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
-    kotlin("jvm") version "1.8.22"
+    kotlin("jvm") version "1.9.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
@@ -25,8 +25,8 @@ repositories {
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://repo.panda-lang.org/releases")
-    maven("https://jitpack.io")
-    maven("https://repo.codemc.org/repository/maven-public")
+    maven("https://repo.panda-lang.org/jitpack")
+    maven("https://repo.titanvale.net/releases")
     maven("https://storehouse.okaeri.eu/repository/maven-public")
 }
 
@@ -36,7 +36,7 @@ dependencies {
     implementation("commons-io:commons-io:2.13.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.0-beta.5")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    shadow("net.dzikoysk.funnyguilds:plugin:4.11.0")
+    shadow("net.dzikoysk.funnyguilds:plugin:4.12.0")
     shadow("com.github.SkriptLang:Skript:2.6.2") {
         isTransitive = false
     }

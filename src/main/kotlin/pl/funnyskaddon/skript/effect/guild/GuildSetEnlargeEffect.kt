@@ -4,11 +4,11 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildEnlargeEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
@@ -37,21 +37,19 @@ class GuildSetEnlargeEffect : GuildValueEffect<Number>(false) {
     }
 
     override fun execute(event: Event) {
-        event.getGuild(guildExpression)
-            .peek { guild ->
-                event.getValue(valueExpression)
-                    .map(Number::toInt)
-                    .peek valuePeek@{ value ->
-                        if (!SimpleEventHandler.handle(GuildEnlargeEvent(FunnyEvent.EventCause.CONSOLE, null, guild))) {
-                            return@valuePeek
-                        }
-
-                        guild.region.peek { region ->
-                            region.enlarge = value
-                            region.size = value * FunnySkAddon.fgConfiguration.enlargeSize
-                        }
+        event.getGuild(guildExpression).peek { guild ->
+            event.getValue(valueExpression)
+                .map(Number::toInt)
+                .peek valuePeek@{ value ->
+                    if (!SimpleEventHandler.handle(GuildEnlargeEvent(FunnyEvent.EventCause.CONSOLE, null, guild))) {
+                        return@valuePeek
                     }
-            }
+
+                    guild.region.peek { region ->
+                        FunnyGuilds.getInstance().regionManager.changeRegionEnlargement(region, value)
+                    }
+                }
+        }
     }
 
 }

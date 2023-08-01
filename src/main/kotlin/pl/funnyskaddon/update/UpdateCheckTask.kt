@@ -4,7 +4,7 @@ import org.bukkit.Bukkit
 import pl.funnyskaddon.FunnySkAddon
 import java.util.regex.Pattern
 
-class UpdateCheckScheduler(private val plugin: FunnySkAddon) {
+class UpdateCheckTask(private val plugin: FunnySkAddon) {
 
     companion object {
         private val PATTERN: Pattern = Pattern.compile("^([0-9]|\\.)+$")

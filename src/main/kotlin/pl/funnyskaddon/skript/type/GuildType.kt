@@ -15,19 +15,20 @@ class GuildType {
 
     companion object {
         init {
+            val funnyGuilds = FunnyGuilds.getInstance()
+
             Classes.registerClass(
                 ClassInfo(Guild::class.java, "guild")
                     .user("guilds")
                     .name("guild")
                     .defaultExpression(EventValueExpression(Guild::class.java))
                     .parser(object : Parser<Guild>() {
-
                         override fun parse(input: String, context: ParseContext): Guild? {
-                            return null
+                            return FunnyGuilds.getInstance().guildManager.findByName(input).orNull()
                         }
 
                         override fun canParse(context: ParseContext): Boolean {
-                            return false
+                            return true
                         }
 
                         override fun toVariableNameString(guild: Guild): String {
@@ -37,10 +38,8 @@ class GuildType {
                         override fun toString(guild: Guild, flags: Int): String {
                             return toVariableNameString(guild)
                         }
-
                     })
                     .serializer(object : Serializer<Guild>() {
-
                         override fun serialize(guild: Guild): Fields {
                             val fields = Fields()
                             fields.putPrimitive("uuid", guild.uuid)
@@ -67,7 +66,6 @@ class GuildType {
                         override fun canBeInstantiated(): Boolean {
                             return false
                         }
-
                     })
             )
         }

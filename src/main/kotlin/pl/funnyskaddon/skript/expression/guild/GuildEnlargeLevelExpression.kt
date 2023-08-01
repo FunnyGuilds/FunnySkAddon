@@ -39,7 +39,7 @@ class GuildEnlargeLevelExpression : GuildExpression<Int>("enlarge level of") {
     override fun get(event: Event): Array<Int>? {
         return event.getGuild(guildExpression)
             .flatMap(Guild::getRegion)
-            .map { region -> region.enlarge }
+            .map { region -> region.enlargementLevel }
             .orElse(0)
             .map { value -> arrayOf(value) }
             .get()

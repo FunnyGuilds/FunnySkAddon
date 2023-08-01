@@ -10,7 +10,7 @@ import org.bukkit.event.Event
 import panda.std.Option
 import pl.funnyskaddon.extension.getGuild
 
-fun <T> Event.getValue(expression: Expression<T>?): Option<T> {
+fun <T> Event.getValue(expression: Expression<T>?): Option<T & Any> {
     if (expression == null) {
         return Option.none()
     }

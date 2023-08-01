@@ -12,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin
 import pl.funnyskaddon.command.FunnySkAddonCommand
 import pl.funnyskaddon.data.Configuration
 import pl.funnyskaddon.update.PlayerJoinListener
-import pl.funnyskaddon.update.UpdateCheckScheduler
+import pl.funnyskaddon.update.UpdateCheckTask
 import java.io.File
 
 class FunnySkAddon : JavaPlugin() {
@@ -62,7 +62,7 @@ class FunnySkAddon : JavaPlugin() {
 
         pluginManager.registerEvents(PlayerJoinListener(this), this)
 
-        UpdateCheckScheduler(this).start()
+        UpdateCheckTask(this).start()
 
         addon = Skript.registerAddon(this)
         addon.loadClasses(
@@ -86,7 +86,7 @@ class FunnySkAddon : JavaPlugin() {
         val pluginId = 6363
         val metrics = Metrics(this, pluginId)
         metrics.addCustomChart(SimplePie("funnyguilds_version") {
-            this.server.pluginManager.getPlugin("FunnyGuilds").description.version
+            this.description.version
         })
     }
 
