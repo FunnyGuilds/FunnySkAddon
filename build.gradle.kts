@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "pl.funnyskaddon"
-version = "2.5.1"
+version = "2.5.2"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8

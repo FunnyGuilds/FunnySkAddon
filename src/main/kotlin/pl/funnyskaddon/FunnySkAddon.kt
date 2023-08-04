@@ -86,7 +86,7 @@ class FunnySkAddon : JavaPlugin() {
         val pluginId = 6363
         val metrics = Metrics(this, pluginId)
         metrics.addCustomChart(SimplePie("funnyguilds_version") {
-            this.description.version
+            FunnyGuilds.getInstance().description.version
         })
     }
 
