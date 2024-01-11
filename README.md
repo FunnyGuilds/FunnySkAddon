@@ -2,7 +2,7 @@
 
 #### About
 Official FunnyGuilds extension for Skript plugin 🕯️ <br><br>
-Documentation: [funnyskaddon.pl](https://funnyskaddon.pl) <br>
+Documentation: [funnyskaddon.peri.dev](https://funnyskaddon.peri.dev) <br>
 Deprecated docs: [mlgroupmc.github.io](https://mlgroupmc.github.io/) <br>
 Stats: [BStats](https://bstats.org/plugin/bukkit/FunnySkAddon-Extended/6363)
 
