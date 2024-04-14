@@ -34,7 +34,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.bstats:bstats-bukkit:3.0.2")
     implementation("commons-io:commons-io:2.16.1")
-    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.0-beta.5")
+    implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.1")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     shadow("net.dzikoysk.funnyguilds:plugin:4.12.0")
     shadow("com.github.SkriptLang:Skript:2.6.2") {
