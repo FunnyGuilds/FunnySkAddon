@@ -37,7 +37,7 @@ dependencies {
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.2")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     shadow("net.dzikoysk.funnyguilds:plugin:4.13.0")
-    shadow("com.github.SkriptLang:Skript:2.6.2") {
+    shadow("com.github.SkriptLang:Skript:2.9.1") {
         isTransitive = false
     }
 }
