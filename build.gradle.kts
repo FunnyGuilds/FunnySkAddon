@@ -32,7 +32,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation("org.bstats:bstats-bukkit:3.0.2")
+    implementation("org.bstats:bstats-bukkit:3.0.3")
     implementation("commons-io:commons-io:2.16.1")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.2")
     shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
