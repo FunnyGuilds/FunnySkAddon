@@ -61,7 +61,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, template: File, priva
             expressionDocItem,
             eventExpressionDocItem,
             useAlternative = Function {
-                return@Function it.c.getAnnotation(Events::class.java) != null
+                return@Function it.elementClass.getAnnotation(Events::class.java) != null
             })
     }
 
@@ -93,7 +93,7 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, template: File, priva
         }
 
         for (item in iterator) {
-            if (item.c.getAnnotation(NoDoc::class.java) != null || item.c.getAnnotation(FunnyDoc::class.java) == null) {
+            if (item.elementClass.getAnnotation(NoDoc::class.java) != null || item.elementClass.getAnnotation(FunnyDoc::class.java) == null) {
                 continue
             }
 
@@ -226,16 +226,16 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, template: File, priva
                 throw NullPointerException()
             }
 
-            if (o1.c.getAnnotation(NoDoc::class.java) != null) {
-                return if (o2.c.getAnnotation(NoDoc::class.java) != null) 0 else 1
-            } else if (o2.c.getAnnotation(NoDoc::class.java) != null) return -1
+            if (o1.elementClass.getAnnotation(NoDoc::class.java) != null) {
+                return if (o2.elementClass.getAnnotation(NoDoc::class.java) != null) 0 else 1
+            } else if (o2.elementClass.getAnnotation(NoDoc::class.java) != null) return -1
 
-            if (o1.c.getAnnotation(FunnyDoc::class.java) == null) {
-                return if (o2.c.getAnnotation(FunnyDoc::class.java) == null) 0 else 1
-            } else if (o2.c.getAnnotation(FunnyDoc::class.java) == null) return -1
+            if (o1.elementClass.getAnnotation(FunnyDoc::class.java) == null) {
+                return if (o2.elementClass.getAnnotation(FunnyDoc::class.java) == null) 0 else 1
+            } else if (o2.elementClass.getAnnotation(FunnyDoc::class.java) == null) return -1
 
-            val name1 = o1.c.getAnnotation(Name::class.java)
-            val name2 = o2.c.getAnnotation(Name::class.java)
+            val name1 = o1.elementClass.getAnnotation(Name::class.java)
+            val name2 = o2.elementClass.getAnnotation(Name::class.java)
             if (name1 == null) return 0
             if (name2 == null) return 0
             return name1.value.compareTo(name2.value)
@@ -252,13 +252,13 @@ class FunnyHTMLGenerator(private val plugin: FunnySkAddon, template: File, priva
                 throw NullPointerException()
             }
 
-            if (o1.c.getAnnotation(NoDoc::class.java) != null) {
-                return if (o2.c.getAnnotation(NoDoc::class.java) != null) 0 else 1
-            } else if (o2.c.getAnnotation(NoDoc::class.java) != null) return -1
+            if (o1.elementClass.getAnnotation(NoDoc::class.java) != null) {
+                return if (o2.elementClass.getAnnotation(NoDoc::class.java) != null) 0 else 1
+            } else if (o2.elementClass.getAnnotation(NoDoc::class.java) != null) return -1
 
-            if (o1.c.getAnnotation(FunnyDoc::class.java) == null) {
-                return if (o2.c.getAnnotation(FunnyDoc::class.java) == null) 0 else 1
-            } else if (o2.c.getAnnotation(FunnyDoc::class.java) == null) return -1
+            if (o1.elementClass.getAnnotation(FunnyDoc::class.java) == null) {
+                return if (o2.elementClass.getAnnotation(FunnyDoc::class.java) == null) 0 else 1
+            } else if (o2.elementClass.getAnnotation(FunnyDoc::class.java) == null) return -1
 
             return o1.name.compareTo(o2.name)
         }

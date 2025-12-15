@@ -44,7 +44,7 @@ class GuildSetExpirationDateEffect : GuildValueEffect<Date>(false) {
     override fun execute(event: Event) {
         event.getGuild(guildExpression).peek { guild ->
             event.getValue(valueExpression)
-                .map(Date::getTimestamp)
+                .map(Date::getTime)
                 .map(Instant::ofEpochMilli)
                 .map { newValidity -> newValidity - guild.validity }
                 .filter { difference ->

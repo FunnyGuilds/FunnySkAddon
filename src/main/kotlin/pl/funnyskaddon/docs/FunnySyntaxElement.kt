@@ -34,16 +34,16 @@ class FunnySyntaxElement {
     }
 
     constructor(info: SyntaxElementInfo<*>) {
-        val c: Class<*> = info.c
+        val elementClass: Class<*> = info.elementClass
 
-        val name: Name? = c.getAnnotation(Name::class.java)
+        val name: Name? = elementClass.getAnnotation(Name::class.java)
         if (name == null) {
             this.name = null
         } else {
             this.name = name.value
         }
 
-        val description: Description? = c.getAnnotation(Description::class.java)
+        val description: Description? = elementClass.getAnnotation(Description::class.java)
         if (description == null) {
             this.description = "Brak opisu"
         } else {
@@ -62,14 +62,14 @@ class FunnySyntaxElement {
             this.patterns = Joiner.on("<br>").join(patterns.sorted())
         }
 
-        val examples: Examples? = c.getAnnotation(Examples::class.java)
+        val examples: Examples? = elementClass.getAnnotation(Examples::class.java)
         if (examples == null) {
             this.examples = "Brak przykładów"
         } else {
             this.examples = Joiner.on("<br>").join(examples.value)
         }
 
-        val events: Events? = c.getAnnotation(Events::class.java)
+        val events: Events? = elementClass.getAnnotation(Events::class.java)
         if (events == null) {
             this.events = null
         } else {
