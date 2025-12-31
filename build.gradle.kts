@@ -36,7 +36,7 @@ dependencies {
     implementation("commons-io:commons-io:2.21.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.13")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    compileOnly("net.dzikoysk.funnyguilds:plugin:4.13.0")
+    compileOnly("net.dzikoysk.funnyguilds:plugin:4.14.0")
     compileOnly("com.github.SkriptLang:Skript:2.13.2") {
         isTransitive = false
     }
