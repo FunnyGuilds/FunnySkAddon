@@ -3,11 +3,11 @@ import org.apache.tools.ant.filters.ReplaceTokens
 
 plugins {
     kotlin("jvm") version "2.2.20"
-    id("com.github.johnrengelman.shadow") version "8.1.1"
+    id("com.gradleup.shadow") version "9.3.0"
 }
 
 group = "pl.funnyskaddon"
-version = "2.5.2"
+version = "2.5.3"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -35,9 +35,9 @@ dependencies {
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("commons-io:commons-io:2.20.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.13")
-    shadow("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    shadow("net.dzikoysk.funnyguilds:plugin:4.13.0")
-    shadow("com.github.SkriptLang:Skript:2.6.2") {
+    compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
+    compileOnly("net.dzikoysk.funnyguilds:plugin:4.13.0")
+    compileOnly("com.github.SkriptLang:Skript:2.13.2") {
         isTransitive = false
     }
 }

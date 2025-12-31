@@ -5,6 +5,7 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.util.Timespan
+import ch.njol.skript.util.Timespan.TimePeriod
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
@@ -40,7 +41,7 @@ class GuildRemoveFromExpirationTimeEffect : GuildValueEffect<Timespan>(true) {
     override fun execute(event: Event) {
         event.getGuild(guildExpression).peek { guild ->
             event.getValue(valueExpression)
-                .map(Timespan::getMilliSeconds)
+                .map { it.getAs(TimePeriod.MILLISECOND) }
                 .map(Duration::ofMillis)
                 .filter { value ->
                     SimpleEventHandler.handle(
