@@ -33,7 +33,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.bstats:bstats-bukkit:3.1.0")
-    implementation("commons-io:commons-io:2.20.0")
+    implementation("commons-io:commons-io:2.21.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.13")
     compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
     compileOnly("net.dzikoysk.funnyguilds:plugin:4.13.0")
