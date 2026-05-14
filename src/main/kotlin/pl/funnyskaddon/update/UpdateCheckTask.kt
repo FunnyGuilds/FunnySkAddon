@@ -1,6 +1,7 @@
 package pl.funnyskaddon.update
 
 import org.bukkit.Bukkit
+import org.bukkit.scheduler.BukkitTask
 import pl.funnyskaddon.FunnySkAddon
 import java.util.regex.Pattern
 
@@ -15,8 +16,8 @@ class UpdateCheckTask(private val plugin: FunnySkAddon) {
             return
         }
 
-        plugin.server.scheduler.runTaskTimerAsynchronously(plugin, Runnable {
-           VersionChecker.checkUpdate(plugin, Bukkit.getConsoleSender())
+        plugin.server.scheduler.runTaskTimerAsynchronously(plugin, { _: BukkitTask ->
+            VersionChecker.checkUpdate(plugin, Bukkit.getConsoleSender())
         }, 0, plugin.configuration.update.checkTime * 60L * 20L)
     }
 

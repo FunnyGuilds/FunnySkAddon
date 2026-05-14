@@ -24,9 +24,9 @@ repositories {
 
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
-    maven("https://repo.panda-lang.org/releases")
-    maven("https://repo.panda-lang.org/snapshots")
-    maven("https://repo.panda-lang.org/jitpack")
+    maven("https://maven.reposilite.com/releases")
+    maven("https://maven.reposilite.com/snapshots")
+    maven("https://maven.reposilite.com/jitpack")
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.titanvale.net/releases")
     maven("https://storehouse.okaeri.eu/repository/maven-public")
