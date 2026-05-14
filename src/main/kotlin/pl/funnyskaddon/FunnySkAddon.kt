@@ -58,7 +58,7 @@ class FunnySkAddon : JavaPlugin() {
         }
         fgConfiguration = FunnyGuilds.getInstance().pluginConfiguration
 
-        getCommand("funnyskaddon").executor = FunnySkAddonCommand(this)
+        getCommand("funnyskaddon")!!.setExecutor(FunnySkAddonCommand(this))
 
         pluginManager.registerEvents(PlayerJoinListener(this), this)
 

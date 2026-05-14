@@ -15,7 +15,7 @@ class UpdateCheckTask(private val plugin: FunnySkAddon) {
             return
         }
 
-        plugin.server.scheduler.runTaskTimerAsynchronously(plugin, {
+        plugin.server.scheduler.runTaskTimerAsynchronously(plugin, Runnable {
            VersionChecker.checkUpdate(plugin, Bukkit.getConsoleSender())
         }, 0, plugin.configuration.update.checkTime * 60L * 20L)
     }

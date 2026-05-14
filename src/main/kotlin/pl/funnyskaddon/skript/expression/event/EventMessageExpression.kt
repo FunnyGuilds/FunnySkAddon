@@ -12,6 +12,7 @@ import ch.njol.skript.log.ErrorQuality
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildChatEvent
 import net.dzikoysk.funnyguilds.event.guild.GuildPreChatEvent
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
 import org.bukkit.event.Event
 import pl.funnyskaddon.docs.FunnyDoc
 
@@ -42,7 +43,7 @@ class EventMessageExpression : SimpleExpression<String>() {
         PRE_CHAT("[chat( |-)]message", GuildPreChatEvent::class.java) {
             override fun get(event: Event): String? {
                 if (event is GuildPreChatEvent) {
-                    return event.message
+                    return LegacyComponentSerializer.legacySection().serialize(event.formattedMessage)
                 }
                 return null
             }
@@ -51,7 +52,7 @@ class EventMessageExpression : SimpleExpression<String>() {
         CHAT("[chat( |-)]message", GuildChatEvent::class.java) {
             override fun get(event: Event): String? {
                 if (event is GuildChatEvent) {
-                    return event.message
+                    return LegacyComponentSerializer.legacySection().serialize(event.formattedMessage)
                 }
                 return null
             }
