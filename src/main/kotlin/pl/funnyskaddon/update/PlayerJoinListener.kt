@@ -3,6 +3,7 @@ package pl.funnyskaddon.update
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.scheduler.BukkitTask
 import pl.funnyskaddon.FunnySkAddon
 
 class PlayerJoinListener(private val plugin: FunnySkAddon) : Listener {
@@ -17,7 +18,7 @@ class PlayerJoinListener(private val plugin: FunnySkAddon) : Listener {
             return
         }
 
-        plugin.server.scheduler.runTaskAsynchronously(plugin) {
+        plugin.server.scheduler.runTaskAsynchronously(plugin) { _: BukkitTask ->
             VersionChecker.checkUpdate(plugin, event.player)
         }
     }

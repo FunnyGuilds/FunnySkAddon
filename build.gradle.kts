@@ -10,12 +10,12 @@ group = "pl.funnyskaddon"
 version = "2.5.3"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(21)
 }
 
 repositories {
@@ -24,8 +24,10 @@ repositories {
 
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
-    maven("https://repo.panda-lang.org/releases")
-    maven("https://repo.panda-lang.org/jitpack")
+    maven("https://maven.reposilite.com/releases")
+    maven("https://maven.reposilite.com/snapshots")
+    maven("https://maven.reposilite.com/jitpack")
+    maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://repo.titanvale.net/releases")
     maven("https://storehouse.okaeri.eu/repository/maven-public")
 }
@@ -35,8 +37,11 @@ dependencies {
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("commons-io:commons-io:2.21.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.13")
-    compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    compileOnly("net.dzikoysk.funnyguilds:plugin:4.13.0")
+    compileOnly("org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("net.kyori:adventure-text-serializer-legacy:4.17.0")
+    compileOnly("net.dzikoysk.funnyguilds:plugin:5.0.0-SNAPSHOT") {
+        isTransitive = false
+    }
     compileOnly("com.github.SkriptLang:Skript:2.13.2") {
         isTransitive = false
     }
