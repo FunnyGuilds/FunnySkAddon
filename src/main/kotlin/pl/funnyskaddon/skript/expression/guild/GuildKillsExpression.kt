@@ -1,35 +1,33 @@
 package pl.funnyskaddon.skript.expression.guild
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 
-@FunnyDoc
 @Name("Guild Kills")
-@Description("Zwraca liczbę zabójstw gildii (sumę wszystkich zabójstw jej członków)")
+@Since("2.0.0")
+@Description("Returns the number of kills of a guild (the sum of all kills of its members)")
 @Examples(
     "send \"%\"\"FajnaGildia\"\" guild kills%\"",
     "set {_kills} to \"FajnaGildia\" guild kills"
 )
-class GuildKillsExpression : GuildExpression<Int>("kills of") {
+class GuildKillsExpression : GuildExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildKillsExpression::class.java,
-                Int::class.javaObjectType,
-                ExpressionType.PROPERTY,
+            registerExpression<GuildKillsExpression, Int>(
+                PROPERTY,
                 "%guild%['s] [(rank|ranking)] kills [(amount|count)]",
-                "%string%['s] [guild] [(rank|ranking)] kills [(amount|count)]",
                 "%offlineplayer%['s] guild['s] [(rank|ranking)] kills [(amount|count)]",
                 "%location%['s] guild['s] [(rank|ranking)] kills [(amount|count)]",
                 "%block%['s] guild['s] [(rank|ranking)] kills [(amount|count)]",
+                "%string%['s] [guild] [(rank|ranking)] kills [(amount|count)]",
                 "%object%['s] guild['s] [(rank|ranking)] kills [(amount|count)]"
             )
         }
@@ -41,8 +39,5 @@ class GuildKillsExpression : GuildExpression<Int>("kills of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

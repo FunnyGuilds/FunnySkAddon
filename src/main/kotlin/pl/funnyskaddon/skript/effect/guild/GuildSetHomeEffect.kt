@@ -2,23 +2,23 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildBaseChangeEvent
 import org.bukkit.Location
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Set Guild Home")
-@Description("Ustawie (zmienia) lokalizacje bazy gildii")
+@Description("Sets (changes) the location of the guild's home")
+@Since("2.0.0")
 @Examples(
     "set \"FajnaNazwa\" guild home to (location at (100, 100, 100) in world \"world\")",
 )
@@ -26,8 +26,7 @@ class GuildSetHomeEffect : GuildValueEffect<Location>(false) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildSetHomeEffect::class.java,
+            registerEffect<GuildSetHomeEffect>(
                 "set %guild%['s] (home|base) location to %location%",
                 "set %string%['s] [guild] (home|base) location to %location%",
                 "set %offlineplayer%['s] [guild] (home|base) location to %location%",

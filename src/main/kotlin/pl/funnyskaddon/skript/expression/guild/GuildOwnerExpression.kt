@@ -1,43 +1,37 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.orNull
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getOfflinePlayer
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 
-@FunnyDoc
 @Name("Guild Owner")
-@Description("Zwraca właściciela gildii")
+@Since("2.0.0")
+@Description("Returns the owner of a guild")
 @Examples(
     "send \"%player's guild owner%\"",
     "set {_owner} to player's guild owner"
 )
-class GuildOwnerExpression : GuildExpression<OfflinePlayer>("owner of") {
+class GuildOwnerExpression : GuildExpression<OfflinePlayer>(OfflinePlayer::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildOwnerExpression::class.java,
-                OfflinePlayer::class.java,
-                ExpressionType.PROPERTY,
-                "%guild%['s] (owner|leader)",
-                "%string%['s] [guild] (owner|leader)",
-                "%offlineplayer%['s] guild['s] (owner|leader)",
-                "%location%['s] guild['s] (owner|leader)",
-                "%block%['s] guild['s] (owner|leader)",
-                "%object%['s] guild['s] (owner|leader)",
+            registerExpression<GuildOwnerExpression, OfflinePlayer>(
+                PROPERTY,
+                *guildSources("['s] (owner|leader)")
             )
         }
     }
@@ -50,8 +44,5 @@ class GuildOwnerExpression : GuildExpression<OfflinePlayer>("owner of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<OfflinePlayer> {
-        return OfflinePlayer::class.java
-    }
 
 }

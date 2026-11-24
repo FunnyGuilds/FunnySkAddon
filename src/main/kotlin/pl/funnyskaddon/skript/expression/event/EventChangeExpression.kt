@@ -1,24 +1,22 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
-import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
-import ch.njol.skript.lang.util.SimpleExpression
-import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.expression.FunnyExpression
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.SIMPLE
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.rank.*
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 
-@FunnyDoc
 @Name("Change")
-@Description(
-    "Zwraca zmianę w rankingu",
-)
+@Description("Returns the ranking change")
+@Since("2.0.0")
 @Events(
     "kills change",
     "deaths change",
@@ -26,16 +24,11 @@ import pl.funnyskaddon.docs.FunnyDoc
     "logouts change",
     "points change"
 )
-class EventChangeExpression : SimpleExpression<Int>() {
+class EventChangeExpression : FunnyExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventChangeExpression::class.java,
-                Int::class.javaObjectType,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventChangeExpression, Int>(SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 
@@ -113,10 +106,9 @@ class EventChangeExpression : SimpleExpression<Int>() {
     ): Boolean {
         type = EventType.values()[matchedPattern]
         if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
-            Skript.error(
-                "The '" + type.pattern + "' can only be used in a " + type.name + " event",
-                ErrorQuality.SEMANTIC_ERROR
-            )
+            error(
+                "The '" + type.pattern + "' can only be used in a " + type.name + " event"
+)
             return false
         }
         return true
@@ -135,12 +127,6 @@ class EventChangeExpression : SimpleExpression<Int>() {
         return true
     }
 
-    override fun getReturnType(): Class<out Int> {
-        return Int::class.javaObjectType
-    }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " change"
-    }
 
 }

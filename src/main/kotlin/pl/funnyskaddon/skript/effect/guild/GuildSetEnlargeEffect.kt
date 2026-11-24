@@ -2,23 +2,23 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildEnlargeEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Set Guild Enlarge")
-@Description("Ustawie poziom powiększenia gildii")
+@Description("Sets the guild's enlarge level")
+@Since("2.0.0")
 @Examples(
     "set enlarge level of \"FajnaNazwa\" guild to 40",
 )
@@ -26,8 +26,7 @@ class GuildSetEnlargeEffect : GuildValueEffect<Number>(false) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildSetEnlargeEffect::class.java,
+            registerEffect<GuildSetEnlargeEffect>(
                 "set enlarge [(level|lvl)] of %guild% to %number%",
                 "set enlarge [(level|lvl)] of %string%['s] [guild] to %number%",
                 "set enlarge [(level|lvl)] of %offlineplayer%['s] [guild] to %number%",

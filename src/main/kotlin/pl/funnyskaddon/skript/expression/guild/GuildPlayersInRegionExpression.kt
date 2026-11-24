@@ -1,43 +1,40 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.toStream
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getPlayersInGuildRegion
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
 
-@FunnyDoc
 @Name("Players In Guild Region")
-@Description("Zwraca listę graczy znajdujących się na terenie gildii")
+@Since("2.0.0")
+@Description("Returns the list of players inside a guild's region")
 @Examples(
     "loop players in (location at (100, 100, 100) in world \"world\") guild region:",
-    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
+    "    send \"%loop-value%\""
 )
-class GuildPlayersInRegionExpression : GuildExpression<Player>("players in region of") {
+class GuildPlayersInRegionExpression : GuildExpression<Player>(Player::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildPlayersInRegionExpression::class.java,
-                Player::class.java,
-                ExpressionType.PROPERTY,
+            registerExpression<GuildPlayersInRegionExpression, Player>(
+                PROPERTY,
                 "players in %guild%['s] region",
                 "players in %string%['s] [guild] region",
                 "players in %offlineplayer%['s] [guild] region",
                 "players in %location%['s] [guild] region",
-                "players in %location%['s] [guild] region",
                 "players in %block%['s] [guild] region",
-                "players in %object%['s] [guild] region",
+                "players in %object%['s] [guild] region"
             )
         }
     }
@@ -53,8 +50,5 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>("players in regio
         return false
     }
 
-    override fun getReturnType(): Class<Player> {
-        return Player::class.java
-    }
 
 }

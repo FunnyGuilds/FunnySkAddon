@@ -1,25 +1,25 @@
 package pl.funnyskaddon.skript.event.guild
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Entity Explode")
+@Description("Called when something explodes on the guild territory")
+@Since("2.0.0")
+@Examples(
+    "on guild entity explode:",
+    "    send \"%cause%\"",
+    "    send \"%affected blocks%\""
+)
 class GuildEntityExplodeEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Entity Explode",
-                GuildEntityExplodeEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.GuildEntityExplodeEvent::class.java,
-                "guild entity explode"
-            ).description("Wywoływany, kiedy wybuchnie coś na terenie gildii")
-                .examples(
-                    "on guild entity explode:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%affected blocks%\"",
-                )
+            registerEvent(GuildEntityExplodeEvent::class.java, net.dzikoysk.funnyguilds.event.guild.GuildEntityExplodeEvent::class.java, "Guild Entity Explode", "guild entity explode")
         }
     }
 

@@ -4,7 +4,7 @@ import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 
-abstract class TopExpression<T> : FunnyExpression<T>() {
+abstract class TopExpression<T>(returnType: Class<T>) : FunnyExpression<T>(returnType) {
 
     protected lateinit var positionExpression: Expression<Number>
     protected var typeExpression: Expression<String>? = null

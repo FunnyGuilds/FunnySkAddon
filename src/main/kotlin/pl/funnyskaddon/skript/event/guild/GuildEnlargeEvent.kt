@@ -1,26 +1,26 @@
 package pl.funnyskaddon.skript.event.guild
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Enlarge")
+@Description("Called when the guild enlargement level changes")
+@Since("2.0.0")
+@Examples(
+    "on guild enlarge:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%guild%\""
+)
 class GuildEnlargeEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Enlarge",
-                GuildEnlargeEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.GuildEnlargeEvent::class.java,
-                "guild enlarge"
-            ).description("Wywoływany, kiedy zmieni się poziom powiększenia gildii")
-                .examples(
-                    "on guild enlarge:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
-                )
+            registerEvent(GuildEnlargeEvent::class.java, net.dzikoysk.funnyguilds.event.guild.GuildEnlargeEvent::class.java, "Guild Enlarge", "guild enlarge")
         }
     }
 

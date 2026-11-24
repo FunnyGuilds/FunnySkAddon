@@ -2,39 +2,37 @@ package pl.funnyskaddon.skript.expression.guild
 
 import pl.funnyskaddon.extension.orNull
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.Location
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 
-@FunnyDoc
 @Name("Guild Endercrystal Location")
-@Description("Zwraca lokalizację gildii (jej kryształu/serca)")
+@Since("2.0.0")
+@Description("Returns the location of a guild (its crystal/heart)")
 @Examples(
     "send \"%\"\"AC4U\"\" guild endercrystal location%\"",
     "set {_enderCrystal} to \"AC4U\" guild endercrystal location"
 )
-class GuildEndercrystalLocationExpression : GuildExpression<Location>("endercrystal location of") {
+class GuildEndercrystalLocationExpression : GuildExpression<Location>(Location::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildEndercrystalLocationExpression::class.java,
-                Location::class.java,
-                ExpressionType.PROPERTY,
-                "%guild%['s] (endercrystal|core) [location]",
+            registerExpression<GuildEndercrystalLocationExpression, Location>(
+                PROPERTY,
+                "%object%['s] guild['s] (endercrystal|core) [location]",
                 "%string%['s] [guild] (endercrystal|core) [location]",
                 "%offlineplayer%['s] guild['s] (endercrystal|core) [location]",
                 "%location%['s] guild['s] (endercrystal|core) [location]",
-                "%block%['s] guild['s] (endercrystal|core) [location]",
-                "%object%['s] guild['s] (endercrystal|core) [location]"
+                "%guild%['s] (endercrystal|core) [location]",
+                "%block%['s] guild['s] (endercrystal|core) [location]"
             )
         }
     }
@@ -46,8 +44,5 @@ class GuildEndercrystalLocationExpression : GuildExpression<Location>("endercrys
             .orNull()
     }
 
-    override fun getReturnType(): Class<Location> {
-        return Location::class.java
-    }
 
 }

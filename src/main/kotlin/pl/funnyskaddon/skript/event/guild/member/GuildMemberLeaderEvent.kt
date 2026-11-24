@@ -1,28 +1,27 @@
 package pl.funnyskaddon.skript.event.guild.member
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Member Leader")
+@Description("Called when a new guild owner is chosen")
+@Since("2.0.0")
+@Examples(
+    "on guild member owner:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%member%\"",
+    "    send \"%guild%\""
+)
 class GuildMemberLeaderEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Member Leader",
-                GuildMemberLeaderEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaderEvent::class.java,
-                "guild member (leader|owner)",
-                "guild change (leader|owner)"
-            ).description("Wywoływany, kiedy zostanie wybrany nowy właściciel gildii")
-                .examples(
-                    "on guild member owner:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%member%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
-                )
+            registerEvent(GuildMemberLeaderEvent::class.java, net.dzikoysk.funnyguilds.event.guild.member.GuildMemberLeaderEvent::class.java, "Guild Member Leader", "guild member (leader|owner)", "guild change (leader|owner)")
         }
     }
 

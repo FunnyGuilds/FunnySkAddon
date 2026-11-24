@@ -1,37 +1,35 @@
 package pl.funnyskaddon.skript.expression.guild
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 
-@FunnyDoc
 @Name("Guild Lives")
-@Description("Zwraca liczbę żyć gildii")
+@Since("2.0.0")
+@Description("Returns the number of lives of a guild")
 @Examples(
     "send \"%\"\"FajnaGildia\"\" guild lives%\"",
     "set {_lives} to \"FajnaGildia\" guild lives"
 )
-class GuildLivesExpression : GuildExpression<Int>("lives of") {
+class GuildLivesExpression : GuildExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildLivesExpression::class.java,
-                Int::class.javaObjectType,
-                ExpressionType.PROPERTY,
+            registerExpression<GuildLivesExpression, Int>(
+                PROPERTY,
+                "%object%['s] guild['s] lives [(amount|count)]",
                 "%object%['s] [guild] lives [(amount|count)]",
-                "%guild%['s] lives [(amount|count)]",
-                "%string%['s] [guild] lives [(amount|count)]",
-                "%offlineplayer%['s] guild['s] lives [(amount|count)]",
                 "%location%['s] guild['s] lives [(amount|count)]",
+                "%offlineplayer%['s] guild['s] lives [(amount|count)]",
                 "%block%['s] guild['s] lives [(amount|count)]",
-                "%object%['s] guild['s] lives [(amount|count)]"
+                "%guild%['s] lives [(amount|count)]",
+                "%string%['s] [guild] lives [(amount|count)]"
             )
         }
     }
@@ -42,8 +40,5 @@ class GuildLivesExpression : GuildExpression<Int>("lives of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

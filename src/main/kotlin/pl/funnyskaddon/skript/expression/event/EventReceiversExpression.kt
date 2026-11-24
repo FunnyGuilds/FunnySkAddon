@@ -1,40 +1,33 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
-import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
-import ch.njol.skript.lang.util.SimpleExpression
-import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.expression.FunnyExpression
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.SIMPLE
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildChatEvent
 import net.dzikoysk.funnyguilds.event.guild.GuildPreChatEvent
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 
-@FunnyDoc
 @Name("Receivers")
-@Description(
-    "Zwraca gildie, które otrzymały wiadomość z chatu gildyjnego"
-)
+@Description("Returns the guilds that received the guild chat message")
+@Since("2.0.0")
 @Events(
     "guild pre chat event",
     "guild chat event"
 )
-class EventReceiversExpression : SimpleExpression<Guild>() {
+class EventReceiversExpression : FunnyExpression<Guild>(Guild::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventReceiversExpression::class.java,
-                Guild::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventReceiversExpression, Guild>(SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 
@@ -85,10 +78,9 @@ class EventReceiversExpression : SimpleExpression<Guild>() {
     ): Boolean {
         type = EventType.values()[matchedPattern]
         if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
-            Skript.error(
-                "The '" + type.pattern + "' can only be used in a " + type.name + " event",
-                ErrorQuality.SEMANTIC_ERROR
-            )
+            error(
+                "The '" + type.pattern + "' can only be used in a " + type.name + " event"
+)
             return false
         }
         return true
@@ -107,12 +99,6 @@ class EventReceiversExpression : SimpleExpression<Guild>() {
         return true
     }
 
-    override fun getReturnType(): Class<out Guild> {
-        return Guild::class.java
-    }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " receivers"
-    }
 
 }

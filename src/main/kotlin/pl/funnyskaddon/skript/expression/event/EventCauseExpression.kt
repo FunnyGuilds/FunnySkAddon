@@ -1,22 +1,22 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
-import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
-import ch.njol.skript.lang.util.SimpleExpression
-import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.expression.FunnyExpression
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.SIMPLE
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 
-@FunnyDoc
 @Name("Cause")
-@Description("Zwraca przyczynę wydarzenia")
+@Description("Returns the cause of the event")
+@Since("2.0.0")
 @Events(
     "guild delete",
     "guild delete",
@@ -49,16 +49,11 @@ import pl.funnyskaddon.docs.FunnyDoc
     "logouts change",
     "points change"
 )
-class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
+class EventCauseExpression : FunnyExpression<FunnyEvent.EventCause>(FunnyEvent.EventCause::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventCauseExpression::class.java,
-                FunnyEvent.EventCause::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventCauseExpression, FunnyEvent.EventCause>(SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 
@@ -100,10 +95,9 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
     ): Boolean {
         type = EventType.values()[matchedPattern]
         if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
-            Skript.error(
-                "The '" + type.pattern + "' can only be used in a " + type.name + " event",
-                ErrorQuality.SEMANTIC_ERROR
-            )
+            error(
+                "The '" + type.pattern + "' can only be used in a " + type.name + " event"
+)
             return false
         }
         return true
@@ -122,12 +116,6 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
         return true
     }
 
-    override fun getReturnType(): Class<out FunnyEvent.EventCause> {
-        return FunnyEvent.EventCause::class.java
-    }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " cause"
-    }
 
 }

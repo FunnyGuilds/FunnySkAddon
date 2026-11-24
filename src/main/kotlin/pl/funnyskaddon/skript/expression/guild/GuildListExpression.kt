@@ -1,31 +1,29 @@
 package pl.funnyskaddon.skript.expression.guild
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
-@FunnyDoc
 @Name("All Guilds")
-@Description("Zwraca wszystkie gildie")
+@Since("2.0.0")
+@Description("Returns all guilds")
 @Examples(
     "loop all guilds:",
-    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
+    "    send \"%loop-value%\""
 )
-class GuildListExpression : FunnyExpression<Guild>() {
+class GuildListExpression : FunnyExpression<Guild>(Guild::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildListExpression::class.java,
-                Guild::class.java,
-                ExpressionType.PROPERTY,
+            registerExpression<GuildListExpression, Guild>(
+                PROPERTY,
                 "[all] guilds [list]"
             )
         }
@@ -39,12 +37,6 @@ class GuildListExpression : FunnyExpression<Guild>() {
         return false
     }
 
-    override fun getReturnType(): Class<Guild> {
-        return Guild::class.java
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "all guilds"
-    }
 
 }

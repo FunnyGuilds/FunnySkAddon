@@ -1,18 +1,17 @@
 package pl.funnyskaddon.skript.condition.guild
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.GuildCondition
+import pl.funnyskaddon.skript.registration.Registration.registerCondition
 import pl.funnyskaddon.skript.getGuild
-
-@FunnyDoc
 @Name("Guild PvP Is Enabled")
-@Description("Sprawdza, czy gildia ma włączone pvp")
+@Since("2.0.0")
+@Description("Checks if the guild has PvP enabled")
 @Examples(
     "if guild \"AC4U\" pvp is enabled:",
     "if guild \"AC4U\" pvp is disabled:"
@@ -21,8 +20,7 @@ class GuildPvPIsEnabledCondition : GuildCondition(7) {
 
     companion object {
         init {
-            Skript.registerCondition(
-                GuildPvPIsEnabledCondition::class.java,
+            registerCondition<GuildPvPIsEnabledCondition>(
                 "%guild%['s] pvp is (enabled|on)",
                 "%string% [guild]['s] pvp is (enabled|on)",
                 "%offlineplayer%['s] guild['s] pvp is (enabled|on)",

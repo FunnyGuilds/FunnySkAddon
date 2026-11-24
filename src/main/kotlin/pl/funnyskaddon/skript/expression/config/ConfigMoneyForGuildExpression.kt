@@ -1,29 +1,27 @@
 package pl.funnyskaddon.skript.expression.config
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
-@FunnyDoc
 @Name("Money To Create Guild")
-@Description("Zwraca pieniądze potrzebne do założenia gildii")
+@Since("2.0.0")
+@Description("Returns the money required to create a guild")
 @Examples(
     "send \"%required money to create guild%\"",
     "set {_money} to required money to create guild"
 )
-class ConfigMoneyForGuildExpression : FunnyExpression<Double>() {
+class ConfigMoneyForGuildExpression : FunnyExpression<Double>(Double::class.javaObjectType) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                ConfigMoneyForGuildExpression::class.java,
-                Double::class.javaObjectType,
-                ExpressionType.PROPERTY,
+            registerExpression<ConfigMoneyForGuildExpression, Double>(
+                PROPERTY,
                 "[required] money (to create|for) guild"
             )
         }
@@ -33,12 +31,6 @@ class ConfigMoneyForGuildExpression : FunnyExpression<Double>() {
         return arrayOf(ConfigItemsForGuildExpression.defaultItemSet().requiredMoney)
     }
 
-    override fun getReturnType(): Class<Double> {
-        return Double::class.javaObjectType
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "money required to create a guild"
-    }
 
 }

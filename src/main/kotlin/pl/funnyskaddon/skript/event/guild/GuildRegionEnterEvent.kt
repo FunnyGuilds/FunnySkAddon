@@ -1,26 +1,26 @@
 package pl.funnyskaddon.skript.event.guild
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Region Enter")
+@Description("Called when a player enters the guild region")
+@Since("2.0.0")
+@Examples(
+    "on gild region enter:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%guild%\""
+)
 class GuildRegionEnterEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Region Enter",
-                GuildRegionEnterEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.GuildRegionEnterEvent::class.java,
-                "guild region enter"
-            ).description("Wywoływany, kiedy gracz wejdzie na teren gildii")
-                .examples(
-                    "on gild region enter:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
-                )
+            registerEvent(GuildRegionEnterEvent::class.java, net.dzikoysk.funnyguilds.event.guild.GuildRegionEnterEvent::class.java, "Guild Region Enter", "guild region enter")
         }
     }
 

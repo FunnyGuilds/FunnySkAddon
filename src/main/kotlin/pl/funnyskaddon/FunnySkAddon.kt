@@ -1,7 +1,6 @@
 package pl.funnyskaddon
 
 import ch.njol.skript.Skript
-import ch.njol.skript.SkriptAddon
 import eu.okaeri.configs.ConfigManager
 import eu.okaeri.configs.yaml.bukkit.YamlBukkitConfigurer
 import net.dzikoysk.funnyguilds.FunnyGuilds
@@ -11,6 +10,7 @@ import org.bstats.charts.SimplePie
 import org.bukkit.plugin.java.JavaPlugin
 import pl.funnyskaddon.command.FunnySkAddonCommand
 import pl.funnyskaddon.data.Configuration
+import pl.funnyskaddon.skript.registration.ClassExplorer
 import pl.funnyskaddon.update.PlayerJoinListener
 import pl.funnyskaddon.update.UpdateCheckTask
 import java.io.File
@@ -21,7 +21,7 @@ class FunnySkAddon : JavaPlugin() {
 
     companion object {
         lateinit var fgConfiguration: PluginConfiguration
-        lateinit var addon: SkriptAddon
+        lateinit var addon: org.skriptlang.skript.addon.SkriptAddon
     }
 
     override fun onEnable() {
@@ -64,8 +64,9 @@ class FunnySkAddon : JavaPlugin() {
 
         UpdateCheckTask(this).start()
 
-        addon = Skript.registerAddon(this)
-        addon.loadClasses(
+        addon = Skript.instance().registerAddon(FunnySkAddon::class.java, "FunnySkAddon")
+        ClassExplorer.loadClasses(
+            this.javaClass.classLoader,
             "pl.funnyskaddon.skript",
             "condition.guild",
             "condition.player",

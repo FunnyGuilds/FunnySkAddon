@@ -1,39 +1,33 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 
-@FunnyDoc
 @Name("Guild PvP")
-@Description("Zwraca czy pvp w gildii jest włączone czy wyłączone")
+@Since("2.0.0")
+@Description("Returns whether PvP in a guild is enabled or disabled")
 @Examples(
     "send \"%\"AC4U\" guild pvp%\"",
     "set {_pvpStatus} to \"AC4U\" guild pvp"
 )
-class GuildPvPExpression : GuildExpression<Boolean>("pvp of") {
+class GuildPvPExpression : GuildExpression<Boolean>(Boolean::class.javaObjectType) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildPvPExpression::class.java,
-                Boolean::class.javaObjectType,
-                ExpressionType.PROPERTY,
-                "%guild%['s] pvp [[is] enabled]",
-                "%string%['s] [guild] pvp [[is] enabled]",
-                "%offlineplayer%['s] guild['s] pvp [[is] enabled]",
-                "%location%['s] guild['s] pvp [[is] enabled]",
-                "%block%['s] guild['s] pvp [[is] enabled]",
-                "%object%['s] guild['s] pvp [[is] enabled]"
+            registerExpression<GuildPvPExpression, Boolean>(
+                PROPERTY,
+                *guildSources("['s] pvp [[is] enabled]")
             )
         }
     }
@@ -45,8 +39,5 @@ class GuildPvPExpression : GuildExpression<Boolean>("pvp of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<Boolean> {
-        return Boolean::class.javaObjectType
-    }
 
 }

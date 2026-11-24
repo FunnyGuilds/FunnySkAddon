@@ -2,27 +2,27 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.util.Date
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildExtendValidityEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 import java.time.Duration
 import java.time.Duration.ofMillis
 import java.time.Instant
 
 
-@FunnyDoc
 @Name("Set Expiration Time")
-@Description("Ustawie date wygaśnięcia gildii")
+@Description("Sets the guild's expiration date")
+@Since("2.0.0")
 @Examples(
     "set {_tomorrow} to 1 day later",
     "set expiration date of \"FajnaNazwa\" guild to {_tomorrow}",
@@ -31,8 +31,7 @@ class GuildSetExpirationDateEffect : GuildValueEffect<Date>(false) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildSetExpirationDateEffect::class.java,
+            registerEffect<GuildSetExpirationDateEffect>(
                 "set (expiration|validity) [(date|time)] of %guild% to %date%",
                 "set (expiration|validity) [(date|time)] of %string%['s] [guild] to %date%",
                 "set (expiration|validity) [(date|time)] of %offlineplayer%['s] [guild] to %date%",

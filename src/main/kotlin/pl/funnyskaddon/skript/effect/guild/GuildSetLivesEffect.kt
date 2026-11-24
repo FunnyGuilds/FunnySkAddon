@@ -2,22 +2,22 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Set Guild Lives")
-@Description("Ustawie liczbę żyć gildii")
+@Description("Sets the number of guild lives")
+@Since("2.0.0")
 @Examples(
     "set amount \"FajnaNazwa\" guild lives to 6",
 )
@@ -25,12 +25,9 @@ class GuildSetLivesEffect : GuildValueEffect<Number>(false) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildSetLivesEffect::class.java,
+            registerEffect<GuildSetLivesEffect>(
                 "set [(number|amount) of] %guild%['s] lives to %number%",
                 "set [(number|amount) of] %string%['s] [guild] lives to %number%",
-                "set [(number|amount) of] %object%['s] [guild] lives to %number%",
-                "set [(number|amount) of] %object%['s] [guild] lives to %number%",
                 "set [(number|amount) of] %object%['s] [guild] lives to %number%",
                 "set [(number|amount) of] %object%['s] [guild] lives to %number%"
             )

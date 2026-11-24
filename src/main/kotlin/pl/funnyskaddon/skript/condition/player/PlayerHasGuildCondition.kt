@@ -1,18 +1,17 @@
 package pl.funnyskaddon.skript.condition.player
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.PlayerCondition
+import pl.funnyskaddon.skript.registration.Registration.registerCondition
 import pl.funnyskaddon.skript.getUser
-
-@FunnyDoc
 @Name("Has Guild")
-@Description("Sprawdza, czy gracz ma gildie")
+@Since("2.0.0")
+@Description("Checks if the player has a guild")
 @Examples(
     "if player has guild:",
     "if player doesn′t hava guild:"
@@ -21,8 +20,7 @@ class PlayerHasGuildCondition : PlayerCondition() {
 
     companion object {
         init {
-            Skript.registerCondition(
-                PlayerHasGuildCondition::class.java,
+            registerCondition<PlayerHasGuildCondition>(
                 "[player] %offlineplayer% has guild",
                 "[player] %offlineplayer% (does not|doesn't) have guild"
             )

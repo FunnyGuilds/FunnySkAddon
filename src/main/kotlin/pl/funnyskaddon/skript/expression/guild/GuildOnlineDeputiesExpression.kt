@@ -1,38 +1,36 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.toStream
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getPlayerOption
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
 
-@FunnyDoc
 @Name("Guild Online Deputies")
-@Description("Zwraca zastępców gildii którzy są online")
+@Since("2.0.0")
+@Description("Returns the deputies of a guild that are online")
 @Examples(
     "loop player's guild online deputies:",
-    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
+    "    send \"%loop-value%\""
 )
-class GuildOnlineDeputiesExpression : GuildExpression<Player>("online deputies of") {
+class GuildOnlineDeputiesExpression : GuildExpression<Player>(Player::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildOnlineDeputiesExpression::class.java,
-                Player::class.java,
-                ExpressionType.PROPERTY,
+            registerExpression<GuildOnlineDeputiesExpression, Player>(
+                PROPERTY,
                 "%object%['s] [guild] online deputies",
                 "%guild%['s] online deputies",
                 "%string%['s] [guild] online deputies",
@@ -57,8 +55,5 @@ class GuildOnlineDeputiesExpression : GuildExpression<Player>("online deputies o
         return false
     }
 
-    override fun getReturnType(): Class<Player> {
-        return Player::class.java
-    }
 
 }

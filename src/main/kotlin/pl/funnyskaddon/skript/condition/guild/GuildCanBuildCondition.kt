@@ -1,18 +1,17 @@
 package pl.funnyskaddon.skript.condition.guild
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.GuildCondition
+import pl.funnyskaddon.skript.registration.Registration.registerCondition
 import pl.funnyskaddon.skript.getGuild
-
-@FunnyDoc
 @Name("Guild Can Build")
-@Description("Sprawdza, czy gildia może budować")
+@Since("2.0.0")
+@Description("Checks if the guild can build")
 @Examples(
     "if guild \"AC4U\" can build:",
     "if guild \"AC4U\" can't be build:"
@@ -21,8 +20,7 @@ class GuildCanBuildCondition : GuildCondition(7) {
 
     companion object {
         init {
-            Skript.registerCondition(
-                GuildCanBuildCondition::class.java,
+            registerCondition<GuildCanBuildCondition>(
                 "%guild% can build",
                 "%string% [guild] can build",
                 "%offlineplayer%['s] guild can build",

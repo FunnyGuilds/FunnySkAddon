@@ -1,18 +1,17 @@
 package pl.funnyskaddon.skript.condition.guild
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.GuildCondition
+import pl.funnyskaddon.skript.registration.Registration.registerCondition
 import pl.funnyskaddon.skript.getGuild
-
-@FunnyDoc
 @Name("Guild Can Be Attacked")
-@Description("Sprawdza, czy gildia może zostać zaatakowana")
+@Since("2.0.0")
+@Description("Checks if the guild can be attacked")
 @Examples(
     "if guild \"AC4U\" can be attacked:",
     "if guild \"AC4U\" can't be attacked:"
@@ -21,8 +20,7 @@ class GuildCanBeAttackedCondition : GuildCondition(7) {
 
     companion object {
         init {
-            Skript.registerCondition(
-                GuildCanBeAttackedCondition::class.java,
+            registerCondition<GuildCanBeAttackedCondition>(
                 "%guild% can be attacked",
                 "%string% [guild] can be attacked",
                 "%offlineplayer%['s] guild can be attacked",

@@ -1,31 +1,29 @@
 package pl.funnyskaddon.skript.expression.config
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.shared.bukkit.ItemUtils
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
-@FunnyDoc
 @Name("Items To Create Guild (VIP)")
-@Description("Zwraca przedmioty potrzebne do założenia gildii przez gracza z VIP-em")
+@Since("2.0.0")
+@Description("Returns the items required to create a guild for a player with VIP")
 @Examples(
     "send \"%required items to create guild vip%\"",
     "set {_items} to required items to create guild vip"
 )
-class ConfigItemsForGuildVipExpression : FunnyExpression<ItemStack>() {
+class ConfigItemsForGuildVipExpression : FunnyExpression<ItemStack>(ItemStack::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                ConfigItemsForGuildVipExpression::class.java,
-                ItemStack::class.java,
-                ExpressionType.PROPERTY,
+            registerExpression<ConfigItemsForGuildVipExpression, ItemStack>(
+                PROPERTY,
                 "[required] items (to create|for) guild [with] vip"
             )
         }
@@ -40,12 +38,6 @@ class ConfigItemsForGuildVipExpression : FunnyExpression<ItemStack>() {
         return false
     }
 
-    override fun getReturnType(): Class<ItemStack> {
-        return ItemStack::class.java
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "items required to create a guild with vip"
-    }
 
 }

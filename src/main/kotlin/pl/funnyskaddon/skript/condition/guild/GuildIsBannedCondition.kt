@@ -1,18 +1,17 @@
 package pl.funnyskaddon.skript.condition.guild
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.GuildCondition
+import pl.funnyskaddon.skript.registration.Registration.registerCondition
 import pl.funnyskaddon.skript.getGuild
-
-@FunnyDoc
 @Name("Guild Is Banned")
-@Description("Sprawdza, czy gildia jest zbanowana")
+@Since("2.0.0")
+@Description("Checks if the guild is banned")
 @Examples(
     "if guild \"AC4U\" is banned:",
     "if guild \"AC4U\" is not banned:"
@@ -21,8 +20,7 @@ class GuildIsBannedCondition : GuildCondition(7) {
 
     companion object {
         init {
-            Skript.registerCondition(
-                GuildIsBannedCondition::class.java,
+            registerCondition<GuildIsBannedCondition>(
                 "%guild% is banned",
                 "%string% [guild] is banned",
                 "%offlineplayer%['s] guild is banned",

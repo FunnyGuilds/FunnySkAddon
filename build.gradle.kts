@@ -38,8 +38,6 @@ repositories {
     maven("https://repo.panda-lang.org/releases")
     maven("https://repo.panda-lang.org/snapshots")
     maven("https://repo.panda-lang.org/jitpack")
-    maven("https://maven.enginehub.org/repo")
-    maven("https://repo.mikeprimm.com")
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     maven("https://storehouse.okaeri.eu/repository/maven-public") {
         mavenContent {
@@ -60,7 +58,9 @@ dependencies {
     implementation("commons-io:commons-io:2.22.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.13")
     compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
-    compileOnly("net.dzikoysk.funnyguilds:plugin:5.0.1-SNAPSHOT")
+    compileOnly("net.dzikoysk.funnyguilds:plugin:5.0.1-SNAPSHOT") {
+        isTransitive = false
+    }
     compileOnly("com.github.SkriptLang:Skript:2.17.1") {
         isTransitive = false
     }

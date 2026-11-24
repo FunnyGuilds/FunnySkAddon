@@ -1,36 +1,34 @@
 package pl.funnyskaddon.skript.expression.guild
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 
-@FunnyDoc
 @Name("Guild Deaths")
-@Description("Zwraca liczbę śmierci gildii (sumę wszystkich śmierci jej członków)")
+@Since("2.0.0")
+@Description("Returns the number of deaths of a guild (the sum of all deaths of its members)")
 @Examples(
     "send \"%\"\"FajnaGildia\"\" guild deaths%\"",
     "set {_deaths} to \"FajnaGildia\" guild deaths"
 )
-class GuildDeathsExpression : GuildExpression<Int>("deaths of") {
+class GuildDeathsExpression : GuildExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildDeathsExpression::class.java,
-                Int::class.javaObjectType,
-                ExpressionType.PROPERTY,
-                "%guild%['s] [(rank|ranking)] deaths [(amount|count)]",
-                "%string%['s] [guild] [(rank|ranking)] deaths [(amount|count)]",
+            registerExpression<GuildDeathsExpression, Int>(
+                PROPERTY,
                 "%offlineplayer%['s] guild['s] [(rank|ranking)] deaths [(amount|count)]",
-                "%location%['s] guild['s] [(rank|ranking)] deaths [(amount|count)]",
+                "%string%['s] [guild] [(rank|ranking)] deaths [(amount|count)]",
+                "%guild%['s] [(rank|ranking)] deaths [(amount|count)]",
                 "%block%['s] guild['s] [(rank|ranking)] deaths [(amount|count)]",
-                "%object%['s] guild['s] [(rank|ranking)] deaths [(amount|count)]"
+                "%object%['s] guild['s] [(rank|ranking)] deaths [(amount|count)]",
+                "%location%['s] guild['s] [(rank|ranking)] deaths [(amount|count)]"
             )
         }
     }
@@ -41,8 +39,5 @@ class GuildDeathsExpression : GuildExpression<Int>("deaths of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

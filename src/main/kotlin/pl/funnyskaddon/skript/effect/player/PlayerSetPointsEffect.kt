@@ -2,22 +2,22 @@ package pl.funnyskaddon.skript.effect.player
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.PlayerEffect
 import pl.funnyskaddon.skript.getUser
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Set Points")
-@Description("Ustawia punkty w rankingu gracza")
+@Description("Sets the points in the player's ranking")
+@Since("2.0.0")
 @Examples(
     "set number of player's ranking points to 1050",
 )
@@ -25,8 +25,7 @@ class PlayerSetPointsEffect : PlayerEffect<Number>(false) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                PlayerSetPointsEffect::class.java,
+            registerEffect<PlayerSetPointsEffect>(
                 "set [(number|amount) of] %offlineplayer%['s] [(rank|ranking)] points to %number%"
             )
         }

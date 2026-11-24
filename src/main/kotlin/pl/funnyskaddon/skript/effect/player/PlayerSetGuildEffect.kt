@@ -1,20 +1,20 @@
 package pl.funnyskaddon.skript.effect.player
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.PlayerEffect
 import pl.funnyskaddon.skript.effect.guild.GuildAddMemberEffect
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Set Guild")
 @Description(
-    "Ustawia gildie gracza (dołącza go do niej)",
-    "Alternatywa: add %offlineplayer% to %object%(|'s) guild members"
+    "Sets the player's guild (joins them to it)",
+    "Alternative: add %offlineplayer% to %object%(|'s) guild members",
 )
+@Since("2.0.0")
 @Examples(
     "set player's guild to \"AC4U\"",
 )
@@ -23,7 +23,7 @@ class PlayerSetGuildEffect : PlayerEffect<Any>(false) {
     companion object {
 
         init {
-            Skript.registerEffect(PlayerSetGuildEffect::class.java, "set %offlineplayer%['s] guild to %object%")
+            registerEffect<PlayerSetGuildEffect>("set %offlineplayer%['s] guild to %object%")
         }
     }
 

@@ -1,35 +1,33 @@
 package pl.funnyskaddon.skript.expression.player
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
-import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.rank.DefaultTops
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.PlayerExpression
 import pl.funnyskaddon.skript.getUser
 import pl.funnyskaddon.skript.getValue
 
-@FunnyDoc
 @Name("Player Top Position")
-@Description("Zwraca pozycje gracza w rankingu")
+@Since("2.0.0")
+@Description("Returns the position of a player in the ranking")
 @Examples(
     "send \"%player top position%\"",
     "set {_position} to player's top position"
 )
-class PlayerPositionExpression : PlayerExpression<Int>() {
+class PlayerPositionExpression : PlayerExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                PlayerPositionExpression::class.java,
-                Int::class.javaObjectType,
-                ExpressionType.PROPERTY,
+            registerExpression<PlayerPositionExpression, Int>(
+                PROPERTY,
                 "%offlineplayer%['s] [(top|rank|ranking)] position [of %-string%]"
             )
         }
@@ -56,9 +54,6 @@ class PlayerPositionExpression : PlayerExpression<Int>() {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {

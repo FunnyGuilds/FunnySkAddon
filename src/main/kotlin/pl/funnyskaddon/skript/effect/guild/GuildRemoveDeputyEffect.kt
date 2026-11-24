@@ -2,20 +2,20 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getUser
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Remove Guild Deputy")
-@Description("Usuwa zastępce z gildii")
+@Description("Removes a deputy from the guild")
+@Since("2.0.0")
 @Examples(
     "remove player from \"AC4U\" guild deputies",
 )
@@ -23,8 +23,7 @@ class GuildRemoveDeputyEffect : GuildValueEffect<OfflinePlayer>(true) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildRemoveDeputyEffect::class.java,
+            registerEffect<GuildRemoveDeputyEffect>(
                 "remove %offlineplayer% from %guild%['s] deputies",
                 "remove %offlineplayer% from %string%['s] [guild] deputies",
                 "remove %offlineplayer% from %offlineplayer%['s] [guild] deputies",

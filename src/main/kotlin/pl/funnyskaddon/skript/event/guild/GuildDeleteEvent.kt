@@ -1,26 +1,26 @@
 package pl.funnyskaddon.skript.event.guild
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Delete")
+@Description("Called when a guild is deleted")
+@Since("2.0.0")
+@Examples(
+    "on guild delete:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%guild%\""
+)
 class GuildDeleteEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Delete",
-                GuildDeleteEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.GuildDeleteEvent::class.java,
-                "guild (delete|deletion)"
-            ).description("Wywoływany, kiedy gildia zostanie usunięta")
-                .examples(
-                    "on guild delete:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
-                )
+            registerEvent(GuildDeleteEvent::class.java, net.dzikoysk.funnyguilds.event.guild.GuildDeleteEvent::class.java, "Guild Delete", "guild (delete|deletion)")
         }
     }
 

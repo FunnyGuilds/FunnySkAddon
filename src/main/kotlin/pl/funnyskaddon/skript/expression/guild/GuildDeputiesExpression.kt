@@ -3,42 +3,40 @@ package pl.funnyskaddon.skript.expression.guild
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.toStream
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getOfflinePlayer
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
 
-@FunnyDoc
 @Name("Guild Deputies")
-@Description("Zwraca zastępców gildii")
+@Since("2.0.0")
+@Description("Returns the deputies of a guild")
 @Examples(
     "loop player's guild deputies:",
-    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
+    "    send \"%loop-value%\""
 )
-class GuildDeputiesExpression : GuildExpression<OfflinePlayer>("deputies of") {
+class GuildDeputiesExpression : GuildExpression<OfflinePlayer>(OfflinePlayer::class.java) {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildDeputiesExpression::class.java,
-                OfflinePlayer::class.java,
-                ExpressionType.PROPERTY,
-                "%guild%['s] deputies",
+            registerExpression<GuildDeputiesExpression, OfflinePlayer>(
+                PROPERTY,
                 "%string%['s] [guild] deputies",
-                "%offlineplayer%['s] guild['s] deputies",
+                "%object%['s] guild['s] deputies",
+                "%guild%['s] deputies",
                 "%location%['s] guild['s] deputies",
-                "%block%['s] guild['s] deputies",
-                "%object%['s] guild['s] deputies"
+                "%offlineplayer%['s] guild['s] deputies",
+                "%block%['s] guild['s] deputies"
             )
         }
     }
@@ -55,8 +53,5 @@ class GuildDeputiesExpression : GuildExpression<OfflinePlayer>("deputies of") {
         return false
     }
 
-    override fun getReturnType(): Class<OfflinePlayer> {
-        return OfflinePlayer::class.java
-    }
 
 }

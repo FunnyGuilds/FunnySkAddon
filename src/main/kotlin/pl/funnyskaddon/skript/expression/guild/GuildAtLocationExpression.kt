@@ -2,32 +2,30 @@ package pl.funnyskaddon.skript.expression.guild
 
 import pl.funnyskaddon.extension.orNull
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
-import ch.njol.skript.lang.ExpressionType
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.guild.Region
 import org.bukkit.Location
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.ValueExpression
 import pl.funnyskaddon.skript.getValue
 
-@FunnyDoc
 @Name("Guild At Location")
-@Description("Zwraca gildie w danej lokalizacji")
+@Since("2.0.0")
+@Description("Returns the guild at the given location")
 @Examples("set {_guild} to guild at player's location")
 class GuildAtLocationExpression : ValueExpression<Location>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildAtLocationExpression::class.java,
-                Guild::class.java,
-                ExpressionType.PROPERTY,
+            registerExpression<GuildAtLocationExpression, Guild>(
+                PROPERTY,
                 "guild at [location] %location%"
             )
         }

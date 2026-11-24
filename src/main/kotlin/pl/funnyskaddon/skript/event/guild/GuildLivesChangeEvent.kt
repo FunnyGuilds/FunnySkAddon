@@ -1,27 +1,27 @@
 package pl.funnyskaddon.skript.event.guild
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Lives Change")
+@Description("Called when the number of guild lives changes")
+@Since("2.0.0")
+@Examples(
+    "on guild lives change:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%guild%\"",
+    "    send \"%lives%\""
+)
 class GuildLivesChangeEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Lives Change",
-                GuildLivesChangeEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent::class.java,
-                "guild lives change"
-            ).description("Wywoływany, kiedy zmieni się liczba żyć gildii")
-                .examples(
-                    "on guild lives change:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%lives%\""
-                )
+            registerEvent(GuildLivesChangeEvent::class.java, net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent::class.java, "Guild Lives Change", "guild lives change")
         }
     }
 

@@ -2,23 +2,23 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildPreTagChangeEvent
 import net.dzikoysk.funnyguilds.event.guild.GuildTagChangeEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Set Guild Tag")
-@Description("Ustawie (zmienia) tag gildii")
+@Description("Sets (changes) the guild's tag")
+@Since("2.0.0")
 @Examples(
     "set \"FajnaNazwa\" guild tag to \"AC4U\"",
 )
@@ -26,8 +26,7 @@ class GuildSetTagEffect : GuildValueEffect<String>(false) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildSetTagEffect::class.java,
+            registerEffect<GuildSetTagEffect>(
                 "set %guild%['s] tag to %string%",
                 "set %string%['s] [guild] tag to %string%",
                 "set %offlineplayer%['s] [guild] tag to %string%",
