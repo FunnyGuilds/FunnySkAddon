@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.expression.FunnyExpression
     "send \"%required items to create guild vip%\"",
     "set {_items} to required items to create guild vip"
 )
-class ConfigItemsForGuildVipExpression : FunnyExpression<ItemStack>() {
+class ConfigItemsForGuildVipExpression : FunnyExpression<ItemStack>(ItemStack::class.java) {
 
     companion object {
         init {
@@ -38,12 +38,6 @@ class ConfigItemsForGuildVipExpression : FunnyExpression<ItemStack>() {
         return false
     }
 
-    override fun getReturnType(): Class<ItemStack> {
-        return ItemStack::class.java
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "items required to create a guild with vip"
-    }
 
 }

@@ -10,6 +10,7 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.rank.DefaultTops
 import org.bukkit.event.Event
+import pl.funnyskaddon.skript.registration.Registration.guildSources
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
@@ -22,18 +23,13 @@ import pl.funnyskaddon.skript.getValue
     "send \"%player's guild top position%\"",
     "set {_position} to player's guild top position"
 )
-class GuildPositionExpression : GuildExpression<Int>() {
+class GuildPositionExpression : GuildExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
             registerExpression<GuildPositionExpression, Int>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] [(rank|ranking)] position [of %-string%]",
-                "%string%['s] [guild] [(rank|ranking)] position [of %-string%]",
-                "%offlineplayer%['s] guild['s] [(rank|ranking)] position [of %-string%]",
-                "%location%['s] guild['s] [(rank|ranking)] position [of %-string%]",
-                "%block%['s] guild['s] [(rank|ranking)] position [of %-string%]",
-                "%object%['s] guild['s] [(rank|ranking)] position [of %-string%]"
+                *guildSources("['s] [(rank|ranking)] position [of %-string%]")
             )
         }
     }
@@ -59,9 +55,6 @@ class GuildPositionExpression : GuildExpression<Int>() {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {

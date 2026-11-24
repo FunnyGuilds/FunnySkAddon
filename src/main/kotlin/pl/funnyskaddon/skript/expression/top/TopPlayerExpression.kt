@@ -25,7 +25,7 @@ import pl.funnyskaddon.skript.getValue
     "send \"%player in position 1%\"",
     "set {_playerOnPosition} to player in position 4"
 )
-class TopPlayerExpression : TopExpression<OfflinePlayer>() {
+class TopPlayerExpression : TopExpression<OfflinePlayer>(OfflinePlayer::class.java) {
 
     companion object {
         init {
@@ -52,9 +52,6 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
             .orNull()
     }
 
-    override fun getReturnType(): Class<OfflinePlayer> {
-        return OfflinePlayer::class.java
-    }
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {

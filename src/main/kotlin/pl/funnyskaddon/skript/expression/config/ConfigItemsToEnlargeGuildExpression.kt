@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.expression.FunnyExpression
     "send \"%required items to enlarge guild%\"",
     "set {_items} to required items to enlarge guild"
 )
-class ConfigItemsToEnlargeGuildExpression : FunnyExpression<ItemStack>() {
+class ConfigItemsToEnlargeGuildExpression : FunnyExpression<ItemStack>(ItemStack::class.java) {
 
     companion object {
         init {
@@ -37,12 +37,6 @@ class ConfigItemsToEnlargeGuildExpression : FunnyExpression<ItemStack>() {
         return false
     }
 
-    override fun getReturnType(): Class<ItemStack> {
-        return ItemStack::class.java
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "items required to enlarge a guild"
-    }
 
 }

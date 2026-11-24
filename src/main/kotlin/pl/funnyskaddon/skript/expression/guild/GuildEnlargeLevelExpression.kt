@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%\"AC4U\" guild enlarge level%\"",
     "set {_enlarge} to \"AC4U\" guild enlarge level"
 )
-class GuildEnlargeLevelExpression : GuildExpression<Int>("enlarge level of") {
+class GuildEnlargeLevelExpression : GuildExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -41,8 +41,5 @@ class GuildEnlargeLevelExpression : GuildExpression<Int>("enlarge level of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

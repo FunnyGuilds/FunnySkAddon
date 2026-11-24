@@ -21,7 +21,7 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%\"\"AC4U\"\" guild endercrystal location%\"",
     "set {_enderCrystal} to \"AC4U\" guild endercrystal location"
 )
-class GuildEndercrystalLocationExpression : GuildExpression<Location>("endercrystal location of") {
+class GuildEndercrystalLocationExpression : GuildExpression<Location>(Location::class.java) {
 
     companion object {
         init {
@@ -44,8 +44,5 @@ class GuildEndercrystalLocationExpression : GuildExpression<Location>("endercrys
             .orNull()
     }
 
-    override fun getReturnType(): Class<Location> {
-        return Location::class.java
-    }
 
 }

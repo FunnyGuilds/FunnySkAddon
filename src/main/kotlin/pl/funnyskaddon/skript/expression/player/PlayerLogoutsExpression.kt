@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.registration.Registration.registerExpression
     "send \"%player logouts%\"",
     "set {_logouts} to player's logouts"
 )
-class PlayerLogoutsExpression : PlayerExpression<Int>("logouts of") {
+class PlayerLogoutsExpression : PlayerExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -34,8 +34,5 @@ class PlayerLogoutsExpression : PlayerExpression<Int>("logouts of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

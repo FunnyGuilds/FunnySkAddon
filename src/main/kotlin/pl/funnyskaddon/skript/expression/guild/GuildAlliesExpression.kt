@@ -21,7 +21,7 @@ import java.util.stream.Collectors
     "loop \"AC4U\" guild allies:",
     "    send \"%loop-value%\""
 )
-class GuildAlliesExpression : GuildExpression<Guild>("allies of") {
+class GuildAlliesExpression : GuildExpression<Guild>(Guild::class.java) {
 
     companion object {
         init {
@@ -48,8 +48,5 @@ class GuildAlliesExpression : GuildExpression<Guild>("allies of") {
         return false
     }
 
-    override fun getReturnType(): Class<Guild> {
-        return Guild::class.java
-    }
 
 }

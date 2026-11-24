@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getUser
     "send \"%player deaths%\"",
     "set {_deaths} to player's deaths"
 )
-class PlayerDeathsExpression : PlayerExpression<Int>("deaths of") {
+class PlayerDeathsExpression : PlayerExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -34,8 +34,5 @@ class PlayerDeathsExpression : PlayerExpression<Int>("deaths of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.orNull
@@ -24,18 +25,13 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%player's guild owner%\"",
     "set {_owner} to player's guild owner"
 )
-class GuildOwnerExpression : GuildExpression<OfflinePlayer>("owner of") {
+class GuildOwnerExpression : GuildExpression<OfflinePlayer>(OfflinePlayer::class.java) {
 
     companion object {
         init {
             registerExpression<GuildOwnerExpression, OfflinePlayer>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] (owner|leader)",
-                "%string%['s] [guild] (owner|leader)",
-                "%offlineplayer%['s] guild['s] (owner|leader)",
-                "%location%['s] guild['s] (owner|leader)",
-                "%block%['s] guild['s] (owner|leader)",
-                "%object%['s] guild['s] (owner|leader)"
+                *guildSources("['s] (owner|leader)")
             )
         }
     }
@@ -48,8 +44,5 @@ class GuildOwnerExpression : GuildExpression<OfflinePlayer>("owner of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<OfflinePlayer> {
-        return OfflinePlayer::class.java
-    }
 
 }

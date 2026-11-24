@@ -5,7 +5,7 @@ import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.guild.Guild
 
-abstract class ValueExpression<T> : FunnyExpression<Guild>() {
+abstract class ValueExpression<T> : FunnyExpression<Guild>(Guild::class.java) {
 
     protected lateinit var valueExpression: Expression<T>
 
@@ -17,10 +17,6 @@ abstract class ValueExpression<T> : FunnyExpression<Guild>() {
     ): Boolean {
         valueExpression = expression[0] as Expression<T>
         return true
-    }
-
-    override fun getReturnType(): Class<Guild>? {
-        return Guild::class.java
     }
 
 }

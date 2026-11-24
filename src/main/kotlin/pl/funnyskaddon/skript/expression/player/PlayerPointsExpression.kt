@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getUser
     "send \"%player points%\"",
     "set {_points} to player's points"
 )
-class PlayerPointsExpression : PlayerExpression<Int>("ranking points of") {
+class PlayerPointsExpression : PlayerExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -34,8 +34,5 @@ class PlayerPointsExpression : PlayerExpression<Int>("ranking points of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

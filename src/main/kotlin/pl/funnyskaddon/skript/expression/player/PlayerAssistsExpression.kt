@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.registration.Registration.registerExpression
     "send \"%player assists%\"",
     "set {_assists} to player's assists"
 )
-class PlayerAssistsExpression : PlayerExpression<Int>("assists of") {
+class PlayerAssistsExpression : PlayerExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -34,8 +34,5 @@ class PlayerAssistsExpression : PlayerExpression<Int>("assists of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

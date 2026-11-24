@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.toStream
@@ -25,18 +26,13 @@ import java.util.stream.Collectors
     "loop player's guild online members:",
     "    send \"%loop-value%\""
 )
-class GuildOnlineMembersExpression : GuildExpression<Player>("online members of") {
+class GuildOnlineMembersExpression : GuildExpression<Player>(Player::class.java) {
 
     companion object {
         init {
             registerExpression<GuildOnlineMembersExpression, Player>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] online members",
-                "%string%['s] [guild] online members",
-                "%offlineplayer%['s] guild['s] online members",
-                "%location%['s] guild['s] online members",
-                "%block%['s] guild['s] online members",
-                "%object%['s] guild['s] online members"
+                *guildSources("['s] online members")
             )
         }
     }
@@ -53,8 +49,5 @@ class GuildOnlineMembersExpression : GuildExpression<Player>("online members of"
         return false
     }
 
-    override fun getReturnType(): Class<Player> {
-        return Player::class.java
-    }
 
 }

@@ -16,7 +16,7 @@ import pl.funnyskaddon.skript.expression.FunnyExpression
     "send \"%required money to create guild with vip%\"",
     "set {_money} to required money to create guild with vip"
 )
-class ConfigMoneyForGuildVipExpression : FunnyExpression<Double>() {
+class ConfigMoneyForGuildVipExpression : FunnyExpression<Double>(Double::class.javaObjectType) {
 
     companion object {
         init {
@@ -31,12 +31,6 @@ class ConfigMoneyForGuildVipExpression : FunnyExpression<Double>() {
         return arrayOf(ConfigItemsForGuildExpression.vipItemSet().requiredMoney)
     }
 
-    override fun getReturnType(): Class<Double> {
-        return Double::class.javaObjectType
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "money required for vip to create a guild"
-    }
 
 }

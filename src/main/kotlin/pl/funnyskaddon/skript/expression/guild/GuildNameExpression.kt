@@ -20,7 +20,7 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%player's guild name%\"",
     "set {_name} to player's guild name"
 )
-class GuildNameExpression : GuildExpression<String>("name of") {
+class GuildNameExpression : GuildExpression<String>(String::class.java) {
 
     companion object {
         init {
@@ -43,8 +43,5 @@ class GuildNameExpression : GuildExpression<String>("name of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<String> {
-        return String::class.java
-    }
 
 }

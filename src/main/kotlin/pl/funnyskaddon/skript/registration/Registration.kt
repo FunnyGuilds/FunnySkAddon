@@ -21,6 +21,23 @@ import pl.funnyskaddon.FunnySkAddon
  */
 object Registration {
 
+    /**
+     * Expands a guild-source core into the six standard guild accessor patterns,
+     * preserving the conventional pattern order (guild, string, offlineplayer, location, block, object).
+     * The core is the text following "%guild%", including any leading "['s]".
+     */
+    fun guildSources(core: String): Array<String> {
+        val bare = core.removePrefix("['s]")
+        return arrayOf(
+            "%guild%$core",
+            "%string%['s] [guild]$bare",
+            "%offlineplayer%['s] guild$core",
+            "%location%['s] guild$core",
+            "%block%['s] guild$core",
+            "%object%['s] guild$core"
+        )
+    }
+
     @PublishedApi
     internal val registry: SyntaxRegistry
         get() = FunnySkAddon.addon.syntaxRegistry()

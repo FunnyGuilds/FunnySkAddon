@@ -22,7 +22,7 @@ import pl.funnyskaddon.skript.getValue
     "send \"%player top position%\"",
     "set {_position} to player's top position"
 )
-class PlayerPositionExpression : PlayerExpression<Int>() {
+class PlayerPositionExpression : PlayerExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -54,9 +54,6 @@ class PlayerPositionExpression : PlayerExpression<Int>() {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {

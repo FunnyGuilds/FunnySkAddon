@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.expression.FunnyExpression
     "loop all guilds:",
     "    send \"%loop-value%\""
 )
-class GuildListExpression : FunnyExpression<Guild>() {
+class GuildListExpression : FunnyExpression<Guild>(Guild::class.java) {
 
     companion object {
         init {
@@ -37,12 +37,6 @@ class GuildListExpression : FunnyExpression<Guild>() {
         return false
     }
 
-    override fun getReturnType(): Class<Guild> {
-        return Guild::class.java
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "all guilds"
-    }
 
 }

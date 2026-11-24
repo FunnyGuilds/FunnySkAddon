@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%\"\"FajnaGildia\"\" guild kdr%\"",
     "set {_kdr} to \"FajnGildia\" guild kdr"
 )
-class GuildKDRExpression : GuildExpression<Float>("kdr of") {
+class GuildKDRExpression : GuildExpression<Float>(Float::class.javaObjectType) {
 
     companion object {
         init {
@@ -39,8 +39,5 @@ class GuildKDRExpression : GuildExpression<Float>("kdr of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0F))
     }
 
-    override fun getReturnType(): Class<Float> {
-        return Float::class.javaObjectType
-    }
 
 }

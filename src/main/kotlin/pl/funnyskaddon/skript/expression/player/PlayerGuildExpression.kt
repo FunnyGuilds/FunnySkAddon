@@ -21,7 +21,7 @@ import pl.funnyskaddon.skript.getUser
     "send \"%player guild%\"",
     "set {_guild} to player's guild"
 )
-class PlayerGuildExpression : PlayerExpression<Guild>("guild of") {
+class PlayerGuildExpression : PlayerExpression<Guild>(Guild::class.java) {
 
     companion object {
         init {
@@ -39,8 +39,5 @@ class PlayerGuildExpression : PlayerExpression<Guild>("guild of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<Guild> {
-        return Guild::class.java
-    }
 
 }

@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -20,18 +21,13 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%player's guild tag%\"",
     "set {_tag} to player's guild tag"
 )
-class GuildTagExpression : GuildExpression<String>("tag of") {
+class GuildTagExpression : GuildExpression<String>(String::class.java) {
 
     companion object {
         init {
             registerExpression<GuildTagExpression, String>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] tag",
-                "%string%['s] [guild] tag",
-                "%offlineplayer%['s] guild['s] tag",
-                "%location%['s] guild['s] tag",
-                "%block%['s] guild['s] tag",
-                "%object%['s] guild['s] tag"
+                *guildSources("['s] tag")
             )
         }
     }
@@ -43,8 +39,5 @@ class GuildTagExpression : GuildExpression<String>("tag of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<String> {
-        return String::class.java
-    }
 
 }

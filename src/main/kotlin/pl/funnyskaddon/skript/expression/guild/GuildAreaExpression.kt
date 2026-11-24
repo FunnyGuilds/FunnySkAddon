@@ -21,7 +21,7 @@ import kotlin.math.abs
     "send \"%\"\"AC4U\"\" guild region area%\"",
     "set {_area} to \"AC4U\" guild region area"
 )
-class GuildAreaExpression : GuildExpression<Int>("area of") {
+class GuildAreaExpression : GuildExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -45,8 +45,5 @@ class GuildAreaExpression : GuildExpression<Int>("area of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -23,18 +24,13 @@ import java.util.*
     "send \"%\"AC4U\" guild validity time%\"",
     "set {_time} to \"AC4U\" guild validity time"
 )
-class GuildValidityTimeExpression : GuildExpression<Timespan>("validity time of") {
+class GuildValidityTimeExpression : GuildExpression<Timespan>(Timespan::class.java) {
 
     companion object {
         init {
             registerExpression<GuildValidityTimeExpression, Timespan>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] validity time",
-                "%string%['s] [guild] validity time",
-                "%offlineplayer%['s] guild['s] validity time",
-                "%location%['s] guild['s] validity time",
-                "%block%['s] guild['s] validity time",
-                "%object%['s] guild['s] validity time"
+                *guildSources("['s] validity time")
             )
         }
     }
@@ -47,8 +43,5 @@ class GuildValidityTimeExpression : GuildExpression<Timespan>("validity time of"
             .orNull()
     }
 
-    override fun getReturnType(): Class<Timespan> {
-        return Timespan::class.java
-    }
 
 }

@@ -22,7 +22,7 @@ import java.time.Instant
     "send \"%\"\"AC4U\"\" guild born date%\"",
     "set {_born} to \"AC4U\" guild born date"
 )
-class GuildBornExpression : GuildExpression<Date>("born data of") {
+class GuildBornExpression : GuildExpression<Date>(Date::class.java) {
 
     companion object {
         init {
@@ -47,8 +47,5 @@ class GuildBornExpression : GuildExpression<Date>("born data of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<Date> {
-        return Date::class.java
-    }
 
 }

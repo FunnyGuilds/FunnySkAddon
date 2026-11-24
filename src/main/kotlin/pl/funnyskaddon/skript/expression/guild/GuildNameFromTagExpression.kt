@@ -10,12 +10,12 @@ import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
-import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.expression.FunnyExpression
 
 @Name("Guild Name From Tag")
 @Since("2.0.0")
@@ -24,7 +24,7 @@ import pl.funnyskaddon.skript.getValue
     "send \"%guild name from tag \"AD4U\"%\"",
     "set {_name} to guild name with tag \"AD4U\""
 )
-class GuildNameFromTagExpression : SimpleExpression<String>() {
+class GuildNameFromTagExpression : FunnyExpression<String>(String::class.java) {
 
     private lateinit var tagExpression: Expression<String>
 
@@ -60,12 +60,6 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
         return true
     }
 
-    override fun toString(event: Event?, debug: Boolean): String? {
-        return "guild name from tag"
-    }
 
-    override fun getReturnType(): Class<out String> {
-        return String::class.java
-    }
 
 }

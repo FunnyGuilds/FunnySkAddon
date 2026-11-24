@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -20,18 +21,13 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%\"AC4U\" guild pvp%\"",
     "set {_pvpStatus} to \"AC4U\" guild pvp"
 )
-class GuildPvPExpression : GuildExpression<Boolean>("pvp of") {
+class GuildPvPExpression : GuildExpression<Boolean>(Boolean::class.javaObjectType) {
 
     companion object {
         init {
             registerExpression<GuildPvPExpression, Boolean>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] pvp [[is] enabled]",
-                "%string%['s] [guild] pvp [[is] enabled]",
-                "%offlineplayer%['s] guild['s] pvp [[is] enabled]",
-                "%location%['s] guild['s] pvp [[is] enabled]",
-                "%block%['s] guild['s] pvp [[is] enabled]",
-                "%object%['s] guild['s] pvp [[is] enabled]"
+                *guildSources("['s] pvp [[is] enabled]")
             )
         }
     }
@@ -43,8 +39,5 @@ class GuildPvPExpression : GuildExpression<Boolean>("pvp of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<Boolean> {
-        return Boolean::class.javaObjectType
-    }
 
 }

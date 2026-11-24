@@ -18,7 +18,7 @@ import pl.funnyskaddon.skript.expression.FunnyExpression
     "send \"%required items to extension validity%\"",
     "set {_items} to extension validity"
 )
-class ConfigItemsToExtensionValidityGuildExpression : FunnyExpression<ItemStack>() {
+class ConfigItemsToExtensionValidityGuildExpression : FunnyExpression<ItemStack>(ItemStack::class.java) {
 
     companion object {
         init {
@@ -37,12 +37,6 @@ class ConfigItemsToExtensionValidityGuildExpression : FunnyExpression<ItemStack>
         return false
     }
 
-    override fun getReturnType(): Class<ItemStack> {
-        return ItemStack::class.java
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "items required to extend guild validity"
-    }
 
 }

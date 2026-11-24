@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.expression.FunnyExpression
     "send \"%required experience to create guild%\"",
     "set {_exp} to required experience to create guild"
 )
-class ConfigExpForGuildExpression : FunnyExpression<Int>() {
+class ConfigExpForGuildExpression : FunnyExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -32,12 +32,6 @@ class ConfigExpForGuildExpression : FunnyExpression<Int>() {
         return arrayOf(ConfigItemsForGuildExpression.defaultItemSet().requiredLevel)
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
-    override fun toString(e: Event?, debug: Boolean): String {
-        return "experience required to create a guild"
-    }
 
 }

@@ -21,7 +21,7 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%\"AC4U\" guild home location%\"",
     "set {_home} to \"AC4U\" guild home location"
 )
-class GuildHomeLocationExpression : GuildExpression<Location>("home location of") {
+class GuildHomeLocationExpression : GuildExpression<Location>(Location::class.java) {
 
     companion object {
         init {
@@ -44,8 +44,5 @@ class GuildHomeLocationExpression : GuildExpression<Location>("home location of"
             .orNull()
     }
 
-    override fun getReturnType(): Class<Location> {
-        return Location::class.java
-    }
 
 }

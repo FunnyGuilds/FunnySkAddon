@@ -23,7 +23,7 @@ import pl.funnyskaddon.skript.getPlayer
     "send \"%guild at player's location%\"",
     "set {_guild} to guild at player's location"
 )
-class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
+class GuildAtPlayerLocationExpression : PlayerExpression<Guild>(Guild::class.java) {
 
     companion object {
         init {
@@ -43,9 +43,6 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>() {
             .orNull()
     }
 
-    override fun getReturnType(): Class<Guild> {
-        return Guild::class.java
-    }
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {

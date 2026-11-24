@@ -22,7 +22,7 @@ import pl.funnyskaddon.skript.getValue
     "send \"%guild in position 1%\"",
     "set {_guildOnPosition} to guild in position 4"
 )
-class TopGuildExpression : TopExpression<Guild>() {
+class TopGuildExpression : TopExpression<Guild>(Guild::class.java) {
 
     companion object {
         init {
@@ -48,9 +48,6 @@ class TopGuildExpression : TopExpression<Guild>() {
             .orNull()
     }
 
-    override fun getReturnType(): Class<Guild> {
-        return Guild::class.java
-    }
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {

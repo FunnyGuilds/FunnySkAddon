@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -22,18 +23,13 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%\"AC4U\" guild region upper bound%\"",
     "set {_upperBound} to \"AC4U\" guild region upper bound"
 )
-class GuildUpperBoundLocationExpression : GuildExpression<Location>("upper bound location of") {
+class GuildUpperBoundLocationExpression : GuildExpression<Location>(Location::class.java) {
 
     companion object {
         init {
             registerExpression<GuildUpperBoundLocationExpression, Location>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] [region] (upper|up) (bound|point) [location]",
-                "%string%['s] [guild] [region] (upper|up) (bound|point) [location]",
-                "%offlineplayer%['s] guild['s] [region] (upper|up) (bound|point) [location]",
-                "%location%['s] guild['s] [region] (upper|up) (bound|point) [location]",
-                "%block%['s] guild['s] [region] (upper|up) (bound|point) [location]",
-                "%object%['s] guild['s] [region] (upper|up) (bound|point) [location]"
+                *guildSources("['s] [region] (upper|up) (bound|point) [location]")
             )
         }
     }
@@ -46,8 +42,5 @@ class GuildUpperBoundLocationExpression : GuildExpression<Location>("upper bound
             .orNull()
     }
 
-    override fun getReturnType(): Class<Location> {
-        return Location::class.java
-    }
 
 }

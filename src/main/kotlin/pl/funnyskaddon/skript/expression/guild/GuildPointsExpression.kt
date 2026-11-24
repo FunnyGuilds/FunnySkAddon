@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%\"\"FajnaGildia\"\" guild points%\"",
     "set {_points} to \"FajnaGildia\" guild points"
 )
-class GuildPointsExpression : GuildExpression<Int>("ranking points of") {
+class GuildPointsExpression : GuildExpression<Int>(Int::class.javaObjectType) {
 
     companion object {
         init {
@@ -39,8 +39,5 @@ class GuildPointsExpression : GuildExpression<Int>("ranking points of") {
             .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
-    override fun getReturnType(): Class<Int> {
-        return Int::class.javaObjectType
-    }
 
 }

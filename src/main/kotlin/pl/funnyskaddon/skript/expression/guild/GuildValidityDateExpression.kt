@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.guildSources
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -22,18 +23,13 @@ import java.time.Instant
     "send \"%\"AC4U\" guild validity date%\"",
     "set {_time} to \"AC4U\" guild validity date"
 )
-class GuildValidityDateExpression : GuildExpression<Date>("validity date of") {
+class GuildValidityDateExpression : GuildExpression<Date>(Date::class.java) {
 
     companion object {
         init {
             registerExpression<GuildValidityDateExpression, Date>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] validity date",
-                "%string%['s] [guild] validity date",
-                "%offlineplayer%['s] guild['s] validity date",
-                "%location%['s] guild['s] validity date",
-                "%block%['s] guild['s] validity date",
-                "%object%['s] guild['s] validity date"
+                *guildSources("['s] validity date")
             )
         }
     }
@@ -47,8 +43,5 @@ class GuildValidityDateExpression : GuildExpression<Date>("validity date of") {
             .orNull()
     }
 
-    override fun getReturnType(): Class<Date> {
-        return Date::class.java
-    }
 
 }

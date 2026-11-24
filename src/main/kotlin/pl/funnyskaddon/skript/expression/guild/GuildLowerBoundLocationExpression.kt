@@ -22,7 +22,7 @@ import pl.funnyskaddon.skript.getGuild
     "send \"%\"AC4U\" guild region lower bound%\"",
     "set {_lowerBound} to \"AC4U\" guild region lower bound"
 )
-class GuildLowerBoundLocationExpression : GuildExpression<Location>("lower bound location of") {
+class GuildLowerBoundLocationExpression : GuildExpression<Location>(Location::class.java) {
 
     companion object {
         init {
@@ -46,8 +46,5 @@ class GuildLowerBoundLocationExpression : GuildExpression<Location>("lower bound
             .orNull()
     }
 
-    override fun getReturnType(): Class<Location> {
-        return Location::class.java
-    }
 
 }

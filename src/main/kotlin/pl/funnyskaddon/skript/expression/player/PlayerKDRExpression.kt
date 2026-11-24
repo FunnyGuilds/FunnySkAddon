@@ -17,7 +17,7 @@ import pl.funnyskaddon.skript.getUser
     "send \"%player kdr%\"",
     "set {_kdr} to player's kdr"
 )
-class PlayerKDRExpression : PlayerExpression<Number>("kdr of") {
+class PlayerKDRExpression : PlayerExpression<Number>(Number::class.javaObjectType) {
 
     companion object {
         init {
@@ -35,8 +35,5 @@ class PlayerKDRExpression : PlayerExpression<Number>("kdr of") {
 
     }
 
-    override fun getReturnType(): Class<Number> {
-        return Number::class.javaObjectType
-    }
 
 }
