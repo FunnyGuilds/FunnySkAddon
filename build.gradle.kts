@@ -38,8 +38,6 @@ repositories {
     maven("https://repo.panda-lang.org/releases")
     maven("https://repo.panda-lang.org/snapshots")
     maven("https://repo.panda-lang.org/jitpack")
-    maven("https://maven.enginehub.org/repo")
-    maven("https://repo.mikeprimm.com")
     maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     maven("https://storehouse.okaeri.eu/repository/maven-public") {
         mavenContent {
