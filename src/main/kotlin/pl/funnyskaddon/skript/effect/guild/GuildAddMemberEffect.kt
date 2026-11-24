@@ -3,10 +3,10 @@ package pl.funnyskaddon.skript.effect.guild
 import pl.funnyskaddon.extension.peek
 import pl.funnyskaddon.extension.orNull
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
@@ -16,19 +16,19 @@ import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getGuild
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getUser
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
 
-@FunnyDoc
 @Name("Add Guild Member")
 @Description(
-    "Dodaje gracza do gildii<br>",
-    "Alternatywa: <b>set %offlineplayer%['s] guild to %object%</b>"
+    "Adds a player to the guild<br>",
+    "Alternative: <b>set %offlineplayer%['s] guild to %object%</b>",
 )
+@Since("2.0.0")
 @Examples(
     "add player to \"AC4U\" guild members",
 )
@@ -36,8 +36,7 @@ class GuildAddMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildAddMemberEffect::class.java,
+            registerEffect<GuildAddMemberEffect>(
                 "add %offlineplayer% to %guild%['s] members",
                 "add %offlineplayer% to %string%['s] [guild]['s] members",
                 "add %offlineplayer% to %offlineplayer%['s] [guild] members",

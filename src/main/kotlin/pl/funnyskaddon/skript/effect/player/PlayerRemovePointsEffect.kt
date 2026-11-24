@@ -2,22 +2,22 @@ package pl.funnyskaddon.skript.effect.player
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.rank.PointsChangeEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.PlayerEffect
 import pl.funnyskaddon.skript.getUser
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Remove Points")
-@Description("Usuwa punkty z rankingu gracza")
+@Description("Removes points from the player's ranking")
+@Since("2.0.0")
 @Examples(
     "remove 7 points from player's ranking",
 )
@@ -25,8 +25,7 @@ class PlayerRemovePointsEffect : PlayerEffect<Number>(true) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                PlayerRemovePointsEffect::class.java,
+            registerEffect<PlayerRemovePointsEffect>(
                 "remove %number% point[s] from %offlineplayer%['s] [(rank|ranking)]"
             )
         }

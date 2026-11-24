@@ -2,24 +2,24 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberDeputyEvent
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getUser
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
 
-@FunnyDoc
 @Name("Add Guild Deputy")
-@Description("Dodaje zastępce gildii")
+@Description("Adds a deputy to the guild")
+@Since("2.0.0")
 @Examples(
     "add player to \"AC4U\" guild deputies",
 )
@@ -27,8 +27,7 @@ class GuildAddDeputyEffect : GuildValueEffect<OfflinePlayer>(true) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildAddDeputyEffect::class.java,
+            registerEffect<GuildAddDeputyEffect>(
                 "add %offlineplayer% to %guild%['s] deputies",
                 "add %offlineplayer% to %string%['s] [guild] deputies",
                 "add %offlineplayer% to %offlineplayer%['s] guild deputies",

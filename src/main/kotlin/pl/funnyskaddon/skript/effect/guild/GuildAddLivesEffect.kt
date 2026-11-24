@@ -2,22 +2,22 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.GuildLivesChangeEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Add Guild Lives")
-@Description("Dodaje życia do gildii")
+@Description("Adds lives to the guild")
+@Since("2.0.0")
 @Examples(
     "add 4 lives to \"AC4U\" guild",
 )
@@ -25,8 +25,7 @@ class GuildAddLivesEffect : GuildValueEffect<Number>(false) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildAddLivesEffect::class.java,
+            registerEffect<GuildAddLivesEffect>(
                 "add %number% live[s] to %guild%",
                 "add %number% live[s] to %string% [guild]",
                 "add %number% live[s] to %offlineplayer%['s] guild",

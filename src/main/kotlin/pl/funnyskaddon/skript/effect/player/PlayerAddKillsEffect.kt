@@ -2,22 +2,22 @@ package pl.funnyskaddon.skript.effect.player
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.rank.KillsChangeEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.PlayerEffect
 import pl.funnyskaddon.skript.getUser
 import pl.funnyskaddon.skript.getValue
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
-@FunnyDoc
 @Name("Add Kills")
-@Description("Dodaje zabójstwa do rankingu gracza")
+@Description("Adds kills to the player's ranking")
+@Since("2.0.0")
 @Examples(
     "add 5 kills to player's ranking",
 )
@@ -25,8 +25,7 @@ class PlayerAddKillsEffect : PlayerEffect<Number>(true) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                PlayerAddKillsEffect::class.java,
+            registerEffect<PlayerAddKillsEffect>(
                 "add %number% kill[s] to %offlineplayer%['s] [(rank|ranking)]"
             )
         }

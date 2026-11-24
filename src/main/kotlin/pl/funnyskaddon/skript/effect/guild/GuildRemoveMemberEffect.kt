@@ -2,24 +2,24 @@ package pl.funnyskaddon.skript.effect.guild
 
 import pl.funnyskaddon.extension.peek
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import net.dzikoysk.funnyguilds.event.SimpleEventHandler
 import net.dzikoysk.funnyguilds.event.guild.member.GuildMemberKickEvent
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.effect.GuildValueEffect
 import pl.funnyskaddon.skript.getGuild
 import pl.funnyskaddon.skript.getUser
+import pl.funnyskaddon.skript.registration.Registration.registerEffect
 
 
-@FunnyDoc
 @Name("Remove Guild Member")
-@Description("Usuwa członka z gildii")
+@Description("Removes a member from the guild")
+@Since("2.0.0")
 @Examples(
     "remove player from \"AC4U\" guild members",
 )
@@ -27,8 +27,7 @@ class GuildRemoveMemberEffect : GuildValueEffect<OfflinePlayer>(true) {
 
     companion object {
         init {
-            Skript.registerEffect(
-                GuildRemoveMemberEffect::class.java,
+            registerEffect<GuildRemoveMemberEffect>(
                 "remove %offlineplayer% from %guild%['s] members",
                 "remove %offlineplayer% from %string%['s] [guild] members",
                 "remove %offlineplayer% from %offlineplayer%['s] [guild] members",
