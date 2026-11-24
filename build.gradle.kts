@@ -51,7 +51,7 @@ repositories {
 // VaultAPI 1.7 is not on any live repo; jitpack's MilkBowl fork provides the same artifact
 configurations.compileClasspath {
     resolutionStrategy.dependencySubstitution {
-        substitute(module("net.milkbowl.vault:VaultAPI")).using(module("com.github.MilkBowl:VaultAPI:1.7"))
+        substitute(module("net.milkbowl.vault:VaultAPI")).using(module("com.github.MilkBowl:VaultAPI:1.7.1"))
     }
 }
 dependencies {
