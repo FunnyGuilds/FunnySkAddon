@@ -7,10 +7,8 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import pl.funnyskaddon.FunnySkAddon
-import pl.funnyskaddon.docs.FunnyHTMLGenerator
 import pl.funnyskaddon.extension.color
 import pl.funnyskaddon.extension.sendColorMessage
-import java.io.File
 
 class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
 
@@ -18,31 +16,6 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
         if (!sender.hasPermission("funnyskaddon.cmd")) {
             sender.sendColorMessage(plugin.configuration.messages.noPerm.color())
             return true
-        }
-
-        if (args != null) {
-            if (args.isNotEmpty() && args[0].equals(
-                    "gen-docs",
-                    true
-                ) && sender.hasPermission("funnyskaddon.cmd.docs")
-            ) {
-                if (plugin.configuration.devMode) {
-                    val templateDir = File(plugin.dataFolder, "docs/templates/")
-                    if (!templateDir.exists()) {
-                        Skript.info(sender, "Documentation templates not found. Cannot generate docs!")
-                        return true
-                    }
-                    val outputDir = File(plugin.dataFolder, "docs/output")
-                    outputDir.mkdirs()
-
-                    val generator = FunnyHTMLGenerator(plugin, templateDir, outputDir)
-                    Skript.info(sender, "Generating docs...")
-                    generator.generateDocumentation() // Try to generate docs... hopefully
-                    Skript.info(sender, "Documentation generated!")
-
-                    return true
-                }
-            }
         }
 
         val java = System.getProperty("java.version")
