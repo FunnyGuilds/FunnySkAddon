@@ -1,7 +1,6 @@
 package pl.funnyskaddon.command
 
 import ch.njol.skript.Skript
-import ch.njol.skript.SkriptAddon
 import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -24,8 +23,8 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
         val fgVersion = plugin.server.pluginManager.getPlugin("FunnyGuilds")?.description?.version ?: "unknown"
         val skriptVersion = plugin.server.pluginManager.getPlugin("Skript")?.description?.version ?: "unknown"
 
-        val skriptAddons = Skript.getAddons()
-            .map { it.getName() }
+        val skriptAddons = Skript.instance().addons()
+            .map { it.name() }
             .toSet()
         val plugins = plugin.server.pluginManager.plugins
             .map { plugin -> plugin.name }

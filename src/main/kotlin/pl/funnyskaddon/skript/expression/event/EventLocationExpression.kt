@@ -1,6 +1,5 @@
 package pl.funnyskaddon.skript.expression.event
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
@@ -8,8 +7,7 @@ import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
-import ch.njol.skript.lang.util.SimpleExpression
-import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.expression.FunnyExpression
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildBaseChangeEvent
@@ -24,7 +22,7 @@ import org.bukkit.event.Event
     "guild move",
     "guild base change"
 )
-class EventLocationExpression : SimpleExpression<Location>() {
+class EventLocationExpression : FunnyExpression<Location>(Location::class.java) {
 
     companion object {
         init {
@@ -79,10 +77,9 @@ class EventLocationExpression : SimpleExpression<Location>() {
     ): Boolean {
         type = EventType.values()[matchedPattern]
         if (!EventExpressionUtil.isCurrentEvent(*type.events)) {
-            Skript.error(
-                "The '" + type.pattern + "' can only be used in a " + type.name + " event",
-                ErrorQuality.SEMANTIC_ERROR
-            )
+            error(
+                "The '" + type.pattern + "' can only be used in a " + type.name + " event"
+)
             return false
         }
         return true
@@ -101,12 +98,6 @@ class EventLocationExpression : SimpleExpression<Location>() {
         return true
     }
 
-    override fun getReturnType(): Class<out Location> {
-        return Location::class.java
-    }
 
-    override fun toString(event: Event?, debug: Boolean): String {
-        return "the " + type.name + " location"
-    }
 
 }
