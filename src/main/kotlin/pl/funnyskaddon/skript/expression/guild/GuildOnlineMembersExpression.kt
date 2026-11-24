@@ -1,5 +1,8 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.extension.flatMapOption
+import pl.funnyskaddon.extension.toStream
+
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
@@ -42,8 +45,8 @@ class GuildOnlineMembersExpression : GuildExpression<Player>("online members of"
 
     override fun get(event: Event): Array<Player> {
         return event.getGuild(guildExpression).toStream()
-            .flatMap(Guild::getOnlineMembers)
-            .flatMap(User::getPlayerOption)
+            .flatMap { it.getOnlineMembers(false).stream() }
+            .flatMapOption(User::getPlayerOption)
             .collect(Collectors.toSet())
             .toTypedArray()
     }

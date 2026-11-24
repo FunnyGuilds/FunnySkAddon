@@ -17,9 +17,9 @@ class PlayerJoinListener(private val plugin: FunnySkAddon) : Listener {
             return
         }
 
-        plugin.server.scheduler.runTaskAsynchronously(plugin) {
+        plugin.server.scheduler.runTaskAsynchronously(plugin, Runnable {
             VersionChecker.checkUpdate(plugin, event.player)
-        }
+        })
     }
 
 }

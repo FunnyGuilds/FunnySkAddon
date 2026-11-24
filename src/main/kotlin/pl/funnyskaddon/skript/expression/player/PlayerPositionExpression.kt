@@ -50,12 +50,10 @@ class PlayerPositionExpression : PlayerExpression<Int>() {
     override fun get(event: Event): Array<Int> {
         return event.getUser(playerExpression)
             .map { user ->
-                val type: String = event.getValue(typeExpression).orElseGet(DefaultTops.USER_POINTS_TOP)
+                val type: String = event.getValue(typeExpression).orElse(DefaultTops.USER_POINTS_TOP)
                 user.rank.getPosition(type)
             }
-            .orElse(0)
-            .map { value -> arrayOf(value) }
-            .get()
+            .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
     override fun getReturnType(): Class<Int> {
@@ -64,7 +62,7 @@ class PlayerPositionExpression : PlayerExpression<Int>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {
-            val type: String = e.getValue(typeExpression).orElseGet(DefaultTops.USER_POINTS_TOP)
+            val type: String = e.getValue(typeExpression).orElse(DefaultTops.USER_POINTS_TOP)
             return "ranking position of player \"${playerExpression.toString(e, debug)}\" in $type top"
         }
         return "ranking position of player"

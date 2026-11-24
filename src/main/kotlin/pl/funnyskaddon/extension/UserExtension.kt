@@ -4,12 +4,12 @@ import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
-import panda.std.Option
+import java.util.Optional
 
-fun User.getOfflinePlayer(): Option<OfflinePlayer> {
-    return Option.of(Bukkit.getOfflinePlayer(this.uuid))
+fun User.getOfflinePlayer(): Optional<OfflinePlayer> {
+    return Optional.ofNullable(Bukkit.getOfflinePlayer(this.uuid))
 }
 
-fun User.getPlayerOption(): Option<Player> {
-    return Option.of(Bukkit.getPlayer(this.uuid))
+fun User.getPlayerOption(): Optional<Player> {
+    return Optional.ofNullable(Bukkit.getPlayer(this.uuid))
 }

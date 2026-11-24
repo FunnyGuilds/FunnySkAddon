@@ -6,7 +6,6 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
-import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
@@ -31,7 +30,7 @@ class ConfigMoneyForGuildExpression : FunnyExpression<Double>() {
     }
 
     override fun get(event: Event): Array<Double> {
-        return arrayOf(FunnySkAddon.fgConfiguration.requiredMoney)
+        return arrayOf(ConfigItemsForGuildExpression.defaultItemSet().requiredMoney)
     }
 
     override fun getReturnType(): Class<Double> {

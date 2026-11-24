@@ -5,9 +5,11 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.lang.ExpressionType
+import net.dzikoysk.funnyguilds.FunnyGuilds
+import net.dzikoysk.funnyguilds.config.sections.items.GuildItemSet
+import net.dzikoysk.funnyguilds.shared.bukkit.ItemUtils
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
-import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
@@ -29,10 +31,20 @@ class ConfigItemsForGuildExpression : FunnyExpression<ItemStack>() {
                 "[required] items (to create|for) guild"
             )
         }
+
+        fun defaultItemSet(): GuildItemSet {
+            val itemsConfig = FunnyGuilds.getInstance().itemsConfiguration
+            return itemsConfig.setsSortedByPriority.firstOrNull { it.permission == null } ?: GuildItemSet()
+        }
+
+        fun vipItemSet(): GuildItemSet {
+            val itemsConfig = FunnyGuilds.getInstance().itemsConfiguration
+            return itemsConfig.setsSortedByPriority.firstOrNull { it.permission != null } ?: defaultItemSet()
+        }
     }
 
     override fun get(event: Event): Array<ItemStack> {
-        return FunnySkAddon.fgConfiguration.createItems.toTypedArray()
+        return ItemUtils.buildRequiredItems(defaultItemSet(), FunnyGuilds.getInstance().itemsConfiguration).toTypedArray()
     }
 
     override fun isSingle(): Boolean {

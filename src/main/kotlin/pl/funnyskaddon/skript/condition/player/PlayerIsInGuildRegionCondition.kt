@@ -34,9 +34,9 @@ class PlayerIsInGuildRegionCondition : GuildPlayerCondition() {
         return event.getPlayer(playerExpression)
             .map { player ->
                 event.getGuild(guildExpression).map { guild -> guild.isPlayerInGuildRegion(player) }
-                    .orElseGet(false)
+                    .orElse(false)
             }
-            .orElseGet(false)
+            .orElse(false)
             .xor(isNegated)
     }
 

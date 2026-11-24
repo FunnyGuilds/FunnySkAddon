@@ -1,5 +1,7 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.extension.orNull
+
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples

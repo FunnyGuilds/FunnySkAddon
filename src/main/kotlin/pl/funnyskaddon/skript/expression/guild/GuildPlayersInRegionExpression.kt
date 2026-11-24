@@ -1,5 +1,7 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.extension.toStream
+
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
@@ -42,7 +44,7 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>("players in regio
 
     override fun get(event: Event): Array<Player> {
         return event.getGuild(guildExpression).toStream()
-            .flatMap(Guild::getPlayersInGuildRegion)
+            .flatMap { it.getPlayersInGuildRegion().stream() }
             .collect(Collectors.toSet())
             .toTypedArray()
     }

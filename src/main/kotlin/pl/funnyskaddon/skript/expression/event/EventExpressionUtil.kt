@@ -1,5 +1,7 @@
 package pl.funnyskaddon.skript.expression.event
 
+import pl.funnyskaddon.extension.orNull
+
 import ch.njol.skript.lang.parser.ParserInstance
 import ch.njol.skript.registrations.EventValues
 import ch.njol.util.coll.CollectionUtils

@@ -38,9 +38,7 @@ class GuildKDRExpression : GuildExpression<Float>("kdr of") {
     override fun get(event: Event): Array<Float> {
         return event.getGuild(guildExpression)
             .map { guild -> guild.rank.kdr }
-            .orElse(0F)
-            .map { value -> arrayOf(value) }
-            .get()
+            .map { value -> arrayOf(value) }.orElse(arrayOf(0F))
     }
 
     override fun getReturnType(): Class<Float> {
