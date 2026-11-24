@@ -1,5 +1,7 @@
 package pl.funnyskaddon.skript.type
 
+import pl.funnyskaddon.extension.orNull
+
 import ch.njol.skript.classes.ClassInfo
 import ch.njol.skript.classes.Parser
 import ch.njol.skript.classes.Serializer

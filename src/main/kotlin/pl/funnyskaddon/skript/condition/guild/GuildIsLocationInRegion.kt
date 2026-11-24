@@ -44,7 +44,7 @@ class GuildIsLocationInRegion : GuildValueCondition<Location>(true, 7) {
     override fun check(event: Event): Boolean {
         return event.getGuild(guildExpression)
             .map { guild -> guild.isLocationInGuildRegion(event.getValue(valueExpression)) }
-            .orElseGet(false)
+            .orElse(false)
             .xor(isNegated)
     }
 

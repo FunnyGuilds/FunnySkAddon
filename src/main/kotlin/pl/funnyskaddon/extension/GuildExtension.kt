@@ -1,5 +1,7 @@
 package pl.funnyskaddon.extension
 
+import pl.funnyskaddon.extension.toStream
+
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.guild.Region
@@ -9,10 +11,10 @@ import org.bukkit.OfflinePlayer
 import org.bukkit.World
 import org.bukkit.block.Block
 import org.bukkit.entity.Player
-import panda.std.Option
+import java.util.Optional
 import java.util.stream.Collectors
 
-fun Any.getGuild(): Option<Guild> {
+fun Any.getGuild(): Optional<Guild> {
     val funnyGuilds = FunnyGuilds.getInstance()
     val userManager = funnyGuilds.userManager
     val guildManager = funnyGuilds.guildManager
@@ -20,7 +22,7 @@ fun Any.getGuild(): Option<Guild> {
 
     when (this) {
         is Guild -> {
-            return Option.of(this)
+            return Optional.ofNullable(this)
         }
         is OfflinePlayer -> {
             return userManager.findByPlayer(this)
@@ -40,27 +42,27 @@ fun Any.getGuild(): Option<Guild> {
             val toString = this.toString()
 
             return guildManager.findByName(toString)
-                .orElse(guildManager.findByTag(toString))
+                .or { guildManager.findByTag(toString) }
         }
     }
 }
 
-fun Guild.isLocationInGuildRegion(locationOption: Option<Location>): Boolean {
+fun Guild.isLocationInGuildRegion(locationOption: Optional<Location>): Boolean {
     return locationOption
         .map { location -> FunnyGuilds.getInstance().regionManager.findRegionAtLocation(location) }
         .map { region -> region == this.region }
-        .orElseGet(false)
+        .orElse(false)
 }
 
 
 fun Guild.isPlayerInGuildRegion(player: Player): Boolean {
-    return isLocationInGuildRegion(Option.of(player.location))
+    return isLocationInGuildRegion(Optional.ofNullable(player.location))
 }
 
 fun Guild.getPlayersInGuildRegion(): Set<Player> {
     return this.region.toStream()
         .map(Region::getWorld)
-        .flatMap(World::getPlayers)
+        .flatMap { it.players.stream() }
         .filter { player -> this.isPlayerInGuildRegion(player) }
         .collect(Collectors.toSet())
 }

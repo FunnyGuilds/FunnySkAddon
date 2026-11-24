@@ -34,7 +34,7 @@ class PlayerIsInGuildCondition : GuildPlayerCondition() {
         return event.getUser(playerExpression)
             .map(User::getGuild)
             .map { guild -> guild.equals(event.getGuild(guildExpression)) }
-            .orElseGet(false)
+            .orElse(false)
             .xor(isNegated)
     }
 

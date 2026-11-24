@@ -42,7 +42,7 @@ class GuildCanBeAttackedCondition : GuildCondition(7) {
     override fun check(event: Event): Boolean {
         return event.getGuild(guildExpression)
             .map(Guild::canBeAttacked)
-            .orElseGet(false)
+            .orElse(false)
             .xor(isNegated)
     }
 

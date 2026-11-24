@@ -33,9 +33,7 @@ class PlayerKDRExpression : PlayerExpression<Number>("kdr of") {
     override fun get(event: Event): Array<Float> {
         return event.getUser(playerExpression)
             .map { user -> user.rank.kdr }
-            .orElse(0F)
-            .map { value -> arrayOf(value) }
-            .get()
+            .map { value -> arrayOf(value) }.orElse(arrayOf(0F))
 
     }
 

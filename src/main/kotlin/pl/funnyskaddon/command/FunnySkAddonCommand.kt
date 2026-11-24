@@ -6,7 +6,6 @@ import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
-import panda.std.stream.PandaStream
 import pl.funnyskaddon.FunnySkAddon
 import pl.funnyskaddon.docs.FunnyHTMLGenerator
 import pl.funnyskaddon.extension.color
@@ -15,7 +14,7 @@ import java.io.File
 
 class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
 
-    override fun onCommand(sender: CommandSender, cmd: Command?, label: String?, args: Array<String?>?): Boolean {
+    override fun onCommand(sender: CommandSender, cmd: Command, label: String, args: Array<out String>): Boolean {
         if (!sender.hasPermission("funnyskaddon.cmd")) {
             sender.sendColorMessage(plugin.configuration.messages.noPerm.color())
             return true
@@ -49,13 +48,13 @@ class FunnySkAddonCommand(private val plugin: FunnySkAddon) : CommandExecutor {
         val java = System.getProperty("java.version")
         val engine = Bukkit.getServer().bukkitVersion
         val fsaVersion = plugin.description.version
-        val fgVersion = plugin.server.pluginManager.getPlugin("FunnyGuilds").description.version
-        val skriptVersion = plugin.server.pluginManager.getPlugin("Skript").description.version
+        val fgVersion = plugin.server.pluginManager.getPlugin("FunnyGuilds")?.description?.version ?: "unknown"
+        val skriptVersion = plugin.server.pluginManager.getPlugin("Skript")?.description?.version ?: "unknown"
 
-        val skriptAddons = PandaStream.of(Skript.getAddons())
-            .map(SkriptAddon::getName)
+        val skriptAddons = Skript.getAddons()
+            .map { it.getName() }
             .toSet()
-        val plugins = PandaStream.of(plugin.server.pluginManager.plugins.toSet())
+        val plugins = plugin.server.pluginManager.plugins
             .map { plugin -> plugin.name }
             .toSet()
 

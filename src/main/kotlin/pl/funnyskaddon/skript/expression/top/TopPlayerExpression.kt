@@ -1,5 +1,8 @@
 package pl.funnyskaddon.skript.expression.top
 
+import pl.funnyskaddon.extension.flatMapOption
+import pl.funnyskaddon.extension.orNull
+
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
@@ -40,7 +43,7 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
         return event.getValue(positionExpression)
             .map(Number::toInt)
             .flatMap { position ->
-                val type: String = event.getValue(typeExpression).orElseGet(DefaultTops.USER_POINTS_TOP)
+                val type: String = event.getValue(typeExpression).orElse(DefaultTops.USER_POINTS_TOP)
                 FunnyGuilds.getInstance().userRankManager.getUser(
                     type,
                     position
@@ -57,7 +60,7 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {
-            val type: String = e.getValue(typeExpression).orElseGet(DefaultTops.USER_POINTS_TOP)
+            val type: String = e.getValue(typeExpression).orElse(DefaultTops.USER_POINTS_TOP)
             return "player at position ${positionExpression.toString(e, debug)} in $type top"
         }
         return "player at position of top"

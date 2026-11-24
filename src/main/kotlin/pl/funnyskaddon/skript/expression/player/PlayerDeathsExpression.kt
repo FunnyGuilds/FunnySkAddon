@@ -33,9 +33,7 @@ class PlayerDeathsExpression : PlayerExpression<Int>("deaths of") {
     override fun get(event: Event): Array<Int> {
         return event.getUser(playerExpression)
             .map { user -> user.rank.deaths }
-            .orElse(0)
-            .map { value -> arrayOf(value) }
-            .get()
+            .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
     override fun getReturnType(): Class<Int> {

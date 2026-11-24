@@ -32,7 +32,7 @@ class PlayerIsDeputyCondition : PlayerCondition() {
     override fun check(event: Event): Boolean {
         return event.getUser(playerExpression)
             .map(User::isDeputy)
-            .orElseGet(false)
+            .orElse(false)
             .xor(isNegated)
     }
 

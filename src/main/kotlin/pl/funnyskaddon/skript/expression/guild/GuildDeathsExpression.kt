@@ -38,9 +38,7 @@ class GuildDeathsExpression : GuildExpression<Int>("deaths of") {
     override fun get(event: Event): Array<Int> {
         return event.getGuild(guildExpression)
             .map { guild -> guild.rank.averageDeaths }
-            .orElse(0)
-            .map { value -> arrayOf(value) }
-            .get()
+            .map { value -> arrayOf(value) }.orElse(arrayOf(0))
     }
 
     override fun getReturnType(): Class<Int> {

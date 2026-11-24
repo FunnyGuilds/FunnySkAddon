@@ -12,7 +12,7 @@ import pl.funnyskaddon.skript.expression.FunnyExpression
 
 @FunnyDoc
 @Name("Exp To Create Guild")
-@Description("Zwraca doświadczenie potrzebne do założenia gildii")
+@Description("Zwraca poziom wymagany do założenia gildii")
 @Examples(
     "send \"%required experience to create guild%\"",
     "set {_exp} to required experience to create guild"
@@ -31,7 +31,7 @@ class ConfigExpForGuildExpression : FunnyExpression<Int>() {
     }
 
     override fun get(event: Event): Array<Int> {
-        return arrayOf(FunnySkAddon.fgConfiguration.requiredExperience)
+        return arrayOf(ConfigItemsForGuildExpression.defaultItemSet().requiredLevel)
     }
 
     override fun getReturnType(): Class<Int> {

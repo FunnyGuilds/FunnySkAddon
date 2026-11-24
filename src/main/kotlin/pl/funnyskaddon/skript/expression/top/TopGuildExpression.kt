@@ -1,5 +1,7 @@
 package pl.funnyskaddon.skript.expression.top
 
+import pl.funnyskaddon.extension.orNull
+
 import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
@@ -38,7 +40,7 @@ class TopGuildExpression : TopExpression<Guild>() {
         return event.getValue(positionExpression)
             .map(Number::toInt)
             .flatMap { position ->
-                val type: String = event.getValue(typeExpression).orElseGet(DefaultTops.GUILD_AVG_POINTS_TOP)
+                val type: String = event.getValue(typeExpression).orElse(DefaultTops.GUILD_AVG_POINTS_TOP)
                 FunnyGuilds.getInstance().guildRankManager.getGuild(
                     type,
                     position
@@ -54,7 +56,7 @@ class TopGuildExpression : TopExpression<Guild>() {
 
     override fun toString(e: Event?, debug: Boolean): String {
         if (e != null) {
-            val type: String = e.getValue(typeExpression).orElseGet(DefaultTops.GUILD_AVG_POINTS_TOP)
+            val type: String = e.getValue(typeExpression).orElse(DefaultTops.GUILD_AVG_POINTS_TOP)
             return "guild at position ${positionExpression.toString(e, debug)} in $type top"
         }
         return "guild at position of top"
