@@ -4,22 +4,21 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildEntityExplodeEvent
 import org.bukkit.block.Block
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 
-@FunnyDoc
 @Name("Blocks")
-@Description(
-    "Zwraca bloki, które wybuchły"
-)
+@Description("Returns the blocks that exploded")
+@Since("2.0.0")
 @Events(
     "guild entity explode"
 )
@@ -27,12 +26,7 @@ class EventAffectedBlocksExpression : SimpleExpression<Block>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventAffectedBlocksExpression::class.java,
-                Block::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventAffectedBlocksExpression, Block>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

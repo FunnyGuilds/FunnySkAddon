@@ -2,22 +2,22 @@ package pl.funnyskaddon.skript.expression.guild
 
 import pl.funnyskaddon.extension.orNull
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.util.Date
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 import java.time.Instant
 
-@FunnyDoc
 @Name("Guild Born")
-@Description("Zwraca date narodzin gildii")
+@Since("2.0.0")
+@Description("Returns the birth date of a guild")
 @Examples(
     "send \"%\"\"AC4U\"\" guild born date%\"",
     "set {_born} to \"AC4U\" guild born date"
@@ -26,15 +26,13 @@ class GuildBornExpression : GuildExpression<Date>("born data of") {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildBornExpression::class.java,
-                Date::class.java,
+            registerExpression<GuildBornExpression, Date>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] born [date]",
-                "%string%['s] [guild] born [date]",
                 "%offlineplayer%['s] guild['s] born [date]",
-                "%location%['s] guild['s] born [date]",
+                "%string%['s] [guild] born [date]",
                 "%block%['s] guild['s] born [date]",
+                "%location%['s] guild['s] born [date]",
+                "%guild%['s] born [date]",
                 "%object%['s] guild['s] born [date]"
             )
         }

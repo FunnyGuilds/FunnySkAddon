@@ -2,22 +2,22 @@ package pl.funnyskaddon.skript.expression.guild
 
 import pl.funnyskaddon.extension.orNull
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.guild.Region
 import org.bukkit.Location
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 
-@FunnyDoc
 @Name("Guild Lower Bound Location")
-@Description("Zwraca dolny skrajny punkt regionu gildii")
+@Since("2.0.0")
+@Description("Returns the lower bound of a guild's region")
 @Examples(
     "send \"%\"AC4U\" guild region lower bound%\"",
     "set {_lowerBound} to \"AC4U\" guild region lower bound"
@@ -26,16 +26,14 @@ class GuildLowerBoundLocationExpression : GuildExpression<Location>("lower bound
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildLowerBoundLocationExpression::class.java,
-                Location::class.java,
+            registerExpression<GuildLowerBoundLocationExpression, Location>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] [region] (lower|down) (bound|point) [location]",
-                "%string%['s] [guild] [region] (lower|down) (bound|point) [location]",
+                "%object%['s] guild['s] [region] (lower|down) (bound|point) [location]",
                 "%offlineplayer%['s] guild['s] [region] (lower|down) (bound|point) [location]",
-                "%location%['s] guild['s] [region] (lower|down) (bound|point) [location]",
+                "%guild%['s] [region] (lower|down) (bound|point) [location]",
                 "%block%['s] guild['s] [region] (lower|down) (bound|point) [location]",
-                "%object%['s] guild['s] [region] (lower|down) (bound|point) [location]"
+                "%location%['s] guild['s] [region] (lower|down) (bound|point) [location]",
+                "%string%['s] [guild] [region] (lower|down) (bound|point) [location]"
             )
         }
     }

@@ -1,18 +1,18 @@
 package pl.funnyskaddon.skript.expression.player
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.PlayerExpression
 import pl.funnyskaddon.skript.getUser
 
-@FunnyDoc
 @Name("Player Deaths")
-@Description("Zwraca liczbę śmierci gracza")
+@Since("2.0.0")
+@Description("Returns the number of deaths of a player")
 @Examples(
     "send \"%player deaths%\"",
     "set {_deaths} to player's deaths"
@@ -21,9 +21,7 @@ class PlayerDeathsExpression : PlayerExpression<Int>("deaths of") {
 
     companion object {
         init {
-            Skript.registerExpression(
-                PlayerDeathsExpression::class.java,
-                Int::class.javaObjectType,
+            registerExpression<PlayerDeathsExpression, Int>(
                 ExpressionType.PROPERTY,
                 "%offlineplayer%['s] [(rank|ranking)] deaths [(amount|count)]"
             )

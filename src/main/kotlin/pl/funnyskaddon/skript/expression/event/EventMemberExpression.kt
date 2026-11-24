@@ -6,21 +6,22 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.member.*
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getPlayerOption
 
-@FunnyDoc
 @Name("Member")
-@Description("Zwraca członka, który uczestniczył w wydarzeniu")
+@Description("Returns the member involved in the event")
+@Since("2.0.0")
 @Events(
     "guild member join",
     "guild member leave",
@@ -32,12 +33,7 @@ class EventMemberExpression : SimpleExpression<Player>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventMemberExpression::class.java,
-                Player::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventMemberExpression, Player>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

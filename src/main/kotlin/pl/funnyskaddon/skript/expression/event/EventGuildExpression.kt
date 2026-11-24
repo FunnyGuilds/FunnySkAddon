@@ -4,20 +4,21 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.*
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 
-@FunnyDoc
 @Name("Guild")
-@Description("Zwraca gildie, której dotyczy wydarzenie")
+@Description("Returns the guild involved in the event")
+@Since("2.0.0")
 @Events(
     "guild delete",
     "guild delete",
@@ -49,12 +50,7 @@ class EventGuildExpression : SimpleExpression<Guild>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventGuildExpression::class.java,
-                Guild::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventGuildExpression, Guild>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

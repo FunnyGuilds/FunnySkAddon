@@ -1,19 +1,19 @@
 package pl.funnyskaddon.skript.expression.config
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 import pl.funnyskaddon.FunnySkAddon
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
-@FunnyDoc
 @Name("Items To Enlarge Guild")
-@Description("Zwraca przedmioty potrzebne aby zwiększyć gildie")
+@Since("2.0.0")
+@Description("Returns the items required to enlarge a guild")
 @Examples(
     "send \"%required items to enlarge guild%\"",
     "set {_items} to required items to enlarge guild"
@@ -22,9 +22,7 @@ class ConfigItemsToEnlargeGuildExpression : FunnyExpression<ItemStack>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                ConfigItemsToEnlargeGuildExpression::class.java,
-                ItemStack::class.java,
+            registerExpression<ConfigItemsToEnlargeGuildExpression, ItemStack>(
                 ExpressionType.PROPERTY,
                 "[required] items (to|for) enlarge guild"
             )

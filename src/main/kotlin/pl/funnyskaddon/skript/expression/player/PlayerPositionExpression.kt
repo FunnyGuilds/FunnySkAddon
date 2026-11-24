@@ -1,23 +1,23 @@
 package pl.funnyskaddon.skript.expression.player
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.rank.DefaultTops
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.PlayerExpression
 import pl.funnyskaddon.skript.getUser
 import pl.funnyskaddon.skript.getValue
 
-@FunnyDoc
 @Name("Player Top Position")
-@Description("Zwraca pozycje gracza w rankingu")
+@Since("2.0.0")
+@Description("Returns the position of a player in the ranking")
 @Examples(
     "send \"%player top position%\"",
     "set {_position} to player's top position"
@@ -26,9 +26,7 @@ class PlayerPositionExpression : PlayerExpression<Int>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                PlayerPositionExpression::class.java,
-                Int::class.javaObjectType,
+            registerExpression<PlayerPositionExpression, Int>(
                 ExpressionType.PROPERTY,
                 "%offlineplayer%['s] [(top|rank|ranking)] position [of %-string%]"
             )

@@ -1,11 +1,12 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
@@ -14,12 +15,11 @@ import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.getValue
 
-@FunnyDoc
 @Name("Guild Name From Tag")
-@Description("Zwraca nazwę gildii po jej tagu<br>", "<s>Nie wiadomo po co</s>")
+@Since("2.0.0")
+@Description("Returns the name of a guild by its tag")
 @Examples(
     "send \"%guild name from tag \"AD4U\"%\"",
     "set {_name} to guild name with tag \"AD4U\""
@@ -30,9 +30,7 @@ class GuildNameFromTagExpression : SimpleExpression<String>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildNameFromTagExpression::class.java,
-                String::class.java,
+            registerExpression<GuildNameFromTagExpression, String>(
                 ExpressionType.PROPERTY,
                 "guild name from tag %string%",
                 "guild name with tag %string%"

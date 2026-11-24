@@ -3,42 +3,40 @@ package pl.funnyskaddon.skript.expression.guild
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.toStream
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getOfflinePlayer
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
 
-@FunnyDoc
 @Name("Guild Members")
-@Description("Zwraca członków gildii")
+@Since("2.0.0")
+@Description("Returns the members of a guild")
 @Examples(
     "loop player's guild members:",
-    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
+    "    send \"%loop-value%\""
 )
 class GuildMembersExpression : GuildExpression<OfflinePlayer>("members of") {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildMembersExpression::class.java,
-                OfflinePlayer::class.java,
+            registerExpression<GuildMembersExpression, OfflinePlayer>(
                 ExpressionType.PROPERTY,
-                "%guild%['s] members",
                 "%string%['s] [guild] members",
-                "%offlineplayer%['s] guild['s] members",
-                "%location%['s] guild['s] members",
+                "%guild%['s] members",
                 "%block%['s] guild['s] members",
-                "%object%['s] guild['s] members"
+                "%location%['s] guild['s] members",
+                "%object%['s] guild['s] members",
+                "%offlineplayer%['s] guild['s] members"
             )
         }
     }

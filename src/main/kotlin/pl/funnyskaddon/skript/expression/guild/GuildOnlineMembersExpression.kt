@@ -1,37 +1,35 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.toStream
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getPlayerOption
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
 import java.util.stream.Collectors
 
-@FunnyDoc
 @Name("Guild Online Members")
-@Description("Zwraca członków gildii, którzy są online")
+@Since("2.0.0")
+@Description("Returns the members of a guild that are online")
 @Examples(
     "loop player's guild online members:",
-    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%loop-value%\""
+    "    send \"%loop-value%\""
 )
 class GuildOnlineMembersExpression : GuildExpression<Player>("online members of") {
 
     companion object {
         init {
-            Skript.registerExpression(
-                GuildOnlineMembersExpression::class.java,
-                Player::class.java,
+            registerExpression<GuildOnlineMembersExpression, Player>(
                 ExpressionType.PROPERTY,
                 "%guild%['s] online members",
                 "%string%['s] [guild] online members",

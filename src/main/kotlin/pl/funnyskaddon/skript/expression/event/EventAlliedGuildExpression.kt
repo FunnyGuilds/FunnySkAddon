@@ -4,11 +4,13 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent
@@ -16,11 +18,10 @@ import net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent
 import net.dzikoysk.funnyguilds.event.guild.ally.GuildSendAllyInvitationEvent
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 
-@FunnyDoc
 @Name("Ally")
-@Description("Zwraca gildię sojuszniczą, która uczestniczyła w wydarzeniu")
+@Description("Returns the allied guild involved in the event")
+@Since("2.0.0")
 @Events(
     "guild send ally invitation",
     "guild accept ally invitation",
@@ -31,12 +32,7 @@ class EventAlliedGuildExpression : SimpleExpression<Guild>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventAlliedGuildExpression::class.java,
-                Guild::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventAlliedGuildExpression, Guild>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

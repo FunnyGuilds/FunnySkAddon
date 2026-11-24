@@ -4,22 +4,21 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildChatEvent
 import net.dzikoysk.funnyguilds.event.guild.GuildPreChatEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 
-@FunnyDoc
 @Name("Chat Type")
-@Description(
-    "Zwraca typ wiadomości na chacie gildyjnym: PRIVATE, ALLY, ALL"
-)
+@Description("Returns the guild chat message type: PRIVATE, ALLY, ALL")
+@Since("2.0.0")
 @Events(
     "guild pre chat event",
     "guild chat event"
@@ -28,12 +27,7 @@ class EventChatTypeExpression : SimpleExpression<GuildChatEvent.Type>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventChatTypeExpression::class.java,
-                GuildChatEvent.Type::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventChatTypeExpression, GuildChatEvent.Type>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

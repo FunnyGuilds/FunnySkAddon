@@ -6,21 +6,22 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.rank.*
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.extension.getPlayerOption
 
-@FunnyDoc
 @Name("Player")
-@Description("Zwraca gracza, który uczestniczył w wydarzeniu")
+@Description("Returns the player involved in the ranking change")
+@Since("2.0.0")
 @Events(
     "kills change",
     "deaths change",
@@ -32,12 +33,7 @@ class EventAffectedPlayerExpression : SimpleExpression<Player>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventAffectedPlayerExpression::class.java,
-                Player::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventAffectedPlayerExpression, Player>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

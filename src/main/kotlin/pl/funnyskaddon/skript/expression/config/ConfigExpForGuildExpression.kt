@@ -1,18 +1,18 @@
 package pl.funnyskaddon.skript.expression.config
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import pl.funnyskaddon.FunnySkAddon
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
-@FunnyDoc
 @Name("Exp To Create Guild")
-@Description("Zwraca poziom wymagany do założenia gildii")
+@Since("2.0.0")
+@Description("Returns the level required to create a guild")
 @Examples(
     "send \"%required experience to create guild%\"",
     "set {_exp} to required experience to create guild"
@@ -21,9 +21,7 @@ class ConfigExpForGuildExpression : FunnyExpression<Int>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                ConfigExpForGuildExpression::class.java,
-                Int::class.javaObjectType,
+            registerExpression<ConfigExpForGuildExpression, Int>(
                 ExpressionType.PROPERTY,
                 "[required] (exp|experience) (to create|for) guild"
             )

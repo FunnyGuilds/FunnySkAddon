@@ -4,19 +4,20 @@ import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.skript.lang.util.SimpleExpression
 import ch.njol.skript.log.ErrorQuality
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.FunnyEvent
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 
-@FunnyDoc
 @Name("Cause")
-@Description("Zwraca przyczynę wydarzenia")
+@Description("Returns the cause of the event")
+@Since("2.0.0")
 @Events(
     "guild delete",
     "guild delete",
@@ -53,12 +54,7 @@ class EventCauseExpression : SimpleExpression<FunnyEvent.EventCause>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                EventCauseExpression::class.java,
-                FunnyEvent.EventCause::class.java,
-                ExpressionType.SIMPLE,
-                *EventType.patterns.toTypedArray()
-            )
+            registerExpression<EventCauseExpression, FunnyEvent.EventCause>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

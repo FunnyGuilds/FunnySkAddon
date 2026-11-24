@@ -1,19 +1,19 @@
 package pl.funnyskaddon.skript.expression.config
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 import pl.funnyskaddon.FunnySkAddon
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
-@FunnyDoc
 @Name("Items To Join Guild")
-@Description("Zwraca przedmioty potrzebne aby dołączyć do gildii")
+@Since("2.0.0")
+@Description("Returns the items required to join a guild")
 @Examples(
     "send \"%required items to join guild%\"",
     "set {_items} to required items to join guild"
@@ -22,9 +22,7 @@ class ConfigItemsToJoinGuildExpression : FunnyExpression<ItemStack>() {
 
     companion object {
         init {
-            Skript.registerExpression(
-                ConfigItemsToJoinGuildExpression::class.java,
-                ItemStack::class.java,
+            registerExpression<ConfigItemsToJoinGuildExpression, ItemStack>(
                 ExpressionType.PROPERTY,
                 "[required] items (to|for) join guild"
             )
