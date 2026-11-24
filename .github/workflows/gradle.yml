@@ -1,6 +1,3 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
-
 name: FunnySkAddon CI
 
 on:
@@ -9,38 +6,89 @@ on:
   pull_request:
     branches: [ master ]
 
+permissions:
+  pull-requests: write
+  issues: write
+
+concurrency:
+  # pull_request events use refs/pull/<n>/merge, so this groups runs per PR and
+  # cancels superseded runs after rapid pushes.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     name: "Build with JDK${{ matrix.jdk }}"
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        jdk: [ 17 ]
+        jdk: [ 21 ]
     steps:
+      - name: Find comment with artifact link
+        uses: peter-evans/find-comment@v3
+        if: github.event_name == 'pull_request'
+        id: init-find-comment
+        continue-on-error: true
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+      - name: Create initial comment for artifact link
+        uses: peter-evans/create-or-update-comment@v4
+        id: create-comment
+        continue-on-error: true
+        if: |
+          github.event_name == 'pull_request' &&
+          steps.init-find-comment.outputs.comment-id == ''
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ### 📦 Dev Build
+
+            ⏳ A test version of **FunnySkAddon** with the changes from this Pull Request will be available here.
+          edit-mode: replace
+
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - name: Setup Maven cache
-        uses: actions/cache@v6
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-      - name: Setup Gradle cache
-        uses: actions/cache@v6
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
       - name: Set up JDK
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: ${{ matrix.jdk }}
-          cache: 'gradle'
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-      - name: Build with Gradle
-        run: ./gradlew build
+      - uses: burrunan/gradle-cache-action@v3
+        name: Build FunnySkAddon
+        with:
+          job-id: jdk${{ matrix.jdk }}
+          arguments: build --stacktrace
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        id: upload-artifact
+        continue-on-error: true
+        with:
+          name: FunnySkAddon Dev Build
+          path: build/libs/FunnySkAddon*.jar
+          retention-days: 30
+          overwrite: true
+
+      - name: Find comment with artifact link
+        uses: peter-evans/find-comment@v3
+        if: github.event_name == 'pull_request'
+        id: find-comment
+        continue-on-error: true
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+      - name: Update comment with artifact link
+        uses: peter-evans/create-or-update-comment@v4
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          body: |
+            ### 📦 Dev Build
+
+            You can download a test version of **FunnySkAddon** with the changes from this Pull Request [here](${{ steps.upload-artifact.outputs.artifact-url }}).
+
+            **⚠️ Note!** This is a test build and should not be used on a production server.
+          edit-mode: replace
+          reactions: rocket
