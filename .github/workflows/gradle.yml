@@ -33,7 +33,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
       - name: Create initial comment for artifact link
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         id: create-comment
         continue-on-error: true
         if: |
@@ -79,7 +79,7 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           comment-author: 'github-actions[bot]'
       - name: Update comment with artifact link
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         if: github.event_name == 'pull_request'
         continue-on-error: true
         with:
