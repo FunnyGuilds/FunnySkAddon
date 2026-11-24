@@ -25,7 +25,7 @@ jobs:
         jdk: [ 21 ]
     steps:
       - name: Find comment with artifact link
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@v4
         if: github.event_name == 'pull_request'
         id: init-find-comment
         continue-on-error: true
@@ -71,7 +71,7 @@ jobs:
           overwrite: true
 
       - name: Find comment with artifact link
-        uses: peter-evans/find-comment@v3
+        uses: peter-evans/find-comment@v4
         if: github.event_name == 'pull_request'
         id: find-comment
         continue-on-error: true
