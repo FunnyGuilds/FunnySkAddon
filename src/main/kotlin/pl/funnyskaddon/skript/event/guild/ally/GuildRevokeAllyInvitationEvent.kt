@@ -1,27 +1,27 @@
 package pl.funnyskaddon.skript.event.guild.ally
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Revoke Ally Invitation")
+@Description("Called when a guild rejects an ally invitation")
+@Since("2.0.0")
+@Examples(
+    "on guild revoke ally invitation:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%guild%\"",
+    "    send \"%ally%\""
+)
 class GuildRevokeAllyInvitationEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Revoke Ally Invitation",
-                GuildRevokeAllyInvitationEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent::class.java,
-                "guild revoke ally (invite|invitation)"
-            ).description("Wywoływany, kiedy gildia odrzuci sojusz")
-                .examples(
-                    "on guild revoke ally invitation:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%ally%\""
-                )
+            registerEvent(GuildRevokeAllyInvitationEvent::class.java, net.dzikoysk.funnyguilds.event.guild.ally.GuildRevokeAllyInvitationEvent::class.java, "Guild Revoke Ally Invitation", "guild revoke ally (invite|invitation)")
         }
     }
 

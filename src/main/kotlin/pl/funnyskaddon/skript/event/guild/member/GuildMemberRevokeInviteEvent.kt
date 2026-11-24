@@ -1,27 +1,27 @@
 package pl.funnyskaddon.skript.event.guild.member
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Member Revoke Invitation")
+@Description("Called when a player rejects a guild invitation")
+@Since("2.0.0")
+@Examples(
+    "on guild member revoke invitation:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%member%\"",
+    "    send \"%guild%\""
+)
 class GuildMemberRevokeInviteEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Member Revoke Invitation",
-                GuildMemberRevokeInviteEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.member.GuildMemberAcceptInviteEvent::class.java,
-                "guild member revoke (invite|invitation)"
-            ).description("Wywoływany, kiedy gracz odrzuci zaproszenie do gildii")
-                .examples(
-                    "on guild member revoke invitation:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%member%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
-                )
+            registerEvent(GuildMemberRevokeInviteEvent::class.java, net.dzikoysk.funnyguilds.event.guild.member.GuildMemberAcceptInviteEvent::class.java, "Guild Member Revoke Invitation", "guild member revoke (invite|invitation)")
         }
     }
 

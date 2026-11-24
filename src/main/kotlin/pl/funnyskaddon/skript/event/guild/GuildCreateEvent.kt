@@ -1,26 +1,26 @@
 package pl.funnyskaddon.skript.event.guild
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Create")
+@Description("Called when a guild is created")
+@Since("2.0.0")
+@Examples(
+    "on guild create:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%guild%\""
+)
 class GuildCreateEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Create",
-                GuildCreateEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.GuildCreateEvent::class.java,
-                "guild (create|creation)"
-            ).description("Wywoływany, kiedy gildia zostanie utworzona")
-                .examples(
-                    "on guild create:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
-                )
+            registerEvent(GuildCreateEvent::class.java, net.dzikoysk.funnyguilds.event.guild.GuildCreateEvent::class.java, "Guild Create", "guild (create|creation)")
         }
     }
 

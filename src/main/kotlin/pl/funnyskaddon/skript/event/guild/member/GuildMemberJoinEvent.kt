@@ -1,27 +1,27 @@
 package pl.funnyskaddon.skript.event.guild.member
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Member Join")
+@Description("Called when a player joins a guild")
+@Since("2.0.0")
+@Examples(
+    "on guild member join:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%member%\"",
+    "    send \"%guild%\""
+)
 class GuildMemberJoinEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Member Join",
-                GuildMemberJoinEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.member.GuildMemberJoinEvent::class.java,
-                "guild member join"
-            ).description("Wywoływany, kiedy gracz dołączy do gildii")
-                .examples(
-                    "on guild member join:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%member%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\""
-                )
+            registerEvent(GuildMemberJoinEvent::class.java, net.dzikoysk.funnyguilds.event.guild.member.GuildMemberJoinEvent::class.java, "Guild Member Join", "guild member join")
         }
     }
 

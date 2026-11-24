@@ -1,27 +1,27 @@
 package pl.funnyskaddon.skript.event.guild.ally
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Accept Ally Invitation")
+@Description("Called when a guild accepts an ally invitation")
+@Since("2.0.0")
+@Examples(
+    "on guild accept ally invitation:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%guild%\"",
+    "    send \"%ally%\""
+)
 class GuildAcceptAllyInvitationEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Accept Ally Invitation",
-                GuildAcceptAllyInvitationEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent::class.java,
-                "guild accept ally (invite|invitation)"
-            ).description("Wywoływany, kiedy gildia zaakceptuje sojusz")
-                .examples(
-                    "on guild accept ally invitation:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%ally%\""
-                )
+            registerEvent(GuildAcceptAllyInvitationEvent::class.java, net.dzikoysk.funnyguilds.event.guild.ally.GuildAcceptAllyInvitationEvent::class.java, "Guild Accept Ally Invitation", "guild accept ally (invite|invitation)")
         }
     }
 

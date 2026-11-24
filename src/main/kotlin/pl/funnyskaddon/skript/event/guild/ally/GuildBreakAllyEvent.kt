@@ -1,27 +1,27 @@
 package pl.funnyskaddon.skript.event.guild.ally
 
-import ch.njol.skript.Skript
+import ch.njol.skript.doc.Description
+import ch.njol.skript.doc.Examples
+import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.util.SimpleEvent
-import pl.funnyskaddon.docs.FunnyDoc
+import pl.funnyskaddon.skript.registration.Registration.registerEvent
 
-@FunnyDoc
+@Name("Guild Break Ally")
+@Description("Called when a guild breaks an alliance")
+@Since("2.0.0")
+@Examples(
+    "on guild break ally:",
+    "    send \"%cause%\"",
+    "    send \"%player%\"",
+    "    send \"%guild%\"",
+    "    send \"%ally%\""
+)
 class GuildBreakAllyEvent : SimpleEvent() {
 
     companion object {
         init {
-            Skript.registerEvent(
-                "Guild Break Ally",
-                GuildBreakAllyEvent::class.java,
-                net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent::class.java,
-                "guild break ally"
-            ).description("Wywoływany, kiedy gildia rozwiąże sojusz")
-                .examples(
-                    "on guild break ally:",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%cause%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%player%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%guild%\"",
-                    "&nbsp;&nbsp;&nbsp;&nbsp;send \"%ally%\""
-                )
+            registerEvent(GuildBreakAllyEvent::class.java, net.dzikoysk.funnyguilds.event.guild.ally.GuildBreakAllyEvent::class.java, "Guild Break Ally", "guild break ally")
         }
     }
 
