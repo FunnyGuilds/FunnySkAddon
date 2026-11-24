@@ -5,7 +5,7 @@ description: Official Skript addon adding support for FunnyGuilds
 website: funnyskaddon.pl
 main: pl.funnyskaddon.FunnySkAddon
 softdepend: [Skript, FunnyGuilds]
-api-version: 1.13
+api-version: 1.21
 
 commands:
   funnyskaddon:

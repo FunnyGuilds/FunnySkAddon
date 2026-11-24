@@ -7,15 +7,15 @@ plugins {
 }
 
 group = "pl.funnyskaddon"
-version = "2.5.3"
+version = "3.0.0"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(21)
 }
 
 repositories {
@@ -23,21 +23,31 @@ repositories {
     mavenLocal()
 
     maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots")
+    maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
     maven("https://repo.panda-lang.org/releases")
+    maven("https://repo.panda-lang.org/snapshots")
     maven("https://repo.panda-lang.org/jitpack")
-    maven("https://repo.titanvale.net/releases")
+    maven("https://maven.enginehub.org/repo")
+    maven("https://repo.mikeprimm.com")
+    maven("https://repo.extendedclip.com/content/repositories/placeholderapi/")
     maven("https://storehouse.okaeri.eu/repository/maven-public")
 }
 
+// VaultAPI 1.7 is not on any live repo; jitpack's MilkBowl fork provides the same artifact
+configurations.compileClasspath {
+    resolutionStrategy.dependencySubstitution {
+        substitute(module("net.milkbowl.vault:VaultAPI")).using(module("com.github.MilkBowl:VaultAPI:1.7"))
+    }
+}
 dependencies {
     implementation(kotlin("stdlib"))
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("commons-io:commons-io:2.22.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.13")
-    compileOnly("org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT")
-    compileOnly("net.dzikoysk.funnyguilds:plugin:4.13.0")
-    compileOnly("com.github.SkriptLang:Skript:2.13.2") {
+    compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("net.dzikoysk.funnyguilds:plugin:5.0.1-SNAPSHOT")
+    compileOnly("com.github.SkriptLang:Skript:2.17.1") {
         isTransitive = false
     }
 }
