@@ -61,7 +61,7 @@ jobs:
           job-id: jdk${{ matrix.jdk }}
           arguments: build --stacktrace
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         id: upload-artifact
         continue-on-error: true
         with:
