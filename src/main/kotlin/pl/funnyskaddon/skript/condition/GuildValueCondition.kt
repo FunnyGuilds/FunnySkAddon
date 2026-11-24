@@ -1,5 +1,4 @@
 package pl.funnyskaddon.skript.condition
-
 import ch.njol.skript.lang.Expression
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean

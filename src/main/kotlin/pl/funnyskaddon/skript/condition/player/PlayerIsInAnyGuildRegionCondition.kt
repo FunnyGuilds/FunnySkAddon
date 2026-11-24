@@ -1,18 +1,17 @@
 package pl.funnyskaddon.skript.condition.player
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.PlayerCondition
+import pl.funnyskaddon.skript.registration.Registration.registerCondition
 import pl.funnyskaddon.skript.getPlayer
-
-@FunnyDoc
 @Name("Is In Any Guild Region")
-@Description("Sprawdza, czy gracz jest na terenie jakiejkolwiek gildii")
+@Since("2.0.0")
+@Description("Checks if the player is in any guild region")
 @Examples(
     "if player is in any guild region:",
     "if player is not in any guild region:"
@@ -21,8 +20,7 @@ class PlayerIsInAnyGuildRegionCondition : PlayerCondition() {
 
     companion object {
         init {
-            Skript.registerCondition(
-                PlayerIsInAnyGuildRegionCondition::class.java,
+            registerCondition<PlayerIsInAnyGuildRegionCondition>(
                 "[player] %player% is in any guild region",
                 "[player] %player% is(n't| not) in any guild region"
             )

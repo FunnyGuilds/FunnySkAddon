@@ -1,18 +1,17 @@
 package pl.funnyskaddon.skript.condition.player
 
-import ch.njol.skript.Skript
 import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
+import ch.njol.skript.doc.Since
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.event.Event
-import pl.funnyskaddon.docs.FunnyDoc
 import pl.funnyskaddon.skript.condition.PlayerCondition
+import pl.funnyskaddon.skript.registration.Registration.registerCondition
 import pl.funnyskaddon.skript.getUser
-
-@FunnyDoc
 @Name("Is Deputy")
-@Description("Sprawdza, czy gracz jest zastępcą gildii")
+@Since("2.0.0")
+@Description("Checks if the player is a guild deputy")
 @Examples(
     "if player is deputy:",
     "if player is not deputy:"
@@ -21,8 +20,7 @@ class PlayerIsDeputyCondition : PlayerCondition() {
 
     companion object {
         init {
-            Skript.registerCondition(
-                PlayerIsDeputyCondition::class.java,
+            registerCondition<PlayerIsDeputyCondition>(
                 "[player] %offlineplayer% is deputy",
                 "[player] %offlineplayer% is(n't| not) deputy"
             )
