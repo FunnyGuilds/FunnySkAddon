@@ -5,9 +5,10 @@ import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
-import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import pl.funnyskaddon.skript.expression.FunnyExpression
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.SIMPLE
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.guild.GuildChatEvent
@@ -25,7 +26,7 @@ class EventChatTypeExpression : FunnyExpression<GuildChatEvent.Type>(GuildChatEv
 
     companion object {
         init {
-            registerExpression<EventChatTypeExpression, GuildChatEvent.Type>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
+            registerExpression<EventChatTypeExpression, GuildChatEvent.Type>(SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

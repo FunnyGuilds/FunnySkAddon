@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -8,7 +9,6 @@ import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
-import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.FunnyGuilds
@@ -31,7 +31,7 @@ class GuildNameFromTagExpression : FunnyExpression<String>(String::class.java) {
     companion object {
         init {
             registerExpression<GuildNameFromTagExpression, String>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "guild name from tag %string%",
                 "guild name with tag %string%"
             )

@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.top
 
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.orNull
@@ -8,7 +9,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.rank.DefaultTops
 import net.dzikoysk.funnyguilds.user.User
@@ -30,7 +30,7 @@ class TopPlayerExpression : TopExpression<OfflinePlayer>(OfflinePlayer::class.ja
     companion object {
         init {
             registerExpression<TopPlayerExpression, OfflinePlayer>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "player in position %number% [of (top|rank|ranking)]",
                 "player in position %number% [of %-string% (top|rank|ranking)]"
             )

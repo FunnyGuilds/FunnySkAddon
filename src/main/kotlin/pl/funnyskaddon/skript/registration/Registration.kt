@@ -3,7 +3,6 @@ package pl.funnyskaddon.skript.registration
 import ch.njol.skript.lang.Condition
 import ch.njol.skript.lang.Effect
 import ch.njol.skript.lang.Expression as SkriptExpression
-import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.util.SimpleEvent
 import ch.njol.skript.expressions.base.PropertyExpression
 import org.bukkit.event.Event
@@ -42,14 +41,11 @@ object Registration {
     internal val registry: SyntaxRegistry
         get() = FunnySkAddon.addon.syntaxRegistry()
 
-    @PublishedApi
-    internal fun priorityOf(type: ExpressionType): Priority = when (type) {
-        ExpressionType.SIMPLE -> SyntaxInfo.SIMPLE
-        ExpressionType.PROPERTY -> PropertyExpression.DEFAULT_PRIORITY
-        ExpressionType.COMBINED -> SyntaxInfo.COMBINED
-        ExpressionType.PATTERN_MATCHES_EVERYTHING -> SyntaxInfo.PATTERN_MATCHES_EVERYTHING
-        else -> SyntaxInfo.COMBINED
-    }
+    // Modern replacements for the deprecated ExpressionType enum
+    val SIMPLE: Priority = SyntaxInfo.SIMPLE
+    val PROPERTY: Priority = PropertyExpression.DEFAULT_PRIORITY
+    val COMBINED: Priority = SyntaxInfo.COMBINED
+    val PATTERN_MATCHES_EVERYTHING: Priority = SyntaxInfo.PATTERN_MATCHES_EVERYTHING
 
     inline fun <reified E : Effect> registerEffect(vararg patterns: String) {
         registry.register(
@@ -70,7 +66,7 @@ object Registration {
     }
 
     inline fun <reified E : SkriptExpression<R>, reified R : Any> registerExpression(
-        type: ExpressionType,
+        priority: Priority,
         vararg patterns: String
     ) {
         registry.register(
@@ -79,7 +75,7 @@ object Registration {
                     E::class.java,
                     R::class.java
                 )
-                .priority(priorityOf(type))
+                .priority(priority)
                 .addPatterns(*patterns)
                 .build()
         )

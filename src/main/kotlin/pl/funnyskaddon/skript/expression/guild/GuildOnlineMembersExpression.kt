@@ -1,6 +1,7 @@
 package pl.funnyskaddon.skript.expression.guild
 
 import pl.funnyskaddon.skript.registration.Registration.guildSources
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.toStream
@@ -9,7 +10,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.entity.Player
@@ -31,7 +31,7 @@ class GuildOnlineMembersExpression : GuildExpression<Player>(Player::class.java)
     companion object {
         init {
             registerExpression<GuildOnlineMembersExpression, Player>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 *guildSources("['s] online members")
             )
         }

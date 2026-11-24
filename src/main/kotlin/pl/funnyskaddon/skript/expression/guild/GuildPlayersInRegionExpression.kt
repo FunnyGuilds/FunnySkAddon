@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.guild
 
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.toStream
 
@@ -7,7 +8,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.entity.Player
 import org.bukkit.event.Event
@@ -28,7 +28,7 @@ class GuildPlayersInRegionExpression : GuildExpression<Player>(Player::class.jav
     companion object {
         init {
             registerExpression<GuildPlayersInRegionExpression, Player>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "players in %guild%['s] region",
                 "players in %string%['s] [guild] region",
                 "players in %offlineplayer%['s] [guild] region",

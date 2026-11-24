@@ -6,9 +6,9 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
@@ -26,7 +26,7 @@ class GuildAlliesExpression : GuildExpression<Guild>(Guild::class.java) {
     companion object {
         init {
             registerExpression<GuildAlliesExpression, Guild>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "%object%['s] guild['s] allies",
                 "%block%['s] guild['s] allies",
                 "%offlineplayer%['s] guild['s] allies",

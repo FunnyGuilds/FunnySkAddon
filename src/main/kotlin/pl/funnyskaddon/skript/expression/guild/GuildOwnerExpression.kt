@@ -1,6 +1,7 @@
 package pl.funnyskaddon.skript.expression.guild
 
 import pl.funnyskaddon.skript.registration.Registration.guildSources
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.flatMapOption
 import pl.funnyskaddon.extension.orNull
@@ -9,7 +10,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.OfflinePlayer
@@ -30,7 +30,7 @@ class GuildOwnerExpression : GuildExpression<OfflinePlayer>(OfflinePlayer::class
     companion object {
         init {
             registerExpression<GuildOwnerExpression, OfflinePlayer>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 *guildSources("['s] (owner|leader)")
             )
         }

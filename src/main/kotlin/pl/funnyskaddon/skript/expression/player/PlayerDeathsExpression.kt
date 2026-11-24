@@ -4,8 +4,8 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import org.bukkit.event.Event
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.PlayerExpression
 import pl.funnyskaddon.skript.getUser
@@ -22,7 +22,7 @@ class PlayerDeathsExpression : PlayerExpression<Int>(Int::class.javaObjectType) 
     companion object {
         init {
             registerExpression<PlayerDeathsExpression, Int>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "%offlineplayer%['s] [(rank|ranking)] deaths [(amount|count)]"
             )
         }

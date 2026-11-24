@@ -7,9 +7,10 @@ import ch.njol.skript.doc.Events
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
 import ch.njol.skript.lang.Expression
-import ch.njol.skript.lang.ExpressionType
 import ch.njol.skript.lang.SkriptParser
 import pl.funnyskaddon.skript.expression.FunnyExpression
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
+import pl.funnyskaddon.skript.registration.Registration.SIMPLE
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import ch.njol.util.Kleenean
 import net.dzikoysk.funnyguilds.event.rank.*
@@ -31,7 +32,7 @@ class EventAffectedPlayerExpression : FunnyExpression<Player>(Player::class.java
 
     companion object {
         init {
-            registerExpression<EventAffectedPlayerExpression, Player>(ExpressionType.SIMPLE, *EventType.patterns.toTypedArray())
+            registerExpression<EventAffectedPlayerExpression, Player>(SIMPLE, *EventType.patterns.toTypedArray())
         }
     }
 

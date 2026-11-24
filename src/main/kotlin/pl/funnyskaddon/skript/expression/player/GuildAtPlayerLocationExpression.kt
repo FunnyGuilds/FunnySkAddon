@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.player
 
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -7,7 +8,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.guild.Region
@@ -28,7 +28,7 @@ class GuildAtPlayerLocationExpression : PlayerExpression<Guild>(Guild::class.jav
     companion object {
         init {
             registerExpression<GuildAtPlayerLocationExpression, Guild>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "guild at %offlineplayer%['s] location"
             )
         }

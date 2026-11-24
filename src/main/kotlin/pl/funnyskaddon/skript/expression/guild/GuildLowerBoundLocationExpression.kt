@@ -6,11 +6,11 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.guild.Region
 import org.bukkit.Location
 import org.bukkit.event.Event
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.GuildExpression
 import pl.funnyskaddon.skript.getGuild
@@ -27,7 +27,7 @@ class GuildLowerBoundLocationExpression : GuildExpression<Location>(Location::cl
     companion object {
         init {
             registerExpression<GuildLowerBoundLocationExpression, Location>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "%object%['s] guild['s] [region] (lower|down) (bound|point) [location]",
                 "%offlineplayer%['s] guild['s] [region] (lower|down) (bound|point) [location]",
                 "%guild%['s] [region] (lower|down) (bound|point) [location]",

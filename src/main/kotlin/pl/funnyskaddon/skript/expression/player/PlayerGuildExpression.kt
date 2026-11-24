@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.player
 
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -7,7 +8,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.user.User
 import org.bukkit.event.Event
@@ -26,7 +26,7 @@ class PlayerGuildExpression : PlayerExpression<Guild>(Guild::class.java) {
     companion object {
         init {
             registerExpression<PlayerGuildExpression, Guild>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "%offlineplayer%['s] guild"
             )
         }

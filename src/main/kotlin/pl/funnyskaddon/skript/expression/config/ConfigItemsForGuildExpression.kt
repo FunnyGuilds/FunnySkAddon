@@ -4,12 +4,12 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.config.sections.items.GuildItemSet
 import net.dzikoysk.funnyguilds.shared.bukkit.ItemUtils
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.FunnyExpression
 
@@ -25,7 +25,7 @@ class ConfigItemsForGuildExpression : FunnyExpression<ItemStack>(ItemStack::clas
     companion object {
         init {
             registerExpression<ConfigItemsForGuildExpression, ItemStack>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "[required] items (to create|for) guild"
             )
         }

@@ -6,10 +6,10 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import org.bukkit.event.Event
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.skript.expression.ValueExpression
 import pl.funnyskaddon.skript.getValue
@@ -23,7 +23,7 @@ class GuildFromNameExpression : ValueExpression<String>() {
     companion object {
         init {
             registerExpression<GuildFromNameExpression, Guild>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "guild from name %string%",
                 "guild with name %string%"
             )

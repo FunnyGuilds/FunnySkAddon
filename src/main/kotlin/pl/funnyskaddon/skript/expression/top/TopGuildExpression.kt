@@ -1,5 +1,6 @@
 package pl.funnyskaddon.skript.expression.top
 
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -7,7 +8,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.FunnyGuilds
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.rank.DefaultTops
@@ -27,7 +27,7 @@ class TopGuildExpression : TopExpression<Guild>(Guild::class.java) {
     companion object {
         init {
             registerExpression<TopGuildExpression, Guild>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 "guild in position %number% [of (top|rank|ranking)]",
                 "guild in position %number% [of %-string% (top|rank|ranking)]"
             )

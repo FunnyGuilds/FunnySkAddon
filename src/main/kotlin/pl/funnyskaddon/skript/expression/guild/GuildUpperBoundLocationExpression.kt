@@ -1,6 +1,7 @@
 package pl.funnyskaddon.skript.expression.guild
 
 import pl.funnyskaddon.skript.registration.Registration.guildSources
+import pl.funnyskaddon.skript.registration.Registration.PROPERTY
 import pl.funnyskaddon.skript.registration.Registration.registerExpression
 import pl.funnyskaddon.extension.orNull
 
@@ -8,7 +9,6 @@ import ch.njol.skript.doc.Description
 import ch.njol.skript.doc.Examples
 import ch.njol.skript.doc.Name
 import ch.njol.skript.doc.Since
-import ch.njol.skript.lang.ExpressionType
 import net.dzikoysk.funnyguilds.guild.Guild
 import net.dzikoysk.funnyguilds.guild.Region
 import org.bukkit.Location
@@ -28,7 +28,7 @@ class GuildUpperBoundLocationExpression : GuildExpression<Location>(Location::cl
     companion object {
         init {
             registerExpression<GuildUpperBoundLocationExpression, Location>(
-                ExpressionType.PROPERTY,
+                PROPERTY,
                 *guildSources("['s] [region] (upper|up) (bound|point) [location]")
             )
         }
