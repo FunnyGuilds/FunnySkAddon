@@ -59,7 +59,7 @@ dependencies {
     implementation("org.bstats:bstats-bukkit:3.1.0")
     implementation("commons-io:commons-io:2.22.0")
     implementation("eu.okaeri:okaeri-configs-yaml-bukkit:5.0.13")
-    compileOnly("io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:26.3.build.262-stable")
     compileOnly("net.dzikoysk.funnyguilds:plugin:5.0.1-SNAPSHOT")
     compileOnly("com.github.SkriptLang:Skript:2.17.1") {
         isTransitive = false
